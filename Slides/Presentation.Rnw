@@ -1,0 +1,2643 @@
+\documentclass[aspectratio=169]{beamer}
+%
+%https://nhigham.com/2013/01/18/top-5-beamer-tips/
+% 
+% If you want to locally change a single symbol of an itemize in beamer to a colored circle, you could use \item[\textbullet] ....
+% 
+% For a global change of all itemize symbols fo a certain level, you can use
+% 
+% \setbeamertemplate{itemize <level>}[<predefined symbol>]{<custom symbol>}
+% With <level>:
+% 
+% item --> first level
+% 
+% subitem --> second level
+% 
+% subsubitem--> third level
+% 
+% and with one of the following predefined options: triangle, circle square or ball or with a different symbol of your choice.
+% 
+% To summarize: To globally change all itemize symbols of all third level itemize environments, add \setbeamertemplate{itemize subsubitem}[circle] to your preamble.
+\usepackage{url}
+
+\usepackage{beamerthemeshadow}
+\usepackage{lmodern}
+
+\usepackage{scrextend}
+\changefontsizes{7.5pt}
+
+%https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_theme.html
+%\usetheme{CambridgeUS}
+\usetheme{Darmstadt}
+
+
+\usecolortheme {orchid}
+
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=blue}
+
+
+
+
+%gets rid of bottom navigation bars
+\setbeamertemplate{footline}[page number]
+
+%gets rid of navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}[circle]
+
+
+	\usepackage{rotating} % <-- HERE
+		
+		%\setlength{\oddsidemargin}{0.5cm}
+		%\setlength{\evensidemargin}{0.5cm}
+		%\setlength{\topmargin}{-1.6cm}
+		%\setlength{\leftmargin}{0.5cm}
+		%\setlength{\rightmargin}{0.5cm}
+		%\setlength{\textheight}{24.00cm} 
+		%\setlength{\textwidth}{15.00cm}
+\usepackage{longtable}
+ \usepackage[section]{placeins}
+
+\usepackage{threeparttable}
+
+\usepackage{tabularx}
+		\usepackage{caption}
+	%	\usepackage{enumitem}	 
+		\usepackage{array,multirow,graphicx}
+		\usepackage{float}
+		%\restylefloat{table}
+		\usepackage{rotating}
+
+%\usepackage{caption,float}
+%\usepackage[skip=2pt]{caption} 
+\usepackage{subcaption}
+%\usepackage{subfig} 
+\usepackage{dcolumn}
+%\textsc{\usepackage[font={small}]{caption, subfig}
+%\renewcommand{\figurename}{Fig.}
+% \renewcommand{\tablename}{Tab.}}
+  \def\baselinestretch{0.98}
+
+%	\usepackage{graphicx}
+
+%\usepackage{enumitem}	 
+\usepackage{mathptmx}
+		\usepackage{mathrsfs}
+		\usepackage{amsmath,amsthm,amssymb} 
+		\usepackage{mathtools}
+		
+		\usepackage{mathrsfs}
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+	
+	
+	\usepackage{appendixnumberbeamer} 
+% 
+% \setbeamerfont{myTOC}{series=\bfseries,size=\Large}
+% \AtBeginSection[]{\frame{\frametitle{Outline}%
+%                   \usebeamerfont{myTOC}\tableofcontents[current]}}
+%                   
+
+%\usepackage[backend=bibtex,style=numeric ,sorting=nyt]{biblatex}
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{Literature.bib}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\renewcommand*{\bibfont}{\scriptsize}
+
+\institute[]{\sc Department of Economics \\ Vienna University of
+Economics and Business}
+
+\begin{document}
+\title{Macroeconomic and Bank-specific Drivers of Non-Performing Loans and
+the EBA's EU-wide Transparency Exercise:\\ An Empirical Investigation.}  
+%\author{Javier Vargas Moreno}
+
+\author[Javier Vargas Moreno \hspace{0.1\textwidth} \insertframenumber\,/\,\inserttotalframenumber]{ Javier Vargas Moreno
+\\ \vspace{10pt} \small{Supervisor: Hon.Prof. Dr. Aurel Schubert}}
+%\date{\today} 
+
+\frame{\titlepage} 
+
+%\renewcommand{\contentsname}{\centering Contents}
+\frame{\frametitle{Table of contents}\tableofcontents} 
+
+
+\section{Introduction} 
+%\section[short_title]{Introduction} 
+% \subsection{Topic}
+% \frame{\frametitle{Topic}
+% Each frame should have a title.
+% }
+%\subsection{Topic \& Motivation}
+\frame{\frametitle{Topic}
+
+An analysis of the impact of macroeconomic and bank-specific factors on Non-Performing Loans (NPLs)  in the EU-banking sector using an extensive,
+ granular dataset on major European banks gathered by the European Banking Authority (EBA) in the context of the EU-wide Transparency Exercise for the period 2014-2019.
+ 
+}
+
+
+%\cite{BergerA.N.&DeYoungR.2001}
+%\cite{BergerA.N.DeYoung.2000}
+%\cite{Viral.2006}
+%\frame{\frametitle{NPL Determinants I - Relevance \cite{EBA6}  \cite{BergerA.N.&DeYoungR.2001} \cite{Quagliariello}}
+\frame{\frametitle{ Motivation I \cite{EBA} \cite{EBA6} \cite{guideline} \cite{BernankeBS.1981}}
+\begin{itemize}
+\item NPLs are a main indicator of bank's asset quality.
+\item The term NPL usually refers to loans that are over 90 days past-due or unlikely to be repaid in full
+
+          %\item NPL is a main indicator of bank's asset quality.
+
+ %\item Important effects of financial intermediation instability on the real economy.
+\item Important effects of financial intermediation on the real economy.
+
+      \item Understanding the determinants of Non-Performing Loans (NPL) is a very relevant topic for economic policy in Europe.  In the last years, non-performing loans have been a major concern for supervisor,  policymakers and market participants in the EU.
+      
+      \item Increase importance of understanding  NPL determinants in  the inmediate  pre-COVID period and their transmission channels.
+
+
+%             \item A more granular analysis of each loan type at the disaggregate level would contribute to a further
+% understanding of the determinants of NPL
+
+
+      % \item In the aftermath of the financial crisis, non-performing loans (NPLs) have been a major concern for supervisor,  policymakers and market participants in the EU.
+
+%
+%       \item A more granular analysis of each loan type at the disaggregate level would improve the
+% understanding of determinants of NPL significantly.
+%
+%
+%       \item  The impact of softer "political" factors
+% like  supervisory mechanisms or quality of the legal system needs to be
+% addressed in detail. Important implications for policy makers in
+% the EU, where membership negotiations take place.
+% 
+%     \item  The impact of geographical loan diversification on bank's assets quality.
+
+
+
+     \item Implications for prudent bank stress testing, EU policy making, recommendations on NPL strategies and design of Early Warning Indicators (EWI), contributing to a more effective microprudential supervision of  banks in Europe.
+
+      
+      
+\end{itemize}
+
+}
+
+
+\frame{\frametitle{Motivation II - Research on NPL Determinants \& Bank-Level Data \cite{FSI} \cite{Cerutti}}
+ %\cite{Platon}
+ \begin{itemize}
+          
+        \item  Many authors  indicate the need of a more granular analysis of NPL drivers at bank-level.
+
+      \item Challenges in the NPL literature when using individual bank data:\\
+         \begin{itemize}
+
+
+         \item Data availability is limited due to data protection regulation and banking law.
+         
+         \item Private platforms like Dealscan, Datastream, Bankscope or Debtwire suffers from a representativeness bias and data quality issues.
+         \item Banking supervisory data is usually provided in a domestically controlled cross-border consolidation basis.
+         
+         \item The use of macroeconomic data  based on  the bank's country of origin does not totally account  for cross-border portfolio diversification in the banking sector when analysing its impact on non-performing loans 
+         
+         \item Divergences concerning the definition of non-performing loans and the method of compilation of the data across countries.
+        \end{itemize}
+        
+        \item Example of the potential benefits from using the data of the EBA's EU-wide Transparency Exercise for supervisory and academic purposes with respect to these challenges
+        
+         \item  The use of the data of the EBA's EU-wide Transparency Exercise is also quite a novelty in the  academic research.
+      %   
+      % \item  The EBA's EU-wide Transparency Exercise  provided  extensive, public and granular portfolio-by-portfolio supervisory  data on major European banks since 2014  using an harmonised the definition of NPLs, allowing a cross-country comparability of NPLS across European banks,
+      %  \item  The use of data published as part of the EBA transparency exercise  to analyse the determinants of NPLs is quite a novelty.
+      
+      
+      
+           
+            
+            %for instance, accounting for disaggregated loan portfolio characteristics.
+            
+            %in the NPL literature to a further understanding of the determinants of NPL
+
+
+       \end{itemize}
+ 
+ }
+
+\section{EBA \& SSM}
+\frame{\frametitle{The EBA's EU-wide Transparency Exercise  \cite{EBA6} \cite{guideline}}
+
+\begin{itemize}
+
+
+\item The European Banking Authority (EBA) is an independent EU Authority established on 1 January 2011 as part of the European System of Financial Supervision (ESFS) to ensure effective and consistent prudential regulation and supervision across the European banking sector.
+
+% \item  With the EU-wide transparency exercise, the EBA has been disclosing detailed bank-by-bank data on  an annual basis since 2016, with the objective of providing the general public and market participants with updated information on the financial conditions of EU banks at the highest level of consolidation.
+
+\item  With the EU-wide transparency exercise, the EBA has been disclosing data on  an annual basis since 2016, which:
+   
+   \begin{itemize}
+   
+    \item  Provides the general public and market participants with updated (quaterly/semesterly) information on the financial conditions of EU banks at the highest level of consolidation
+
+   \item Discloses an extensive, and granular portfolio-by-portfolio supervisory  data on major European banks -exposures are broken down by banks, asset classes, default status, ect..-. representing approximately between 80\% and 85\% of banking assets in the European Union.
+   
+   \item Uses an harmonised definition of NPLs across European countries.
+   
+   \item Includes data on original exposures up to the 10 largest countries of counterparty at bank level
+    \item Provides information regarding membership status under the Single Supervisory Mechanism (SSM)
+   
+    \end{itemize}
+
+% \item  The previous mentioned characteristics in terms of granurality and high standards of data quality provided an adequate framework to study the determinants of the NPLs at bank-level .
+%\cite{Kerbl}\cite{Turk}
+ 
+ 
+ \end{itemize}
+}
+
+
+% \frame{\frametitle{The EBA's EU-Harmonised  Definition of Non-Performing Loans (NPL)   \cite{NPL2}}
+% 
+% \begin{itemize}
+% 
+% \item In 2014 the EBA published technical standards for the reporting of non-performing
+% loans and forbearance.
+% 
+% \item First time that a hard-law instrument harmonises the definition of NPLs.
+% 
+% \item A non-performing exposure is an exposure that is:
+% 
+%     \begin{itemize}
+%         \item 90 days past-due (material exposure) or unlikely to be repaid in full without collateral realisation (irrespective of any past-due amount or of the number of days past-due), or
+%         
+%         \item Impaired or defaulted according to the applicable accounting or regulatory frameworks.
+%         Linkage with impairment to be reviewed when IFRS 9 is endorsed
+%     \end{itemize}
+% 
+% 
+%  \end{itemize}
+% }
+
+\frame{\frametitle{The Single Supervisory Mechanism (SSM) \cite{SSM.Manual.2018}}
+
+
+
+\begin{columns} [T]
+
+\begin{column}{8cm}
+\begin{itemize}
+
+\item The Single Supervisory Mechanism (SSM), the system of banking supervision in the euro area, became fully operational on November 4, 2014 as the first pillar of the European banking union.
+
+\item The SSM aims to safeguard financial stability and promote European financial integration in cooperation with the established institutional structures.
+
+
+\item Under the SSM, the ECB is responsible for the supervision of banks in the euro area. Non-euro area EU countries may participate in the SSM on a voluntary basis through close cooperation between the competent supervisory authorities.
+
+% 
+% \item The Single Supervisory Mechanism (SSM) is the legislative and institutional framework that grants the European Central Bank (ECB) sole licensing authority over all banks in participating EU member states (except branches of banks from non-EEA countries) and makes it the prudential supervisor of these banks, directly for the larger ones and indirectly for the smaller. Eurozone countries are required to participate, while participation is voluntary for non-eurozone EU member states. As of late 2018, none of the non-eurozone member states had joined, although the ECB reported that some of them had expressed an interest. The SSM has been the first-established and remains the central component of the European banking union, and works in conjunction to the Single Resolution Mechanism.
+\end{itemize}
+
+\end{column}
+
+\begin{column}{2cm}
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.3\paperwidth]{figure/ssm_graph}}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+\end{figure}
+
+\end{column}
+
+\end{columns}
+}
+
+\section{NPL Drivers \& Literature}
+%\frame{\frametitle{NPL Determinants II - Drivers  }
+\frame{\frametitle{NPL Drivers  }
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/npl_gen}}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+\end{figure}
+
+}
+
+%\frame{\frametitle{NPL Determinants III - NPL Literature  }
+\frame{\frametitle{NPL Drivers - Literature Review  }
+\begin{itemize}
+
+%\cite{ManzFlorian}
+
+          \item Feedback links of financial intermediation and the real economy  \cite{Bernanke.1999}
+          %\cite{BernankeBS.1981}
+          \item Links between bank-specific characteristics and problem loans:
+          
+          
+           \begin{itemize}
+           \item Bad luck,bad management, skimping hypotheses, too big to fail behavior \cite{DeYoung.1997} \cite{Louzis.2012}
+           \item Moral hazard hypothesis  \& risk-taking behavior \cite{EspinozaR.2010} 
+            %\cite{KeetonWR.1987}
+           %\cite{Boudriga}  \cite{SinkeyJF.1991} \cite{GhoshA.2015}
+           
+           \item Bank capitalization  \& risk appetite \cite{KwanS.1997} \cite{OseiAssibeyE.2015} 
+        
+           \item Strategic aspects of a banks' loan portfolio \cite{GhoshA.2017}
+           %\cite{Zhang.2016}
+           \item Geographic diversification \cite{BergerA.N.&DeYoungR.2001}
+           
+           \item Disaggregated loan aspects \cite{GoczekL.2015}
+           
+           %\cite{NkusuM.2011} \cite{Salas.2002}
+           
+           \end {itemize}
+           
+          \item Links between Macroeconomic characteristics and problem loans:
+          
+          \begin{itemize}
+          
+          \item Business cycle,terms of trade \& price levels \cite{Makri} \cite{Dimitrios.2016} 
+          %\cite{Louzis.2012}
+          \item Sovereign debt \cite{ReinhartCM.2011}
+          %\cite{KleinN.2013} \cite{BockR.2012}
+        \item Rule of law, Corporate Governance \& Supervision  \cite{Barth.2004}
+        %\cite{Boudriga}
+            
+           
+           \end {itemize}
+           
+           \item Usual empirical methods:
+         
+        \begin{itemize} 
+        \item Linear  panel data methods & Dynamic panel data methods: GMM / OLS/VAR
+        \item Unbalanced and balanced panel Data estimation techniques
+        \end {itemize}
+ 
+\item Type of data:
+      \begin{itemize}
+      \item Aggregate  (country) level
+      \item Disaggregate (bank) level
+      \end {itemize}
+      
+\item Framework: Geograhical (Global/national/regional), Temporal (Quaterly/semesterly/yearly)
+
+
+      
+          
+ \end {itemize}
+
+}
+
+% \frame{\frametitle{NPL Determinants I \cite{EBA6} \cite{ManzFlorian} \cite{BergerA.N.&DeYoungR.2001}}
+% 
+% \begin{itemize}
+% \item NPL is a main indicator of bank's asset quality.
+% 
+%     
+% 
+%  \item Important effects of financial intermediation instability on the real economy.
+% 
+%       \item Understanding the determinants of Non-Performing Loans (NPL) is a very relevant topic for economic policy in Europe.  In the last years, non-performing loans (NPLs) have been a major concern for supervisor,  policymakers and market participants in the EU.
+% 
+% 
+%      \item Implications for prudent bank stress testing, policy making, recommendations on NPL strategies and design of Early Warning Indicators (EWI),contributing to a more effective microprudential supervision of  banks in Europe.
+% 
+% \end{itemize}
+
+
+%\frame{\frametitle{NPL Determinants IV - Bank Level Data \cite{FSI} \cite{Cerutti}}
+
+ 
+ 
+% \frame{\frametitle{NPL Determinants III }
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/npl_gen}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% }
+
+% 
+
+
+%\section[short_title2]{Research Question}
+\section{Research Question} 
+\frame{\frametitle{Research Question}
+\begin{itemize}
+
+    \item \textbf{Main question}:
+    
+    \textit{What are the main macroeconomic and bank-specific drivers of Non-Performing Loans in the EU-banking sector?}
+    
+    \item \textbf{Secondary questions}:\\
+    Are there different conclusions given:
+  
+    
+    \begin{itemize}
+    \item \textit{Exposure types}
+      \begin{itemize}
+      \item Households
+      \item Non-Financial Corporations
+      \item Financial Corporations other than credit institutions
+       \end{itemize}
+       
+       \item   \textit{NPL levels}
+       
+    \item \textit{Geographic diversification of exposures}
+    
+    \item \textit{Supervision under the Single Supervisory Mechanism (SSM)}
+    
+    \end{itemize}
+
+\end{itemize}
+}
+
+
+
+\section{Data Description } 
+
+%\subsection{Software}
+%\subsection{Data Preparation}
+\frame{\frametitle{Data}
+
+\begin{itemize} 
+\item The (unbalanced) sample consists of over 130 banks, at the highest level of consolidation, from 27 countries in the EU and the European Economic Area (EEA)  between 2014 and 2019.
+\end{itemize} 
+\textbf{Sources:}
+
+      \begin{itemize}
+      
+      \item \textit{EBA Transparency exercises: Databases published between 2015  and  2020} \\*
+      \textcolor{blue}{\url{https://eba.europa.eu/risk-analysis-and-data/eu-wide-transparency-exercise} }\\*
+      \item \textit{IMF Data}\\*
+      \textcolor{blue}{\url{https://data.imf.org/?sk=388DFA60-1D26-4ADE-B505-A05A558D9A42&sId=1479329132316}}\\*
+      
+      \item \textit{World Bank Data}\\*
+      \textcolor{blue}{\url{https://datacatalog.worldbank.org/}}\\*
+      \item \textit{World Bank Doing Business Report}\\*
+      % The Doing Business project provides objective measures of business regulations and 
+      % their enforcement as recovery rates or resolving insolvencies\\*
+      \textcolor{blue}{\url{https://www.doingbusiness.org/}}\\*
+      
+      
+      \end{itemize}
+      
+      \textbf{Time period:} 
+
+2014-2019 
+
+\\
+\textbf{Frequency :}
+
+Yearly (2014/12,2015/12,2016/12,2017/12,2018/12,2019/12)
+
+      
+      }
+% 
+% \frame{\frametitle{Data II}
+% 
+% \begin{itemize} 
+% %[label= $\diamond$]
+% % \item An extensive, granular dataset on major European banks from the EBA transparency exercises  published between 2015 and 2020. 
+% 
+% \item The sample consists of over 130 banks, at the highest level of consolidation, from 24 countries in the EU and the European Economic Area (EEA)  between 2014 and 2019.
+% 
+% 
+% 
+% % \item An intensive data preparation process (collecting, cleaning, and consolidation) have been
+% % exercised to aggregate databases for each year, covering the transparency exercises that took place between 2015 and 2020.
+% 
+% \end{itemize} 
+% }
+
+\frame{\frametitle{Cross-Border Exposure-Weighted Macroeconomic Indicators \cite{Quagliariello} \cite{Fuchs}}
+
+\begin{itemize} 
+
+\item To determine the macroeconomic drivers on NPLs  for  banks with  a cross-border portfolio using data provided on a domestically controlled consolidation basis, the use of cross-border exposure-weighted macroeconomic indicators was required
+%cross-border 
+\item The following formula was applied to calculate the Cross-Border Exposure-Weights:
+
+\begin{align*}
+y^\ast_{it} = \sum_{l=0}^{N_{it}} w^t_{il}Y_{lt} \qquad \text{with}\qquad \sum_{l=0}^{N_{it}} w^t_{il}= 1
+\end{align*}
+\\
+where $w^t_{il}$ is the cross-border exposure-weight of bank $i$ from country $l$ at time  $t$, $Y_{lt}$ is the macroeconomic variable of country $l$ at time $t$ and $y^\ast_{it}$ is the cross-border exposure-weighted macroeconomic indicator for bank $i$ at time $t$. The  value of $N_{it}$  varies depending on the number of countries with the largest cross-border exposures for each bank $i$ at time $t$ with $\max(N)= 10$.
+
+
+\end{itemize} 
+}
+
+
+\frame{\frametitle{Cross-Border Diversification Index $(CBDI)$ \cite{Morgan.2016} \cite{Hayden.2006}  \cite{BergerA.N.&DeYoungR.2001}}
+
+\begin{itemize} 
+
+\item A geographic diversification index of bank exposures is also introduced into the model in order to account for the effects of cross-border diversification  on non-performing loans.
+%\cite{TuDQ.SonHTran.2020}.
+
+\item   The Cross-Border Diversification Index ($CBDI$) has been calculated as  the inverse of the the Hirschmann-Herfindahl Index (HHI) for each bank $i$ at time $t$. Formally,
+
+\[
+ CBDI_{it} = 1 - HHI_{it}
+\]
+with
+\[
+  HHI_{it} =\sum_{j=0}^{N_{it}}( \dfrac{X_{ijt}}{X_{it}})
+\]
+
+where $X_{j}$ measures  the original exposure towards country $j$  and $N_{it}$ represents the number of countries with the largest cross-border exposures for each bank $i$ at time $t$ with $\max(N)= 10$. The Hirschmann-Herfindahl indexes are bounded by $1/N_{it} \leq HHI_{it} \leq 1$.
+
+\item  The Cross-Border Diversification Indexes ($CBDI$) are bounded by $0 \leq CBDI_{it} \leq (N_{it} -1)/N_{it}$. A Cross-Border Diversification Index ($CBDI$) close to its maximum means that the bank original exposures are very diversified across countries   whereas an index close to zero means that the bank original exposures are very concentrated on certain countries
+
+\end{itemize} 
+}
+
+
+
+% \frame{\frametitle{Data cleansing}
+% 
+% \begin{itemize}
+% 
+% \item \textit{EBA Transparency exercises: Databases from  2015 to 2020} \\*
+% \textcolor{blue}{\url{https://eba.europa.eu/risk-analysis-and-data/eu-wide-transparency-exercise} }\\*
+% \item \textit{IMF Data}\\*
+% \textcolor{blue}{\url{https://data.imf.org/?sk=388DFA60-1D26-4ADE-B505-A05A558D9A42&sId=1479329132316}}\\*
+% 
+% \item \textit{World Bank Data}\\*
+% \textcolor{blue}{\url{https://datacatalog.worldbank.org/}}\\*
+% 
+% 
+% \end{itemize}
+% }
+
+
+
+%\subsection{Description of Variables} 
+
+\frame{\frametitle{Variables}
+
+\setlength{\extrarowheight}{1pt}
+
+\renewcommand{\baselinestretch}{1} 
+
+
+\begin{table}[H]
+	%\caption{Presentation of Bank-Specific Variables and Macroeconomic Indicators} % title name of the table
+	\label{Table1}
+	\centering % centering table
+		\bgroup
+  \catcode`\_=13%
+  \def_{\textunderscore}%
+   \begin{threeparttable}
+   \footnotesize
+	\resizebox{.7\textwidth}{!}{\begin{tabularx}{.6\textwidth} { c | c X }
+
+	\hline\hline % inserting double-line
+	  &\textbf{Variable} & \textbf{Explanation } \\
+	\hline % inserts single-line
+ \parbox[t]{2mm}{\multirow{9}{*}{\rotatebox[origin=c]{90}{\textbf{Bank-Specific} }}}
+ 					        & NPL	& Non-Performing Loans to total gross loans\\
+ 					       
+                    & Exposure & Exposure Type              \\
+                   & BankSize\_tran &  Total Bank Size \\
+                  % & npl_0  & Total Gros Loans and Advances to Banks (TEUR) \\
+                   &CET1\_ratio\_tr   &  Common Equity Tier 1 Ratio  \\
+                  % & T1_ratio   & Tier 1 Capital Ratio \\
+                    %& TCAP_ratio  & Total Capital Ratio  \\
+                   & Cost\_to\_Income  & Cost to Income ratio\\
+                   %& Forbear_ratio  &  Forbearance ratio for loans and advances \\
+                   & LEVER\_tr\_ratio  & Leverage ratio - using a transitional definition of Tier 1 capital \\
+                    %& NFCI  &  Net Fee and Commission Income ratio \\
+                   % & NII  &  Net interest income to total net operating income \\
+                   & NIM\_tr& Net Interest Margin ratio \\
+                   & RORAC  & Return on Regulatory (Risk-Adjusted) Capital \\
+                    & CBDI\_index & Cross-Border Diversification Index (CBDI) \\
+                   
+                   % & RORWA &  Return on Risk-weighted Assets  \\
+         \hline % inserts single-line
+                    \parbox[t]{2mm}{\multirow{8}{*}{\rotatebox[origin=c]{90}{\textbf{Macroeconomic} }}}
+                    & infl\_perc &  Inflation, consumer prices (annual \%)  \\
+                  % & TimTOres_insol  & Time to resolve insolvency (years)  \\
+                   & Stgth\_legal\_index & Strength of legal rights index (0=weak to 12=strong)\\
+                   &GDP\_growth\_perc  & GDP growth (annual \%) \\
+                   %& GDP_per_cap_dol & GDP per capita (current US\$) \\
+                   % &GDP_per_cap_growth_perc  & GDP per capita growth (annual \%) \\
+                   %&GDP_per_cap_ppp & GDP per capita, PPP (current international \$) \\
+                   %&GDP_per_cap_PPP_2017  & GDP per capita, PPP (constant 2017 international \$) \\
+                   %& Termsoftrade_adj_cnst  & Terms of trade adjustment (constant LCU)\\
+                   %& Ne_termsoftrad_indx_2000& Net barter terms of trade index (2000 = 100)  \\
+                   %& Reco_rate_dol_Score  &  Recovery rate (cents on the dollar) - Score   \\
+                   & Reco\_rate\_dol & Recovery rate (cents on the dollar) \\
+                   &unempl\_rate\_imf  & Unemployment rate \\
+                    %& infl_avrg_imf  & Inflation, average consumer prices(annual \%), IMF   \\
+                    % &infl_eop_imf  & Inflation, end of period consumer prices (annual \%), IMF  \\
+                    & curr\_acc\_bal  & Current account balance, percent of GDP \\
+                     %& Fiscal_Deficit& General government net lending/borrowing, percent of GDP \\
+                     & gross\_public\_debt  & General government gross debt, percent of GDP \\
+                      & SSM  & Single Supervisory Mechanism Dummy \\
+                    % & net_public_debt  & General government net debt, percent of GDP  \\
+                    % & Public_Revenue  & General government revenue, percent of GDP \\
+                     %& Public_expenditure  & General government total expenditure, percent of GDP  \\
+
+
+    %\hline\hline % inserting double-line
+    \bottomrule
+	\end{tabularx}}
+	%\egroup
+	%\label{tab:Variables}
+
+	\begin{tablenotes}[flushright]
+      \footnotesize
+      \item {\footnotesize Source: Author's compilation}
+      %\item Note:  Theoretical considerations suggest positive or negative values
+    \end{tablenotes}
+   \end{threeparttable}
+ %\vspace{1ex}
+
+
+ %    {\raggedright Source: Author's compilation\\Note: Theoretical considerations suggest positive or negative values \par}
+\end{table}
+
+}
+
+
+
+ 
+\section{Data Visualization} 
+<<echo=F>>=
+opts_chunk$set (echo=F,message=F,warning=F)
+@
+
+
+
+ 
+ <<Loan_dist,fig.width=8, fig.height=6,fig.pos="h", out.width='0.9\\linewidth',fig.show='hide'>>=
+   
+    library(tidyverse)
+path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+
+load(paste(path_data,'all.RData', sep = ""))
+#load(paste(path_data,'npl_hh.nfi.RData', sep = ""))
+
+library(plyr)
+all1 <- all %>% mutate(Exposure= as.factor(Exposure)) 
+all1$Exposure <- plyr::revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+detach(package:plyr)
+ t<-  all1%>% group_by(Year,Exposure) %>%
+  summarise(sum=sum(npl_0))
+
+t2 <- all1%>% group_by(Year) %>% summarise(sum_all=sum(npl_0))
+t3 <- t %>% left_join( t2, by=c("Year")) %>% mutate( pct2= sum/sum_all)
+
+
+
+ta<-  all1%>% group_by(Year,Exposure) %>%
+  summarise(sum=sum(npl_2))
+
+t2a <- all1%>% group_by(Year) %>% summarise(sum_all=sum(npl_2))
+t3a <- ta %>% left_join( t2a, by=c("Year")) %>% mutate( pct2= sum/sum_all)
+
+  ggplot(t3 ,
+       aes(x=Year, y=pct2,fill=Exposure)) +
+    #aes(x=Year, y=(sum/1000),fill=Exposure)) +
+  geom_col()+
+  xlab("") +
+  ylab(" ")+
+  # scale_fill_grey()+
+  theme_light()+
+  geom_text(aes(label = scales::percent(pct2)),
+            position="stack",vjust=+2.3,col="black",size=3)+
+  #facet_wrap(~ Exposure, nrow = 3)+
+  # scale_fill_manual(values = c("lightslategray","lightblue"))+
+  # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+  scale_fill_manual(values = c("royalblue2","goldenrod1","firebrick2"),name = " ", labels = c("Financial Corp.", "Households","Non-Financial Corp."))+
+ scale_y_continuous(label = scales::percent)+
+    # scale_y_continuous(label = scales::percent)
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+  # theme(strip.background =element_rect(fill="lightblue4"))+
+  # theme(strip.text = element_text(colour = 'white'))+
+  theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  labs(caption = " ")
+  #ggtitle("Total Gross Loans Portfolio per Exposure Type (%)")
+
+# b <-  ggplot(t3a ,
+#        aes(x=Year, y=pct2,fill=Exposure)) +
+#   geom_col()+
+#   xlab(" ") +
+#   ylab(" ")+
+#   # scale_fill_grey()+
+#   theme_light()+
+#   geom_text(aes(label = scales::percent(pct2)),
+#             position="stack",vjust=+2.3,col="black",size=2)+
+#   #facet_wrap(~ Exposure, nrow = 3)+
+#   # scale_fill_manual(values = c("lightslategray","lightblue"))+
+#   # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+#   scale_fill_manual(values = c("royalblue2","goldenrod1","firebrick2"),name = " ", labels = c("Financial Corp.", "Households","Non-Financial Corp."))+
+#   scale_y_continuous(label = scales::percent)+
+#   theme(plot.title = element_text(hjust = 0.5,size=8))+
+#   # theme(strip.background =element_rect(fill="lightblue4"))+
+#   # theme(strip.text = element_text(colour = 'white'))+
+#   theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+#   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+#   #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+#   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+#   labs(caption = " ")+
+#   ggtitle("NPL Portfolio  per Exposure Type (%)")
+
+ #   library(ggpubr)
+ # ggarrange(a, b,
+ #           labels = c(" ", " "),
+ #           nrow = 1,ncol = 2)  
+
+@
+ 
+ \frame{\frametitle{Total Gross Loans Distribution per Exposure Type (\%)}
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.6\paperwidth]{figure/Loan_dist-1}}
+%\vspace{-1cm}}
+%\caption{Total Gross Loans Portfolio per Exposure Type (\%)}
+%\label{Loan_dist}
+% \vspace*{-3mm}
+\end{figure}
+}
+
+
+
+
+
+ <<NplRatios,fig.width=6, fig.height=4, out.width='.89\\linewidth',fig.show='hide'>>=
+#setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+#getwd()
+ 
+ 
+ library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ 
+ load(paste(path_data,'all.RData', sep = ""))
+library(plyr)
+ all <- all %>% mutate(Exposure= as.factor(Exposure)) 
+ all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+  all %>% ggplot(aes(x=Year, y=NPL_ratio)) + 
+  stat_boxplot(geom = "errorbar", width = 0.2) +
+  geom_boxplot(outlier.colour = "red", outlier.alpha = 0.3,fill="lightsteelblue2")+
+  xlab("Year") +
+  ylab("NPL ratio(%)")+
+ # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+  facet_wrap(~ Exposure, nrow = 1)+
+  #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+  #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+  #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+    #scale_colour_manual(values = c("lightsteelblue2"))+
+  scale_y_continuous(breaks=seq(0,100,10),labels = scales::percent_format(accuracy = 1,scale = 1))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+ theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 8))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),
+        axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_blank(),axis.title.y = element_blank())+
+    theme(axis.text=element_text(size=8))+   
+    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+ #ggtitle("Boxplot")
+
+ @
+ 
+% NplRatiosb,echo=F,message=F,warning=F>>=
+%   library(tidyverse)
+%    path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+% 
+%  load(paste(path_data,'all.RData', sep = ""))
+% # library(plyr)
+% all <- all %>% mutate(Exposure= as.factor(Exposure))
+%  all$Exposure <- plyr::revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+% # detach(package:plyr)
+% library(dplyr)
+% 
+% sm_all<-  all %>% group_by(Exposure) %>%
+%  summarise(mean = mean(NPL_ratio),median=median(NPL_ratio),Pctl.25=quantile(NPL_ratio, probs = .25),
+%               Pctl.75=quantile(NPL_ratio, probs = .75))
+% 
+%  
+% sm_all <- sm_all [,-1]%>%  t() %>% data.frame()
+% # sm_all<???as.data.frame(sapply(sm_all,as.numeric))
+% # sm_all<???cbind(sm_all[1],sm_all[2],sm_all[3])
+% # as.numeric(sm_all)
+% # sm_all[,1] <- as.numeric(sm_all[,1] )
+% # sm_all[,2] <- as.numeric(sm_all[,2] )
+% # sm_all[,3] <- as.numeric(sm_all[,3] )
+% 
+% 
+%   # View(sm_all)
+% 
+% #https://rcompanion.org/handbook/C_02.html
+%   library(psych)
+% a <- describeBy(all$NPL_ratio,group=all$Exposure)
+% # npl.stat.fi <- data.frame(a[[1]])%>% dplyr::select(sd,skew,kurtosis)
+% # npl.stat.nfi <- data.frame(a[[2]]) %>% dplyr::select(sd,skew,kurtosis)
+% # npl.stat.hh <- data.frame(a[[3]]) %>% dplyr::select(sd,skew,kurtosis)
+% 
+% npl.stat.fi <- a[[1]]%>% dplyr::select(sd,skew,kurtosis) %>% t() 
+% npl.stat.nfi <- a[[2]] %>% dplyr::select(sd,skew,kurtosis)%>% t() 
+% npl.stat.hh <- a[[3]] %>% dplyr::select(sd,skew,kurtosis)%>% t() 
+% e <- data.frame(cbind(npl.stat.fi,npl.stat.nfi,npl.stat.hh))
+% colnames(e) <- c("Financial Corporations","Non-Financial Corporations", "Households")
+% #class(e)
+% class(sm_all)
+% class(e)
+% #sm_all2 <- data.frame(as.numeric(round(sm_all[-1,]))
+% colnames(sm_all) <- c("Financial Corporations","Non-Financial Corporations", "Households")
+% #sm_all1 <- rbind(sm_all,e)
+% sm_all3 <-bind_rows(sm_all,e)
+% 
+% 
+% 
+% 
+% colnames(sm_all3) <- c("Financial Corporations","Non-Financial Corporations", "Households")
+% rownames(sm_all3) <- c("Mean","Median","Pctl(25)","Pctl(75)","Standard Deviation","Skewness","Kurtosis")
+% # sm_all3[,1] <- round(as.numeric(sm_all3[,1]) ,3)
+% #   sm_all3[,2] <- round(as.numeric(sm_all3[,2]) ,3)
+% #   sm_all3[,3] <- round(as.numeric(sm_all3[,3]) ,3)
+%  #View( sm_all2)
+%  #View(sm_all3)
+% # install.packages("kableExtra")
+% library(kableExtra)
+%  round(sm_all3,3) %>%
+%  kbl()%>%
+%  kable_classic_2(full_width = F)
+%  
+% #  library(knitr)
+% # library(rmarkdown)
+% # 
+% # table<-kable(sm_all3, format="markdown")
+% # cat(sm_all3, sep="\n", file="Table.Rmd")
+% # render("sm_all3.Rmd",output_format = "pdf_document")
+% 
+% #  #install.packages("gridExtra")   # Install & load gridExtra
+% # library("gridExtra")
+% #  pdf("npl.summ.pdf")       # Export PDF
+% # grid.table(sm_all2)
+% # dev.off()
+% @
+
+  
+
+
+
+
+
+\frame{\frametitle{NPL Distribution per Exposure Type}
+
+\begin{columns}
+
+\begin{column}{7cm}
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/NplRatios-1}}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+\end{figure}
+
+\end{column}
+
+\begin{column}{3cm}
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.3\paperwidth]{figure/npl.summ}}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+\end{figure}
+
+
+\end{column}
+
+\end{columns}
+}
+
+
+<<NplRatios1,fig.width=6, fig.height=5,fig.pos="h", out.width='0.9\\linewidth',fig.show='hide'>>=
+  
+   library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ 
+  load(paste(path_data,'all.RData', sep = ""))
+  load(paste(path_data,'all.hh.nfi.RData', sep = ""))
+  library(plyr)
+  all1 <- all %>% mutate(Exposure= as.factor(Exposure)) 
+  #all1 <- all.hh.nfi %>% mutate(Exposure= as.factor(Exposure)) 
+  all1$Exposure <- revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+  
+ #  a1 <- all1 %>% ggplot(aes(x=Year, y=NPL_ratio)) + 
+ #  stat_boxplot(geom = "errorbar", width = 0.2) +
+ #  geom_boxplot(outlier.colour = "red", outlier.alpha = 0.3,fill="lightsteelblue2")+
+ # # xlab("Year") +
+ #  #ylab("NPL ratio(%)")+
+ # # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+ #  facet_wrap(~ Exposure, nrow = 1)+
+ #  #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+ #  #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+ #  #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+ #    #scale_colour_manual(values = c("lightsteelblue2"))+
+ #  scale_y_continuous(breaks=seq(0,100,10),labels = scales::percent_format(accuracy = 1,scale = 1))+
+ #  theme_bw()+
+ #  theme(plot.title = element_text(hjust = 0.5,size=8,face="bold"))+
+ # theme(strip.background =element_rect(fill="lightblue4"))+
+ #  theme(strip.text = element_text(colour = 'white',size = 8))+
+ #  theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),
+ #        axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_blank(),axis.title.y = element_blank())+
+ #    theme(axis.text=element_text(size=8))+   
+ #    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+ #  #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+ # ggtitle("NPL Ratios(%) per Year")
+
+  
+  a2 <- all1 %>% ggplot(aes(x=NPL_ratio)) + 
+   geom_density(fill = "cornsilk", colour = "grey60",alpha = .5)+
+  xlab(" ") +
+  ylab(" ")+
+   # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+   facet_wrap(~ Exposure, nrow = 1)+
+   #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+   #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+   #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+   #scale_colour_manual(values = c("lightsteelblue2"))+
+   #scale_x_continuous(breaks=seq(-50,100,25),limits = c(-50, 100),labels = scales::percent_format(accuracy = 1,scale = 1))+
+   scale_x_continuous(breaks=seq(0,100,25),limits = c(0, 100),labels = scales::percent_format(accuracy = 1,scale = 1))+
+   scale_y_continuous(labels = scales::percent_format(accuracy = .1,scale = 100))+
+    #theme_bw()+
+   theme(plot.title = element_text(hjust = 0.5,size=8))+
+   theme(strip.background =element_rect(fill="lightblue4"))+
+   theme(strip.text = element_text(colour = 'white',size = 8))+
+   theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+   ggtitle("Density")
+ #axis.title.x = element_text(color = "grey20", size = 12, angle = 0, hjust = .5, vjust = 0, face = "plain"),
+ # b1 <- all1 %>% ggplot(aes(x=NPL_ratio)) + 
+ #   stat_ecdf(aes(ymin=0,ymax=..y..),geom="ribbon",fill = "cornsilk",alpha = .5)+
+ #   stat_ecdf(geom = "line",linetype="solid", color="grey60")+
+ #  # geom_density(,alpha = .5,size=1)+
+ #    xlab("NPL Ratio(%)") +
+ #    ylab(" ")+
+ #   # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+ #   facet_wrap(~ Exposure, nrow = 1)+
+ #   #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+ #   #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+ #   #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+ #   #scale_colour_manual(values = c("lightsteelblue2"))+
+ #   #scale_x_continuous(breaks=seq(-50,100,25),limits = c(-50, 100),labels = scales::percent_format(accuracy = 1,scale = 1))+
+ #   scale_x_continuous(breaks=seq(-50,100,25),limits = c(0, 100),labels = scales::percent_format(accuracy = 1,scale = 1))+
+ #   scale_y_continuous(labels = scales::percent_format(accuracy = .1,scale = 100))+
+ #    #theme_bw()+
+ #   theme(plot.title = element_text(hjust = 0.5))+
+ #   theme(strip.background =element_rect(fill="lightblue4"))+
+ #   theme(strip.text = element_text(colour = 'white',size = 7))+
+ #   theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+ #    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+ #  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+ #    ggtitle("NPL Ratios: Empirical Cumulative Density")
+ 
+ b1 <-all1 %>% ggplot(aes(sample=NPL_ratio )) + geom_qq(distribution = qnorm) + 
+  geom_qq_line(line.p = c(0.25, 0.75), col = "blue") + facet_wrap(~ Exposure, nrow = 1)+
+xlab("Theoretical Quantiles") +
+  ylab(" ")+
+    scale_x_continuous(breaks=seq(-4,4,1) )+
+     scale_y_continuous(labels = scales::percent_format(accuracy = 1,scale = 1))+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+  
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 8))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+     theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic",size=6))+
+  ggtitle("Q-Q Diagram")
+  
+ library(ggpubr)
+   ggarrange( a2,b1,
+           labels = c( " "," "),
+           nrow = 2)  
+   
+@  
+
+
+
+% \frame{\frametitle{NPL Distribution II}
+% 
+% %\begin{columns}
+% 
+% %\begin{column}{7cm}
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/NplRatios1-1}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+
+%\end{column}
+
+% \begin{column}{3cm}
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.3\paperwidth]{figure/npl.summ}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% 
+% \end{column}
+% 
+% \end{columns}
+}
+
+
+% 
+% \frame{\frametitle{NPL Summary}
+% 
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/npl.summ}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% 
+% }
+
+
+
+<<NplRatios2,fig.width=8, fig.height=6,fig.pos="h", out.width='0.9\\linewidth',fig.show='hide'>>=
+   
+     library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ 
+  load(paste(path_data,'npl_hh.nfi.RData', sep = ""))
+    load(paste(path_data,'npl_fi.RData', sep = ""))
+    load(paste(path_data,'npl_hh.RData', sep = ""))
+     load(paste(path_data,'npl_nfi.RData', sep = ""))
+     
+      
+ load(paste(path_data,'all.RData', sep = ""))
+library(plyr)
+ library(lemon)
+ all <- all %>% mutate(Exposure= as.factor(Exposure)) 
+ all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+ 
+all %>% ggplot(aes(x=nsa_label,y=NPL_ratio,colour=nsa_label)) +
+ geom_point(alpha=0.4) +
+   #scale_colour_brewer(palette = "Set1")+
+ # scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+ xlab("") +
+ ylab("NPL(%)")+
+  facet_rep_wrap(~ Exposure, nrow = 2,ncol = 2,repeat.tick.labels = TRUE,scales = "free")+
+   # facet_wrap(~ Exposure, nrow = 2,ncol = 2)+
+  #facet_wrap(~ Exposure)+
+  #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+  #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+  #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+    #scale_colour_manual(values = c("lightsteelblue2"))+
+  scale_y_continuous(breaks=seq(0,100,10),labels = scales::percent_format(accuracy = 1,scale = 1))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+ theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 8))+
+  theme(legend.position="none",panel.background = element_rect(fill = "lightgray"),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0),axis.title.x = element_blank(),axis.title.y = element_blank())+
+    theme(axis.text=element_text(size=8))+   
+    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+
+ #scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 1))+
+ # theme(axis.text.x=element_blank(),axis.ticks.x = element_blank())+
+# theme(panel.background = element_rect(fill = "lightgray"),plot.title = element_text(hjust = 0.5,size=8))+
+ #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+ #theme(legend.position="none",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+ #theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))
+
+ # npl_hh.nfi  %>% ggplot(aes(x=nsa_label,y=NPL_ratio,colour=nsa_label)) +
+ #  geom_point(alpha=0.4) +
+ #    #scale_colour_brewer(palette = "Set1")+
+ #  # scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+ #  xlab("") +
+ #  ylab("NPL(%)")+
+ #  scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 1))+
+ #  # theme(axis.text.x=element_blank(),axis.ticks.x = element_blank())+
+ #  theme(panel.background = element_rect(fill = "lightgray"),plot.title = element_text(hjust = 0.5,size=8))+
+ #  #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+ #  theme(legend.position="none",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+ #  theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))
+ #  #labs(caption = " ")
+ #  #ggtitle("NPL(%)")
+    
+# a <- npl_hh  %>% ggplot(aes(x=nsa_label,y=NPL_ratio,colour=nsa_label)) +
+#  geom_point(alpha=0.4) +
+#    #scale_colour_brewer(palette = "Set1")+
+#  # scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+#  xlab("") +
+#  ylab("NPL(%)")+
+#  scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 1))+
+#  # theme(axis.text.x=element_blank(),axis.ticks.x = element_blank())+
+#  theme(panel.background = element_rect(fill = "lightgray"),plot.title = element_text(hjust = 0.5,size=8))+
+#  #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+#  theme(legend.position="none",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+#  theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+#  #labs(caption = " ")
+#  ggtitle("Households")
+# 
+# b <- npl_nfi  %>% ggplot(aes(x=nsa_label,y=NPL_ratio,colour=nsa_label)) +
+#  geom_point(alpha=0.4) +
+#    #scale_colour_brewer(palette = "Set1")+
+#  # scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+#  xlab("") +
+#  ylab(" ")+
+#  scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 1))+
+#  # theme(axis.text.x=element_blank(),axis.ticks.x = element_blank())+
+#  theme(panel.background = element_rect(fill = "lightgray"),plot.title = element_text(hjust = 0.5,size=8))+
+#  #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+#  theme(legend.position="none",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+#  theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+#  #labs(caption = " ")
+#  ggtitle("Non-Financial Corporations")
+# 
+# c <- npl_fi  %>% ggplot(aes(x=nsa_label,y=NPL_ratio,colour=nsa_label)) +
+#  geom_point(alpha=0.4) +
+#    #scale_colour_brewer(palette = "Set1")+
+#  # scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+#  xlab("") +
+#  ylab(" ")+
+#  scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 1))+
+#  # theme(axis.text.x=element_blank(),axis.ticks.x = element_blank())+
+#  theme(panel.background = element_rect(fill = "lightgray"),plot.title = element_text(hjust = 0.5,size=8))+
+#  #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+#  theme(legend.position="none",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+#  theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+#  #labs(caption = " ")
+#  ggtitle("Financial Corporations")
+# 
+#  library(ggpubr)
+#  ggarrange(a, b,c,
+#            labels = c(" ", " ",""),
+#            nrow = 2,ncol = 2)  
+#  
+ # b <-  npl_fi  %>% ggplot(aes(x=nsa_label,y=NPL_ratio,colour=nsa_label)) +
+ #  geom_point(alpha=0.4) +
+ #    #scale_colour_brewer(palette = "Set1")+
+ #  # scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+ #  xlab("") +
+ #  ylab("NPL(%)")+
+ #  scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 1))+
+ #  # theme(axis.text.x=element_blank(),axis.ticks.x = element_blank())+
+ #  theme(panel.background = element_rect(fill = "lightgray"),plot.title = element_text(hjust = 0.5,size=8))+
+ #  #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+ #  theme(legend.position="none",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+ #  theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))
+ #  #labs(caption = " ")
+ #  #ggtitle("NPL(%)")
+ 
+@
+
+
+% \frame{\frametitle{NPL(\%) ratios per country}
+% 
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.6\paperwidth]{figure/NplRatios2-1}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% 
+% }
+
+
+
+
+
+
+
+ <<ExposuresRatio,fig.width=6, fig.height=5, out.width='.89\\linewidth',fig.show='hide'>>=
+#setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+#getwd()
+ 
+
+ library(tidyverse)
+library(plyr)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ 
+load(paste(path_data,'base_eu4.RData', sep = ""))
+ 
+base_eu5 <- base_eu4 %>% group_by(Year,class) %>%summarise_at(vars(exp_ratio),list( exp.mean=mean,exp.median=median))
+  
+
+#path_Graph <- 'C:/Users/varga/Desktop/Thesis/R_data/Research_Proposal/Progress/Graphs/'
+
+ base_eu4  %>% ggplot( mapping= aes(x=exp_ratio,y=..density..,color=class,fill=class)) + 
+  xlab("") +
+  ylab("count")+
+ # geom_histogram(binwidth = 0.1,position="identity",alpha=.5)+ 
+  scale_x_continuous(breaks=seq(0,1,.25),labels = scales::percent_format(accuracy = 1,scale = 100))+
+   geom_density(alpha = .5,size=1)+
+  geom_vline(data=base_eu5,aes( xintercept=exp.mean,color=class), linetype="dashed", size=1)+
+  guides(col = FALSE)+
+ facet_wrap(~ Year, nrow = 3)+
+  #theme_light()+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white'))+
+  # theme_classic()
+  #theme_economist() + 
+  #scale_color_economist()+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),
+      axis.text=element_text(size=10)
+      )+
+  #theme(legend.position = "none")+
+ # scale_fill_discrete("",labels = c("EU","Domestic"))+
+   scale_fill_manual("",labels = c("EU","Domestic"),values = c("indianred1", "steelblue2"))+
+  scale_colour_manual(values = c("indianred1", "steelblue2"))+
+  #scale_fill_manual("",labels = c("EU","Domestic"),values = c("red", "blue"))
+    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+ # ggtitle("Exposures Ratio Distribution: EU & Domestic")
+
+
+@
+
+
+% Exposures,echo=F,message=F,warning=F>>=
+%    library(tidyverse)
+%  
+% library(plyr)
+%  path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+%  
+% load(paste(path_data,'base_eu4.RData', sep = ""))
+%  
+% #base_eu5 <- base_eu4 %>% group_by(Year,class) %>%summarise_at(vars(exp_ratio),list( exp.mean=mean,exp.median=median))
+%   
+% library(dplyr)
+% detach(package:plyr)
+% exp_all<-  base_eu4 %>% group_by(class) %>%
+%  summarise(mean = mean(exp_ratio),median=median(exp_ratio),Pctl.25=quantile(exp_ratio, probs = .25),
+%               Pctl.75=quantile(exp_ratio, probs = .75))
+% 
+% 
+% exp_all <- exp_all [,-1]%>%  t() %>% data.frame()
+% # sm_all<???as.data.frame(sapply(sm_all,as.numeric))
+% # sm_all<???cbind(sm_all[1],sm_all[2],sm_all[3])
+% # as.numeric(sm_all)
+% # sm_all[,1] <- as.numeric(sm_all[,1] )
+% # sm_all[,2] <- as.numeric(sm_all[,2] )
+% # sm_all[,3] <- as.numeric(sm_all[,3] )
+% 
+% 
+%   # View(sm_all)
+% 
+% #https://rcompanion.org/handbook/C_02.html
+%   library(psych)
+% a <- describeBy(base_eu4$exp_ratio,group=base_eu4$class)
+% # npl.stat.fi <- data.frame(a[[1]])%>% dplyr::select(sd,skew,kurtosis)
+% # npl.stat.nfi <- data.frame(a[[2]]) %>% dplyr::select(sd,skew,kurtosis)
+% # npl.stat.hh <- data.frame(a[[3]]) %>% dplyr::select(sd,skew,kurtosis)
+% 
+% npl.stat.eu <- a[[1]]%>% dplyr::select(sd,skew,kurtosis) %>% t()
+% npl.stat.ho <- a[[2]] %>% dplyr::select(sd,skew,kurtosis)%>% t()
+% 
+% e <- data.frame(cbind(npl.stat.eu,npl.stat.ho))
+% colnames(e) <- c("EU Member","Home Country")
+% #class(e)
+% class(exp_all)
+% class(e)
+% #sm_all2 <- data.frame(as.numeric(round(sm_all[-1,]))
+% colnames(exp_all) <- c("EU Member","Home Country")
+% #sm_all1 <- rbind(sm_all,e)
+% exp_all3 <-bind_rows(exp_all,e)
+% 
+% 
+% 
+% 
+% colnames(exp_all3) <- c("EU Member","Home Country")
+% rownames(exp_all3) <- c("Mean","Median","Pctl(25)","Pctl(75)","Standard Deviation","Skewness","Kurtosis")
+% # sm_all3[,1] <- round(as.numeric(sm_all3[,1]) ,3)
+% #   sm_all3[,2] <- round(as.numeric(sm_all3[,2]) ,3)
+% #   sm_all3[,3] <- round(as.numeric(sm_all3[,3]) ,3)
+%  #View( sm_all2)
+%  #View(sm_all3)
+% # install.packages("kableExtra")
+% library(kableExtra)
+%  round(exp_all3,3) %>%
+%  kbl()%>%
+%  kable_classic_2(full_width = F)
+% 
+% #  library(knitr)
+% # library(rmarkdown)
+% #
+% # table<-kable(sm_all3, format="markdown")
+% # cat(sm_all3, sep="\n", file="Table.Rmd")
+% # render("sm_all3.Rmd",output_format = "pdf_document")
+% 
+% #  #install.packages("gridExtra")   # Install & load gridExtra
+% # library("gridExtra")
+% #  pdf("npl.summ.pdf")       # Export PDF
+% # grid.table(sm_all2)
+% # dev.off()
+% @
+
+
+
+
+\frame{\frametitle{Exposures Ratio Distribution: EU \& Domestic}
+
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/ExposuresRatio-1}}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+\end{figure}
+
+}
+
+ <<countrydestination,fig.width=8, fig.height=6, out.width='.89\\linewidth',fig.show='hide'>>=
+#setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+#getwd()
+
+
+ library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+
+ load(paste(path_data,'country_diversification.RData', sep = ""))
+library(plyr)
+ 
+#library(plyr)
+ library(ggplot2)
+
+
+CBDI.1<- country_diversification %>% group_by(Country_label)%>% dplyr::count() %>% mutate(Type=1)
+CBDI.2 <- country_diversification%>% dplyr::count()%>% mutate(n_all=n,Type=1) %>%  dplyr::select(n_all,Type)
+#CBDI.3 <-  CBDI.1  %>% mutate( pct2= round( (n/ CBDI.2 [1,1])*100,3))
+CBDI.3 <-  CBDI.1  %>% left_join(CBDI.2,by="Type") %>%  mutate( pct2=  n/n_all)
+
+CBDI.3 <- CBDI.3 %>% mutate(Country_label= as.factor(Country_label)) 
+ CBDI.3$Country_label <- revalue(CBDI.3$Country_label,c("Macedonia - The former Yugoslav Republic of" = "Macedonia","Bosnia and Herzegowina"="Bosnia","Taiwan Province of China"="Taiwan"))
+ #detach("package:plyr")
+
+ggplot(CBDI.3,
+       aes(x=Country_label, y=n)) +
+  #geom_bar(  stat='identity', position = 'stack',fill="lightblue4")+
+  geom_bar(  stat='identity',fill="lightblue4")+
+ # coord_flip()+
+  xlab("") +
+  ylab("count")+
+  # scale_fill_grey()+
+  theme_light()+
+ # geom_text(aes(x=Country_label, y=pct,label = scales::percent(pct,accuracy = .1,scale = 100), group =Country_label),position=position_dodge(width = 1),vjust = -0.5, size = 2,col="black")+
+  # position="stack",vjust=+2.3,col="black",size=3)+
+  #facet_wrap(~ Exposure, nrow = 3)+
+  #scale_fill_manual(values = c("lightslategray","lightblue"))+
+  # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+  # scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("NO", "YES"))+
+  #scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 100),breaks=seq(0,0.2,0.05),limits = c(0, .15)  )+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 10))+
+  theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+  theme(panel.background = element_rect(fill = "lightgray"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))
+  #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  #ggtitle("Original Exposures: Top 10 largest Country of Destination per Bank (2014-2020)")
+
+ @
+
+%  \frame{\frametitle{Original Exposures Distribution: Top 10 largest Country of Destination per Bank (2014-2020)}
+%  
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.6\paperwidth]{figure/countrydestination-1}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% }
+
+ <<countrydestination2,fig.width=8, fig.height=6, out.width='.89\\linewidth',fig.show='hide'>>=
+#setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+#getwd()
+
+
+ library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ 
+ load(paste(path_data,'country_diversification.RData', sep = ""))
+ 
+library(plyr)
+ 
+ CBDI.1<- country_diversification %>% group_by(Country_label)%>% dplyr::count() %>% mutate(Type=1)
+CBDI.2 <- country_diversification%>% dplyr::count()%>% mutate(n_all=n,Type=1) %>%  dplyr::select(n_all,Type)
+#CBDI.3 <-  CBDI.1  %>% mutate( pct2= round( (n/ CBDI.2 [1,1])*100,3))
+CBDI.3 <-  CBDI.1  %>% left_join(CBDI.2,by="Type") %>%  mutate( pct2=  n/n_all)
+
+CBDI.3 <- CBDI.3 %>% mutate(Country_label= as.factor(Country_label)) 
+ CBDI.3$Country_label <- revalue(CBDI.3$Country_label,c("Macedonia - The former Yugoslav Republic of" = "Macedonia","Bosnia and Herzegowina"="Bosnia","Taiwan Province of China"="Taiwan"))
+ #detach("package:plyr")
+
+ 
+ ggplot(CBDI.3,
+       aes(x=Country_label, y=pct2)) +
+  geom_bar(  stat='identity', position = 'stack',fill="lightblue4")+
+  #geom_bar(  stat='identity',fill="lightblue4")+
+ # coord_flip()+
+  xlab("") +
+  ylab("%")+
+  # scale_fill_grey()+
+  theme_light()+
+   geom_text(aes(x=Country_label, y=pct2,label = scales::percent(pct2,accuracy = .01,scale = 100), group =Country_label),position=position_dodge(width = 1),vjust = -0.5, size = 2,col="black")+
+  # position="stack",vjust=+2.3,col="black",size=3)+
+  #facet_wrap(~ Exposure, nrow = 3)+
+  #scale_fill_manual(values = c("lightslategray","lightblue"))+
+  # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+  # scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("NO", "YES"))+
+  scale_y_continuous(label =  scales::percent_format(accuracy = .01,scale = 100),breaks=seq(0,.1,0.01),limits = c(0, .1)  )+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 10))+
+  theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+  theme(panel.background = element_rect(fill = "lightgray"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  ggtitle("Tota Original Exposures Distribution: Top 10 largest Country of Destination  (2014-2020)")
+
+
+ @
+
+%  \frame{\frametitle{Original Exposures Distribution(\%): Top 10 largest Country of Destination per Bank (2014-2020)}
+%  
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.6\paperwidth]{figure/countrydestination2-1}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% }
+
+
+
+
+%  country_destination,fig.width=4, fig.height=6, out.width='.89\\linewidth',fig.show='hide'>>=
+% #setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+% #getwd()
+%  
+%  
+%  library(tidyverse)
+%  path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+%  
+%  load(paste(path_data,'country_diversification.RData', sep = ""))
+%  
+% library(plyr)
+%  
+%  
+% CBDI.1<- country_diversification %>% group_by(Country_label)%>% dplyr::count()
+% CBDI.2 <- country_diversification%>% dplyr::count() 
+% CBDI.3 <-  CBDI.1  %>% mutate( pct= round( (n/ CBDI.2 [1,1])*100,3))
+% 
+%  
+% ggplot(CBDI.3,
+%        aes(x=Country_label, y=n)) +
+%   #geom_bar(  stat='identity', position = 'stack',fill="lightblue4")+
+%   geom_bar(  stat='identity',fill="lightblue4")+
+%   coord_flip()+
+%   xlab("") +
+%   ylab("count")+
+%   # scale_fill_grey()+
+%   theme_light()+
+%  # geom_text(aes(x=Country_label, y=pct,label = scales::percent(pct,accuracy = .1,scale = 100), group =Country_label),position=position_dodge(width = 1),vjust = -0.5, size = 2,col="black")+
+%   # position="stack",vjust=+2.3,col="black",size=3)+
+%   #facet_wrap(~ Exposure, nrow = 3)+
+%   #scale_fill_manual(values = c("lightslategray","lightblue"))+
+%   # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+%   # scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("NO", "YES"))+
+%   #scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 100),breaks=seq(0,0.2,0.05),limits = c(0, .15)  )+
+%   theme(plot.title = element_text(hjust = 0.5,size=8))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 10))+
+%   #theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+%   theme(panel.background = element_rect(fill = "lightgray"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   ggtitle("Original Exposures: Top 10 Country of Destination per Bank (2014-2020)")
+% 
+%  @
+% 
+% \frame{\frametitle{Top 10 Total Original Exposures: International}
+% 
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/country_destination-1}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% }
+
+
+% \frame{\frametitle{Exposures Ratio Distribution: EU \& Domestic}
+% 
+% \begin{columns}
+% 
+% \begin{column}{7cm}
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/ExposuresRatio-1}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% \end{column}
+% 
+% \begin{column}{3cm}
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.3\paperwidth]{figure/smm.exp}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% 
+% \end{column}
+% 
+% \end{columns}
+% }
+
+
+<<CBDIndex1,fig.width=6, fig.height=5, out.width='.89\\linewidth',fig.show='hide'>>=
+     library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ 
+  load(paste(path_data,'all.RData', sep = ""))
+  load(paste(path_data,'npl_hh.nfi.RData', sep = ""))
+  
+  library(plyr)
+  all1 <- all %>% mutate(Exposure= as.factor(Exposure)) 
+  all1$Exposure <- revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+  
+ a <- all1 %>% ggplot(aes(x=CBDI_index)) + 
+  # geom_histogram(fill = "cornsilk", colour = "grey60")+
+   geom_density(fill = "cornsilk", colour = "grey60",alpha=.5,size=1)+
+    xlab(" ") +
+    ylab("")+
+   # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+  # facet_wrap(~ Exposure, nrow = 1)+
+   #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+   #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+   #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+   #scale_colour_manual(values = c("lightsteelblue2"))+
+   scale_x_continuous(breaks=seq(0,100,25),limits = c(0, 100))+
+   scale_y_continuous(limits = c(0, .025),labels = scales::percent_format(accuracy = .1,scale = 100))+
+  # scale_x_continuous(breaks=seq(-50,100,25),limits = c(0, 100))+
+   #theme_bw()+
+   theme(plot.title = element_text(hjust = 0.5,size=8))+
+  # theme(strip.background =element_rect(fill="lightblue4"))+
+  # theme(strip.text = element_text(colour = 'white'))+
+   theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+   # theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+   # labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+    ggtitle("Distribution")
+ 
+ 
+ b <- all1 %>% ggplot(aes(sample=CBDI_index ))  + geom_qq(distribution = qnorm) + 
+  geom_qq_line(line.p = c(0.25, 0.75), col = "blue") +
+ # geom_abline(intercept = 0, slope = 1) +
+  xlab(" ") +
+  ylab(" ")+
+  #ylim(-4, 4)+
+  scale_x_continuous(breaks=seq(-4,4,1) )+
+  #scale_y_continuous(breaks=seq(0,25,100),limits=c(0,100) )+
+  #stat_qq_line(color="grey",linetype="dashed")+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 7))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  ggtitle("Q-Q Diagram")
+ 
+ c <-  npl_hh.nfi %>% ggplot(aes(x=CBDI_index)) +
+   stat_ecdf(aes(ymin=0,ymax=..y..),geom="ribbon",fill = "cornsilk",alpha = .5)+
+   stat_ecdf(geom = "line",linetype="solid", color="grey60", size=1)+
+   # geom_density(,alpha = .5,size=1)+
+    xlab(" ") +
+    ylab(" ")+
+   # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+   #facet_wrap(~ Exposure, nrow = 1)+
+   #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+   #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+   #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+   #scale_colour_manual(values = c("lightsteelblue2"))+
+
+   #scale_x_continuous(breaks=seq(-50,100,25),limits = c(-50, 100),labels = scales::percent_format(accuracy = 1,scale = 1))+
+   scale_x_continuous(breaks=seq(-50,100,25),limits = c(0, 100)  )+
+   scale_y_continuous(labels = scales::percent_format(accuracy = .1,scale = 100),breaks=seq(0,1,.25))+
+   #theme_bw()+
+   theme(plot.title = element_text(hjust = 0.5,size=8))+
+   theme(strip.background =element_rect(fill="lightblue4"))+
+   theme(strip.text = element_text(colour = 'white'))+
+   theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+ #  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+   ggtitle("Cumulative Density Function")
+ 
+ # c <- all1 %>% ggplot(aes(x=NPL_ratio,y=CBDI_index)) +
+ #    geom_point(alpha=0.2) +
+ #    #facet_wrap(~var.name,scales = "free")+
+ #    # labs(x= "Seats Sold", y="Weekly Gross")+
+ #    geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
+  
+ d <- all %>% ggplot(aes(x=Year, y=CBDI_index)) + 
+  stat_boxplot(geom = "errorbar", width = 0.2) +
+  geom_boxplot(outlier.colour = "red", outlier.alpha = 0.3,fill="lightsteelblue2")+
+  xlab(" ") +
+  ylab(" ")+
+  # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+  #facet_wrap(~ Exposure, nrow = 1)+
+  #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+  #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+  #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+  #scale_colour_manual(values = c("lightsteelblue2"))+
+  scale_y_continuous(breaks=seq(0,100,10))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+ # theme(strip.background =element_rect(fill="lightblue4"))+
+ # theme(strip.text = element_text(colour = 'white',size = 8))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),
+        axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_blank(),axis.title.y = element_blank())+
+  theme(axis.text=element_text(size=8))+   
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+    labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  ggtitle("Boxplot")
+ #   
+   library(ggpubr)
+ ggarrange(a, b,c,d,
+           labels = c(" ", " "," "," "),
+           nrow = 2,ncol = 2)  
+@
+
+% \frame{\frametitle{Cross-Border Diversification Index}
+% 
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/CBDIndex1-1}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% }
+
+
+<<SSM,fig.width=6, fig.height=6, out.width='0.9\\linewidth',fig.show='hide'>>=
+  library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ 
+  load(paste(path_data,'all.RData', sep = ""))
+  load(paste(path_data,'npl_hh.nfi.RData', sep = ""))
+  
+  library(plyr)
+  all1 <- all %>% mutate(Exposure= as.factor(Exposure)) 
+  all1$Exposure <- revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+  
+ SSM1 <- data.frame(all1 )%>% group_by(Year,SSM)%>% dplyr::count()
+  SSM2 <- SSM1%>% group_by(Year) %>%  summarise_at(vars(n),list(sum = sum))
+  SSM3 <-  SSM1 %>% left_join( SSM2, by=c("Year")) %>% mutate( pct2= n/sum)
+ # View(SSM3)
+ 
+a <- ggplot(SSM3,
+        aes(x=Year, y=pct2,fill=SSM)) +
+   geom_col()+
+   xlab(" ") +
+   ylab(" ")+
+  # scale_fill_grey()+
+   theme_light()+
+   geom_text(aes(label = scales::percent(pct2)),
+             position="stack",vjust=+2.3,col="black",size=2)+
+   #facet_wrap(~ Exposure, nrow = 3)+
+  # scale_fill_manual(values = c("lightslategray","lightblue"))+
+  # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+   scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+   scale_y_continuous(label = scales::percent)+
+   theme(plot.title = element_text(hjust = 0.5,size=8))+
+    # theme(strip.background =element_rect(fill="lightblue4"))+
+    # theme(strip.text = element_text(colour = 'white'))+
+     theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+   #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+   labs(caption = " ")+
+    ggtitle("SSM Membership (%)")
+
+a1 <-   npl_hh.nfi  %>% ggplot(aes(x=SSM,y=NPL_ratio,colour=SSM)) +
+    geom_point(alpha=0.4,position = "jitter") +
+   scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+   xlab("Membership Status") +
+  ylab("NPL (%)")+
+  scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 1))+
+ # theme(axis.text.x=element_blank(),axis.ticks.x = element_blank())+
+   theme(panel.background = element_rect(fill = "lightgray"),plot.title = element_text(hjust = 0.5,size=8))+
+ #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+   labs(caption = " ")+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  ggtitle("SSM Membership and NPL(%)")
+    #facet_wrap(~var.name,scales = "free")+
+    # labs(x= "Seats Sold", y="Weekly Gross")+
+    #geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
+
+
+ NSA1 <- data.frame(all1 )%>% group_by(nsa_label)%>% dplyr::count()
+ NSA2 <- data.frame(all1 )%>% dplyr::count() 
+ NSA3 <-  NSA1  %>% mutate( pct2= n/ NSA2 [1,1])
+ # View(SSM3)
+
+ b <- ggplot(NSA3,
+        aes(x=nsa_label, y=pct2)) +
+   geom_bar(  stat='identity', position = 'stack',fill="lightblue4")+
+   xlab(" ") +
+   ylab(" ")+
+   # scale_fill_grey()+
+   theme_light()+
+   geom_text(aes(x=nsa_label, y=pct2,label = scales::percent(pct2,accuracy = .1,scale = 100), group =nsa_label),position=position_dodge(width = 1),vjust = -0.5, size = 2,col="black")+
+            # position="stack",vjust=+2.3,col="black",size=3)+
+   #facet_wrap(~ Exposure, nrow = 3)+
+    #scale_fill_manual(values = c("lightslategray","lightblue"))+
+   # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+  # scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("NO", "YES"))+
+   scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 100),breaks=seq(0,0.2,0.05),limits = c(0, .15)  )+
+   theme(plot.title = element_text(hjust = 0.5,size=8))+
+    theme(strip.background =element_rect(fill="lightblue4"))+
+    theme(strip.text = element_text(colour = 'white',size = 10))+
+   theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+   ggtitle("Country of Origin (%)")
+
+ 
+ # ggarrange(a, a1,
+ #            ggarrange(b,ncol = 1,label=c("")),
+ #           ncol = 2,
+ #           labels = c(" ", " "))
+    library(ggpubr)
+ ggarrange(b,                                                 # First row with scatter plot
+          ggarrange(a, a1, ncol = 2, labels = c("", "")), # Second row with box and dot plots
+          nrow = 2, 
+          labels = ""                                        # Labels of the scatter plot
+          )           
+   
+   
+@
+
+
+
+
+
+\frame{\frametitle{Single Supervisory Mechanism (\%) \& Country of Origin (\%)}
+
+% \begin{columns}
+% 
+% \begin{column}{3cm}
+% \begin{itemize}
+% \item Beamer 
+% \item Beamer Class 
+% \item Beamer Class Latex 
+% \end{itemize}
+% \end{column}
+
+% \begin{column}{7cm}
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.4\paperwidth]{figure/SSM-1}}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+\end{figure}
+
+% \end{column}
+% \end{columns}
+}
+
+
+\section{Empirical Approach} 
+% \frame{\frametitle{Title6}
+% Each frame should have a title.
+% }
+%\subsection{Linear \& Dynamic Panel Regressions}
+\frame{\frametitle{Linear  \& GMM Panel Models \cite{Baltagi.2005} \cite{Arellano.Bover.1995}}
+
+\begin{itemize}
+\item Static Models (Random Effects/Fixed Effects):\\
+
+\[
+y_{it} = \alpha  + X'_{it}\beta + u_{it} \quad i=1,..., N;\enspace t=1,..., T
+\]
+\\
+
+%Following methods are used:
+% \begin{itemize}
+% \item Pooling
+% \item Random Effects 
+% \item Fixed Effects
+% \end{itemize}
+
+\item Dynamic Models-GMM for short panel data (Arellano-Bover Estimators):\\
+
+\[
+y_{it} = \delta y_{i,t-1}  + X'_{it}\beta + u_{it} \quad i=1,..., N;\enspace t=1,..., T
+\]
+\\	
+
+
+\item $y_{it}$ represents the non-performing ratio for bank $i$ in year $t$, \alpha$ is a scalar, $\beta$ is $K \,\times\, 1$ and $X_{it}$ is the \textit{it}th observation on $K$ explanatory variables. The $K$ explanatory variables consist of bank-specific and macroeconomic variables. $\delta$ is a scalar and  $y_{i,t-1}$  is the lagged dependent variable (NPL\_ratio).
+
+\item $ u_{it}$ follows a one-way component model 
+
+\[
+u_{it} = \mu_{i} + \upsilon_{it}
+\]
+\\
+
+where $\mu_{i}$ denotes the unobservable  individual bank-specific effects and $\upsilon_{it}$ denotes the remainder disturbance.
+
+\item $\mu_{i}\;\sim$IID$(0,\,\sigma^2_{\mu})$ and $\upsilon_{it}\;\sim$IID$(0,\,\sigma^2_{\upsilon})$ and the error disturbances $\upsilon_{it}$ are assumed to be mutually uncorrelated $\mathbb{E}(\upsilon_{it}\, \upsilon_{is})= 0\,\, \forall s \neq t$ and not correlated with the individual effects $\mathbb{E}(\mu_{i}\, \upsilon_{it})= 0$.
+
+\end{itemize}
+ 
+% Following methods are used:
+% \begin{itemize}
+% \item Difference GMM Estimator
+% \item System GMM Estimator
+% 
+% \end{itemize}
+
+
+
+
+}
+
+
+%\subsection{Quantil Regression}
+
+
+
+\frame{\frametitle{Pooled Quantil Regression \cite{Koenker.2002} \cite{Koenker.2005}}
+
+\begin{itemize}
+
+\item Quantile regression consider the relationship between the explanatory variables and the dependent variable using the conditional quantile function $Q_{\tau}(y|x)$.
+
+\item Quantil regression shows more robutness in samples with many outliers than OLS and it is semiparametric, i.e. it does not make assumptions about the parametric distribution of the errors.
+
+\item Quantile regression methods also  allows the  analysis of the impact of a set of explanatory variables on the entire conditional distribution of the dependent variable. 
+
+%$Q_{y} (\tau|\enspace x)$ represents the conditional $\tau$-quantile of $y$ given ($x$). 
+
+\item The quantile $\tau \in (0,1)$ determines the point of $y$ in which the data is split into proportions under $\tau$ and above $1-\tau$. Quantile regression seeks to minimize  the errors $\epsilon_{i}$ that gives asymmetric penalties $(1-\tau)\lvert \epsilon_{i}\rvert$ for overprediction and $\tau\lvert \epsilon_{i}\rvert$  for underprediction.
+
+%\item The optimization problem in the quantile regression is dependent on the specific quantile in evaluation. 
+% \item The optimization problem in the quantile regression is dependent on the specific quantile in evaluation. In this context, more negative errors suffer higher penalties for higher quantiles while more positive errors are more penalized for lower quantiles. In other words, $Q_{y} (\tau|\enspace x)$ represents the conditional $\tau$-quantile of $y$ given ($x$). The quantile $\tau \in (0,1)$ determines the point of $y$ in which the data is split into proportions under $\tau$ and above $1-\tau$, that is $F(y_{\tau}=\tau$ and $y_{\tau}=F^{-1}(\tau)$.  Quantile regression seeks to minimize  the errors $\epsilon_{i}$ that gives asymmetric penalties $(1-\tau)\lvert \epsilon_{i}\rvert$ for overprediction and $\tau\lvert \epsilon_{i}\rvert$  for underprediction.
+
+\item The quantile regression estimator in quantile $\tau$ is the one that minimizes the following objective function:
+\[
+Q(\beta_{\tau})  \,=\,  \sum_{y_{i} \geq x'_{i}\beta}^n \, \tau \lvert y_{i}-x'_{i}\beta_{\tau}\rvert \, +\,+ \sum_{y_{i} < x'_{i}\beta}^n \, (1-\tau) \lvert y_{i}-x'_{i}\beta_{\tau}\rvert
+
+\]
+\\
+\item The estimator have been showed to be asymptotically normal and bootstrap standard errors are  often used instead of traditional standard errors.
+
+\end{itemize}
+
+}
+
+\frame{\frametitle{Fixed Effects Panel Quantil Regression (Penalized FE Method) \cite{Koenker.2004} \cite{Koenker.2017}}
+
+\begin{itemize}
+
+\item The penalized least squares interpretation offers the possibility of perform quantile regression models accounting for the existence of individual effects in  panel data.
+
+\item In the Penalized FE Method, the following penalized estimator $(\hat{\alpha}(\lambda),\hat{\beta}(\lambda,\tau)$ is considered
+ 
+\[
+\min_{(\alpha,\beta)} \enspace \dfrac{1}{nT} \sum_{k=1}^q \sum_{i=1}^n \sum_{t=1}^T \omega_{k} \rho_{\tau}(y_{it}-\alpha_{i}-X'_{it}\beta(\tau_{k}))+ \lambda \sum_{i=1}^n \lvert\alpha_{i}\rvert
+\]
+\\
+
+where $\omega_{1},...,\omega_{q}$ are nonnegative weigths and $\lambda \geq 0$ is the penalty level.
+
+ \item The idea in this model is to estimate several $\tau$ simultaneously and restrict the individual effect coefficients  $\alpha_{i}$ to be the same for all quantiles and which  values shrinks them toward zero  as  the penalty level $\lambda$ increases. Therefore, the parameter $\lambda$ allows  a calibration of the impact of the penalty.
+% 
+\item In general, when $\lambda \to 0$ the model is similar to a (weigthed) dummy-variable quantile regression and when $\lambda \to \infty$ the model is more like a (weigthed) cross-section quantile regression, i.e, the lower the value of $\lambda$, the larger the control for fixed effects in the model.
+
+\item The penaly allows a "control" over the many fixed effects coefficients by not letting them reach unrealistic large numbers.
+
+
+
+\end{itemize}
+}
+
+
+% \frame{\frametitle{Fixed Effects Panel Quantil Regression (Penalized FE Method) I \cite{Koenker.2004}}
+% 
+% \begin{itemize}
+% 
+% \item The penalized least squares interpretation offers the possibility of perform quantile regression models accounting for the existence of individual effects in  panel data. 
+% 
+% \item In a panel Quantile regression, there is pairs of dependent  and explanatory variables $(y_{it},x_{it})$ with $i=1,..., N;\enspace t=1,..., T$, where $i$ denoting  the $ith$ individual and $t$ denoting time. Furthermore, there also are  unobservable individual-specific variables $\mu_{i}$ with $i=1,..., N$, representing individual characteristics.
+% 
+%  \item Formally,
+%  
+% \[
+% y_{it} \, =\, \alpha_{i} (\mu_{i}) \, + \, X'_{it}\beta(\tau) \,+\, u_{it}(\tau) 
+% \]
+% \\
+% 
+% where $u_{it}(\tau)$ has a zero conditional $\tau$-quantile given $(x_{it},\mu_{i})$.Under the standard assumption, the conditional quantile restriction is equivalent to 
+% 
+% \[
+% P(u_{it}(\tau) \leq 0 |\enspace x_{it},\mu_{i}) \,=\, \tau
+% \]
+% \\
+% 
+% \item A panel quantil regression model with individual effects is necessarily nonlinear and therefore individual heterogeneity can not simply be removed by  differencing or transforming the data as it is usually the case in other panel regression models
+
+% 
+% \[
+% Q_{y_{it}} (\tau|\enspace x_{it},\mu_{i}) \,=\, \alpha_{i} (\mu_{i})  \,+\, X'_{it}\beta(\tau)
+% \]
+% \\
+% %where the individual effect $\alpha_{i}$ does not vary over quantiles (no scalar effect). 
+% where $u_{it}(\tau)$ has a zero conditional $\tau$-quantile given $(x_{it},\mu_{i})$.
+% 
+% Under the standard assumption, the conditional quantile restiction is equivalent to
+% 
+% \[
+% P(u_{it}(\tau) \leq 0 |\enspace x_{it},\mu_{i}) \,=\, \tau
+% \]
+% \\
+% 
+% 
+% \end{itemize}
+% }
+
+% \frame{\frametitle{Fixed Effects Panel Quantil Regression (Penalized FE Method) II \cite{Koenker.2017}}
+% \begin{itemize}
+% 
+% \item In the Penalized FE Method, the following penalized estimator $(\hat{\alpha}(\lambda),\hat{\beta}(\lambda,\tau)$ is considered
+%  
+% \[
+% \min_{(\alpha,\beta)} \enspace \dfrac{1}{nT} \sum_{k=1}^q \sum_{i=1}^n \sum_{t=1}^T \omega_{k} \rho_{\tau}(y_{it}-\alpha_{i}-X'_{it}\beta(\tau_{k}))+ \lambda \sum_{i=1}^n \lvert\alpha_{i}\rvert
+% \]
+% \\
+% 
+% where $\omega_{1},...,\omega_{q}$ are nonnegative weigths and $\lambda \geq 0$ is the penalty level.
+% 
+%  \item The idea in this model is to estimate several $\tau$ simultaneously and restrict the individual effect coefficients  $\alpha_{i}$ to be the same for all quantiles and which  values shrinks them toward zero  as  the penalty level $\lambda$ increases. Therefore, the parameter $\lambda$ allows  a calibration of the impact of the penalty.
+% % 
+% \item In general, when $\lambda \to 0$ the model is similar to a (weigthed) dummy-variable quantile regression and when $\lambda \to \infty$ the model is more like a (weigthed) cross-section quantile regression, i.e, the lower the value of $\lambda$, the larger the control for fixed effects in the model.
+% 
+% \item The penaly allows a "control" over the many fixed effects coefficients by not letting them reach unrealistic large numbers.
+% 
+% % This estimator is considered to deliver results that are between those of a pure dummy-variable  estimator and a pure cross-section estimator. In general, the estimator tend to perform worse in cases where  the fixed effect is expected to have a scalar effect, that is when the fixed effects shows a variation over quantiles \cite{Bache.2011}.
+% 
+% \end{itemize}
+% }
+% \item  The quantil regression  in panel data is interested in the conditional quantile of $y_{it}$ given  ($y_{it},\mu_{i}$) and seek to estimate the partial effect of $x_{it}$ on a conditional quantile. The basic model is then
+% 
+% 
+% \[
+% y_{it} \, =\, \alpha_{i} (\tau,\mu_{i}) \, + \, X'_{it}\beta(\tau) \,+\, u_{it}(\tau) 
+% \]
+% \\
+% 
+% 
+% where $u_{it}(\tau)$ has a zero conditional $\tau$-qunatile given $(x_{it},\mu_{i})$. Under the standard assumption, the conditional quantile restiction is equivalent to 
+% 
+% \[
+% P(u_{it}(\tau) \leq 0 |\enspace x_{it},\mu_{i}) \,=\, \tau
+% \]
+% \\
+
+% \item A panel quantil regression model with individual effects is necessarilly nonlinear and therefore individual heterogeneity can not simply be removed by  differencing or transforming the data as it is usually the case in other panel regression models
+
+% \item The penalized least squares interpretation of the classical random effects estimator offers the possibility of perform quantile regression models accounting for the existence of individual specific effects as is usually the case with panel data. This allows the analysis of panel data under less stringent distributional assumption. This models are also  fit for "short" panel data where a large number of cross-sectional individuals observed over a short amount of periods ($T<<N$). In general, there has been a growing literature on Quantile Regression methods for panel data.
+% 
+% \item  Formally, the model is general defined  as 
+% 
+% \[
+% Q_{y_{it}} (\tau|\enspace x_{it},\alpha_{i})} \,=\, \alpha_{i} \,+\, X'_{it}\beta(\tau) \quad i=1,..., N;\enspace t=1,..., T
+% \]
+% \\
+% 
+% where the individual effect $\alpha_{i}$ does not vary over quantiles (no scalar effect). Furthermore, the following penalized estimator $(\hat{\alpha}(\lambda),\hat{\beta}(\lambda,\tau)$ is considered
+% 
+% \[
+% \min_{(\alpha,\beta)} \enspace \dfrac{1}{nT} \sum_{k=1}^q \sum_{i=1}^n \sum_{t=1}^T \omega_{k} \rho_{\tau}(y_{it}-\alpha_{i}-X'_{it}\beta(\tau_{k}))+ \lambda \sum_{i=1}^n \lvert\alpha_{i}\rvert}
+% \]
+% \\
+% 
+% where $\omega_{1},...,\omega_{q}$ are nonnegative weigths and $\lambda \geq 0$ is the penalty level.
+% 
+% \item The idea in this model is to estimate several $\tau$ simultaneously and restric the individual effect coefficients  $\alpha_{i$ to be the same for all quantiles and which  values shrinks them toward zero  as  the penalty level $\lambda$ increases. Therefore, the parameter $\lambda$ allows  a calibration of the impact of the penalty.
+% 
+% \item In general, when $\lambda \to 0$ the model is similar to a (weigthed) dummy-variable quantile regression and when $\lambda \to \infty$ the model is more like a (weigthed) cross-section quantile regression. The penaly allows a "control" over the many fixed effects coefficients by not letting them reach unrealistic large numbers.
+% 
+
+
+% \item This estimator is considered to deliver results that are between those of a pure dummy-variable  estimator and a pure cross-section estimator. In general, the estimator tend to perform worse in cases where  the fixed effect is expected to have a scalar effect, that is when the fixed effects shows a variation over quantiles.
+
+
+%  
+% \[
+% Q_{y_{it}} (\tau|\enspace x_{it},\mu_{i})} \,=\, \alpha_{i} (\tau,\mu_{i}) \,+\, X'_{it}\beta(\tau)
+% \]
+% \\
+% 
+% where $\alpha_{i} (\tau,\mu_{i})$ is some unknown function of $\tau$ and $\mu_{i}$ and $\beta(\tau)$ is a dimensional vector of unknown parameters to be estimated in the model. In a more familiar form, the model can also be written as
+% 
+% \[
+% y_{it} \, =\, \alpha_{i} (\tau,\mu_{i}) \, + \, X'_{it}\beta(\tau) \,+\, u_{it}(\tau) 
+% \]
+% \\
+% 
+% where $u_{it}(\tau)$ has a zero conditional $\tau$-qunatile given $(x_{it},\mu_{i})$. Under the standard assumption, the conditional quantile restiction is equivalent to 
+% 
+% \[
+% P(u_{it}(\tau) \leq 0 |\enspace x_{it},\mu_{i}) \,=\, \tau
+% \]
+% \\
+% 
+% A panel quantil regression model with individual effects is necessarilly nonlinear and therefore individual heterogeneity can not simply be removed by  differencing or transforming the data as it is usually the case in other panel regression models
+
+
+
+\section{Results} 
+
+
+%\subsection{Linear \& Dynamic Panel Regressions}
+
+\frame{\frametitle{Linear \& Dynamic Panel Regressions}
+\begin{center}
+\input{Tables/Static_Models_SELEC_pr2}
+\end{center}
+}
+
+% \frame{\frametitle{Linear \& Dynamic Panel Regressions II-Year-Dummy \& Diff GMM}
+% \begin{center}
+% \input{Tables/Static_Models_SELEC_pr2_Year}
+% \end{center}
+% }
+
+
+
+% \frame{\frametitle{Title7}
+% Each frame should have a title.
+% }
+
+
+
+
+%\subsection{Quantil Regressions}
+
+
+
+<<qq.graph,fig.width=13, fig.height=7, out.width='1.4\\linewidth',fig.show='hide'>>=
+  
+   library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+  load(paste(path_data,'QR_npl_hh.nfi.RData', sep = ""))
+ load(paste(path_data,'QR_npl_hh.RData', sep = ""))
+   load(paste(path_data,'QR_npl_nfi.RData', sep = ""))
+    load(paste(path_data,'QR_npl_fi.RData', sep = ""))
+    
+    
+  QR_npl_hh <- QR_npl_hh %>% mutate(Exposure = "Households")
+QR_npl_nfi <- QR_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QR_npl_fi <- QR_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi,QR_npl_fi))
+
+
+ggplot(data=QR_npl,aes(x=type,y = coefficients)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ var,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure:")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+  #ggtitle("Pooled Quantile Regression")
+
+@
+
+
+\frame{\frametitle{Pooled Quantile Regression}
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/qq_graph-1}}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+\end{figure}
+
+}
+
+
+<<feqq1.graph,fig.width=13, fig.height=7, out.width='1.4\\linewidth',fig.show='hide'>>=
+library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+  load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = ""))
+  load(paste(path_data,'QRFE1_npl_hh.RData', sep = ""))
+  load(paste(path_data,'QRFE1_npl_nfi.RData', sep = ""))
+  load(paste(path_data,'QRFE1_npl_fi.RData', sep = ""))
+  
+  
+  QRFE1_npl_hh <- QRFE1_npl_hh %>% mutate(Exposure = "Households")
+QRFE1_npl_nfi <- QRFE1_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE1_npl_fi <- QRFE1_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE1_npl <- as.data.frame(bind_rows(QRFE1_npl_hh,QRFE1_npl_nfi,QRFE1_npl_fi))
+#QRFE1_npl <- as.data.frame(bind_rows(QRFE1_npl_hh,QRFE1_npl_nfi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE1_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+ # ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 1 )")
+
+
+@
+
+
+\frame{\frametitle{Penalized Fixed Effects Panel Quantile Regression ($\lambda= 1$)}
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/feqq1_graph-1}}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+\end{figure}
+
+}
+
+
+<<feqq2.5.graph,fig.width=13, fig.height=7, out.width='1.4\\linewidth',fig.show='hide'>>=
+library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+  load(paste(path_data,'QRFE2.5_npl_hh.nfi.RData', sep = ""))
+   load(paste(path_data,'QRFE2.5_npl_hh.RData', sep = ""))
+     load(paste(path_data,'QRFE2.5_npl_nfi.RData', sep = ""))
+   load(paste(path_data,'QRFE2.5_npl_fi.RData', sep = ""))
+   
+    QRFE2.5_npl_hh <- QRFE2.5_npl_hh %>% mutate(Exposure = "Households")
+QRFE2.5_npl_nfi <- QRFE2.5_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE2.5_npl_fi <- QRFE2.5_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE2.5_npl <- as.data.frame(bind_rows(QRFE2.5_npl_hh,QRFE2.5_npl_nfi,QRFE2.5_npl_fi))
+# View(QRFE2.5_npl) 
+
+ 
+ 
+ggplot(data=QRFE2.5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+  #ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 2.5 )")
+
+ 
+  
+@
+
+% \frame{\frametitle{Penalized Fixed Effects Panel Quantile Regression ($\lambda= 2.5$)}
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/feqq2_5_graph-1}}
+% %\vspace{-1cm}}
+% 
+%  %\vspace*{-3mm}
+% \end{figure}
+% 
+% }
+
+<<feqq5.graph,fig.width=13, fig.height=7, out.width='1.4\\linewidth',fig.show='hide'>>=
+library(tidyverse)
+ path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+ path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+  load(paste(path_data,'QRFE5_npl_hh.nfi.RData', sep = ""))
+   load(paste(path_data,'QRFE5_npl_hh.RData', sep = ""))
+     load(paste(path_data,'QRFE5_npl_nfi.RData', sep = ""))
+   load(paste(path_data,'QRFE5_npl_fi.RData', sep = ""))
+   
+    QRFE5_npl_hh <- QRFE5_npl_hh %>% mutate(Exposure = "Households")
+QRFE5_npl_nfi <- QRFE5_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE5_npl_fi <- QRFE5_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE5_npl <- as.data.frame(bind_rows(QRFE5_npl_hh,QRFE5_npl_nfi,QRFE5_npl_fi))
+ #View(QRFE5_npl) 
+
+ 
+ 
+ggplot(data=QRFE5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+  #ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 5 )")
+
+ 
+  
+@
+
+\frame{\frametitle{Penalized Fixed Effects Panel Quantile Regression ($\lambda= 5$)}
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/feqq5_graph-1}}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+\end{figure}
+
+}
+
+%\section{Conclusion}
+\frame{\frametitle{Results I }
+
+\begin{itemize}
+
+\item  In general, macroeconomic drivers  tend to show slightly more explanatory power than bank-specific variables
+
+\item \textbf{Bank-specific Drivers}
+
+    
+    \begin{itemize}
+    
+    \item Bank profitability $\to$ Returns on Risk adjusted Capital (-), Net Interest Margin (+/?)
+   % Economics of information \&  risk appetite ->  Bank size (-)
+     \item Cost efficiency  $\to$  Cost to Income (?)
+     \item Bank capitalization $\to$ CET1 ratio(-), leverage ratio (+/-)
+    %\item Lending policy  $\to$  Net Interest Margin (+/?)
+  
+    %\item
+    
+    \end{itemize} 
+
+
+\item \textbf{Macroeconomic drivers}
+
+    \begin{itemize}
+    
+     \item Business cycle  $\to$ unemployment rates(+), \& GDP growth (+/-),
+     \item Terms of trade  $\to$ current account balance (+/?)
+    \item Sovereign Debt  $\to$ Gross Public debt (+)
+    \item Rule of law:creditor-protection  $\to$  Recovery rates (-) 
+    \item Rule of law:creditor \& debtor-protection  $\to$ strength legal system (+/?) 
+    \item Corporare Governance \& Supervision  $\to$ SSMY(-)
+    \item Price levels  $\to$ inflaction (+)
+    
+    \end{itemize}
+  
+
+ \end{itemize} 
+}
+   
+   
+ \frame{\frametitle{Results II }   
+\begin{itemize}
+\item \textbf{Disaggregated loan aspects}
+    \begin{itemize}
+    
+    \item Exposure types (households \& non-financial corp.) showed similar effects in term of impact direction  (+/-) but differences in intensity and explanatory power, with financial corp. showing the greatest impact direction deviations and the least explanatory power.
+    \item Greatest impact on non-financial Corporations followed by households \& financial corporations
+    \item Similar marginal changes for each portfolio type
+    \item In general, the marginal impact increases along the conditional NPL-distribution for all portfolio types, showing that the intensity of the impact increases  for banks with higher non-performing ratios
+   % \item Differences in marginal impact  along the conditional  NPL-distribution.
+    
+    \end{itemize}
+    
+\item Positive impact of lagged NPL ratios
+
+\item The effects of bank-specific and macroeconomic drivers increase \textbf{along the conditional NPL-distribution}, i.e., stronger impacts  as the NPL levels in portfolio increase
+
+\item  \textbf{Regulation and Supervision under the Single Supervisory Mechanism}  is significant and  negatively correlated with NPL with similar effects along the conditional NPL distibution
+
+\item   The effect of \textbf{geographic diversification}  are unclear
+%for households \& non-financial corporations. No impact for financial corporations.
+%When controlling for  macroeconomic drivers,the effects are slighly positive for households. Strong \% non-financial corporations. 
+%otherwise negative. Larger impact for non-financial corporations.
+
+\end{itemize}
+
+
+}
+
+\section{Conclusion}
+\frame{\frametitle{Conclusion}
+\begin{itemize}
+
+\item Contribute with a more disaggregated  analysis of determinants of NPL  based on bank-portfolio composition, using novel supervisory data provided by EBA showing:
+
+
+\begin{itemize}
+\item	Importance of bank-specific \& regulatory ratios on explaining NPLs in terms of bank-profitability, bank-capitalization, portfolio strategy and risk appetite
+
+\item	Importance of macroeconomic indicators taking geographic composition in portfolio into consideration
+ \item A first estimation of the impact of geographic diversification on NPLs
+\item	 Relevance of regulatory supervision \& legal aspects on explaining NPLs
+\item	Importance of disaggregated loan-portfolios in NPLs research
+
+%: Divergencies in NPLS determinants
+
+ %Divergencies in NPLS determinants in terms of Impact direction and intensity
+%split by loan type (financial corp., non-financial corp.,households)
+\item	Importance of analysing NPL determinants conditional on NPL levels 
+%The greater NPLs are, the greater the impact is.
+
+\end{itemize}
+
+\item Example of potential uses of the data from the EBA transparency exercises in academic research
+\item Very few papers  using quantil regression methodology for panel data in NPL literature
+%\item Provide a first estimation of the impact of geographic diversification on NPLs
+% \item Paper also provides interesting insights with potential practical implications for policy making, recommendations on NPL strategies, the design of Early Warning Indicators (EWI) and bank-stress testing methodology.
+ \item Paper also provides interesting insights for policy making, the design of Early Warning Indicators (EWI), the preparation of recommendations on NPL strategies and bank-stress testing methodology.
+
+%in The EU-banking sector.
+
+% Implications for prudent bank stress testing, policy making, recommendations on NPL strategies and design of Early Warning Indicators (EWI),contributing to a more effective microprudential supervision of  banks in Europe.
+
+\end{itemize}
+
+
+}
+
+\begin{frame}[allowframebreaks] {References}
+% \bibliographystyle{plain}
+% \bibliography{bibliography/bibliography} 
+\printbibliography[title ={References}]
+\end{frame}
+
+\appendix
+
+
+
+% 
+% \frame{\frametitle{Title10}
+% Each frame should have a title.
+% }
+% \frame{\frametitle{Title11}
+% Each frame should have a title.
+% }
+
+% \frame{\frametitle{References}
+% \printbibliography[title ={References}]
+% }
+
+
+% 
+% \begin{frame}[allowframebreaks]{References}
+% \def\newblock{}
+% \bibliographystyle{plain}
+% \bibliography{Literature}
+% \end{frame}
+
+% \section{References}
+% \frame{\frametitle{Title10}
+% Each frame should have a title.
+% }
+\end{document}
