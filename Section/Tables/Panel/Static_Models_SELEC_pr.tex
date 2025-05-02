@@ -1,0 +1,69 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Mi, Dez 30, 2020 - 17:41:39
+% Requires LaTeX packages: dcolumn 
+\begin{table}[!htbp] \centering 
+  \caption{Panel Data Models Selection (2014-2019)} 
+  \label{nlp.selc} 
+\small 
+\resizebox{.9\textwidth}{!}{\begin{tabular}{@{\extracolsep{10pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} | D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+\\[-1.8ex] & \multicolumn{3}{c}{\textit{panel}} & \multicolumn{3}{c}{\textit{panel}} \\ 
+ & \multicolumn{3}{c}{\textit{linear}} & \multicolumn{3}{c}{\textit{GMM}} \\ 
+ \cline{2-7} 
+ & \multicolumn{1}{c}{Households} & \multicolumn{1}{c}{Non-Financial} & \multicolumn{1}{c}{Financial} & \multicolumn{1}{c}{Households} & \multicolumn{1}{c}{Non-Financial} & \multicolumn{1}{c}{Financial} \\ 
+  & \multicolumn{1}{c}{RE} & \multicolumn{1}{c}{FE} & \multicolumn{1}{c}{RE} & \multicolumn{1}{c}{SYS} & \multicolumn{1}{c}{SYS} & \multicolumn{1}{c}{SYS} \\
+\hline \\[-1.8ex] 
+ lag(NPL\_ratio) &  &  &  & 1.044^{***} & 0.791^{***} & 0.542^{***} \\ 
+  &  &  &  & (0.090) & (0.081) & (0.153) \\ 
+  CET1\_ratio\_tr & -0.158^{***} & 0.080 & -0.159 & 0.081 & 0.001 & 0.024 \\ 
+  & (0.053) & (0.092) & (0.142) & (0.071) & (0.115) & (0.114) \\ 
+  LEVER\_tr\_ratio & 0.422^{**} & -0.592 & 0.649 & -0.004 & -0.071 & 0.150 \\ 
+  & (0.192) & (0.418) & (0.626) & (0.098) & (0.160) & (0.368) \\ 
+  RORAC & -0.036^{**} & -0.001 & -0.117^{**} & -0.073^{**} & -0.114^{*} & -0.270^{*} \\ 
+  & (0.017) & (0.025) & (0.049) & (0.032) & (0.064) & (0.158) \\ 
+  log(BankSize\_tran) & -2.060^{***} & 0.514 & -1.761^{**} & 0.161 & -0.163 & -0.231 \\ 
+  & (0.462) & (1.505) & (0.794) & (0.129) & (0.223) & (0.560) \\ 
+  Cost\_to\_Income & -0.004 & -0.013 & 0.019 & -0.004 & -0.012 & -0.012^{**} \\ 
+  & (0.006) & (0.009) & (0.022) & (0.005) & (0.013) & (0.006) \\ 
+  NIM\_tr & 0.758 & 0.492 & 0.681 & -0.184 & 1.046 & 0.296 \\ 
+  & (0.535) & (1.070) & (2.156) & (0.733) & (0.924) & (1.190) \\ 
+  Stgth\_legal\_index & 0.766^{***} & 2.227^{***} & 0.020 & 0.083 & 0.094 & -0.517 \\ 
+  & (0.285) & (0.419) & (0.751) & (0.163) & (0.246) & (0.542) \\ 
+  Reco\_rate\_dol & -0.052^{**} & -0.132^{**} & -0.175 & -0.033^{*} & -0.090^{***} & -0.120^{*} \\ 
+  & (0.022) & (0.067) & (0.122) & (0.017) & (0.032) & (0.071) \\ 
+  infl\_perc & -0.213 & 0.174 & -1.186 & 0.209 & -0.927 & -1.055 \\ 
+  & (0.174) & (0.279) & (0.895) & (0.508) & (0.610) & (1.097) \\ 
+  curr\_acc\_bal & 0.102 & 0.512^{**} & 0.230 & 0.196^{***} & -0.014 & -0.226 \\ 
+  & (0.109) & (0.200) & (0.356) & (0.056) & (0.109) & (0.244) \\ 
+  GDP\_growth\_perc & 0.244 & 0.043 & 0.631 & -0.200 & -0.760^{**} & 0.325 \\ 
+  & (0.149) & (0.286) & (0.725) & (0.227) & (0.330) & (0.961) \\ 
+  unempl\_rate\_imf & 0.411^{***} & 2.217^{***} & 0.362 & 0.121^{**} & -0.103 & -0.264 \\ 
+  & (0.082) & (0.184) & (0.221) & (0.057) & (0.114) & (0.188) \\ 
+  gross\_public\_debt & 0.153^{***} & 0.191^{***} & 0.151^{***} & 0.002 & -0.001 & 0.012 \\ 
+  & (0.025) & (0.061) & (0.057) & (0.015) & (0.028) & (0.045) \\ 
+  SSMY & -1.973 &  & -2.493 &  &  &  \\ 
+  & (1.301) &  & (2.793) &  &  &  \\ 
+  CBDI\_index & 0.050^{***} & 0.119^{***} & 0.038 & 0.014^{*} & -0.005 & -0.014 \\ 
+  & (0.019) & (0.039) & (0.040) & (0.008) & (0.010) & (0.023) \\ 
+  Constant & 12.817^{***} &  & 22.699 &  &  &  \\ 
+  & (4.940) &  & (16.298) &  &  &  \\ 
+ \hline \\[-1.8ex] 
+Sargan Test &  &  &  & 39.87 & 43.28 & 42.09 \\ 
+P-Value(Sargan Test) &  &  &  & 0.0527 & 0.0245 & 0.0322 \\ 
+Arellano-Bond:AR(1) &  &  &  & -1.94 & -0.97 & -6.36 \\ 
+P-Value(AR(1)) &  &  &  & 0.0525 & 0.334 & 0 \\ 
+Arellano-Bond:AR(2) &  &  &  & 0.58 & -0.93 & 0.67 \\ 
+P-Value(AR(2)) &  &  &  & 0.5627 & 0.3501 & 0.5019 \\ 
+Observations & \multicolumn{1}{c}{619} & \multicolumn{1}{c}{628} & \multicolumn{1}{c}{580} & \multicolumn{1}{c}{121} & \multicolumn{1}{c}{124} & \multicolumn{1}{c}{119} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.376} & \multicolumn{1}{c}{0.575} & \multicolumn{1}{c}{0.150} &  &  &  \\ 
+Adjusted R$^{2}$ & \multicolumn{1}{c}{0.361} & \multicolumn{1}{c}{0.456} & \multicolumn{1}{c}{0.127} &  &  &  \\ 
+F Statistic & \multicolumn{1}{c}{358.651$^{***}$} & \multicolumn{1}{c}{47.300$^{***}$ (df = 14; 490)} & \multicolumn{1}{c}{95.446$^{***}$} &  &  &  \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note: HC-robust standard errors are used}  & \multicolumn{6}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ &  \textit{RE:Random Effects, FE:Fixed Effects}  \\ 
+  &  \textit{ SYS: System-GMM, DIFF: Differences-GMM}  \\ 
+\end{tabular} }
+\end{table} 

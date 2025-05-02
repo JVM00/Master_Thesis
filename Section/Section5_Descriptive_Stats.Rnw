@@ -1,0 +1,879 @@
+% !Rnw root = Thesis.Rnw
+
+ % htb!
+ % H
+
+\section{\textbf{Data Visualization}}
+%\includegraphics[scale=0.3,left]{Pictures/logo_economics_1.jpg}
+
+\subsection{Non-Performing Loans (NPL)}
+\FloatBarrier
+<<echo=F>>=
+#opts_chunk$set (echo=F,message=F,warning=F)
+@
+
+ 
+ <<Loan_dist,fig.width=8, fig.height=6,fig.pos="h", out.width='0.9\\linewidth',fig.show='hide'>>=
+   
+    library(tidyverse)
+library(rstudioapi)
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+path_data <-  file.path(getwd(), "Data")
+
+load(paste(path_data,'all.RData', sep = "/"))
+#load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+
+library(plyr)
+all1 <- all %>% mutate(Exposure= as.factor(Exposure)) 
+all1$Exposure <- plyr::revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+detach(package:plyr)
+ t<-  all1%>% group_by(Year,Exposure) %>%
+  summarise(sum=sum(npl_0))
+
+t2 <- all1%>% group_by(Year) %>% summarise(sum_all=sum(npl_0))
+t3 <- t %>% left_join( t2, by=c("Year")) %>% mutate( pct2= sum/sum_all)
+
+
+
+ta<-  all1%>% group_by(Year,Exposure) %>%
+  summarise(sum=sum(npl_2))
+
+t2a <- all1%>% group_by(Year) %>% summarise(sum_all=sum(npl_2))
+t3a <- ta %>% left_join( t2a, by=c("Year")) %>% mutate( pct2= sum/sum_all)
+
+  ggplot(t3 ,
+       aes(x=Year, y=pct2,fill=Exposure)) +
+  geom_col()+
+  xlab(" ") +
+  ylab(" ")+
+  # scale_fill_grey()+
+  theme_light()+
+  geom_text(aes(label = scales::percent(pct2)),
+            position="stack",vjust=+2.3,col="black",size=5)+
+  #facet_wrap(~ Exposure, nrow = 3)+
+  # scale_fill_manual(values = c("lightslategray","lightblue"))+
+  # scale_fill_manual(values = c("lightblue4","lightgoldenrod1"))+
+  scale_fill_manual(values = alpha(c("lightblue4","goldenrod1","palegreen"),.7),name = " ", labels = c("Financial Corp.", "Households","Non-Financial Corp."))+
+  scale_y_continuous(label = scales::percent)+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+  # theme(strip.background =element_rect(fill="lightblue4"))+
+  # theme(strip.text = element_text(colour = 'white'))+
+  theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+ # labs(caption = " ")
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+ # ggtitle("Total Gross Loans Portfolio per Exposure Type (%)")
+
+
+@
+
+ \begin{figure}[hbt] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.8\paperwidth]{figure/Loan_dist-1}}
+\vspace{-1cm}}
+\caption{Total Gross Loans Portfolio per Exposure Type (\%)}
+\label{Loan_dist}
+ \vspace*{-3mm}
+\end{figure}
+Figure \ref{Loan_dist} shows the total gross loans portfolio distribution per exposure type for the  period 2014-2019. The distribution illustrates that non-financial corporations and households  represent around 90\% of the total loans in the sample  while financial corporations other than credit institutions only represent around 10\%. In particular, approximately 50\%  of  gross loans are granted to non-financial corporations followed by households with around 40\%. This distribution  among exposures types seems to be quite constant during the period considered.
+
+ <<NplRatios,fig.width=5, fig.height=4, out.width='.89\\linewidth',fig.show='hide'>>=
+#setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+#getwd()
+ 
+ 
+ library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+ 
+ load(paste(path_data,'all.RData', sep = "/"))
+library(plyr)
+ all <- all %>% mutate(Exposure= as.factor(Exposure)) 
+ all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+  all %>% ggplot(aes(x=Year, y=NPL_ratio)) + 
+  stat_boxplot(geom = "errorbar", width = 0.2) +
+  geom_boxplot(outlier.colour = "red", outlier.alpha = 0.3,fill="lightsteelblue2")+
+  xlab("Year") +
+  ylab("NPL ratio(%)")+
+ # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+  facet_wrap(~ Exposure, nrow = 1)+
+  #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+  #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+  #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+    #scale_colour_manual(values = c("lightsteelblue2"))+
+  scale_y_continuous(breaks=seq(0,100,10),labels = scales::percent_format(accuracy = 1,scale = 1))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+ theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 8))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),
+        axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_blank(),axis.title.y = element_blank())+
+    theme(axis.text=element_text(size=8))+   
+    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+ #ggtitle("Boxplot")
+  
+
+ @
+ 
+ \begin{figure}[htb!] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.7\paperwidth]{figure/NplRatios-1}}
+%\vspace{-1cm}}
+\caption{\label{figure:NplRatios}NPL: Distribution per Year}
+ %\vspace*{-3mm}
+\end{figure}
+
+\begin{figure}[htb!] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/npl.summ}}
+\caption{NPL: Distribution-Basic Information}
+\label{npl.summ}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+\end{figure}
+
+Figure \ref{figure:NplRatios} shows the distribution in the sample of non-performing loans per exposure type for the period 2014-2019. A decline in non-performing loans over the years is observable,  with  NPL ratios ranging between 0\% and 13\% . Moreover, there are many banks showing high NPL ratios over the 75th quantile, suggesting the presence of  heterogeneity across observations and a positive (right) skewness of the NPL distribution. Furthermore, there are important disparities in NPL when comparing exposures types as observed Table \ref{npl.summ}.  In particular, the average NPL ratio for non-financial corporations stood  at 12,3\%, compared with 6,9\% for households and 8,3 \% for financial corporations other than credit institutions for the period 2014-2019. Comparatively, the exposure type financial corporations other than credit institutions shows the greatest number of observations  with NPL classified as outliers in the sample. Moreover, non-financial corporations have the highest NPL on average and the largest distance between the lower (25th) and the upper quantile (75th). Interestingly, Table \ref{npl.summ} also contains skewness and kurtosis metrics for the sample. In this regard, the value for the skewness, which measured the degree of symmetry in the distribution and the relative size of the tails, is large and positive  for all exposure types, confirming the presence of positive (right) skewness and non-symmetry in the distribution. In addition, the value for the kurtosis, which measures the degree of flatness in the distribution, is similarly large and positive for all exposure types, signaling the presence of a tail-heavy and slightly flat distribution. Given the presence of outliers and the non-normal distribution of NPL, the additional use of quantile regression  methodology seems reasonable. Similar conclusions are provided observing  the density and Quantile-Quantile diagrams in Figure \ref{NplRatios1}.
+
+% The Figure \ref{figure:NplRatios} shows the distribution in the sample of non-perfoming loans per exposure type for the period 2014-2019. A decline in non-performing loans over the years is visible with  a npl rations  between 0\% and 10\% in the median,also the present of many banks showing  NPL ratios over the 75th quantile is clear, suggesting the present of  very heterogeneous NPLs across observations and a  positive (right) skewness of the NPL distribution.Comparatively,the exposure type "financial corporations other than credit institutes"  shows the highest NPL ratios in the sample  and  greater dispersion reaching values around 20\%-30\%  for the 75th quantile. 
+
+%https://yihui.org/knitr/
+
+ <<NplRatios1,fig.width=6, fig.height=5,fig.pos="h", out.width='0.9\\linewidth',fig.show='hide'>>=
+  
+   library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+ 
+  load(paste(path_data,'all.RData', sep = "/"))
+  
+  library(plyr)
+  all1 <- all %>% mutate(Exposure= as.factor(Exposure)) 
+  all1$Exposure <- revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+  
+
+
+  
+  a2 <- all1 %>% ggplot(aes(x=NPL_ratio)) + 
+   geom_density(fill = "cornsilk", colour = "grey60",alpha = .5)+
+  xlab(" ") +
+  ylab(" ")+
+   # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+   facet_wrap(~ Exposure, nrow = 1)+
+   #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+   #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+   #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+   #scale_colour_manual(values = c("lightsteelblue2"))+
+   #scale_x_continuous(breaks=seq(-50,100,25),limits = c(-50, 100),labels = scales::percent_format(accuracy = 1,scale = 1))+
+   scale_x_continuous(breaks=seq(0,100,25),limits = c(0, 100),labels = scales::percent_format(accuracy = 1,scale = 1))+
+   scale_y_continuous(labels = scales::percent_format(accuracy = .1,scale = 100))+
+    #theme_bw()+
+   theme(plot.title = element_text(hjust = 0.5,size=8))+
+   theme(strip.background =element_rect(fill="lightblue4"))+
+   theme(strip.text = element_text(colour = 'white',size = 8))+
+   theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+   ggtitle("Density")
+
+ 
+ b1 <-all1 %>% ggplot(aes(sample=NPL_ratio )) + geom_qq(distribution = qnorm) + 
+  geom_qq_line(line.p = c(0.25, 0.75), col = "blue") + facet_wrap(~ Exposure, nrow = 1)+
+xlab("Theoretical Quantiles") +
+  ylab(" ")+
+    scale_x_continuous(breaks=seq(-4,4,1) )+
+     scale_y_continuous(labels = scales::percent_format(accuracy = 1,scale = 1))+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+  
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 8))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+     theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic",size=6))+
+  ggtitle("Q-Q Diagram")
+  
+ library(ggpubr)
+   ggarrange( a2,b1,
+           labels = c( " "," "),
+           nrow = 2)  
+   
+@  
+
+\begin{figure}[htb!] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.7\paperwidth]{figure/NplRatios1-1}}
+%\vspace{-1cm}}
+\caption{NPL: Density & Q-Q Diagram}
+\label{NplRatios1}
+ %\vspace*{-3mm}
+\end{figure}
+<<NplRatios2,fig.width=8, fig.height=6,fig.pos="h", out.width='0.9\\linewidth',fig.show='hide'>>=
+   
+     library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+ 
+  load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+    load(paste(path_data,'npl_fi.RData', sep = "/"))
+    load(paste(path_data,'npl_hh.RData', sep = "/"))
+     load(paste(path_data,'npl_nfi.RData', sep = "/"))
+     
+      
+ load(paste(path_data,'all.RData', sep = "/"))
+library(plyr)
+ library(lemon)
+ all <- all %>% mutate(Exposure= as.factor(Exposure)) 
+ all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+ 
+all %>% ggplot(aes(x=nsa_label,y=NPL_ratio,colour=nsa_label)) +
+ geom_point(alpha=0.4) +
+   #scale_colour_brewer(palette = "Set1")+
+ # scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+ xlab("") +
+ ylab("NPL(%)")+
+  facet_rep_wrap(~ Exposure, nrow = 2,ncol = 2,repeat.tick.labels = TRUE,scales = "free")+
+   # facet_wrap(~ Exposure, nrow = 2,ncol = 2)+
+  #facet_wrap(~ Exposure)+
+  #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+  #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+  #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+    #scale_colour_manual(values = c("lightsteelblue2"))+
+  scale_y_continuous(breaks=seq(0,100,10),labels = scales::percent_format(accuracy = 1,scale = 1))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+ theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 8))+
+  theme(legend.position="none",panel.background = element_rect(fill = "lightgray"),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0,size=10),axis.title.x = element_blank(),axis.title.y = element_blank())+
+    theme(axis.text=element_text(size=8))+   
+    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+
+
+ 
+@
+
+\begin{figure}[hbt] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.7\paperwidth]{figure/NplRatios2-1}}
+\vspace{-1cm}}
+%\caption{NPL(\%) ratios per country: Households, Non-Financial Corporations \& Financial Corporations}
+\caption{NPL per Country}
+\label{NplRatios2}
+ \vspace*{-3mm}
+\end{figure}
+Figure \ref{NplRatios2} represents the NPL distribution per bank's country of origin. At country level, Greece and Cyprus  stand out as they have the highest NPL ratios for all exposure types. Other countries with heightened NPL from non-financial corporations are Portugal and Slovenia followed by Spain and Italy. For the case of  NPL from financial corporations, Ireland and Portugal show  comparatively  the highest levels. In general, Figure \ref{NplRatios2} illustrates some differences in NPL between EU member states in line with the often recognized core-periphery structure in the distribution of NPL in the European Union.
+
+\FloatBarrier
+\subsection{Original Exposures and Cross-Border Diversification}
+%\subsection{Country of Origin and Single Supervisory Mechanism}
+%\ref{NplRatios2b} 
+                    %\includegraphics[width=0.5\textwidth]{C:/Users/varga/Desktop/Thesis/R_data/Research_Proposal/Progress/Graphs/out2.png}
+                    %\includegraphics[width=0.8\textwidth]{out2.png}
+                    %\includegraphics[width=0.8\textwidth]{ExposuresRatio.png}
+                    %\includegraphics{ExposuresRatio.png}
+                     %\includegraphics[width=0.5\textwidth]{SGPlot5.png}
+                     %\rule{12.8cm}{7.2cm}
+                     <<ExposuresRatio,fig.width=6, fig.height=5, out.width='.89\\linewidth',fig.show='hide'>>=
+                    #setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+                    #getwd()
+
+
+                     library(tidyverse)
+                    library(plyr)
+                     path_data <-  file.path(getwd(), "Data")
+
+                    load(paste(path_data,'base_eu4.RData', sep = "/"))
+
+                    base_eu5 <- base_eu4 %>% group_by(Year,class) %>%summarise_at(vars(exp_ratio),list( exp.mean=mean,exp.median=median))
+
+
+                    #path_Graph <- 'C:/Users/varga/Desktop/Thesis/R_data/Research_Proposal/Progress/Graphs/'
+
+                     base_eu4  %>% ggplot( mapping= aes(x=exp_ratio,y=..density..,color=class,fill=class)) +
+                      xlab("") +
+                      ylab("count")+
+                     # geom_histogram(binwidth = 0.1,position="identity",alpha=.5)+
+                      scale_x_continuous(breaks=seq(0,1,.25),labels = scales::percent_format(accuracy = 1,scale = 100))+
+                       geom_density(alpha = .5,size=1)+
+                      geom_vline(data=base_eu5,aes( xintercept=exp.mean,color=class), linetype="dashed", size=1)+
+                      guides(col = FALSE)+
+                     facet_wrap(~ Year, nrow = 3)+
+                      #theme_light()+
+                      theme_bw()+
+                      theme(plot.title = element_text(hjust = 0.5))+
+                      theme(strip.background =element_rect(fill="lightblue4"))+
+                      theme(strip.text = element_text(colour = 'white'))+
+                      # theme_classic()
+                      #theme_economist() +
+                      #scale_color_economist()+
+                      theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),
+                          axis.text=element_text(size=10)
+                          )+
+                      #theme(legend.position = "none")+
+                     # scale_fill_discrete("",labels = c("EU","Domestic"))+
+                       scale_fill_manual("",labels = c("EU","Domestic"),values = c("indianred1", "steelblue2"))+
+                      scale_colour_manual(values = c("indianred1", "steelblue2"))+
+                      #scale_fill_manual("",labels = c("EU","Domestic"),values = c("red", "blue"))
+                        theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+                      labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+                     # ggtitle("Exposures Ratio Distribution: EU & Domestic")
+
+
+                    @
+
+\begin{figure}[hbt] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.6\paperwidth]{figure/ExposuresRatio-1}}
+%\vspace{-1cm}}
+
+ %\vspace*{-3mm}
+ \caption{Exposures Ratio Distribution: EU \& Domestic}
+ \label{ExposuresRatio}
+\end{figure}
+
+Figure \ref{ExposuresRatio} shows the distribution in the sample of  original exposures in the bank's country of origin and original exposures with destination in an  EU country in relation to the bank's total original exposures. Although the average is around 75\% of total original exposures  both in homecountry and EU exposures, the distribution  tends to be  right skewed  and slightly flat for homecountry exposure ratios. In the case of EU ratios, the distribution shows a more clear left skewness with important tails to the left. In light of these observations, the use of weighted exposures per country of destination in the calculation of macroeconomic indicators seems to be reasonable.
+
+ % \FloatBarrier
+  
+                 
+                    <<CBDIndex1,fig.width=6, fig.height=5, out.width='.89\\linewidth',fig.show='hide'>>=
+                         library(tidyverse)
+                    
+                     path_data <-  file.path(getwd(), "Data")
+
+                      load(paste(path_data,'all.RData', sep = "/"))
+                      load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+
+                      library(plyr)
+                      all1 <- all %>% mutate(Exposure= as.factor(Exposure))
+                      all1$Exposure <- revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+                     a <- all1 %>% ggplot(aes(x=CBDI_index)) +
+                      # geom_histogram(fill = "cornsilk", colour = "grey60")+
+                       geom_density(fill = "cornsilk", colour = "grey60",alpha=.5,size=1)+
+                        xlab(" ") +
+                        ylab("")+
+                       # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+                      # facet_wrap(~ Exposure, nrow = 1)+
+                       #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+                       #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+                       #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+                       #scale_colour_manual(values = c("lightsteelblue2"))+
+                       scale_x_continuous(breaks=seq(0,100,25),limits = c(0, 100))+
+                       scale_y_continuous(limits = c(0, .025),labels = scales::percent_format(accuracy = .1,scale = 100))+
+                      # scale_x_continuous(breaks=seq(-50,100,25),limits = c(0, 100))+
+                       #theme_bw()+
+                       theme(plot.title = element_text(hjust = 0.5,size=8))+
+                      # theme(strip.background =element_rect(fill="lightblue4"))+
+                      # theme(strip.text = element_text(colour = 'white'))+
+                       theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+                       # theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+                       # labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+                        ggtitle("Distribution")
+
+
+                     b <- all1 %>% ggplot(aes(sample=CBDI_index ))  + geom_qq(distribution = qnorm) +
+                      geom_qq_line(line.p = c(0.25, 0.75), col = "blue") +
+                     # geom_abline(intercept = 0, slope = 1) +
+                      xlab(" ") +
+                      ylab(" ")+
+                      #ylim(-4, 4)+
+                      scale_x_continuous(breaks=seq(-4,4,1) )+
+                      #scale_y_continuous(breaks=seq(0,25,100),limits=c(0,100) )+
+                      #stat_qq_line(color="grey",linetype="dashed")+
+                      theme(plot.title = element_text(hjust = 0.5,size=8))+
+                      theme(strip.background =element_rect(fill="lightblue4"))+
+                      theme(strip.text = element_text(colour = 'white',size = 7))+
+                      theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+                      #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+                      theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+                      ggtitle("Q-Q Diagram")
+
+                     
+
+
+                     c <-  npl_hh.nfi  %>% ggplot(aes(x=CBDI_index)) +
+                       stat_ecdf(aes(ymin=0,ymax=..y..),geom="ribbon",fill = "cornsilk",alpha = .5)+
+                       stat_ecdf(geom = "line",linetype="solid", color="grey60", size=1)+
+                       # geom_density(,alpha = .5,size=1)+
+                        xlab(" ") +
+                        ylab(" ")+
+                       # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+                       #facet_wrap(~ Exposure, nrow = 1)+
+                       #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+                       #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+                       #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+                       #scale_colour_manual(values = c("lightsteelblue2"))+
+
+                       #scale_x_continuous(breaks=seq(-50,100,25),limits = c(-50, 100),labels = scales::percent_format(accuracy = 1,scale = 1))+
+                       scale_x_continuous(breaks=seq(-50,100,25),limits = c(0, 100)  )+
+                       scale_y_continuous(labels = scales::percent_format(accuracy = .1,scale = 100),breaks=seq(0,1,.25))+
+                       #theme_bw()+
+                       theme(plot.title = element_text(hjust = 0.5,size=8))+
+                       theme(strip.background =element_rect(fill="lightblue4"))+
+                       theme(strip.text = element_text(colour = 'white'))+
+                       theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+                       theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+                     #  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+                       ggtitle("Cumulative Density Function")
+
+                     # c <- all1 %>% ggplot(aes(x=NPL_ratio,y=CBDI_index)) +
+                     #    geom_point(alpha=0.2) +
+                     #    #facet_wrap(~var.name,scales = "free")+
+                     #    # labs(x= "Seats Sold", y="Weekly Gross")+
+                     #    geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
+
+                     d <- all %>% ggplot(aes(x=Year, y=CBDI_index)) +
+                      stat_boxplot(geom = "errorbar", width = 0.2) +
+                      geom_boxplot(outlier.colour = "red", outlier.alpha = 0.3,fill="lightsteelblue2")+
+                      xlab(" ") +
+                      ylab(" ")+
+                      # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+                      #facet_wrap(~ Exposure, nrow = 1)+
+                      #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+                      #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+                      #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+                      #scale_colour_manual(values = c("lightsteelblue2"))+
+                      scale_y_continuous(breaks=seq(0,100,10))+
+                      theme_bw()+
+                      theme(plot.title = element_text(hjust = 0.5,size=8))+
+                     # theme(strip.background =element_rect(fill="lightblue4"))+
+                     # theme(strip.text = element_text(colour = 'white',size = 8))+
+                      theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),
+                            axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_blank(),axis.title.y = element_blank())+
+                      theme(axis.text=element_text(size=8))+
+                      theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+                      theme(plot.title = element_text(hjust = 0.5,size=8))+
+                        labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+                      ggtitle("Boxplot")
+                     #
+                       library(ggpubr)
+                     #ggarrange(a, b,c,d,
+                     #         labels = c(" ", " "," "," "),
+                      #         nrow = 2,ncol = 2)
+                     
+                     ggarrange(a, b,d,
+                               labels = c(" ", " "," "," "),
+                               nrow = 2,ncol = 2)
+                   
+                    @
+
+
+\begin{figure}[!hbt] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.6\paperwidth]{figure/CBDIndex1-1}}
+%\vspace{-1cm}}
+\caption{Cross-Border Diversification Index}
+\label{CBDIndex1}
+ %\vspace*{-3mm}
+\end{figure}
+
+Figure \ref{CBDIndex1} shows  the distribution of the Cross-Border Diversification Index, which represents the geographic concentration of the bank's original exposures, and its respective quantile-quantile plot. A Cross-Border Diversification Index(CBDI) close to its maximum (100) means that the bank's original exposures are very diversified across countries whereas an index close to zero means that the bank's original exposures are very concentrated on certain countries. In this figure, it is also observable  some flatness in the total distribution around a CBDI value of 50, which also provides some evidence in favor of the use of macroeconomic indicators weighted by the country of destination of exposures. Furthermore, Figure \ref{country_destination2} (appendix) illustrates the diversity  and the frequency of countries included in the  top 10 country of destiny for bank's exposures. In this regard, approximately 70 different countries of destiny around the wold  are presented in the data, although most frequent countries of destiny are located in Europe except for the United States, which shows a frequency of 9,6\%. 
+
+    \FloatBarrier
+    
+\subsection{Country of Origin and the Single Supervisory Mechanism (SSM)}         
+
+ 
+                    <<SSM,fig.width=6, fig.height=6, out.width='0.9\\linewidth',fig.show='hide'>>=
+                      library(tidyverse)
+                     path_data <-  file.path(getwd(), "Data")
+
+                      load(paste(path_data,'all.RData', sep = "/"))
+                      load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+
+                      library(plyr)
+                      all1 <- all %>% mutate(Exposure= as.factor(Exposure))
+                      all1$Exposure <- revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+                     SSM1 <- data.frame(all1 )%>% group_by(Year,SSM)%>% dplyr::count()
+                      SSM2 <- SSM1%>% group_by(Year) %>%  summarise_at(vars(n),list(sum = sum))
+                      SSM3 <-  SSM1 %>% left_join( SSM2, by=c("Year")) %>% mutate( pct2= n/sum)
+                     # View(SSM3)
+
+                    a <- ggplot(SSM3,
+                            aes(x=Year, y=pct2,fill=SSM)) +
+                       geom_col()+
+                       xlab(" ") +
+                       ylab(" ")+
+                      # scale_fill_grey()+
+                       theme_light()+
+                       geom_text(aes(label = scales::percent(pct2)),
+                                 position="stack",vjust=+2.3,col="black",size=2)+
+                       #facet_wrap(~ Exposure, nrow = 3)+
+                      # scale_fill_manual(values = c("lightslategray","lightblue"))+
+                      # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+                       scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+                       scale_y_continuous(label = scales::percent)+
+                       theme(plot.title = element_text(hjust = 0.5,size=8))+
+                        # theme(strip.background =element_rect(fill="lightblue4"))+
+                        # theme(strip.text = element_text(colour = 'white'))+
+                         theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+                       theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+                       #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+                      theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+                       labs(caption = " ")+
+                        ggtitle("SSM Membership (%)")
+
+                    a1 <-   all  %>% ggplot(aes(x=SSM,y=NPL_ratio,colour=SSM)) +
+                        geom_point(alpha=0.4,position = "jitter") +
+                       scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+                       xlab("Membership Status") +
+                      ylab("NPL (%)")+
+                      scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 1))+
+                     # theme(axis.text.x=element_blank(),axis.ticks.x = element_blank())+
+                       theme(panel.background = element_rect(fill = "lightgray"),plot.title = element_text(hjust = 0.5,size=8))+
+                     #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+                      theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+                       labs(caption = " ")+
+                      ggtitle("SSM Membership and NPL(%)")
+                        #facet_wrap(~var.name,scales = "free")+
+                        # labs(x= "Seats Sold", y="Weekly Gross")+
+                        #geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
+
+
+                     NSA1 <- data.frame(all1 )%>% group_by(nsa_label)%>% dplyr::count()
+                     NSA2 <- data.frame(all1 )%>% dplyr::count()
+                     NSA3 <-  NSA1  %>% mutate( pct2= n/ NSA2 [1,1])
+                     # View(SSM3)
+
+                     b <- ggplot(NSA3,
+                            aes(x=nsa_label, y=pct2)) +
+                       geom_bar(  stat='identity', position = 'stack',fill="lightblue4")+
+                       xlab(" ") +
+                       ylab(" ")+
+                       # scale_fill_grey()+
+                       theme_light()+
+                       geom_text(aes(x=nsa_label, y=pct2,label = scales::percent(pct2,accuracy = .1,scale = 100), group =nsa_label),position=position_dodge(width = 1),vjust = -0.5, size = 2,col="black")+
+                                # position="stack",vjust=+2.3,col="black",size=3)+
+                       #facet_wrap(~ Exposure, nrow = 3)+
+                        #scale_fill_manual(values = c("lightslategray","lightblue"))+
+                       # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+                      # scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("NO", "YES"))+
+                       scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 100),breaks=seq(0,0.2,0.05),limits = c(0, .15)  )+
+                       theme(plot.title = element_text(hjust = 0.5,size=8))+
+                        theme(strip.background =element_rect(fill="lightblue4"))+
+                        theme(strip.text = element_text(colour = 'white',size = 10))+
+                       theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+                       theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+                       #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+                       ggtitle("Head Quarters(HQ)-Country of Origin (%)")
+
+
+                     # ggarrange(a, a1,
+                     #            ggarrange(b,ncol = 1,label=c("")),
+                     #           ncol = 2,
+                     #           labels = c(" ", " "))
+                        library(ggpubr)
+                     ggarrange(b,                                                 # First row with scatter plot
+                              ggarrange(a, a1, ncol = 2, labels = c("", "")), # Second row with box and dot plots
+                              nrow = 2,
+                              labels = ""                                        # Labels of the scatter plot
+                              )
+
+
+                    @
+
+
+\begin{figure}[!hbt] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.6\paperwidth]{figure/SSM-1}}
+%\vspace{-1cm}}
+
+\caption[Single Supervisory Mechanism (\%) \& Country of Origin (\%)]{ Single Supervisory Mechanism (\%) \& Country of Origin (\%)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, authors' calculations}}}
+\label{SSM}
+ %\vspace*{-3mm}
+\end{figure}
+
+Figure \ref{SSM} provides basic information regarding the percentage distribution of the sample according to its SSM membership status during the period  2014-2019 as well as the distribution of banks per country of origin. Regarding the SSM membership most banks in the sample belong to EU countries, which are members of the Single Supervisory Mechanism, with a relation of approximately 80\%-20\% between SSM members and non-SSM. Despite these  asymmetries, there are enough observations for an empirical analysis of the effects of SSM membership on NPL ratios. In particular,  NPL ratios seems to be more dispersed for SSM members. The disproportional presence of SSM members with respect to non-SSM members in the sample  motivates the need of some caution  during the analysis of empirical results. The distribution of banks per country of origin is also asymmetric, with a higher concentration of banks located in Europe's largest economies.
+
+
+  \FloatBarrier
+
+\subsection{Descriptive Statistics and Correlation Diagrams}
+
+Summary descriptive statistics are  reported in Table \ref{DescStats} (appendix). Particularly, the observation of important disparities in the metrics related to NPL both between and within exposure types must be noted. Correlation diagrams  are reported in figures  \ref{Corr.hh},\ref{Corr.nfi}, \ref{Corr.fi} (appendix). As observed in these figures, the correlation of the explanatory variables with NPL are similar between exposure types and, in general, low for the bank-specific variables while  increasing in the case of macroeconomic indicators. Interestingly, Gross public debt (gross\_public\_debt), Unemployment rates (unempl\_rate\_imf) and Recovery rates (Reco\_rate\_dol) show the highest correlation with NPL in the  macroeconomic variables under consideration. In regard to the bank-specific variables, the highest correlation is reported by leverage rates (LEVER\_tr\_ratio), Return on Risk-adjusted capital (RORAC) and Net interest margin (NIM\_tr). Additionally, a Variance Inflaction Factor (VIF)  test is performed  for each exposure type to measure the amount of multicollinearity in the context of multivariate regressions (see Table \ref{vif}) with NPL as response variable. As observed in Table \ref{vif}, the coefficients are  under 10 for all variables, providing some evidence  against the presence of multicollinearity  in a regression  with all these variables.
+
+ 
+ 
+
+                    % Figures \ref{VarDistr} and \ref{Q_Q} in the Appendix also illustrates in detail density and distribution of explanatory variables.
+                    % % Figure \ref{Scatter} represents a set of scatterplots and linears regressions on NPL ratios for each explanatory variables in the sample. A preliminary observation of Figure \ref{Scatter} reveals some interesting patterns in the data.
+
+                    % \begin{figure}[h!] % between [] you put options e.g. ht = here top
+                    % \centering
+                    % \includegraphics[width=0.5\textwidth]{SGPlot5.png}
+                    % \caption{This figure shows original Exposures within EU  vs domestic}
+                    % \label{key_2}
+                    % \end{figure}
+                    %\input{Graphs/out}
+                   % \input{Tables/Final/Descrstats/DescriptiveStatistics2}
+                    % \input{Tables/Final/Descrstats/DescriptiveStatistics_npl_hh}
+                    % \input{Tables/Final/Descrstats/DescriptiveStatistics_npl_nfi}
+                    % \input{Tables/Final/Descrstats/DescriptiveStatistics_npl_fi}
+                    %\FloatBarrier
+                   
+
+
+                    % \begin{figure}[H] % between [] you put options e.g. ht = here top
+                    % \centering
+                    % %\rule{12.8cm}{7.2cm}
+                    % %\setlength{\abovecaptionskip}{5pt}
+                    % \vspace{1cm}
+                    % \begin{subfigure}[c]{.5\textwidth}
+                    % \makebox[.8\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/Corr_nfi-1}}
+                    %
+                    % \end{subfigure}
+                    % \quad
+                    % \vspace{1cm}
+                    % \begin{subfigure}[c]{.5\textwidth}
+                    % \makebox[.8\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/Corr_nfi-1}}
+                    %
+                    % \end{subfigure}
+                    % \quad
+                    % \vspace{1cm}
+                    % \begin{subfigure}[c]{.5\textwidth}
+                    % \makebox[.8\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/Corr_nfi-1}}
+                    %
+                    % \end{subfigure}
+                    %
+                    % \caption{Correlation Matrix: Non-Financial Corporations}
+                    % \label{Corr.nfi}
+                    %  %\vspace*{-3mm}
+                    % \end{figure}
+
+
+                    % Figures \ref{Corr.hh},\ref{Corr.nfi}, \ref{Corr.fi}  are the respective correlation diagrams after excluding some variables due to either high correlation with other explanatory variables or theoretical reasons. As observed in the figures, the correlation among explanatory variables is in general low for the bank-specific variables and  it seems to increase in the case of macroeconomic indicators. As expected, gross public debt and unemployment rates show the highest correlation in the variables under consideration. Additionally,  Variance Inflaction Factor (VIF)  tests are performed to measure of the amount of multicollinearity in the context of a multivariate regression (see Table \ref{vif}). The coefficients are  under 10 for all considered variables, providing some evidence  against the presence of any multicollienarity problem in a regression including this set of variables.
+                    % 
+                    % \input{Tables/Final/vif/vif3}
+                    % 
+                    % %For a correlation matrix including all available variables  for households and non-financial corporations see Figure \ref{Corr.hh.nfi1}.
+                    % 
+                    % 
+                    % %
+                    % % \begin{figure}[H] % between [] you put options e.g. ht = here top
+                    % % \caption{Correlation Matrix}
+                    % % %\hspace*{-0.5in}
+                    % % \centering
+                    % %
+                    % % \begin{subfigure}[c]{\textwidth}
+                    % %
+                    % % \centering
+                    % %
+                    % % Corr.hh1,fig.width=7, fig.height=7, out.width='0.9\\linewidth'>>=
+                    % % #  path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+                    % % #
+                    % % # source(file= paste(path_main,"Dataset_setup.r", sep = ""))
+                    % % #  source(file= paste(path_main,"Panel_Def.r", sep = ""))
+                    % % #
+                    % % # corrplot(cors,tl.col="black", mar=c(0,0,5,0), tl.offset = 1)
+                    % % # mtext("Example Plot", at=2.5, line=-0.5, cex=2)
+                    % %
+                    % %  library(tidyverse)
+                    % %  path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+                    % %  path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+                    % %   load(paste(path_data,'npl_hh.RData', sep = ""))
+                    % %
+                    % %   source(file= paste(path_main,"Panel_Def.r", sep = ""))
+                    % %
+                    % %
+                    % %
+                    % % library(plyr)
+                    % %  #all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+                    % %
+                    % %
+                    % %   col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+                    % % library(corrplot)
+                    % %   def_model_ALL_corr <- update(def_model_ALL_descr ,.~.-SSM)
+                    % %   corr.hh <- round(cor(npl_hh[all.vars(def_model_ALL_corr)]),3)
+                    % %   corrplot(corr.hh, method="color", col=col(200),
+                    % %            type="lower",
+                    % %            addCoef.col = "black", # Add coefficient of correlation
+                    % %            tl.col="black", tl.srt=90, #Text label color and rotation
+                    % %            # Combine with significance
+                    % %            number.cex=0.7,tl.cex = .7,
+                    % %            # hide correlation coefficient on the principal diagonal
+                    % %            diag=TRUE )
+                    % %
+                    % %    # corrplot(corr.hh, method="color", col=col(200),  title="Correlation Matrix:Households",
+                    % %    #         type="lower",
+                    % %    #         addCoef.col = "black", # Add coefficient of correlation
+                    % %    #         tl.col="black", tl.srt=90, #Text label color and rotation
+                    % %    #         # Combine with significance
+                    % %    #         number.cex=0.7,tl.cex = .7,mar=c(0,0,2,0),
+                    % %    #         # hide correlation coefficient on the principal diagonal
+                    % %    #         diag=TRUE )
+                    % %    #
+                    % %
+                    % % @
+                    % % \caption{Households}
+                    % %
+                    % % \vspace{1mm}
+                    % % \end{subfigure}% <---- don't forget this %
+                    % %
+                    % % \begin{subfigure}[c]{\textwidth}
+                    % %
+                    % % \centering
+                    % %
+                    % % Corr.hh2,fig.width=7, fig.height=7, out.width='0.9\\linewidth'>>=
+                    % % #  path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+                    % % #
+                    % % # source(file= paste(path_main,"Dataset_setup.r", sep = ""))
+                    % % #  source(file= paste(path_main,"Panel_Def.r", sep = ""))
+                    % % #
+                    % % # corrplot(cors,tl.col="black", mar=c(0,0,5,0), tl.offset = 1)
+                    % % # mtext("Example Plot", at=2.5, line=-0.5, cex=2)
+                    % %
+                    % %  library(tidyverse)
+                    % %  path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+                    % %  path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+                    % %   load(paste(path_data,'npl_nfi.RData', sep = ""))
+                    % %
+                    % %   source(file= paste(path_main,"Panel_Def.r", sep = ""))
+                    % %
+                    % %
+                    % %
+                    % % library(plyr)
+                    % %  #all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+                    % %
+                    % %
+                    % %   col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+                    % % library(corrplot)
+                    % %   def_model_ALL_corr <- update(def_model_ALL_descr ,.~.-SSM)
+                    % %   corr.hh <- round(cor(npl_nfi[all.vars(def_model_ALL_corr)]),3)
+                    % %   corrplot(corr.hh, method="color", col=col(200),
+                    % %            type="lower",
+                    % %            addCoef.col = "black", # Add coefficient of correlation
+                    % %            tl.col="black", tl.srt=90, #Text label color and rotation
+                    % %            # Combine with significance
+                    % %            number.cex=0.7,tl.cex = .7,
+                    % %            # hide correlation coefficient on the principal diagonal
+                    % %            diag=TRUE )
+                    % %
+                    % %    # corrplot(corr.hh, method="color", col=col(200),  title="Correlation Matrix:Households",
+                    % %    #         type="lower",
+                    % %    #         addCoef.col = "black", # Add coefficient of correlation
+                    % %    #         tl.col="black", tl.srt=90, #Text label color and rotation
+                    % %    #         # Combine with significance
+                    % %    #         number.cex=0.7,tl.cex = .7,mar=c(0,0,2,0),
+                    % %    #         # hide correlation coefficient on the principal diagonal
+                    % %    #         diag=TRUE )
+                    % %    #
+                    % %
+                    % % @
+                    % % \caption{Non-Financial Corporations}
+                    % %
+                    % % \vspace{1mm}
+                    % % \end{subfigure}% <---- don't forget this %
+                    % % \begin{subfigure}[c]{\textwidth}
+                    % %
+                    % % \centering
+                    % %
+                    % % Corr.hh3,fig.width=7, fig.height=7, out.width='0.9\\linewidth'>>=
+                    % % #  path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+                    % % #
+                    % % # source(file= paste(path_main,"Dataset_setup.r", sep = ""))
+                    % % #  source(file= paste(path_main,"Panel_Def.r", sep = ""))
+                    % % #
+                    % % # corrplot(cors,tl.col="black", mar=c(0,0,5,0), tl.offset = 1)
+                    % % # mtext("Example Plot", at=2.5, line=-0.5, cex=2)
+                    % %
+                    % %  library(tidyverse)
+                    % %  path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+                    % %  path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+                    % %   load(paste(path_data,'npl_fi.RData', sep = ""))
+                    % %
+                    % %   source(file= paste(path_main,"Panel_Def.r", sep = ""))
+                    % %
+                    % %
+                    % %
+                    % % library(plyr)
+                    % %  #all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+                    % %
+                    % %
+                    % %   col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+                    % % library(corrplot)
+                    % %   def_model_ALL_corr <- update(def_model_ALL_descr ,.~.-SSM)
+                    % %   corr.hh <- round(cor(npl_fi[all.vars(def_model_ALL_corr)]),3)
+                    % %   corrplot(corr.hh, method="color", col=col(200),
+                    % %            type="lower",
+                    % %            addCoef.col = "black", # Add coefficient of correlation
+                    % %            tl.col="black", tl.srt=90, #Text label color and rotation
+                    % %            # Combine with significance
+                    % %            number.cex=0.7,tl.cex = .7,
+                    % %            # hide correlation coefficient on the principal diagonal
+                    % %            diag=TRUE )
+                    % %
+                    % %    # corrplot(corr.hh, method="color", col=col(200),  title="Correlation Matrix:Households",
+                    % %    #         type="lower",
+                    % %    #         addCoef.col = "black", # Add coefficient of correlation
+                    % %    #         tl.col="black", tl.srt=90, #Text label color and rotation
+                    % %    #         # Combine with significance
+                    % %    #         number.cex=0.7,tl.cex = .7,mar=c(0,0,2,0),
+                    % %    #         # hide correlation coefficient on the principal diagonal
+                    % %    #         diag=TRUE )
+                    % %    #
+                    % %
+                    % % @
+                    % % \caption{Financial Corporations}
+                    % %
+                    % % \vspace{1mm}
+                    % % \end{subfigure}% <---- don't forget this %
+                    % %
+                    % % \label{Corr.hh1}
+                    % % \end{figure}
+                    % 
+                    % 
+                    % % \include{Tables/correlation_matrix_npl_hh}
+                    % % \include{Tables/correlation_matrix_npl_fi}
+                    % % \include{Tables/correlation_matrix_npl_nfi}
+                    % %
+                    % % \input{Tables/correlation_matrix_npl_hh_rt}
+                    % % %\vspace{-2em}
+                    % % \input{Tables/correlation_matrix_npl_fi_rt}
+                    % % %\vspace{-2em}
+                    % % \input{Tables/correlation_matrix_npl_nfi_rt}
+                    % %
+                    % % \input{Tables/vif_npl_hh}
+                    % % \input{Tables/vif_npl_fi}
+                    % % \input{Tables/vif_npl_nfi}
+                    % 
+                    %  \FloatBarrier
+                    % 
+                    % % \subsection{\textbf{Tests on Panel Models}}
+
+

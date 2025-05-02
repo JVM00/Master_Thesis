@@ -1,0 +1,35 @@
+% !Rnw root = Thesis.Rnw
+
+\section{Further Steps}
+\renewcommand{\baselinestretch}{1.25} 
+% \begin{enumerate}
+% 
+% \item To continue in the next months with the following points:
+% \begin{itemize}
+% \item Formal definition of Master's thesis structure (list of contents) 
+% \item Descriptive statistics, charts and graphics
+% \item Formal definition of the econometric model
+% \item Statistical Inference of econometric model  and analysis of empirical results
+% \item Literature review in NPLs (more detailed) 
+% \item Briefly institutional background, targets and functions of the European Banking Authority (EBA) and the Single Supervisory Mechanism (SSM) in the context of NPLs studies
+% \item Conclusions
+% 
+% \end{itemize}
+
+\begin{enumerate}
+
+\item To continue in the next weeks with the following points:
+\begin{itemize}
+\item Refined Master's thesis structure
+\item Briefly institutional background, targets and functions of the European Banking Authority (EBA) and the Single Supervisory Mechanism (SSM) in the context of NPLs studies
+\item Literature review in NPLs (more detailed)
+\item Perfom several test over the different panel models regarding heterogeneity, serial correlation and correlated effects
+\item Deeper analysis of empirical results obtained by different panel and quantile methodologies
+\item Conclusions
+
+\end{itemize}
+
+\item Writing of master's thesis second draft
+\end{enumerate}
+
+\textbf{Note:} Expected  over 60\% conclusion of Master's thesis by January 2021

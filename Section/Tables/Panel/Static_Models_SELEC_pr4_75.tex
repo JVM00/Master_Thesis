@@ -1,0 +1,95 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Mi, Dez 30, 2020 - 20:22:14
+% Requires LaTeX packages: dcolumn 
+%\begin{table}[!htbp] \centering 
+\begin{table}[!htb]
+
+\centering
+  \caption[Panel Data Models (2014-2019)- Domestic Exposure $\geq$ 75\%]{Panel Data Models (2014-2019)- Domestic Exposure $\geq$ 75\%} 
+ \label{nlp.selc_75} 
+\small 
+%
+
+%\sisetup{
+%table-format = 2.2 ,
+%table-number-alignment = center ,
+%table-column-width = 1cm ,
+%}
+
+ %\begin{adjustwidth}{-.5in}{-.5in} 
+ 
+\begin{adjustbox}{totalheight=8.6in, width=\columnwidth }   
+%\begin{adjustbox}{angle=90,totalheight=4in}   
+%,width=4in,totalheight=4in
+%@{\extracolsep{-0pt}}
+\resizebox{.9\textwidth}{!}{
+%\begin{tabular}{@{\extracolsep{-15pt}}l D{.}{.}{-1}D{.}{.}{-1}| D{.}{.}{-1}D{.}{.}{-1}| D{.}{.}{-1}D{.}{.}{-1} | D{.}{.}{-1} %D{.}{.}{-1} D{.}{.}{-1} } \\
+\begin{tabular}{@{\extracolsep{-15pt}}l *9{D{.}{.}{-1}}} \\
+[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+
+\\[-1.8ex] & \multicolumn{6}{c}{\makebox[0pt]{\textit{panel}}} & \multicolumn{3}{c}{\makebox[0pt]{\textit{panel}}} \\ 
+ & \multicolumn{6}{c}{\makebox[0pt]{\textit{linear}} }& \multicolumn{3}{c}{\makebox[0pt]{\textit{GMM}}} \\
+ \cline{2-10}  
+ & \multicolumn{2}{c}{\textbf{Households}}&\multicolumn{2}{c}{\textbf{Non-Financial}}&\multicolumn{2}{c}{\textbf{Financial}}&\multicolumn{1}{c}{\textbf{Households}}&\multicolumn{1}{c}{\textbf{Non-Financial}}&\multicolumn{1}{c}{\textbf{Financial}} \\ 
+ 
+ & \multicolumn{1}{c}{RE}&\multicolumn{1}{c}{FE}&\multicolumn{1}{c}{RE}&\multicolumn{1}{c}{FE}&\multicolumn{1}{c}{RE} & \multicolumn{1}{c}{FE}&\multicolumn{1}{c}{SYS}&\multicolumn{1}{c}{SYS}&\multicolumn{1}{c}{SYS}\\ 
+\hline \\[-1.8ex] 
+ lag(NPL\_ratio) &  &  &  &  &  &  & 0.465^{***} & 0.423^{***} & 0.541^{***} \\ 
+  &  &  &  &  &  &  & (0.123) & (0.100) & (0.124) \\ 
+  CET1\_ratio\_tr & 0.106 & 0.009 & -0.295^{**} & -0.399^{***} & -0.348 & -0.410^{*} & 0.093 & -0.127 & -0.221 \\ 
+  & (0.092) & (0.107) & (0.130) & (0.148) & (0.239) & (0.231) & (0.162) & (0.164) & (0.242) \\ 
+  LEVER\_tr\_ratio & 0.391^{**} & 0.534^{***} & 0.292 & 0.452^{*} & 1.330^{*} & 1.670^{**} & 0.093 & -0.019 & 0.708 \\ 
+  & (0.154) & (0.184) & (0.196) & (0.235) & (0.690) & (0.818) & (0.140) & (0.248) & (0.624) \\ 
+  RORAC & -0.093^{**} & -0.074^{**} & -0.098 & -0.060 & -0.249^{***} & -0.194^{**} & -0.165^{***} & -0.166^{*} & -0.244^{**} \\ 
+  & (0.038) & (0.036) & (0.081) & (0.059) & (0.096) & (0.085) & (0.035) & (0.091) & (0.122) \\ 
+  log(BankSize\_tran) & -2.380^{***} & -2.480^{***} & -4.290^{***} & -4.390^{***} & -3.490^{***} & -2.920^{**} & -1.260^{**} & -2.450^{**} & -1.300^{*} \\ 
+  & (0.498) & (0.718) & (0.668) & (0.840) & (1.050) & (1.420) & (0.591) & (0.991) & (0.758) \\ 
+  Cost\_to\_Income & -0.026^{***} & -0.023^{***} & -0.033^{**} & -0.031^{**} & -0.008 & 0.002 & -0.029^{***} & -0.042^{**} & -0.008 \\ 
+  & (0.008) & (0.008) & (0.014) & (0.013) & (0.021) & (0.018) & (0.006) & (0.021) & (0.019) \\ 
+  NIM\_tr & 3.930^{***} & 2.330^{***} & 3.800^{***} & 2.940^{*} & -0.964 & -2.240 & 3.830^{***} & 4.870^{***} & 1.290 \\ 
+  & (0.912) & (0.852) & (1.360) & (1.520) & (3.360) & (3.620) & (1.270) & (1.470) & (2.370) \\ 
+  Stgth\_legal\_index & 3.370^{***} & 3.680^{***} & 1.480^{**} & 1.380^{*} & 0.806 & 0.490 & 1.310 & 1.090 & 1.070 \\ 
+  & (0.499) & (0.541) & (0.599) & (0.745) & (0.953) & (0.956) & (0.821) & (0.687) & (0.739) \\ 
+  Reco\_rate\_dol & -0.051 & -0.089^{**} & -0.058 & -0.111^{**} & -0.073 & -0.139 & 0.011 & 0.016 & -0.068 \\ 
+  & (0.038) & (0.043) & (0.055) & (0.055) & (0.136) & (0.118) & (0.045) & (0.055) & (0.088) \\ 
+  infl\_perc & -1.440^{***} & -1.050^{**} & -2.960^{***} & -2.610^{***} & -2.620^{*} & -2.710^{*} & -1.490^{**} & -2.500^{***} & -1.690 \\ 
+  & (0.497) & (0.415) & (0.611) & (0.567) & (1.390) & (1.500) & (0.726) & (0.766) & (1.450) \\ 
+  curr\_acc\_bal & 0.319^{**} & 0.312^{**} & 0.366^{**} & 0.384^{*} & -0.079 & 0.551 & 0.150 & 0.255 & 0.043 \\ 
+  & (0.147) & (0.142) & (0.174) & (0.196) & (0.439) & (0.448) & (0.131) & (0.241) & (0.283) \\ 
+  GDP\_growth\_perc & 0.049 & -0.106 & 0.830^{**} & 0.745^{*} & 1.570^{*} & 0.934 & -0.276 & -0.530 & 0.809 \\ 
+  & (0.253) & (0.211) & (0.413) & (0.417) & (0.911) & (0.849) & (0.210) & (0.536) & (0.856) \\ 
+  unempl\_rate\_imf & -0.129 & -0.265^{**} & 0.495^{***} & 0.463^{***} & -0.644^{***} & -0.863^{**} & 0.183 & 0.337 & -0.283 \\ 
+  & (0.108) & (0.113) & (0.164) & (0.168) & (0.231) & (0.347) & (0.133) & (0.274) & (0.206) \\ 
+  gross\_public\_debt & 0.358^{***} & 0.408^{***} & 0.296^{***} & 0.293^{***} & 0.249^{***} & 0.216^{**} & 0.111^{*} & 0.138^{*} & 0.101^{*} \\ 
+  & (0.035) & (0.044) & (0.044) & (0.059) & (0.066) & (0.087) & (0.063) & (0.073) & (0.056) \\ 
+  SSMY & -2.040 & -3.770^{*} & -5.340^{***} & -5.820^{**} & -4.540 & -3.130 &  &  &  \\ 
+  & (1.630) & (2.040) & (2.010) & (2.600) & (3.680) & (5.380) &  &  &  \\ 
+  CBDI\_index & 0.172^{***} & 0.153^{***} & 0.172^{***} & 0.168^{***} & 0.227^{***} & 0.154^{*} & 0.133^{***} & 0.143^{**} & 0.162^{**} \\ 
+  & (0.035) & (0.036) & (0.047) & (0.043) & (0.085) & (0.091) & (0.048) & (0.060) & (0.072) \\ 
+  Constant & -15.000^{**} &  & 32.100^{***} &  & 34.100 &  &  &  &  \\ 
+  & (6.840) &  & (9.410) &  & (21.900) &  &  &  &  \\ 
+ \hline \\[-1.8ex] 
+Hausman Test & 43.91 &  & 537.05 &  & 28.29 &  &  &  &  \\ 
+Prob (Hausman Test) & 1e-04 &  & 0 &  & 0.0198 &  &  &  &  \\ 
+Sargan Test &  &  &  &  &  &  & 36.97 & 39.08 & 26.93 \\ 
+Prob (Sargan Test) &  &  &  &  &  &  & 0.0957 & 0.0623 & 0.4674 \\ 
+Arellano-Bond:AR(1) &  &  &  &  &  &  & -12.92 & -2.52 & -3.03 \\ 
+Prob (AR(1)) &  &  &  &  &  &  & 0 & 0.0118 & 0.0024 \\ 
+Arellano-Bond:AR(2) &  &  &  &  &  &  & 0.82 & -1.08 & -0.36 \\ 
+Prob (AR(2)) &  &  &  &  &  &  & 0.4102 & 0.2787 & 0.7161 \\ 
+Observations & \multicolumn{1}{c}{374} & \multicolumn{1}{c}{374} & \multicolumn{1}{c}{379} & \multicolumn{1}{c}{379} & \multicolumn{1}{c}{339} & \multicolumn{1}{c}{339} & \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.657} & \multicolumn{1}{c}{0.632} & \multicolumn{1}{c}{0.653} & \multicolumn{1}{c}{0.636} & \multicolumn{1}{c}{0.308} & \multicolumn{1}{c}{0.236} &  &  &  \\ 
+Adjusted R$^{2}$ & \multicolumn{1}{c}{0.643} & \multicolumn{1}{c}{0.522} & \multicolumn{1}{c}{0.639} & \multicolumn{1}{c}{0.527} & \multicolumn{1}{c}{0.276} & \multicolumn{1}{c}{-0.009} &  &  &  \\ 
+F Statistic & \multicolumn{1}{c}{668.000$^{***}$} & \multicolumn{1}{c}{32.800$^{***}$ (df = 15; 287)} & \multicolumn{1}{c}{665.000$^{***}$} & \multicolumn{1}{c}{33.900$^{***}$ (df = 15; 291)} & \multicolumn{1}{c}{142.000$^{***}$} & \multicolumn{1}{c}{5.260$^{***}$ (df = 15; 256)} &  &  &  \\ 
+\hline 
+\hline \\[-1.8ex] 
+\multicolumn{4}{l} {\textit{Note: HC-robust standard errors are used}}  & \multicolumn{6}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ \multicolumn{5}{l} {\textit{RE:Random Effects, FE:Fixed Effects,SYS: System-GMM, DIFF: Differences-GMM}}  \\ 
+  
+\end{tabular} 
+}
+\end{adjustbox}
+%\end{adjustwidth}
+\end{table} 

@@ -1,0 +1,37 @@
+\begin{table}[H]
+% \centering 
+ 
+%\centering
+\begin{subtable}[c]{\textwidth}
+\caption{Households \& Non-Financial Corporations}
+\centering
+\resizebox{.9\textwidth}{!}{\begin{tabular}{llll}
+  \toprule
+Method & Statistic & P-Value & Alternative \\ 
+  \midrule
+Lagrange Multiplier Test & 24.528 & 3.66865541437651e-133 & significant effects \\ 
+  F test  & 27.562 & 7.36038053901151e-160 & significant effects \\ 
+   \bottomrule
+\end{tabular}}
+
+\vspace{1mm}  
+\end{subtable}% <---- don't forget this %
+\\
+\begin{subtable}[c]{\textwidth}
+\caption{Financial Corporations}
+\centering
+\resizebox{.9\textwidth}{!}{\begin{tabular}{llll}
+  \toprule
+Method & Statistic & P-Value & Alternative \\ 
+  \midrule
+Lagrange Multiplier Test & 16.268 & 8.33620606248368e-60 & significant effects \\ 
+  F test  & 9.493 & 1.09087787385205e-69 & significant effects \\ 
+   \bottomrule
+\end{tabular} }
+
+%\vspace{10mm}  
+\end{subtable}
+
+\caption{Breusch-Pagan Lagrange Multiplier  \& F Test: Individual Effects Test}
+\label{BPF}
+\end{table} 

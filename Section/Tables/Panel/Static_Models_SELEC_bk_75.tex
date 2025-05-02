@@ -1,0 +1,53 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Mi, Jan 20, 2021 - 13:33:43
+% Requires LaTeX packages: dcolumn 
+\begin{table}[!htbp] \centering 
+  \caption{Panel Data Models  (2014-2019)} 
+  \label{} 
+\small 
+\begin{tabular}{@{\extracolsep{10pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{9}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-10} 
+\\[-1.8ex] & \multicolumn{6}{c}{\textit{panel}} & \multicolumn{3}{c}{\textit{panel}} \\ 
+ & \multicolumn{6}{c}{\textit{linear}} & \multicolumn{3}{c}{\textit{GMM}} \\ 
+ & \multicolumn{2}{c}{Households} & \multicolumn{2}{c}{Non-Financial} & \multicolumn{2}{c}{Financial} & \multicolumn{1}{c}{Households} & \multicolumn{1}{c}{Non-Financial} & \multicolumn{1}{c}{Financial} \\ 
+\hline \\[-1.8ex] 
+ lag(NPL\_ratio) &  &  &  &  &  &  & 0.697^{***} & 0.675^{***} & 0.612^{***} \\ 
+  &  &  &  &  &  &  & (0.082) & (0.132) & (0.152) \\ 
+  CET1\_ratio\_tr & -0.321^{***} & -0.256^{***} & -1.030^{***} & -1.070^{***} & -0.770^{***} & -0.661^{***} & -0.123^{*} & -0.281^{*} & -0.349 \\ 
+  & (0.078) & (0.087) & (0.149) & (0.166) & (0.203) & (0.200) & (0.071) & (0.149) & (0.222) \\ 
+  LEVER\_tr\_ratio & 0.609^{***} & 0.478^{**} & 0.782^{***} & 0.764^{***} & 2.080^{***} & 2.160^{***} & 0.186 & -0.041 & 0.836 \\ 
+  & (0.209) & (0.218) & (0.244) & (0.294) & (0.644) & (0.761) & (0.191) & (0.251) & (0.687) \\ 
+  RORAC & -0.169^{***} & -0.111^{**} & -0.225^{**} & -0.166^{**} & -0.310^{***} & -0.243^{***} & -0.220^{***} & -0.305^{**} & -0.234^{**} \\ 
+  & (0.059) & (0.047) & (0.107) & (0.083) & (0.102) & (0.093) & (0.071) & (0.132) & (0.119) \\ 
+  log(BankSize\_tran) & -0.609 & -0.621 & -2.900^{***} & -3.230^{***} & -3.140^{***} & -3.120^{**} & -0.171 & -0.566 & -1.220 \\ 
+  & (0.618) & (0.836) & (0.768) & (0.916) & (1.110) & (1.560) & (0.409) & (0.612) & (0.996) \\ 
+  Cost\_to\_Income & -0.026^{**} & -0.031^{***} & -0.026 & -0.027^{*} & 0.004 & 0.005 & -0.024^{***} & -0.056^{***} & -0.005 \\ 
+  & (0.012) & (0.011) & (0.018) & (0.015) & (0.021) & (0.018) & (0.009) & (0.021) & (0.018) \\ 
+  NIM\_tr & 4.170^{***} & 3.060^{***} & 2.270 & 1.270 & -1.720 & -3.910 & 2.150^{**} & 4.030^{**} & 1.740 \\ 
+  & (1.090) & (1.020) & (1.400) & (1.280) & (2.300) & (2.520) & (1.080) & (1.580) & (1.970) \\ 
+  CBDI\_index & 0.178^{***} & 0.201^{***} & 0.188^{***} & 0.228^{***} & 0.276^{***} & 0.243^{***} & 0.071^{*} & 0.053 & 0.170^{*} \\ 
+  & (0.043) & (0.042) & (0.052) & (0.050) & (0.080) & (0.091) & (0.037) & (0.036) & (0.098) \\ 
+  Constant & 10.600 &  & 56.000^{***} &  & 43.300^{***} &  &  &  &  \\ 
+  & (7.730) &  & (9.460) &  & (14.500) &  &  &  &  \\ 
+ \hline \\[-1.8ex] 
+Hausman Test & 43.91 &  & 537.05 &  & 28.29 &  &  &  &  \\ 
+Prob (Hausman Test) & 1e-04 &  & 0 &  & 0.0198 &  &  &  &  \\ 
+Sargan Test &  &  &  &  &  &  & 30.84 & 19.46 & 22.01 \\ 
+Prob (Sargan Test) &  &  &  &  &  &  & 0.0574 & 0.4918 & 0.3398 \\ 
+Arellano-Bond:AR(1) &  &  &  &  &  &  & -4.66 & -2.89 & -2.67 \\ 
+Prob (AR(1)) &  &  &  &  &  &  & 0 & 0.0039 & 0.0077 \\ 
+Arellano-Bond:AR(2) &  &  &  &  &  &  & 0.76 & -1.58 & -0.6 \\ 
+Prob (AR(2)) &  &  &  &  &  &  & 0.4463 & 0.1142 & 0.5479 \\ 
+Observations & \multicolumn{1}{c}{374} & \multicolumn{1}{c}{374} & \multicolumn{1}{c}{379} & \multicolumn{1}{c}{379} & \multicolumn{1}{c}{339} & \multicolumn{1}{c}{339} & \multicolumn{1}{c}{72} & \multicolumn{1}{c}{73} & \multicolumn{1}{c}{68} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.274} & \multicolumn{1}{c}{0.207} & \multicolumn{1}{c}{0.323} & \multicolumn{1}{c}{0.310} & \multicolumn{1}{c}{0.215} & \multicolumn{1}{c}{0.173} &  &  &  \\ 
+Adjusted R$^{2}$ & \multicolumn{1}{c}{0.260} & \multicolumn{1}{c}{-0.003} & \multicolumn{1}{c}{0.310} & \multicolumn{1}{c}{0.128} & \multicolumn{1}{c}{0.199} & \multicolumn{1}{c}{-0.059} &  &  &  \\ 
+F Statistic & \multicolumn{1}{c}{129.000$^{***}$} & \multicolumn{1}{c}{11.000$^{***}$ (df = 7; 295)} & \multicolumn{1}{c}{167.000$^{***}$} & \multicolumn{1}{c}{19.200$^{***}$ (df = 7; 299)} & \multicolumn{1}{c}{89.500$^{***}$} & \multicolumn{1}{c}{7.900$^{***}$ (df = 7; 264)} &  &  &  \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{9}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 

@@ -1,0 +1,288 @@
+ %https://languagetool.org/de
+ 
+  \documentclass[12pt, a4paper]{article}
+ 
+\include{Options/Packages}
+
+
+\begin{document}
+\pagenumbering{arabic}
+
+%\SweaveOpts{concordance=TRUE}
+%\includepdf[pages={1}]{Pictures/scan-of-declaration-of-authorship.pdf}
+\includepdf[pages={1}]{Pictures/Deckblatt_Master21_englisch_fullfilled3.pdf}
+
+\AddToShipoutPicture*{\BackgroundPic}
+\
+%\thispagestyle{fancy}
+
+{\vspace{2cm}~}
+{\vspace{2cm}}
+
+%% SELECT BACHELOR OR MASTER THESIS
+{\noindent\large Master Thesis}
+
+\vspace{1cm}
+
+%% WRITE THE TITLE OF YOUR WORK
+{\noindent\LARGE\textbf{Macroeconomic and Bank-specific Drivers of Non-Performing Loans and the EBA's EU-wide Transparency Exercise: An Empirical Investigation.}}
+
+\bigskip
+
+%% WRITE YOUR NAME, date of birth, Student ID
+{\noindent\Large Javier Vargas Moreno}
+
+%\bigskip
+%{\noindent\small Date of Birth: 04.12.1985}
+%\newline
+%{\noindent\small Student ID: H0950424}
+
+\bigskip
+{\vspace{2cm}}
+{\noindent\large {\bf Subject Area:} Economics}
+
+%% WRITE YOUR Studienkennzahl
+\bigskip
+{\noindent\large {\bf Studienkennzahl:} 0950424}
+
+\bigskip
+
+%% WRITE THE NAME OF YOUR SUPERVISOR
+{\noindent\large {\bf Supervisor:} Hon.Prof.Mag.Dr. Aurel Schubert}
+
+\bigskip
+
+%% WRITE THE DATAE OF SUBMISSION
+{\noindent\large {\bf Date of Submission:} 27/05/2021}
+
+\bigskip\bigskip\bigskip\bigskip\bigskip\bigskip
+
+{\em\noindent Department of Economics, Vienna University of
+Economics and Business, Welthandelsplatz 1, 1020 Vienna, Austria}
+
+%\begin{figure}[b]
+\includegraphics[scale=0.3,left]{Pictures/logo_economics_1.png}
+
+%\end{figure}
+\FloatBarrier 
+\pagebreak
+
+
+%\section*{\textbf{Summary}}
+\begin{abstract}
+
+\textit{The objective of this paper is to analyze  the impact of macroeconomic and bank-specific factors on Non-Performing Loans (NPL) in the EU-banking sector using an extensive, granular dataset on major European banks gathered by the European Banking Authority (EBA) in the context of the EU-wide Transparency Exercise for the period 2014-2019. The analysis takes into consideration disaggregated bank's portfolio characteristics in terms of different exposure types (households, non-financial corporations, financial corporations other than credit institutions), geographic distribution of exposures (worldwide-country of destiny), intensity of cross-border diversification and initial levels of NPL. Moreover, the characteristics of the legal system and the regulatory status under the Single Supervisory Mechanism (SSM) are  also analyzed as potential determinants of NPL. Traditional panel data methodologies (Random Effects/Fixed Effects/GMM) and quantile regression methods for panel data (Pooled/Penalized Fixed Effects) have been applied for the empirical approach. \textbf{The empirical results show the importance of bank-specific and macroeconomic factors as well as the characteristics of the legal system for explaining the development of NPL in the European banking system}. In this context, Common Equity Tier1 Ratio (CET1) and Returns on Risk adjusted Capital (RORAC) are identified as the main bank-specific determinants of NPL, whereas inflation rates, government gross debt as percent of GDP and unemployment rates are found to be the main macroeconomic determinants of NPL. With regard to the characteristics of the legal system, recovery rates  after NPL resolution proceedings are  also found to be an important determinant of NPL. \textbf{The "new" findings also show that the relative importance of the determinants of NPL depends greatly on the exposure type under consideration, the original amount of NPL and the intensity of cross-border diversification in a bank's portfolio}. In this sense, this thesis provides some new empirical evidence that further recognizes the importance of understanding the heterogeneity in the European banking sector for explaining the development of NPL in Europe. \textbf{Furthermore, the "new" findings also suggest that regulation and supervision under the Single Supervisory Mechanism (SSM)  contributes significantly to a reduction of NPL in the European banking system}. In light of these results, the supervisory authorities should further  concentrate efforts on procedures and systems for improving risk management tools at a disaggregated level, thus accounting for the large heterogeneity in the European banking system, while promoting at the same time a further integration of the European financial sector within the established European institutions. Moreover, the presented results are also relevant for the design of recommendations to banks on NPL as published by the ECB and other national supervisory authorities regarding the development and implementation of adequate NPL strategies and Early Warning Indicators (EWI).  \textbf{In this context, the present analysis provides a new example of the potential use of the EBA's data and a new application of the quantile regression methodology for panel data}.}
+
+
+\end{abstract}
+% \textit{The objective of this paper is to analyze  the impact of macroeconomic and bank-specific factors on Non-Performing Loans (NPL) in the EU-banking sector using an extensive, granular dataset on major European banks gathered by the European Banking Authority (EBA) in the context of the EU-wide Transparency Exercise for the period 2014-2019. The analysis takes into consideration disaggregated bank's portfolio characteristics in terms of different exposure types (households, non-financial corporations, financial corporations other than credit institutions) as well as  the geographic composition   of  these exposures (worldwide-country of destiny). Moreover, the intensity of a bank's cross-border diversification and its regulatory status under the Single Supervisory Mechanism (SSM) are  also analyzed as potential determinants of NPL. Traditional panel data methodologies (Random Effects/Fixed Effects/GMM) and quantile regression methods for panel data (Pooled/Penalized Fixed Effects) have been applied for the empirical approach. Interestingly, the quantile regression methodology also allows a disaggregated estimation along the conditional distribution of NPL. The empirical results show the importance of bank-specific and macroeconomic factors as well as the characteristics of the legal system for explaining the development of NPL in the European banking system.In this context, Common Equity Tier1 Ratio (CET1) and Returns on Risk adjusted Capital (RORAC)  are identified as the main bank-specific determinants of NPL, whereas inflation rates, recovery rates and unemployment rates are found to be the main macroeconomic determinants of NPL.Furthermore,  the empirical results also suggests that regulation and supervision under the Single Supervisory Mechanism (SSM)  contributes significantly to a reduction of NPL in the European banking system. With regard to cross-border diversification, empirical evidence  is found suggesting that  the level of geographic diversification in a bank's portfolio is in fact a relevant determinant of NPL, although there is no  conclusive evidence of whether the final effects on NPL are positive or negative.Regarding the  disaggregated analysis on exposure types, exposures in non-financial corporations are the most sensitive to the determinants of NPL, closely followed by households, whereas exposures in financial corporations other than credit institutions appear to be  poorly explained by the models. Additionally, it is identified that the marginal and absolute impact of most determinants of NPL differs from bank to bank, depending heavily on the original amount of NPL in a bank's portfolio.These new findings show that the relative importance of the determinants of NPL greatly depends on the exposure type under consideration, the original amount of NPL as well as the intensity of cross-border diversification in a bank's portfolio. In this sense, this thesis provided some new empirical evidence that further recognizes the heterogeneity in the European banking sector in terms of risk appetite, management strategies and participated markets.This paper presents a new contribution to the existing NPL literature and provides new and interesting insights at a disaggregated level with potential for  regulatory, supervisory and bank-stress testing purposes as well as for the development of recommendations on NPL strategies.}
+
+  % Additionally, the paper may potentially have practical implications for  regulatory, supervisory and bank-stress testing purposes as well as for the development of recommendations on NPL strategies or the design of Early Warning Indicators (EWI)}.
+ % with examples of the potential uses of the EBA's data and the application of quantile regression methodology for panel %data.
+% 
+% %as well as a relaxation of the normality assumption. 
+% 
+% %and lagged NPLs
+% % \url{https://www.wu.ac.at/}
+% % \\
+% % \href{https://www.wu.ac.at/}{WU website}
+% % \\
+% % \href{mailto:javier.vargas.moreno@s.wu.ac.at}{meine-email in gmail.com}
+% 
+
+\pagebreak
+
+% \maketitle
+% \begin{namelist}{xxxxxxxxxxxx}
+% \item[{\bf Title:}]
+% 
+% %Macroeconomic and Microeconomic (bank-specific) Drivers of Non-Performing Loans %(NPL) in the framework of the Single Supervisory Mechanism (SSM).
+% Macroeconomic and Bank-specific Drivers of Non-Performing Loans and the EBA's EU-wide Transparency Exercise: An Empirical Investigation.
+% %and its impact on economic performance.
+% 
+% \item[{\bf Author:}]
+% Javier Vargas Moreno (Student number: h0950424 )
+% %\item[{\bf  Potential Supervisor:}]
+% %Guido Schärfer
+% \item[{\bf Degree:}]
+% MSc (WU) in Economics
+% 
+% \item[{\bf Language:}]
+% English
+% \end{namelist}
+% 
+% \pagebreak
+
+\let\hypercontentsline=\contentsline
+\renewcommand{\contentsline}[4]{\hypertarget{toc.#4}{}\hypercontentsline{#1}{#2}{#3}{#4}}
+
+
+
+
+\tableofcontents
+\pagebreak
+
+\listoffigures
+\pagebreak
+
+\listoftables
+
+\pagebreak
+\section*{List of Abbreviations}
+\newlist{abbrv}{itemize}{1}
+\setlist[abbrv,1]{label= ,labelwidth=1in,align=parleft,itemsep=0.1\baselineskip,leftmargin= 4cm}
+\begin{abbrv}
+\item[AMC] Asset Management Company
+\item[BCBC] The Basel Committee on Banking Supervision 
+\item[BIS] The Bank for International Settlements
+\item[CBDI] Cross-Border Diversification Index
+\item[CET1] Common Equity Tier 1
+\item[EBA] The European Banking Authority
+\item[ECB] The European Central Bank
+\item[ECOFIN] The European Council for Economic and Financial Affairs
+\item[EEA] The European Economic Area
+\item[EU] The European Union
+\item[EWI]  Early Warning Indicators
+\item[FSB] The Financial Stability Board
+\item[FD] First Differences
+%\item[FE] Fixed Effects
+\item[GMM] Generalized Method of Moments
+\item[HC] Heteroscedasticity-consistent 
+\item[HHI] Hirschmann-Herfindahl Index
+\item[IMF] The International Monetary Fund
+\item[LSDV] Least Squares Dummy Variable
+\item[QR] Quantile regression
+\item[NPL] Non-Performing Loans
+\item[OLS] Ordinary Least Squares
+\item[PFEQR] Penalized Fixed Effects Quantile Regression
+%\item[RE] Random Effects
+\item[SRM] The Single Resolution Mechanism 
+\item[SSM] The Single Supervisory Mechanism 
+\end{abbrv}
+
+\pagebreak
+
+\pagenumbering{arabic}
+
+\pagestyle{fancy}
+\fancyhf{}% Clear header/footer
+
+% \fancyhead[L]{\ifodd\value{page} Javier Vargas Moreno \else \thepage{} \fi}
+% \fancyhead[R]{\ifodd\value{page} \thepage{} \else Javier Vargas Moreno \fi}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\fancyhead[L]{\ifodd\value{page} \leftmark \else \thepage{} \fi}
+\fancyhead[R]{\ifodd\value{page} \thepage{} \else \leftmark \fi}
+%\nouppercase{\leftmark}
+\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+
+\setlength{\parskip}{\baselineskip}
+%\setkeys{Gin}{width=0.5\textwidth}
+% 
+%  \bigskip
+
+% <<Section1_Topic, child='Section/Section1_Topic.Rnw'>>=
+% 
+% @
+% 
+% \bigskip
+
+
+<<Section2_Motivation, child='Section/Section2_Motivation.Rnw'>>=
+
+@
+\bigskip
+%\pagebreak
+<<Section2_Literature_Review, child='Section/Section2_Literature_Review.Rnw'>>=
+
+@
+
+\bigskip
+\pagebreak
+<<Section3_Research_Question, child='Section/Section3_Research_Question.Rnw'>>=
+
+@
+\pagebreak
+% \bigskip
+% 
+% <<Section4_Variables, child='Section/Section4_Variables.Rnw'>>=
+% 
+% @
+
+
+\bigskip
+
+
+<<Section5_Descriptive_Stats, child='Section/Section5_Descriptive_Stats.Rnw'>>=
+
+@
+
+
+\bigskip
+\pagebreak
+<<Section4_Empirical_Approach, child='Section/Section4_Empirical_Approach.Rnw'>>=
+
+@
+
+%\bigskip
+\pagebreak
+<<Section5_Results, child='Section/Section5_Results.Rnw'>>=
+
+@
+
+%\bigskip
+% 
+\pagebreak
+<<Section6_Conclusions, child='Section/Section6_Conclusions.Rnw'>>=
+
+@
+% 
+% \bigskip
+% 
+% <<Section6_FurtherSteps, child='Section/Section6_FurtherSteps.Rnw'>>=
+% 
+% @
+
+%\section{Literature Review} 
+
+%\bibliographystyle{plain}
+%\bibliographystyle{abbrv}
+%\bibliographystyle{abstract}
+%\bibliographystyle{alpha}
+%\bibliographystyle{annotation}
+%\bibliographystyle{apalike}
+%\bibliographystyle{ieeetr}
+%\bibliography{MyReferences}
+\pagebreak
+\newpage
+
+
+\printbibliography[heading=bibintoc,title ={References}]
+
+
+\newpage
+
+\appendix
+%\setcounter{secnumdepth}{0}
+<<Section4_Variables, child='Section/Section4_Variables.Rnw'>>=
+
+@
+
+% \appendix
+% 
+% <<Section7_Appendix, child='Section/Section7_Appendix.Rnw'>>=
+% 
+% @
+
+%\newpage
+
+% \pagebreak
+% \listoftables
+
+\end{document}
+
+% "banksize_tran lever_tr_ratio lever_tr_ratio_calc"
+% /*INFORMATION:
+% Yearly data for 2015 only available up to june 2015 in  bankspec.banksize_tran and bankspec.lever_tr_ratio  bankspec.lever_tr_ratio_calc
+% For this reason a change from 201506 t0 201512 is needed in these tables for year 2015
+% Modified Names: work.banksize_tran_mod work.lever_tr_ratio_mod  work.lever_tr_ratio_calc_mod;
+% %EBA_list(list= "banksize_tran lever_tr_ratio lever_tr_ratio_calc",lib= BankSpec);

@@ -1,0 +1,105 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1} \textbf {Introduction}}{1}{section.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}\textbf {NPL Literature and Institutional Background }}{5}{section.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}NPL Literature Review}{5}{subsection.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.1}Linkages between Macroeconomic Indicators and NPL}{5}{subsubsection.2.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.2}Rule of Law, Regulation and Supervisory practices}{7}{subsubsection.2.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.3}Linkages between Bank-specific Indicators and NPL}{8}{subsubsection.2.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.4}Geographic Diversification and Disaggregated Loan Aspects }{11}{subsubsection.2.1.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.5}Empirical methods and Regional Scope}{12}{subsubsection.2.1.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}The European Banking Authority (EBA) and the Single Supervisory Mechanism (SSM)}{13}{subsection.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1}The European Banking Authority (EBA)}{13}{subsubsection.2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2}The Single Supervisory Mechanism (SSM)}{15}{subsubsection.2.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Data and Variables}{17}{section.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Data Preparation}{17}{subsection.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Variables}{19}{subsection.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3}Cross-Border Exposure-Weighted Macroeconomic Indicators}{20}{subsection.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4}Cross-Border Diversification Index $(CBDI)$}{21}{subsection.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}\textbf {Data Visualization}}{23}{section.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}Non-Performing Loans (NPL)}{23}{subsection.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2}Original Exposures and Cross-Border Diversification}{26}{subsection.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3}Country of Origin and the Single Supervisory Mechanism (SSM)}{28}{subsection.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4}Descriptive Statistics and Correlation Diagrams}{29}{subsection.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Empirical Approach}{30}{section.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1} "Standard" Panel Data Methods}{30}{subsection.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.1.1} Fixed Effects (FE) and Random Effects (RE) Models}{31}{subsubsection.5.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.1.2} Generalized Method of Moments (GMM) Models}{35}{subsubsection.5.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2}Quantile Regression Methods}{39}{subsection.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.2.1}Pooled Quantile Regression Methods}{40}{subsubsection.5.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.2.2}Fixed Effects Quantile Regression (Penalized FE Method)}{41}{subsubsection.5.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Results and Discussion}{43}{section.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1}Regression Analysis and Test Estimates}{43}{subsection.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2}Contribution of explanatory variables to NPL}{44}{subsection.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.2.1}Macroeconomic indicators}{44}{subsubsection.6.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.2.2}Bank-Specific variables}{46}{subsubsection.6.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.2.3}Supervision under the Single Supervisory Mechanism (SSM)}{48}{subsubsection.6.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.2.4}Geographic Diversification Index}{48}{subsubsection.6.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.2.5}Disaggregated loan Aspects: Exposure Types and NPL levels}{49}{subsubsection.6.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3}Research Hypotheses}{51}{subsection.6.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Conclusions}{61}{section.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{References}{66}{section*.21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A}Appendix }{72}{appendix.A}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.1}Software }{72}{subsection.A.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.2}Description of Variables}{73}{subsection.A.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.3}Original Exposures: Countries of Destination}{80}{subsection.A.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.4}Distributions and Scatterplots- Explanatory Variables (All Sample)}{81}{subsection.A.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.5}Descriptive Statistics- All Variables}{83}{subsection.A.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.6}Correlation Diagrams}{84}{subsection.A.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.7}Variance Inflaction Factor (VIF)}{87}{subsection.A.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.8}Panel Regression Tests}{88}{subsection.A.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.9}Tables- Quantile Regression (QR) and Slope Tests}{89}{subsection.A.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.10}Tables- Penalized Fixed Effects Quantile Regression (PFEQR)}{93}{subsection.A.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.11}Robustness Checks- Bank Specific Variables}{96}{subsection.A.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.12}Robustness Checks- Domestic Exposure $\geq $ 75\%}{101}{subsection.A.12}%

@@ -1,0 +1,112 @@
+
+\begin{table} [H]
+\small
+%\begin{center}
+
+\begin{subtable}[c]{.8\textwidth}
+\small
+\centering
+\caption{Households \& \\
+Non-Financial Corporations}
+
+
+\resizebox{.4\textwidth}{!}{\begin{tabular}{l c c}
+\hline
+ & Random Effects & Fixed Effects \\
+\hline
+(Intercept)         & $15.943^{**}$  &                \\
+                    & $(5.706)$      &                \\
+CET1\_ratio\_tr     & $-0.032$       & $0.010$        \\
+                    & $(0.058)$      & $(0.052)$      \\
+LEVER\_tr\_ratio    & $0.264$        & $-0.624^{***}$ \\
+                    & $(0.168)$      & $(0.171)$      \\
+RORAC               & $-0.037^{*}$   & $-0.010$       \\
+                    & $(0.015)$      & $(0.007)$      \\
+log(BankSize\_tran) & $-1.878^{***}$ & $-2.612^{**}$  \\
+                    & $(0.381)$      & $(0.900)$      \\
+Cost\_to\_Income    & $0.000$        & $-0.006^{*}$   \\
+                    & $(0.005)$      & $(0.003)$      \\
+NIM\_tr             & $0.450$        & $-0.258$       \\
+                    & $(0.494)$      & $(0.241)$      \\
+Stgth\_legal\_index & $0.808^{*}$    & $0.884^{*}$    \\
+                    & $(0.323)$      & $(0.398)$      \\
+Reco\_rate\_dol     & $-0.138^{***}$ & $-0.029$       \\
+                    & $(0.032)$      & $(0.022)$      \\
+infl\_perc          & $-0.438$       & $-0.038$       \\
+                    & $(0.284)$      & $(0.145)$      \\
+curr\_acc\_bal      & $0.181$        & $0.276^{***}$  \\
+                    & $(0.101)$      & $(0.057)$      \\
+GDP\_growth\_perc   & $0.229$        & $-0.042$       \\
+                    & $(0.122)$      & $(0.055)$      \\
+unempl\_rate\_imf   & $0.728^{***}$  & $1.169^{***}$  \\
+                    & $(0.123)$      & $(0.090)$      \\
+gross\_public\_debt & $0.169^{***}$  & $-0.013$       \\
+                    & $(0.023)$      & $(0.023)$      \\
+SSMY                & $-3.811^{**}$  &                \\
+                    & $(1.467)$      &                \\
+CBDI\_index         & $0.036^{*}$    & $0.016$        \\
+                    & $(0.016)$      & $(0.016)$      \\
+\hline
+R$^2$               & $0.531$        & $0.951$        \\
+Num. obs.           & $630$          & $630$          \\
+\hline
+\multicolumn{3}{l}{\scriptsize{$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$}}
+\end{tabular}}
+
+\vspace{1mm}  
+\end{subtable}% <---- don't forget this %
+\\
+\begin{subtable}[c]{.8\textwidth}
+\small
+\centering
+\caption{Financial Corporations}
+
+\resizebox{.4\textwidth}{!}{\begin{tabular}{l c c}
+\hline
+ & Random Effects & Fixed Effects \\
+\hline
+(Intercept)         & $32.058^{**}$  &              \\
+                    & $(11.459)$     &              \\
+CET1\_ratio\_tr     & $-0.129$       & $0.355$      \\
+                    & $(0.161)$      & $(0.232)$    \\
+LEVER\_tr\_ratio    & $0.162$        & $-1.021$     \\
+                    & $(0.406)$      & $(0.532)$    \\
+RORAC               & $-0.122^{***}$ & $-0.048$     \\
+                    & $(0.031)$      & $(0.027)$    \\
+log(BankSize\_tran) & $-2.202^{**}$  & $3.435$      \\
+                    & $(0.722)$      & $(2.334)$    \\
+Cost\_to\_Income    & $0.006$        & $0.017^{*}$  \\
+                    & $(0.009)$      & $(0.007)$    \\
+NIM\_tr             & $1.349$        & $1.629$      \\
+                    & $(1.162)$      & $(1.054)$    \\
+Stgth\_legal\_index & $0.280$        & $-0.024$     \\
+                    & $(0.702)$      & $(1.170)$    \\
+Reco\_rate\_dol     & $-0.182^{**}$  & $-0.203^{*}$ \\
+                    & $(0.066)$      & $(0.082)$    \\
+infl\_perc          & $-1.212^{*}$   & $-0.645$     \\
+                    & $(0.593)$      & $(0.450)$    \\
+curr\_acc\_bal      & $0.265$        & $0.473^{**}$ \\
+                    & $(0.206)$      & $(0.180)$    \\
+GDP\_growth\_perc   & $0.588^{*}$    & $0.093$      \\
+                    & $(0.295)$      & $(0.281)$    \\
+unempl\_rate\_imf   & $-0.059$       & $0.535^{*}$  \\
+                    & $(0.228)$      & $(0.211)$    \\
+gross\_public\_debt & $0.172^{***}$  & $-0.016$     \\
+                    & $(0.046)$      & $(0.068)$    \\
+SSMY                & $-3.140$       &              \\
+                    & $(2.908)$      &              \\
+CBDI\_index         & $0.010$        & $-0.012$     \\
+                    & $(0.032)$      & $(0.047)$    \\
+\hline
+R$^2$               & $0.276$        & $0.806$      \\
+Num. obs.           & $580$          & $580$        \\
+\hline
+\multicolumn{3}{l}{\scriptsize{$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$}}
+\end{tabular}}
+\vspace{10mm}  
+\end{subtable}
+
+\caption{Feasible Generalized Least Square Estimation (2014-2019)}
+\label{FGLS}
+%\end{center}
+\end{table}

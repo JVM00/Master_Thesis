@@ -1,0 +1,43 @@
+\begin{table}[H]
+% \centering 
+ 
+%\centering
+\begin{subtable}[c]{\textwidth}
+\caption{Households \& Non-Financial Corporations}
+\centering
+\resizebox{.9\textwidth}{!}{\begin{tabular}{llll}
+  \toprule
+Method & Statistic & P-Value & Alternative \\ 
+  \midrule
+Lagrange Multiplier Test -  (Honda) for unbalanced panels & 24.528 & 3.66865541437651e-133 & significant effects \\ 
+  F test for individual effects & 27.562 & 7.36038053901151e-160 & significant effects \\ 
+  Hausman Test & 410.124 & 9.32046790047146e-79 & one model is inconsistent \\ 
+  Wooldridge's test for unobserved individual effects & 4.035 & 5.45068927998697e-05 & unobserved effect \\ 
+  Wooldridge's test for serial correlation in FE panels & 80.439 & 5.922499582476e-18 & serial correlation \\ 
+   \bottomrule
+\end{tabular}}
+
+\vspace{1mm}  
+\end{subtable}% <---- don't forget this %
+\\
+\begin{subtable}[c]{\textwidth}
+\caption{Financial Corporations}
+\centering
+\resizebox{.9\textwidth}{!}{\begin{tabular}{llll}
+  \toprule
+Method & Statistic & P-Value & Alternative \\ 
+  \midrule
+Lagrange Multiplier Test -  (Honda) for unbalanced panels & 16.268 & 8.33620606248368e-60 & significant effects \\ 
+  F test for individual effects & 9.493 & 1.09087787385205e-69 & significant effects \\ 
+  Hausman Test & 4.693 & 0.989642232888385 & one model is inconsistent \\ 
+  Wooldridge's test for unobserved individual effects & 3.776 & 0.000159090846543112 & unobserved effect \\ 
+  Wooldridge's test for serial correlation in FE panels & 4.003 & 0.0460158082569163 & serial correlation \\ 
+   \bottomrule
+\end{tabular}}
+
+%\vspace{10mm}  
+\end{subtable}
+
+\caption{Breusch-Pagan Lagrange Multiplier, F-Test, Hausman \& Wooldridge's Test}
+\label{BPF}
+\end{table} 

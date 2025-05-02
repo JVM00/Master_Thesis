@@ -1,0 +1,63 @@
+\begin{table}[H]
+% \centering 
+ 
+%\centering
+\begin{subtable}[c]{\textwidth}
+\caption{Households \& Non-Financial Corporations}
+\centering
+\resizebox{.6\textwidth}{!}{\begin{tabular}{lrrrl}
+  \toprule
+ & Df & Resi.Df & F.stat & P.val \\ 
+  \midrule
+CET1\_ratio\_tr & 8 & 5662 & 2.2619 & 0.020663** \\ 
+  LEVER\_tr\_ratio & 8 & 5662 & 6.0321 & 0.0000001*** \\ 
+  RORAC & 8 & 5662 & 2.7902 & 0.0044075*** \\ 
+  log(BankSize\_tran) & 8 & 5662 & 8.5327 & 0*** \\ 
+  Cost\_to\_Income & 8 & 5662 & 25.5310 & 0*** \\ 
+  NIM\_tr & 8 & 5662 & 3.5887 & 0.0003649*** \\ 
+  Stgth\_legal\_index & 8 & 5662 & 2.3807 & 0.0147344** \\ 
+  Reco\_rate\_dol & 8 & 5662 & 4.6132 & 0.0000125*** \\ 
+  infl\_perc & 8 & 5662 & 5.3210 & 0.0000011*** \\ 
+  curr\_acc\_bal & 8 & 5662 & 4.5183 & 0.0000172*** \\ 
+  GDP\_growth\_perc & 8 & 5662 & 0.9389 & 0.482727 \\ 
+  unempl\_rate\_imf & 8 & 5662 & 1.8842 & 0.057955* \\ 
+  gross\_public\_debt & 8 & 5662 & 8.0784 & 0*** \\ 
+  SSMY & 8 & 5662 & 6.9094 & 0*** \\ 
+  CBDI\_index & 8 & 5662 & 1.6938 & 0.0945388* \\ 
+   \bottomrule
+\end{tabular}}
+
+\vspace{1mm}  
+\end{subtable}% <---- don't forget this %
+\\
+\begin{subtable}[c]{\textwidth}
+\caption{Financial Corporations}
+\centering
+\resizebox{.6\textwidth}{!}{\begin{tabular}{lrrrl}
+  \toprule
+ & Df & Resi.Df & F.stat & P.val \\ 
+  \midrule
+CET1\_ratio\_tr & 8 & 5212 & 0.9376 & 0.483783 \\ 
+  LEVER\_tr\_ratio & 8 & 5212 & 1.1141 & 0.3498962 \\ 
+  RORAC & 8 & 5212 & 22.0430 & 0*** \\ 
+  log(BankSize\_tran) & 8 & 5212 & 4.0476 & 0.0000823*** \\ 
+  Cost\_to\_Income & 8 & 5212 & 1.0990 & 0.3603319 \\ 
+  NIM\_tr & 8 & 5212 & 3.2084 & 0.0012201*** \\ 
+  Stgth\_legal\_index & 8 & 5212 & 2.1424 & 0.0288779** \\ 
+  Reco\_rate\_dol & 8 & 5212 & 0.9216 & 0.4971206 \\ 
+  infl\_perc & 8 & 5212 & 7.9523 & 0*** \\ 
+  curr\_acc\_bal & 8 & 5212 & 1.8584 & 0.0620357* \\ 
+  GDP\_growth\_perc & 8 & 5212 & 1.8690 & 0.0603365* \\ 
+  unempl\_rate\_imf & 8 & 5212 & 2.5780 & 0.0083052*** \\ 
+  gross\_public\_debt & 8 & 5212 & 1.4593 & 0.1666413 \\ 
+  SSMY & 8 & 5212 & 2.4942 & 0.0106151** \\ 
+  CBDI\_index & 8 & 5212 & 1.7123 & 0.0902495* \\ 
+   \bottomrule
+\end{tabular}}
+
+%\vspace{10mm}  
+\end{subtable}
+
+\caption{Quantil Regression: Slope Test}
+\label{slope}
+\end{table} 

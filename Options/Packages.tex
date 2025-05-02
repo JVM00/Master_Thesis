@@ -1,0 +1,214 @@
+% Macro \include{...} always put {...} on new page. Instead it use input{...}.
+ %\usepackage{natbib}
+%\usepackage{longtable} 
+		%\usepackage{tabulary}
+%\usepackage[backend=bibtex,style=numeric ,sorting=nyt]{biblatex}
+%\usepackage[backend=bibtex,style=authoryear ,sorting=nyt]{biblatex}
+%\usepackage[backend=bibtex,style=authoryear,bibstyle=nature,natbib=true]{biblatex}
+\usepackage[backend=bibtex,style=authoryear,bibstyle=apa,sorting=nyt,natbib=true]{biblatex}
+
+%\usepackage[backend=bibtex,style=authoryear,bibstyle=chicago-authordate,natbib=true]{biblatex}
+%https://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM
+%\usepackage[backend=bibtex,style=bwl-FU,sorting=nyt]{biblatex}
+%\usepackage[style=bwl-FU]{biblatex}
+%\usepackage[style=bwl-FU,sorting=nyt]{biblatex}
+
+%\usepackage[backend=bibtex,style=science ,sorting=nyt]{biblatex}
+%\usepackage[backend=bibtex,style=authoryear ,sorting=nyt]{biblatex}
+\addbibresource{Literature.bib}
+		%\usepackage{inputenc}
+		
+		\usepackage{tabularx}
+		\usepackage{caption}
+		\usepackage{enumitem}	 
+		\usepackage{array,multirow,graphicx}
+		\usepackage{float}
+		%\restylefloat{table}
+		\usepackage{rotating}
+		\usepackage{booktabs}	 
+		%\renewcommand{\arraystretch}{1}		 
+		\usepackage{url}
+		\usepackage{enumitem}
+		\usepackage{verbatim}
+		
+		\usepackage{dcolumn} %Stargazer needs
+	
+		\usepackage{threeparttable}
+		
+		%% PACKAGE TO INCLUDE A PDF FILE
+\usepackage{pdfpages}
+
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{Pictures/background.pdf}%
+/vfill
+}}}
+\fancyhf{}% Clear all headers/footers
+\renewcommand{\headrulewidth}{0pt}% No header rule
+\renewcommand{\footrulewidth}{0pt}% No footer rule
+
+
+		\usepackage[left=2.5 cm, right=2.5 cm, top=2.5 cm, bottom=3 cm]{geometry}
+		\renewcommand{\baselinestretch}{1.25} 
+		
+		\usepackage{mathptmx}
+		\usepackage{mathrsfs}
+		\usepackage{amsmath,amsthm,amssymb} 
+		\usepackage{mathtools}
+		% loads Â»amsmathÂ«
+
+		\usepackage[colorlinks= TRUE, linkcolor = black, citecolor = black, filecolor = black, urlcolor = black, linktocpage]{hyperref}
+		
+		\usepackage{rotating} % <-- HERE
+		
+		%\setlength{\oddsidemargin}{0.5cm}
+		%\setlength{\evensidemargin}{0.5cm}
+		%\setlength{\topmargin}{-1.6cm}
+		%\setlength{\leftmargin}{0.5cm}
+		%\setlength{\rightmargin}{0.5cm}
+		%\setlength{\textheight}{24.00cm} 
+		%\setlength{\textwidth}{15.00cm}
+\usepackage{longtable}
+ \usepackage[section]{placeins}
+
+
+		\parindent 0pt
+		\parskip 5pt
+		\pagestyle{plain}
+
+		\title{Master's Thesis-First Draft}
+		\author{}
+		\date{}
+
+		\newcommand{\namelistlabel}[1]{\mbox{#1}\hfil}
+		\newenvironment{namelist}[1]{%1
+		\begin{list}{}
+		{
+		\let\makelabel\namelistlabel
+		\settowidth{\labelwidth}{#1}
+		\setlength{\leftmargin}{1.1\labelwidth}
+		}
+		}{%1
+		\end{list}}
+
+		%\renewcommand{\thesection}{\Roman{section}} 
+		%\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+
+		%\def\footnoterule{}%
+		\usepackage{graphicx}
+	\graphicspath{{Graphs/}}
+	
+	
+	\pagestyle{empty}
+	\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
+\usepackage{hyperref}
+
+%\makeatletter
+%\let\hypersubsection\subsection
+%\def\subsection{\@ifstar\starsubsection\mysubsection}
+%\def\starsubsection{\hypersubsection*}
+%\newcommand{\mysubsection}[2][\@empty]% #1=optional (toc and top of page), #2=title
+%{\ifx#1\@empty \hypersubsection[#2]{\hyperlink{toc.subsection.\thesubsection}{#2}}
+% \else \hypersubsection[#1]{\hyperlink{toc.subsection.\thesubsection}{#2}}
+ %\fi}
+
+%\let\hypersection\section
+%\def\section{\@ifstar\starsection\mysection}
+%\def\starsection{\hypersection*}
+%\newcommand{\mysection}[2][\@empty]% #1=optional (toc), #2=title
+%{\ifx#1\@empty \hypersection[#2]{\hyperlink{toc.section.\thesection}{#2}}
+% \else \hypersection[#1]{\hyperlink{toc.section.\thesection}{#2}}
+% \fi}
+%\makeatother
+
+\linespread{1.25}
+
+
+\usepackage{answers}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+
+%% PACKAGE FOR THE HEADERS AND FOOTERS
+\usepackage{fancyhdr}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{\arabic{section}.\ #1}}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+
+%\usepackage{titlesec}
+
+%\setcounter{secnumdepth}{4}
+
+%\subsubsection{Test Subsubsection}
+%test
+%\paragraph{Test Modified Paragraph}
+%test
+
+%\usepackage{caption,float}
+%\usepackage[skip=2pt]{caption} 
+\usepackage{subcaption}
+%\usepackage{subfig} 
+\usepackage{dcolumn}
+%\textsc{\usepackage[font={small}]{caption, subfig}
+%\renewcommand{\figurename}{Fig.}
+% \renewcommand{\tablename}{Tab.}}
+  \def\baselinestretch{0.98}
+  
+ 
+ % \setlength{\floatsep}{1ex}
+% \setlength{\textfloatsep}{5pt plus 2.4pt minus 4.8pt}
+   % \setlength{\abovecaptionskip}{0 pt plus 3pt minus 2pt}
+  %\setlength{\belowcaptionskip}{0 pt plus 3pt}
+  
+  %\usepackage{cite}
+
+%\renewcommand\citeleft{\textup{(}}
+%\renewcommand\citeright{\textup{)}}
+
+%\textsc{\textsc{\usepackage[T1]{fontenc}
+\usepackage{mathptmx}}}
+ \def\baselinestretch{1.25}
+\linespread{1.25}
+
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+
+\usepackage{adjustbox}
+\usepackage{chngpage}
+%\usepackage{siunitx}
+
+%\section{Hello World}
+%\label{sec:hello}
+
+%\hyperref[sec:hello]{Word of text}
+%\setlength{\bibsep}{1.2pt}
+
+\newlength{\bibitemsep}\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
+\newlength{\bibparskip}\setlength{\bibparskip}{0pt}
+\let\oldthebibliography\thebibliography
+\renewcommand\thebibliography[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\parskip}{\bibitemsep}%
+  \setlength{\itemsep}{\bibparskip}%
+}
+
+%\renewcommand{arraystretch}{1.7}
+\newcolumntype{R}{@{\extracolsep{0.1cm}}r@{\extracolsep{0pt}}}%
+\newcolumntype{b}{>{\hsize=2.3\hsize}X}
+\newcolumntype{s}{>{\hsize=.7\hsize}X}
+\newcolumntype{m}{>{\hsize=.9\hsize}X}
+

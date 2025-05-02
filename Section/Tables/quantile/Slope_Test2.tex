@@ -1,0 +1,91 @@
+\begin{table}[H]
+% \centering 
+ 
+%\centering
+\begin{subtable}[c]{\textwidth}
+\caption{Households}
+\centering
+\resizebox{.5\textwidth}{!}{\begin{tabular}{lrrrl}
+  \toprule
+ & Df & Resi.Df & F.stat & P.val \\ 
+  \midrule
+CET1\_ratio\_tr & 8 & 5563 & 2.3287 & 0.0170996** \\ 
+  LEVER\_tr\_ratio & 8 & 5563 & 1.5864 & 0.1232168 \\ 
+  RORAC & 8 & 5563 & 2.2012 & 0.0245085** \\ 
+  log(BankSize\_tran) & 8 & 5563 & 8.4163 & 0*** \\ 
+  Cost\_to\_Income & 8 & 5563 & 0.5867 & 0.7897477 \\ 
+  NIM\_tr & 8 & 5563 & 5.5454 & 0.0000005*** \\ 
+  Stgth\_legal\_index & 8 & 5563 & 3.5046 & 0.0004778*** \\ 
+  Reco\_rate\_dol & 8 & 5563 & 0.8868 & 0.5265858 \\ 
+  infl\_perc & 8 & 5563 & 4.4616 & 0.0000208*** \\ 
+  curr\_acc\_bal & 8 & 5563 & 1.2785 & 0.2496346 \\ 
+  GDP\_growth\_perc & 8 & 5563 & 1.1391 & 0.3330907 \\ 
+  unempl\_rate\_imf & 8 & 5563 & 1.1153 & 0.3490547 \\ 
+  gross\_public\_debt & 8 & 5563 & 7.4650 & 0*** \\ 
+  SSMY & 8 & 5563 & 1.5215 & 0.1439789 \\ 
+  CBDI\_index & 8 & 5563 & 3.6250 & 0.0003248*** \\ 
+   \bottomrule
+\end{tabular}}
+
+\vspace{1mm}  
+\end{subtable}% <---- don't forget this %
+\\
+\begin{subtable}[c]{\textwidth}
+\caption{Non-Financial Corporations}
+\centering
+\resizebox{.5\textwidth}{!}{\begin{tabular}{lrrrl}
+  \toprule
+ & Df & Resi.Df & F.stat & P.val \\ 
+  \midrule
+CET1\_ratio\_tr & 8 & 5644 & 0.9760 & 0.4525963 \\ 
+  LEVER\_tr\_ratio & 8 & 5644 & 2.7433 & 0.0050748*** \\ 
+  RORAC & 8 & 5644 & 1.4448 & 0.1722868 \\ 
+  log(BankSize\_tran) & 8 & 5644 & 8.0284 & 0*** \\ 
+  Cost\_to\_Income & 8 & 5644 & 1.1111 & 0.3519587 \\ 
+  NIM\_tr & 8 & 5644 & 5.0522 & 0.0000028*** \\ 
+  Stgth\_legal\_index & 8 & 5644 & 2.1936 & 0.0250352** \\ 
+  Reco\_rate\_dol & 8 & 5644 & 3.7041 & 0.0002517*** \\ 
+  infl\_perc & 8 & 5644 & 4.9706 & 0.0000037*** \\ 
+  curr\_acc\_bal & 8 & 5644 & 3.0661 & 0.0018969*** \\ 
+  GDP\_growth\_perc & 8 & 5644 & 1.0541 & 0.392523 \\ 
+  unempl\_rate\_imf & 8 & 5644 & 2.6172 & 0.0073916*** \\ 
+  gross\_public\_debt & 8 & 5644 & 7.3197 & 0*** \\ 
+  SSMY & 8 & 5644 & 5.9118 & 0.0000001*** \\ 
+  CBDI\_index & 8 & 5644 & 1.4505 & 0.1700455 \\ 
+   \bottomrule
+\end{tabular}}
+
+%\vspace{10mm}  
+\end{subtable}
+\\
+\begin{subtable}[c]{\textwidth}
+\caption{Financial Corporations}
+\centering
+\resizebox{.5\textwidth}{!}{\begin{tabular}{lrrrl}
+  \toprule
+ & Df & Resi.Df & F.stat & P.val \\ 
+  \midrule
+CET1\_ratio\_tr & 8 & 5212 & 0.9376 & 0.483783 \\ 
+  LEVER\_tr\_ratio & 8 & 5212 & 1.1141 & 0.3498962 \\ 
+  RORAC & 8 & 5212 & 22.0430 & 0*** \\ 
+  log(BankSize\_tran) & 8 & 5212 & 4.0476 & 0.0000823*** \\ 
+  Cost\_to\_Income & 8 & 5212 & 1.0990 & 0.3603319 \\ 
+  NIM\_tr & 8 & 5212 & 3.2084 & 0.0012201*** \\ 
+  Stgth\_legal\_index & 8 & 5212 & 2.1424 & 0.0288779** \\ 
+  Reco\_rate\_dol & 8 & 5212 & 0.9216 & 0.4971206 \\ 
+  infl\_perc & 8 & 5212 & 7.9523 & 0*** \\ 
+  curr\_acc\_bal & 8 & 5212 & 1.8584 & 0.0620357* \\ 
+  GDP\_growth\_perc & 8 & 5212 & 1.8690 & 0.0603365* \\ 
+  unempl\_rate\_imf & 8 & 5212 & 2.5780 & 0.0083052*** \\ 
+  gross\_public\_debt & 8 & 5212 & 1.4593 & 0.1666413 \\ 
+  SSMY & 8 & 5212 & 2.4942 & 0.0106151** \\ 
+  CBDI\_index & 8 & 5212 & 1.7123 & 0.0902495* \\ 
+   \bottomrule
+\end{tabular}}
+
+%\vspace{10mm}  
+\end{subtable}
+
+\caption{Quantile Regression: Slope-Equality Test}
+\label{slope}
+\end{table} 

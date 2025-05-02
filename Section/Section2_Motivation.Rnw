@@ -1,0 +1,316 @@
+% !Rnw root = Thesis.Rnw
+
+\section{ \textbf{Introduction}}
+%\subsection{Motivation}
+
+
+Since the aftermath of the financial crisis that started in 2008, many European banks were left  facing  large accumulations of Non-Performing Loans (NPL) in their balance sheets. During the last years,  this development have been a very important issue for banks, supervisors and market participants in the European Union.
+
+In 2014, a harmonized definition of NPL across EU Member States was introduced  by the European Banking Authority (EBA), representing the basis for an adequate monitoring and comparability of NPL across European banks. By 2015, around 1 trillion Euros  were reported by European banks  to the European Banking Authority (EBA). In 2017, the European Council for Economic and Financial Affairs (ECOFIN) recognized the importance of providing a bold response to these accumulations of Non-perfoming Loans (NPL) in the European banking sector, thereby pointing out the need of a coordinate action plan both to reduce current levels and to avoid their re-emergence in the future. In this sense, the Council highlighted the need for solutions at European level for a problem that  has until recently  been addressed at national level (\cite{EBA}). Moreover, the expected dramatic economic consequences of the Covid-19 pandemic that started in 2020  have added new concerns on the development of NPL in the European Union, reawakening the interest in this topic.
+
+In this context, a proper understanding of the determinants and evolution of NPL is critical to perform an adequate microprudential monitoring of the banking system. It becomes even more  relevant for macroprudential purposes as the size and evolution of NPL may increase concerns  in terms of systemic risks, such as a threat to the overall financial stability and to the basic role of the banking sector as  financial intermediary and  main provider of credit into the real economy (\cite{Suarez.2018}; \cite{Fell}; \cite{BENDING}). The accumulation of NPL may thus involve severe social costs, specially during and in the aftermath of financial crises. For instance, increasing levels of NPL for longer periods in the banking system are generally followed by a reduction of the credit supply. In this situation, banks are characterized by  having higher funding  and recovery costs as well as limited capability to raise new capital (\cite{Suarez.2018}). Moreover, the presence of large stocks of NPL in a bank's portfolio can also generate negative externalities in relation to borrowers' payment culture. For instance, an increase in the number of borrowers defaulting  their loans  may  create individual incentives for other healthy borrowers not to repay their debts if they perceive that the bank's capabilities to pursue defaulted borrowers  is limited  due to the lack of resources for loan monitoring (\cite{Suarez.2018}).
+
+Since 2016 the EBA  has also been disclosing  for the public detailed bank-by- bank supervisory data  gathered in the context of the EU-wide Transparency Exercise on an annual basis. This data enhances the comparability of problem loans across  European banks by using an harmonized definition of NPL and  providing an extensive granularity (exposures are broken down by banks, asset classes, the largest countries of counterparty, default status and  calculation methods, etc...). Additionally, the quality controls undertaken by the EBA  in the context of  its supervisory competencies ensure high reliability of the provided data (\cite{Kerbl}; \cite{Turk}). 
+
+
+
+In the academic research, scholars and international organizations have also pointed out  the presence of some challenges in the NPL literature when using individual bank data despite the need of more disaggregated analyses of NPL drivers (\cite{FSI}; \cite{Cerutti}). These challenges can be summarized in the following points:
+
+\begin{itemize}[topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+
+\item Data is usually provided on a consolidated basis and its availability is limited due to data protection regulation and banking law.
+\item Private platforms like Dealscan, Datastream, Bankscope or Debtwire suffers from a representativeness bias and data quality issues
+ \item The use of macroeconomic information from the bank's country of origin does not totally account  for cross-border portfolio diversification in the banking sector when analyzing its impact on non-performing loans by using consolidated data at bank-level.
+         
+\item The lack of comparability of NPL across banks due to divergences concerning the definition of non-performing loans and the method of compilation of the data across countries.
+
+\end {itemize}
+
+Therefore, the main purpose of this thesis is to contribute to a further understanding  of the determinants of  NPL by  analyzing the impact of macroeconomic and bank-specific factors on non-performing loans  in the EU-banking sector using a  granular dataset on major European banks gathered by the European Banking Authority (EBA) in the context of the EU-wide Transparency Exercise for the period 2014-2019. Motivated by the granularity of this dataset,  important aspects of a bank's portfolio, such as different exposure types (households, non-financial corporations, financial corporations other than credit institutions), geographic distribution   of  exposures (worldwide-country of destiny), intensity of  cross-border diversification and initial levels of NPL will be taken into consideration. Moreover, the characteristics of the legal system and the regulatory status under the Single Supervisory Mechanism (SSM) are  also analyzed as potential determinants of NPL.
+
+The use of the EBA data in this thesis is even more  relevant as there are rarely any academic paper  in the Non-Performing Loans (NPL) literature that made any use or reference to the EBA transparency exercises Database despite its high quality standards, the novelty of its compilation and its usefulness to handle certain difficulties concerning the analysis of NPL. More details about its characteristics, advantages and the institutions behind its compilation  will  also be provided in the following sections. For the empirical analysis quantile regression models for panel data  will also be  estimated. These methods provide new insights into  the determinants of  NPL by  allowing a disaggregated estimation of their  impact at different NPL levels along the conditional distribution of NPL in the EU banking sector. 
+
+
+
+In summary, the motivation for this present topic stems from  the following reasons:
+
+\begin{itemize}
+
+\item   EU authorities and  the academic literature  claimed that any policy measure and regulatory approach in the European Union with respect to problem loans required a deep understanding of  their underlying determinants
+
+\item  To explore the factors  that contribute to  this understanding, whether those factors have a macroeconomic or bank-specific nature and their impact on NPL
+
+\item  The  availability of  disaggregated supervisory data on major European banks disclosed by the EBA  allows new contributions in the NPL literature, for instance, a detailed analysis of disaggregated NPL-portfolios at bank-level split by exposure type, geographic allocation of exposures and a bank's supervisory status
+
+\item To provide an empirical example of the potential benefits from using the data of the EBA's EU-wide Transparency Exercise for supervisory and academic purposes with respect to certain challenges presented in the NPL literature
+        
+\item  New developments in the  quantile regression methodology allow a deeper exploration of  the impact of these factors at different quantiles along the conditional distribution of NPL in the EU banking sector
+
+\end{itemize}
+
+In light of these considerations, the  following research questions are formulated:
+
+\textbf{General Question:}
+%What are the Macroeconomic and bank-specific determinants of Non-Performing Loans (NPL)?
+% in the banking sector regulated under the Single Supervisory Mechanism(SSM)?\\
+%\begin{itemize}
+%\item 
+ \begin{itemize}[topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+\item \textit{What is the impact of macroeconomic and bank-specific factors on Non-Performing Loans (NPL) in the EU-banking sector?}
+\item \textit{Which of the factors have a significant and positive correlation with NPL?}
+\item \textit{Which of the factors have a significant and negative correlation with NPL?}
+\end{itemize}
+\textbf{Specific Questions:}
+  \begin{itemize}[topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+\item \textit{What is the impact of Supervision under the Single Supervisory Mechanism (SSM) on Non-Performing Loans?}
+ 
+\item \textit{What is the impact of geographic diversification on Non-Performing Loans?}
+
+% What is the impact of  geographically diversified diversification in a on Non-Performing Loans?
+% 
+% Are   banks that diversied their activites the impact of  Supervision under the Single Supervisory Mechanism (SSM) on Non-Performing Loans?
+
+
+%macroeconomic and bank-specific factors on Non-Performing Loans in the EU-banking sector?
+
+%\textit{Secondary question:}
+\item \textit{Are there  different  conclusions given:}
+
+
+\renewcommand{\labelitemi}{$\ast$}
+\renewcommand{\labelitemii}{$\diamond$}
+\renewcommand{\labelitemiii}{$\cdot$}
+\renewcommand{\labelitemiv}{$ $}
+%\renewcommand{\labelitemi}{$\bullet$}
+
+    \begin{itemize}[topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+    %\item  Asset class
+    \item  Different Exposure Types:
+        \begin{itemize}[topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt] 
+            %\item Central banks
+            %\item Credit institutions
+            %\item General governments
+            \item Financial corporations other than credit institutions
+            \item Households
+            \item Non-financial corporations
+        \end{itemize}
+       
+    
+    \item  Different initial levels of NPL in portfolio
+   % \item Geographic Diversification of exposures
+    %\item Membership in the Single Supervisory Mechanism (SSM)
+    
+   % \item Supervision under the Single Supervisory Mechanism (SSM)
+    
+    
+    \end{itemize}
+
+
+\end{itemize}
+\renewcommand{\labelitemi}{$\ast$}
+\renewcommand{\labelitemii}{$\diamond$}
+\renewcommand{\labelitemiii}{$\cdot$}
+\renewcommand{\labelitemiv}{$ $}
+
+In the context of these general questions, the following research hypotheses will be analyzed in this thesis:
+%[itemsep=2pt,parsep=2pt]
+   \begin{itemize}[label= $ $,topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+   
+    \item $H_{1}$:  NPL are  mainly determined by bank-specific and macroeconomic factors
+    \item $H_{2}$:  Business cycle indicators are significantly related to NPL
+    \item $H_{3}$:  Inflation rates  are significantly related to NPL
+    \item $H_{4}$:  Public finance indicators are significantly related to NPL
+    \item $H_{5}$:  Terms of trade indicators are significantly related to NPL
+    \item $H_{6}$:  The size of a bank is significantly related to NPL
+    \item $H_{7}$:  Legal aspects of credit access and  NPL resolution are significantly related to NPL
+    \item $H_{8}$:  Bank profitability and cost efficiency indicators are significantly related to NPL
+    \item $H_{9}$:  Bank capital adequacy ratios are significantly related to NPL
+    \item $H_{10}$: The level of geographic diversification in portfolio is significantly related to NPL
+    \item $H_{11}$: Supervision under the SSM  has significant effects on NPL
+    \item $H_{12}$: Magnitude and direction of the effects on NPL varies across exposure typesThe effects on NPL varies conditional on the  initial level of NPL
+    \item $H_{13}$: The effects on NPL vary conditional on the  initial level of NPL
+
+ \end{itemize} 
+
+Additionally, the findings in this thesis might also provide interesting insights for  supervisory and regulatory authorities in the EU banking system as well as scholars interested in the NPL literature. Firstly, European supervisory authorities and Central Banks might find the results relevant for the definition of Regulatory requirements or general standards with respect to lending policies, capital requirements and overall banking operations. In particular, the results might also be interesting for the preparation of recommendations on NPL strategies, Early Warning Indicators (EWI) or bank-stress testing methodologies drafted by the competent supervisory bodies over banks operations in any of the EU member states. Finally, the findings also provide new contributions in the academic research on NPL in terms of the granularity and novelty of the data (EBA's EU-wide Transparency Exercise), the empirical methodology (quantile regression methods) and the focus on the disaggregated aspects of loan portfolios.
+
+% 
+% Moreover,  the use of this  Given that this data were also partly used in EBA stress tests, both the banks’ own and supervisory
+% quality control ensures a high standard of data quality\cite{Kerbl}.
+% 
+% 
+% 
+% . These exercises are conducted on an annual basis by the European Banking
+% Authority (EBA) at the EU-wide level  since 2014 and aim to foster market discipline in the Single Market as well as to enhance transparency in the EU banking sector.
+% The six exercises completed to date comprise bank-specific data at the highest level of consolidation from over 130 banks  and 24 countries in the EU and the European
+% Economic Area (EEA) representing around 70\%-80\% of total EU banking assets. A considerable advantage of these datasets are its granularity – exposures are broken down
+% by banks, asset classes, the largest countries of counterparty, default status, calculation method-. This granularity allow an analysis of the determinants
+% of NPL  at a country and a bank-by-bank level \cite{Kerbl}\cite{Turk}. Given that the data were also partly used in EBA stress tests, both the banks’ own and supervisory
+% quality control ensures a high standard of data quality\cite{Kerbl}.
+% 
+% Additionally, there are rarely any academic paper  in the Non-Performing Loans (NPL) literature that may any use or reference to the EBA transparency exercises Databases.
+
+% The available literature studying NPL as an endogenous variable  try to explain problem loans
+% either by bank specific and/or macroeconomic factors. Usually, NPL information is cumbersome to collect because data availability is limited due to data
+% protection regulation and banking law. Some NPL literature use individual bank data obtained from platforms like Dealscan, Datastream, Bankscope
+% or Debtwire\cite{ManzFlorian}. Nevertheless, these study suffers from a representativeness bias due to the fact that the data on NPL provided by these
+% platforms is only available for a very limited number of countries and for a few numbers of banks\cite{Boudriga}. By this reasons, some papers consider the use
+% of aggregate data for the whole banking system of each country  preferable to individual data at bank level as the risk of non-representativeness of the sample
+% is reduced\cite{Makri}. For instance, some studies explores the relationship between several macroeconomic variables and financial soundness indicators (capital adequacy,
+% profitability and asset quality) based on country aggregate data \cite{Babihuga}.
+% 
+% A common challenge facing the NPL literature also refer to divergences concerning the method of compilation of the data.  Most studies exploring the impact of macroeconomic and bank-specific variables tend to risk data and model inconsistencies due to the fact that usually macroeconomic variables are compiled on a domestic country-basis (World-Bank database, Eurostat) while most bank-specific indicators, regardless of country-level or  bank-level, are usually compiled on  a cross-border consolidation basis (IMF-Financial Soundness Indicators and bankscope data) \cite{FSI}.
+% 
+% Additionally, these studies also have a lack of data regarding cross-border exposures which also limit the analysis of macro-financial linkages on NPL. For the geographic distribution of loans, data on cross-border exposures are also published by the BIS on country level \cite{FSI}.
+% 
+% Furthermore, data quality issues are also relevant as cross-border comparisons of NPL in this databases is limited due  to accounting and regulatory standards divergences \cite{FSI}.
+% 
+% In other words, differences on the consolidation basis and the lack of granularity  of the compiled data make difficult to conduct empirical analysis covering  macro and bank-specific determinants in the same model. In this context, the use of data from the EBA transparence exercise provide a more adequate framework  in terms of granularity and data quality.
+% 
+% The results of this study can also be relevant for the further understanding  of NPL drivers in the framework of the European Banking Authority (EBA) and the  Single Supervisory Mechanism (SSM), specially for the case of  large banks which represent approximately between 80\% and 85\% of banking assets in the European Union. In this sense, the results may provide useful insides for the setting of recommendations on NPL strategies or Early Warning Indicators (EWI), which may contribute to a more effective microprudential supervision of large banks in Europe \cite{guideline} \cite{SSM.Manual.2018}.
+
+
+% 
+% a deterioretion of thepayment culture, a congestion of bankrupcy courts , undermined confidence in banks,  unsolved debt overhang among borrowers.
+
+% In this situation, banks may  become distracted fom their core busines, having to deal with higher funding  and recovery costs as well as  a limited capability to raise new capital \cite{Suarez.2018}
+
+
+
+%A sizeable stock of NPL can also generate negative externalities by affecting borrowers' payment culture.
+
+
+% 
+% For instance, Reduced credit supply
+%  
+%  
+%  However, establishing a causal effect of NPL ratios on credit growth is generally difficult, as the co-movement of these two variables may be driven by unobservable variables such as loan demand.
+%  
+%  Costs of NPL to banks
+%  Non-interest-generating assets
+%  Heightened provisions
+%  Additional capital requirements
+%  Distraction from core business
+%  Concern among investors and markets
+%  Unsolved debt overhang among banks
+%  Higher funding costs
+%  Need for recovery and resolution 
+%  
+%  Costs of NPL to society 
+%  Evergreening and excessive forbearance 
+%  Deterioration of payment culture 
+%  Congested bankruptcy courts 
+%  Fire sales of repossessed collateral 
+%  Undermined confidence in banks 
+%  Unsolved debt overhang among borrowers
+%  Reduced credit supply
+%  Need for recovery and resolution
+% 
+% Factors interfering in this regard and calling for policy action
+% Unaddressed externalities 
+% Economies of scale and coordination failures 
+% Institutional distortions 
+% Moral hazard vis-�-vis the safety net
+% 
+% 
+% 
+% The size and the persistence of NPL stocks may be socially excessive, especially during and in the aftermath of economic downturns, for a variety of reasons.
+% 
+% 
+% 
+% The size and the persistence of NPL stocks may be socially excessive, especially during and in the aftermath of economic downturns, for a variety of reasons. 
+% These reasons include unaddressed externalities, economies of scale and coordination failures, institutional distortions and moral hazard vis-�-vis banks' safety net. These factors, which are listed at the bottom of Figure 1, are each described in detail in the following subsections. They are instances of market failures and institutional frictions that generally call for regulatory or government intervention to improve the allocation of resources and include some of the factors that motivate macroprudential policy
+
+
+% 
+% is commonl importanz for microprudencial puposes, although
+% 
+% Typically, microprudential authorities monitor the dynamics of the quality and performance of the credit portfolios held by the banks under their jurisdiction. These authorities also have a range of tools which they can use to address possible concerns in this area. NPL can come to the attention of macroprudential authorities when their size or evolution becomes significant from a system-wide perspective, acting as a threat to the stability of the financial system or to banks' critical functions, such as the provision of credit to the real economy \cite{Suarez.2018}.
+% 
+% 
+% 
+% 
+% \cite{Suarez.2018}
+
+
+% 
+% the Council 
+% 
+% Non-performing loans are a problem for the banking industry for which solutions have until now been mainly defined at the national level",
+% 
+% 
+% and avoid
+% 
+% the problem of non-performing loans (NPL) in the banking sector.
+% 
+% Economic and Financial Affairs Council, 11 July 2017
+% 
+% 
+% In 2014 the EBA introduced a harmonised definition across European countries of NPL, which has been the benchmark for monitoring the asset quality of the European banking sector. As of June 2015, banks reporting to the EBA had accumulated almost EUR 1.2 trillion of NPL. Since then, banks have made a significant effort to restructure their business models and to reduce NPL. In parallel, supervisors have implemented various measures that have addressed NPL. In addition, the Council of the EU, in an effort to provide a bold response to tackle NPL, announced in July 2017 an action plan to tackle NPL in Europe. 
+% 
+% 
+% %https://www.consilium.europa.eu/en/meetings/ecofin/2017/07/11/
+% 
+% NPL have been a major concern for banks, supervisors and market participants
+% 
+% the European Union have been struggling with
+% 
+% The accumulation of NPL on the balance sheets of EU banks in the aftermath of the global financial crisis has caught the attention of European authorities in the last few years. There
+% 
+% EU struggling with NPL1 in their balance sheets
+% The persistence  at 
+% Their persistence
+% at elevated levels after the financial crisis gave rise to financial stability concerns - including
+% possible adverse impacts on financial intermediation. A commonly-held view is that NPL
+% impair the credit allocation mechanism
+% 
+% 
+% The financial crisis and ensuing recessions, coupled with structural factors and inadequate loan origination practices, have left a number of banks in the EU struggling with NPL1 in their balance sheets. For many years, NPL have been a major concern for banks, supervisors and market participants, as their negative effects pose risks to the overall economy and financial system. In addition to other effects, NPL affect banks' profitability, consume productive resources and may limit banks' capacities to lend to the real economy.
+% In 2014 the EBA introduced a harmonised definition across European countries of NPL, which has been the benchmark for monitoring the asset quality of the European banking sector. As of June 2015, banks reporting to the EBA had accumulated almost EUR 1.2 trillion of NPL. Since then, banks have made a significant effort to restructure their business models and to reduce NPL. In parallel, supervisors have implemented various measures that have addressed NPL. In addition, the Council of the EU, in an effort to provide a bold response to tackle NPL, announced in July 2017 an action plan to tackle NPL in Europe. \cite{EBA}
+% 
+
+
+
+
+
+ % Non-performing loans (NPL) is a very relevant topic for economic policy in Europe as high levels of NPL may cause financial instability. The potential relation between  NPL and bank lending behaviour by means of bank asset deterioration may also have substantial impacts on financial intermediation, and for extension, on the economic performance at macro level \cite{Fell}\cite{BENDING}
+
+% 
+% \begin{itemize} [label= $\ast$]
+% 
+% 		\item Non-performing loans (NPL) is a very relevant topic for economic policy in Europe as high levels of NPL may cause financial instability. The potential relation between  NPL and bank lending behaviour by means of bank asset deterioration may also have substantial impacts on financial intermediation, and for extension, on the economic performance at macro level \cite{Fell}\cite{BENDING}.
+% 
+% 		\item  Many international institutions have expressed concerns about the lack of international comparability when it comes to assessing the NPL held by banks. In 2014 the EBA implemented technical standards on NPL  which harmonised  the definition of NPL across European countries, setting the benchmark for monitoring the asset quality of the European banking sector. This harmonization led to an improvement of the cross-country comparability of NPL in Europe \cite{Platon}\cite{EBA}.
+% 
+% 		\item  The use of data published as part of the EBA transparency exercise  is quite a novelty. These exercises are conducted on an annual basis by the European Banking
+% 		Authority (EBA) at the EU-wide level  since 2014 and aim to foster market discipline in the Single Market as well as to enhance transparency in the EU banking sector.
+% 		The six exercises completed to date comprise bank-specific data at the highest level of consolidation from over 130 banks  and 24 countries in the EU and the European
+% 		Economic Area (EEA) representing around 70\%-80\% of total EU banking assets. A considerable advantage of these datasets are its granularity – exposures are broken down
+% 		by banks, asset classes, the largest countries of counterparty, default status, calculation method-. This granularity allow an analysis of the determinants
+% 		of NPL  at a country and a bank-by-bank level\cite{Kerbl}\cite{Turk}. Given that the data were also partly used in EBA stress tests, both the banks’ own and supervisory
+% 		quality control ensures a high standard of data quality\cite{Kerbl}.
+% 
+% 		\item  Additionally, there are rarely any academic paper  in the Non-Performing Loans (NPL) literature that may any use or reference to the EBA transparency exercises Databases.
+% 
+% 		\item  The available literature studying NPL as an endogenous variable  try to explain problem loans
+% 		either by bank specific and/or macroeconomic factors. Usually, NPL information is cumbersome to collect because data availability is limited due to data
+% 		protection regulation and banking law. Some NPL literature use individual bank data obtained from platforms like Dealscan, Datastream, Bankscope
+% 		or Debtwire\cite{ManzFlorian}. Nevertheless, these study suffers from a representativeness bias due to the fact that the data on NPL provided by these
+% 		platforms is only available for a very limited number of countries and for a few numbers of banks\cite{Boudriga}. By this reasons, some papers consider the use
+% 		of aggregate data for the whole banking system of each country  preferable to individual data at bank level as the risk of non-representativeness of the sample
+% 		is reduced\cite{Makri}. For instance, some studies explores the relationship between several macroeconomic variables and financial soundness indicators (capital adequacy,
+% 		profitability and asset quality) based on country aggregate data \cite{Babihuga}.
+% 
+% 		\item A common challenge facing the NPL literature also refer to divergences concerning the method of compilation of the data.  Most studies exploring the impact of macroeconomic and bank-specific variables tend to risk data and model inconsistencies due to the fact that usually macroeconomic variables are compiled on a domestic country-basis (World-Bank database, Eurostat) while most bank-specific indicators, regardless of country-level or  bank-level, are usually compiled on  a cross-border consolidation basis (IMF-Financial Soundness Indicators and bankscope data) \cite{FSI}.
+% 
+% 		\item Additionally, these studies also have a lack of data regarding cross-border exposures which also limit the analysis of macro-financial linkages on NPL. For the geographic distribution of loans, data on cross-border exposures are also published by the BIS on country level \cite{FSI}.
+% 
+% 		\item Furthermore, data quality issues are also relevant as cross-border comparisons of NPL in this databases is limited due  to accounting and regulatory standards divergences \cite{FSI}.
+% 
+% 		\item In other words, differences on the consolidation basis and the lack of granularity  of the compiled data make difficult to conduct empirical analysis covering  macro and bank-specific determinants in the same model. In this context, the use of data from the EBA transparence exercise provide a more adequate framework  in terms of granularity and data quality.
+% 
+% 		\item The results of this study can also be relevant for the further understanding  of NPL drivers in the framework of the European Banking Authority (EBA) and the  Single Supervisory Mechanism (SSM), specially for the case of  large banks which represent approximately between 80\% and 85\% of banking assets in the European Union. In this sense, the results may provide useful insides for the setting of recommendations on NPL strategies or Early Warning Indicators (EWI), which may contribute to a more effective microprudential supervision of large banks in Europe \cite{guideline} \cite{SSM.Manual.2018}.
+% 
+% \end{itemize}
+
+

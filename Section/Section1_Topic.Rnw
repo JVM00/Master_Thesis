@@ -1,0 +1,8 @@
+
+% !Rnw root = Thesis.Rnw
+\section{ \textbf{Introduction}}
+\subsection{ Topic}
+
+%Write a brief description of the topic you wish to work on. This should be done in 40 words or less. 
+
+An analysis of the impact of macroeconomic and bank-specific factors on Non-Performing Loans  in the EU-banking sector using an extensive, granular dataset on major European banks gathered by the European Banking Authority (EBA) in the context of the EU-wide Transparency Exercise for the period 2014-2019.

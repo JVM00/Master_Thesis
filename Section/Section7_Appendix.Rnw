@@ -1,0 +1,3581 @@
+% !Rnw root = Thesis.Rnw
+
+% \section{Appendix A}
+% 
+% 
+% % 
+% \section{Appendix B}
+% 
+% 
+% 
+%  %\include{Tables/Static_Models_npl_hh}
+% %\include{Tables/Static_Models_npl_fi}
+% %\include{Tables/Static_Models_npl_nfi}
+% \section{Appendix C}
+
+
+% \include{Tables/Static_Models_dyn_npl_hh_rt}
+% \include{Tables/Static_Models_dyn_npl_fi_rt}
+% \include{Tables/Static_Models_dyn_npl_nfi_rt}
+
+\pagebreak
+\section{Appendix }
+
+%\subsection{Original Exposures: Countries of Destination} 
+
+ 
+
+ <<country_destination2,fig.width=6, fig.height=8, out.width='.89\\linewidth',fig.show='hide'>>=
+#setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+#getwd()
+ 
+ 
+ library(tidyverse)
+library(rstudioapi)
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+ 
+ load(paste(path_data,'country_diversification.RData', sep = "/"))
+ 
+library(plyr)
+ 
+ CBDI.1<- country_diversification %>% group_by(Country_label)%>% dplyr::count() %>% mutate(Type=1)
+CBDI.2 <- country_diversification%>% dplyr::count()%>% mutate(n_all=n,Type=1) %>%  dplyr::select(n_all,Type)
+#CBDI.3 <-  CBDI.1  %>% mutate( pct2= round( (n/ CBDI.2 [1,1])*100,3))
+CBDI.3 <-  CBDI.1  %>% left_join(CBDI.2,by="Type") %>%  mutate( pct2=  n/n_all)
+
+CBDI.3 <- CBDI.3 %>% mutate(Country_label= as.factor(Country_label)) 
+ CBDI.3$Country_label <- revalue(CBDI.3$Country_label,c("Macedonia - The former Yugoslav Republic of" = "Macedonia","Bosnia and Herzegowina"="Bosnia","Taiwan Province of China"="Taiwan"))
+ #detach("package:plyr")
+
+ 
+ ggplot(CBDI.3,
+       aes(x=Country_label, y=pct2)) +
+  geom_bar(  stat='identity', position = 'stack',fill="lightblue4")+
+  #geom_bar(  stat='identity',fill="lightblue4")+
+  coord_flip()+
+  xlab("") +
+  ylab("%")+
+  # scale_fill_grey()+
+  theme_light()+
+   geom_text(aes(x=Country_label, y=pct2,label = scales::percent(pct2,accuracy = .01,scale = 100), group =Country_label),position=position_dodge(width = 1),hjust = -0.5, size = 2,col="black")+
+  # position="stack",vjust=+2.3,col="black",size=3)+
+  #facet_wrap(~ Exposure, nrow = 3)+
+  #scale_fill_manual(values = c("lightslategray","lightblue"))+
+  # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+  # scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("NO", "YES"))+
+  scale_y_continuous(label =  scales::percent_format(accuracy = .01,scale = 100),breaks=seq(0,.1,0.01),limits = c(0, .1)  )+
+  theme(plot.title = element_text(hjust = 0.5,size=8))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 10))+
+  #theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+  theme(panel.background = element_rect(fill = "lightgray"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))
+  #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+ # ggtitle("Tota Original Exposures Distribution: Top 10 largest Country of Destination  (2014-2020)")
+
+
+ @
+
+
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.7\paperwidth]{figure/country_destination2-1}}
+% %\vspace{-1cm}}
+% \caption{Original Exposures Distribution(\%): Top 10 largest Country of Destination per Bank (2014-2020)}
+% \label{country_destination2}
+%  %\vspace*{-3mm}
+% \end{figure}
+
+
+\FloatBarrier
+\subsection{Variables Density and Distribution}
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+
+%\hspace*{-0.5in}
+\centering
+
+
+ <<VarDistr,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+#setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+#getwd()
+ 
+#VarDistr,fig.width=9, fig.height=, out.width='1\\linewidth', out.height='1,3\\linewidth',out.extra='angle=90'
+ 
+ #options(scipen=999)#prevent scientic notation
+ library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+ 
+ load(paste(path_data,'all.RData', sep = "/"))
+library(plyr)
+  all%>%  dplyr::select(-NPL_ratio) %>% keep(is.numeric) %>%  gather() %>% 
+    ggplot(aes(x=value,y=..density..)) +
+    xlab("Values") +
+ylab("Density") +
+    facet_wrap(~ key, scales = "free") +
+   geom_histogram(fill = "cornsilk", colour = "grey60")+
+   geom_density()+
+   theme_bw()+
+   theme(plot.title = element_text(hjust = 0.5))+
+   theme(strip.background =element_rect(fill="lightblue4"))+
+   theme(strip.text = element_text(colour = 'white',size = 9))+
+   theme(panel.background = element_rect(fill = "lightgray"))+
+       theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+    theme(axis.title.x = element_text( face="italic",size=15),axis.title.y = element_text( face="italic",size=15))
+  
+  #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+  # labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+  # ggtitle("Data Distribution")
+ @
+ 
+\caption[Variables Distribution]{Variables Distribution\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{VarDistr}
+\end{figure}
+
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+
+%\hspace*{-0.5in}
+\centering
+
+<<Q_Q,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+ #  options(scipen=999)#prevent scientic notation
+ library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+ 
+ load(paste(path_data,'all.RData', sep = "/"))
+library(plyr)
+ 
+all%>%  dplyr::select(-NPL_ratio) %>% keep(is.numeric) %>%  gather() %>% 
+  ggplot(aes(sample=value )) + geom_qq(distribution = qnorm) + 
+  geom_qq_line(line.p = c(0.25, 0.75), col = "blue") +
+  facet_wrap(~ key, scales = "free") +
+  # geom_abline(intercept = 0, slope = 1) +
+  xlab("Theoretical Quantiles") +
+  ylab("Sample")+
+  #ylim(-4, 4)+
+  scale_x_continuous(breaks=seq(-4,4,1) )+
+  #scale_y_continuous(breaks=seq(0,25,100),limits=c(0,100) )+
+  #stat_qq_line(color="grey",linetype="dashed")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 7))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+ # labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))
+  #ggtitle("Q-Q Diagram")
+
+@
+
+\caption[Q-Q Diagrams]{Q-Q Diagrams\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{Q_Q}
+\end{figure}
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+
+<<Scatter.hh,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+ library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+ 
+ load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'npl_hh.RData', sep = "/"))
+   load(paste(path_data,'npl_nfi.RData', sep = "/"))
+    load(paste(path_data,'npl_fi.RData', sep = "/"))
+    load(paste(path_data,'all.RData', sep = "/"))
+library(plyr)
+ 
+
+# z1 <-  npl_hh %>% mutate(id=rownames(npl_hh))  
+#   names.z1 <- z1 %>%dplyr::select(-NPL_ratio) %>% keep(is.numeric) %>%names()
+#   z2 <-z1 %>% dplyr::select(id,all_of(names.z1)) %>% gather(key="var.name",value="value",-id)
+#   z3 <- z1 %>% dplyr::select(id,NPL_ratio)
+#   z4 <-  z2 %>% left_join(z3,"id"="id")
+#   
+#   z4 %>% ggplot(aes(x=NPL_ratio,y=value)) +
+#     geom_point(alpha=0.2) +
+#     facet_wrap(~var.name,scales = "free")+
+#     # labs(x= "Seats Sold", y="Weekly Gross")+
+#     geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
+ 
+#  library(plyr)
+# all1 <- all %>% mutate(Exposure= as.factor(Exposure)) 
+# all1$Exposure <- plyr::revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+# 
+# detach(package:plyr)
+ library(dplyr)
+   
+ t<-  all %>% group_by(Year,name) %>% summarise(sum_0=sum(npl_0),sum_2=sum(npl_2),NPL_ratio=sum_2/sum_0) %>% dplyr::select(Year,name,NPL_ratio) %>% mutate(Year_nm= as.numeric(Year),name_nm=as.character(name))
+all1 <- as.data.frame(npl_nfi)%>% dplyr::select(-NPL_ratio) %>% mutate(Year_nm= as.numeric(Year),name_nm=as.character(name)) %>% left_join( t, by=c("Year_nm","name_nm")) %>% 
+  dplyr::select(
+  NPL_ratio , 
+  
+  CET1_ratio_tr ,
+
+  LEVER_tr_ratio ,
+  
+  RORAC ,
+  #RORWA+
+  
+  #log(npl_0) +
+  BankSize_tran ,
+  
+  Cost_to_Income ,
+
+  NIM_tr ,
+  #NFCI +
+ # NII +
+  
+ # TimTOres_insol +
+  Stgth_legal_index ,
+  Reco_rate_dol ,
+ # Reco_rate_dol_Score +
+  
+  infl_perc ,
+  #infl_avrg_imf+
+  
+  curr_acc_bal ,
+  
+  GDP_growth_perc ,
+ # GDP_per_cap_growth_perc+
+ # log(GDP_per_cap_ppp) +
+  unempl_rate_imf ,
+  
+  gross_public_debt ,
+  #net_public_debt+
+ # Fiscal_Deficit +
+  
+ # Public_Revenue+
+ # Public_expenditure+
+  
+  #SSM
+  #CBDI_index
+   )
+
+
+  
+  z1 <-  all1 %>% mutate(id=rownames(all1))  
+  names.z1 <- z1 %>%dplyr::select(-NPL_ratio) %>% keep(is.numeric) %>%names()
+  z2 <-z1 %>% dplyr::select(id,all_of(names.z1)) %>% gather(key="var.name",value="value",-id)
+  z3 <- z1 %>% dplyr::select(id,NPL_ratio)
+  z4 <-  z2 %>% left_join(z3,"id"="id")
+  
+  z4 %>% ggplot(aes(x=NPL_ratio,y=value)) +
+    geom_point(alpha=0.2) +
+    facet_wrap(~var.name,scales = "free")+
+    # labs(x= "Seats Sold", y="Weekly Gross")+
+    geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
+
+  
+    all1%>%  dplyr::select(-NPL_ratio) %>% keep(is.numeric) %>%  gather() %>% 
+    ggplot(aes(x=value,y=..density..)) +
+    xlab("Values") +
+ylab("Density") +
+    facet_wrap(~ key, scales = "free") +
+   geom_histogram(fill = "cornsilk", colour = "grey60")+
+   geom_density()+
+   theme_bw()+
+   theme(plot.title = element_text(hjust = 0.5))+
+   theme(strip.background =element_rect(fill="lightblue4"))+
+   theme(strip.text = element_text(colour = 'white',size = 9))+
+   theme(panel.background = element_rect(fill = "lightgray"))+
+       theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+    theme(axis.title.x = element_text( face="italic",size=15),axis.title.y = element_text( face="italic",size=15))
+
+@
+
+
+% \caption[Scatterplot and  Linear Regression on NPL ratios split by Variable]{Scatterplot and  Linear Regression on NPL ratios split by Variable: Households \& Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\caption[Scatterplot and  Linear Regression on NPL ratios split by Variable]{Scatterplot and  Linear Regression on NPL ratios split by Variable: Households \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{Scatter.hh}
+\end{figure}
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+
+<<Scatter.nfi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+ library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+ 
+ load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'npl_hh.RData', sep = "/"))
+   load(paste(path_data,'npl_nfi.RData', sep = "/"))
+    load(paste(path_data,'npl_fi.RData', sep = "/"))
+library(plyr)
+ 
+
+z1 <-  npl_nfi %>% mutate(id=rownames(npl_nfi))  
+  names.z1 <- z1 %>%dplyr::select(-NPL_ratio) %>% keep(is.numeric) %>%names()
+  z2 <-z1 %>% dplyr::select(id,all_of(names.z1)) %>% gather(key="var.name",value="value",-id)
+  z3 <- z1 %>% dplyr::select(id,NPL_ratio)
+  z4 <-  z2 %>% left_join(z3,by="id")
+  
+  z4 %>% ggplot(aes(x=NPL_ratio,y=value)) +
+    geom_point(alpha=0.2) +
+    facet_wrap(~var.name,scales = "free")+
+    # labs(x= "Seats Sold", y="Weekly Gross")+
+    geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
+
+@
+
+
+% \caption[Scatterplot and  Linear Regression on NPL ratios split by Variable]{Scatterplot and  Linear Regression on NPL ratios split by Variable: Households \& Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\caption[Scatterplot and  Linear Regression on NPL ratios split by Variable]{Scatterplot and  Linear Regression on NPL ratios split by Variable: Non-Financial Corporations \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{Scatter.nfi}
+\end{figure}
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+
+<<Scatter.fi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+ library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+ 
+ load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'npl_hh.RData', sep = "/"))
+   load(paste(path_data,'npl_nfi.RData', sep = "/"))
+    load(paste(path_data,'npl_fi.RData', sep = "/"))
+library(plyr)
+ 
+
+z1 <-  npl_fi %>% mutate(id=rownames(npl_fi))  
+  names.z1 <- z1 %>%dplyr::select(-NPL_ratio) %>% keep(is.numeric) %>%names()
+  z2 <-z1 %>% dplyr::select(id,all_of(names.z1)) %>% gather(key="var.name",value="value",-id)
+  z3 <- z1 %>% dplyr::select(id,NPL_ratio)
+  z4 <-  z2 %>% left_join(z3,by="id")
+  
+  z4 %>% ggplot(aes(x=NPL_ratio,y=value)) +
+    geom_point(alpha=0.2) +
+    facet_wrap(~var.name,scales = "free")+
+    # labs(x= "Seats Sold", y="Weekly Gross")+
+    geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
+
+@
+
+
+% \caption[Scatterplot and  Linear Regression on NPL ratios split by Variable]{Scatterplot and  Linear Regression on NPL ratios split by Variable: Households \& Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\caption[Scatterplot and  Linear Regression on NPL ratios split by Variable]{Scatterplot and  Linear Regression on NPL ratios split by Variable: Financial Corporations \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{Scatter.fi}
+\end{figure}
+
+
+
+\subsection{Correlation Diagrams}
+
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% 
+% %\hspace*{-0.5in}
+% \centering
+% 
+% Corr.hh,fig.width=7, fig.height=7, out.width='0.9\\linewidth'>>=
+% # path_main <-  file.path(getwd(), "Models")
+% #
+% # source(file= paste(path_main,"Dataset_setup.r", sep = "/"))
+% #  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+% #
+% # corrplot(cors,tl.col="black", mar=c(0,0,5,0), tl.offset = 1)
+% # mtext("Example Plot", at=2.5, line=-0.5, cex=2)
+% 
+%  library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'npl_hh.RData', sep = "/"))
+% 
+%   source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+% 
+% 
+% 
+% library(plyr)
+%  #all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+% 
+% 
+%   col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+% library(corrplot)
+%   def_model_ALL_corr <- update(def_model_ALL_descr ,.~.-SSM)
+%   corr.hh <- round(cor(npl_hh[all.vars(def_model_ALL_corr)]),5)
+%   corrplot(corr.hh, method="color", col=col(200),
+%            type="lower",
+%            addCoef.col = "black", # Add coefficient of correlation
+%            tl.col="black", tl.srt=90, #Text label color and rotation
+%            # Combine with significance
+%            number.cex=0.7,tl.cex = .7,
+%            # hide correlation coefficient on the principal diagonal
+%            diag=TRUE )
+% 
+%    # corrplot(corr.hh, method="color", col=col(200),  title="Correlation Matrix:Households",
+%    #         type="lower",
+%    #         addCoef.col = "black", # Add coefficient of correlation
+%    #         tl.col="black", tl.srt=90, #Text label color and rotation
+%    #         # Combine with significance
+%    #         number.cex=0.7,tl.cex = .7,mar=c(0,0,2,0),
+%    #         # hide correlation coefficient on the principal diagonal
+%    #         diag=TRUE )
+%    #
+% 
+% @
+% 
+% \caption{Correlation Matrix: Households}
+% \label{Corr.hh}
+% \end{figure}
+% 
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% 
+% %\hspace*{-0.5in}
+% \centering
+% 
+% Corr.nfi,fig.width=7, fig.height=7, out.width='0.9\\linewidth'>>=
+% # path_main <-  file.path(getwd(), "Models")
+% #
+% # source(file= paste(path_main,"Dataset_setup.r", sep = "/"))
+% #  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+% #
+% # corrplot(cors,tl.col="black", mar=c(0,0,5,0), tl.offset = 1)
+% # mtext("Example Plot", at=2.5, line=-0.5, cex=2)
+% 
+%  library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'npl_nfi.RData', sep = "/"))
+% 
+%   source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+% 
+% 
+% 
+% library(plyr)
+%  #all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+% 
+% 
+%   col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+% library(corrplot)
+%   def_model_ALL_corr <- update(def_model_ALL_descr ,.~.-SSM)
+%   corr.nfi <- round(cor(npl_nfi[all.vars(def_model_ALL_corr)]),3)
+%   corrplot(corr.nfi, method="color", col=col(200),
+%            type="lower",
+%            addCoef.col = "black", # Add coefficient of correlation
+%            tl.col="black", tl.srt=90, #Text label color and rotation
+%            # Combine with significance
+%            number.cex=0.7,tl.cex = .7,mar=c(0,0,0,0),
+%            # hide correlation coefficient on the principal diagonal
+%            diag=TRUE )
+% 
+%    # corrplot(corr.hh, method="color", col=col(200),  title="Correlation Matrix:Households",
+%    #         type="lower",
+%    #         addCoef.col = "black", # Add coefficient of correlation
+%    #         tl.col="black", tl.srt=90, #Text label color and rotation
+%    #         # Combine with significance
+%    #         number.cex=0.7,tl.cex = .7,mar=c(0,0,2,0),
+%    #         # hide correlation coefficient on the principal diagonal
+%    #         diag=TRUE )
+%    #
+% 
+% @
+% 
+% \caption{Correlation Matrix: Non-Financial Corporations}
+% \label{Corr.nfi}
+% \end{figure}
+
+
+
+<<Corr.hh.nfi,fig.width=7, fig.height=7, out.width='0.9\\linewidth',fig.show='hide'>>=
+# path_main <-  file.path(getwd(), "Models")
+#
+# source(file= paste(path_main,"Dataset_setup.r", sep = "/"))
+#  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+#
+# corrplot(cors,tl.col="black", mar=c(0,0,5,0), tl.offset = 1)
+# mtext("Example Plot", at=2.5, line=-0.5, cex=2)
+
+ library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+load(paste(path_data,'npl_hh.RData', sep = "/"))
+load(paste(path_data,'npl_nfi.RData', sep = "/"))
+  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+
+
+
+library(plyr)
+ #all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+ t <- npl_hh.nfi%>% keep(is.numeric)
+  col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+library(corrplot)
+  def_model_ALL_corr <- update(def_model_ALL_descr ,.~.-SSM)
+corr.hh.nfi <- round(cor(npl_hh.nfi[all.vars(def_model_ALL_corr)]),5)
+  corrplot(corr.hh.nfi, method="color", col=col(200),
+           type="lower",
+           addCoef.col = "grey39", # Add coefficient of correlation
+           tl.col="black", 
+             #title= "Households",
+           tl.srt=90, #Text label color and rotation
+           # Combine with significance
+           number.cex=0.7,tl.cex = .7,
+           # hide correlation coefficient on the principal diagonal
+           diag=TRUE
+           #,mar=c(0,0,1,0)
+           )
+  
+ 
+  
+  #  corr.hh.nfi <- round(cor(t),5)
+  # corrplot(corr.hh.nfi, method="color", col=col(200),
+  #          type="lower",
+  #          addCoef.col = "grey39", # Add coefficient of correlation
+  #          tl.col="black", tl.srt=90, #Text label color and rotation
+  #          # Combine with significance
+  #          number.cex=0.4,tl.cex = .5,
+  #          # hide correlation coefficient on the principal diagonal
+  #          diag=TRUE )
+
+
+   # corrplot(corr.hh, method="color", col=col(200),  title="Correlation Matrix:Households",
+   #         type="lower",
+   #         addCoef.col = "black", # Add coefficient of correlation
+   #         tl.col="black", tl.srt=90, #Text label color and rotation
+   #         # Combine with significance
+   #         number.cex=0.7,tl.cex = .7,mar=c(0,0,1,0),
+   #         # hide correlation coefficient on the principal diagonal
+   #         diag=TRUE )
+   #
+  
+ 
+@
+
+
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/Corr_hh_nfi-1}}
+% %\vspace{-1cm}}
+% \caption{Correlation Matrix: Households \& Non-Financial Corporations}
+% \label{Corr.hh.nfi}
+%  %\vspace*{-3mm}
+% \end{figure}
+
+
+<<Corr.hh,fig.width=7, fig.height=7, out.width='0.9\\linewidth',fig.show='hide'>>=
+# path_main <-  file.path(getwd(), "Models")
+#
+# source(file= paste(path_main,"Dataset_setup.r", sep = "/"))
+#  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+#
+# corrplot(cors,tl.col="black", mar=c(0,0,5,0), tl.offset = 1)
+# mtext("Example Plot", at=2.5, line=-0.5, cex=2)
+
+ library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+load(paste(path_data,'npl_hh.RData', sep = "/"))
+load(paste(path_data,'npl_nfi.RData', sep = "/"))
+  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+
+
+
+library(plyr)
+ #all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+ t <- npl_hh%>% keep(is.numeric)
+ #npl_hh<-  npl_hh  %>% subset(!(is.na(loan_change_perc)))
+  col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+library(corrplot)
+  def_model_ALL_corr <- update(def_model_ALL_descr ,.~.-SSM)
+corr.hh <- round(cor(npl_hh[all.vars(def_model_ALL_corr)]),5)
+  corrplot(corr.hh, method="color", col=col(200),
+           type="lower",
+           addCoef.col = "grey39", # Add coefficient of correlation
+           tl.col="black", 
+             #title= "Households",
+           tl.srt=90, #Text label color and rotation
+           # Combine with significance
+           number.cex=0.7,tl.cex = .7,
+           # hide correlation coefficient on the principal diagonal
+           diag=TRUE
+           #,mar=c(0,0,1,0)
+           )
+  
+ 
+  
+  #  corr.hh.nfi <- round(cor(t),5)
+  # corrplot(corr.hh.nfi, method="color", col=col(200),
+  #          type="lower",
+  #          addCoef.col = "grey39", # Add coefficient of correlation
+  #          tl.col="black", tl.srt=90, #Text label color and rotation
+  #          # Combine with significance
+  #          number.cex=0.4,tl.cex = .5,
+  #          # hide correlation coefficient on the principal diagonal
+  #          diag=TRUE )
+
+
+   # corrplot(corr.hh, method="color", col=col(200),  title="Correlation Matrix:Households",
+   #         type="lower",
+   #         addCoef.col = "black", # Add coefficient of correlation
+   #         tl.col="black", tl.srt=90, #Text label color and rotation
+   #         # Combine with significance
+   #         number.cex=0.7,tl.cex = .7,mar=c(0,0,1,0),
+   #         # hide correlation coefficient on the principal diagonal
+   #         diag=TRUE )
+   #
+  
+ 
+@
+
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+% \hspace*{-0.5cm}
+ %\hspace*{-2cm}
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+\makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/Corr_hh-1}}
+%\vspace{-1cm}}
+\caption{Correlation Matrix: Households}
+\label{Corr.hh}
+ %\vspace*{-3mm}
+\end{figure}
+
+
+
+<<Corr.nfi,fig.width=7, fig.height=7, out.width='0.9\\linewidth',fig.show='hide'>>=
+# path_main <-  file.path(getwd(), "Models")
+#
+# source(file= paste(path_main,"Dataset_setup.r", sep = "/"))
+#  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+#
+# corrplot(cors,tl.col="black", mar=c(0,0,5,0), tl.offset = 1)
+# mtext("Example Plot", at=2.5, line=-0.5, cex=2)
+
+ library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+load(paste(path_data,'npl_hh.RData', sep = "/"))
+load(paste(path_data,'npl_nfi.RData', sep = "/"))
+  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+
+
+
+library(plyr)
+ #all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+ t <- npl_nfi%>% keep(is.numeric)
+  col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+library(corrplot)
+  def_model_ALL_corr <- update(def_model_ALL_descr ,.~.-SSM)
+  corr.nfi <- round(cor(npl_nfi[all.vars(def_model_ALL_corr)]),5)
+  corrplot(corr.nfi, method="color", col=col(200),
+           type="lower",
+           addCoef.col = "grey39", # Add coefficient of correlation
+           tl.col="black", 
+           #title= "Non-Financial Corp.",
+           tl.srt=90, #Text label color and rotation
+           # Combine with significance
+           number.cex=0.7,tl.cex = .7,
+           # hide correlation coefficient on the principal diagonal
+           diag=TRUE
+          # , mar=c(0,0,1,0)
+           )
+
+  #  corr.hh.nfi <- round(cor(t),5)
+  # corrplot(corr.hh.nfi, method="color", col=col(200),
+  #          type="lower",
+  #          addCoef.col = "grey39", # Add coefficient of correlation
+  #          tl.col="black", tl.srt=90, #Text label color and rotation
+  #          # Combine with significance
+  #          number.cex=0.4,tl.cex = .5,
+  #          # hide correlation coefficient on the principal diagonal
+  #          diag=TRUE )
+
+
+   # corrplot(corr.hh, method="color", col=col(200),  title="Correlation Matrix:Households",
+   #         type="lower",
+   #         addCoef.col = "black", # Add coefficient of correlation
+   #         tl.col="black", tl.srt=90, #Text label color and rotation
+   #         # Combine with significance
+   #         number.cex=0.7,tl.cex = .7,mar=c(0,0,1,0),
+   #         # hide correlation coefficient on the principal diagonal
+   #         diag=TRUE )
+   #
+
+@
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+\centering
+%\rule{12.8cm}{7.2cm}
+%\setlength{\abovecaptionskip}{5pt}
+
+\makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/Corr_nfi-1}}
+
+\caption{Correlation Matrix: Non-Financial Corporations}
+\label{Corr.nfi}
+ %\vspace*{-3mm}
+\end{figure}
+
+
+
+
+<<Corr.fi,fig.width=7, fig.height=7, out.width='0.9\\linewidth',fig.show='hide'>>=
+# path_main <-  file.path(getwd(), "Models")
+#
+# source(file= paste(path_main,"Dataset_setup.r", sep = "/"))
+#  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+#
+# corrplot(cors,tl.col="black", mar=c(0,0,5,0), tl.offset = 1)
+# mtext("Example Plot", at=2.5, line=-0.5, cex=2)
+
+ library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'npl_fi.RData', sep = "/"))
+
+  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+
+
+
+library(plyr)
+ #all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+
+  col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+library(corrplot)
+  def_model_ALL_corr <- update(def_model_ALL_descr ,.~.-SSM)
+  corr.fi <- round(cor(npl_fi[all.vars(def_model_ALL_corr)]),3)
+  corrplot(corr.fi, method="color", col=col(200),
+           type="lower",
+           addCoef.col = "grey39", # Add coefficient of correlation
+           tl.col="black", tl.srt=90, #Text label color and rotation
+           # Combine with significance
+           number.cex=0.7,tl.cex = .7,
+           # hide correlation coefficient on the principal diagonal
+           diag=TRUE )
+
+   # corrplot(corr.hh, method="color", col=col(200),  title="Correlation Matrix:Households",
+   #         type="lower",
+   #         addCoef.col = "black", # Add coefficient of correlation
+   #         tl.col="black", tl.srt=90, #Text label color and rotation
+   #         # Combine with significance
+   #         number.cex=0.7,tl.cex = .7,mar=c(0,0,2,0),
+   #         # hide correlation coefficient on the principal diagonal
+   #         diag=TRUE )
+   #
+
+@
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+
+%\hspace*{-0.5in}
+\centering
+\makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/Corr_fi-1}}
+
+\caption{Correlation Matrix: Financial Corporations}
+\label{Corr.fi}
+\end{figure}
+
+
+
+%Corr.hh.nfi1,fig.width=7, fig.height=8, out.width='.89\\linewidth'>>=
+ <<Corr.hh.nfi1,fig.width=7, fig.height=8, out.width='.89\\linewidth',fig.show='hide'>>= 
+# path_main <-  file.path(getwd(), "Models")
+#
+# source(file= paste(path_main,"Dataset_setup.r", sep = "/"))
+#  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+#
+# corrplot(cors,tl.col="black", mar=c(0,0,5,0), tl.offset = 1)
+# mtext("Example Plot", at=2.5, line=-0.5, cex=2)
+
+ library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+
+  source(file= paste(path_main,"Panel_Def.r", sep = "/"))
+
+
+
+library(plyr)
+ #all$Exposure <- revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+
+ t <- npl_hh.nfi%>% keep(is.numeric)
+  col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+library(corrplot)
+  def_model_ALL_corr <- update(def_model_ALL_descr ,.~.-SSM)
+  # corr.hh.nfi <- round(cor(npl_hh.nfi[all.vars(def_model_ALL_corr)]),5)
+  # corrplot(corr.hh.nfi, method="color", col=col(200),
+  #          type="lower",
+  #          addCoef.col = "grey39", # Add coefficient of correlation
+  #          tl.col="black", tl.srt=90, #Text label color and rotation
+  #          # Combine with significance
+  #          number.cex=0.5,tl.cex = .6,mar=c(0,0,2,0),
+  #          # hide correlation coefficient on the principal diagonal
+  #          diag=TRUE )
+  
+   corr.hh.nfi <- round(cor(t),5)
+  corrplot(corr.hh.nfi, method="color", col=col(200),
+           type="lower",
+           addCoef.col = "grey39", # Add coefficient of correlation
+           tl.col="black", tl.srt=90, #Text label color and rotation
+           # Combine with significance
+           number.cex=0.3,tl.cex = .5,
+           # hide correlation coefficient on the principal diagonal
+           diag=TRUE )
+
+
+   # corrplot(corr.hh, method="color", col=col(200),  title="Correlation Matrix:Households",
+   #         type="lower",
+   #         addCoef.col = "black", # Add coefficient of correlation
+   #         tl.col="black", tl.srt=90, #Text label color and rotation
+   #         # Combine with significance
+   #         number.cex=0.7,tl.cex = .7,mar=c(0,0,1,0),
+   #         # hide correlation coefficient on the principal diagonal
+   #         diag=TRUE )
+   #
+
+@
+
+
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% 
+% %\hspace*{0.5in}
+% \centering
+% 
+% \makebox[\textwidth]{\includegraphics[width=0.9\paperwidth]{figure/Corr_hh_nfi1-1}}
+% 
+% \caption{Correlation Matrix: Households \& Non-Financial Corporations (all variables)}
+% \label{Corr.hh.nfi1}
+% \end{figure}
+
+
+\pagebreak 
+
+%\subsection{Data Visualization}
+% NplRatios2b,fig.width=5, fig.height=4,fig.pos="h", out.width='0.9\\linewidth',fig.show='hide'>>=
+%    
+%      library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+%  
+%   load(paste(path_data,'npl_hh.nfi.RData', sep = "/"))
+%     load(paste(path_data,'npl_fi.RData', sep = "/"))
+%     
+%  # npl_hh.nfi  %>% ggplot(aes(x=nsa_label,y=NPL_ratio,colour=nsa_label)) +
+%  #  geom_point(alpha=0.4) +
+%  #    #scale_colour_brewer(palette = "Set1")+
+%  #  # scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+%  #  xlab("") +
+%  #  ylab("NPL(%)")+
+%  #  scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 1))+
+%  #  # theme(axis.text.x=element_blank(),axis.ticks.x = element_blank())+
+%  #  theme(panel.background = element_rect(fill = "lightgray"),plot.title = element_text(hjust = 0.5,size=8))+
+%  #  #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+%  #  theme(legend.position="none",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%  #  theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))
+%  #  #labs(caption = " ")
+%  #  #ggtitle("NPL(%)")
+%  
+%   npl_fi  %>% ggplot(aes(x=nsa_label,y=NPL_ratio,colour=nsa_label)) +
+%   geom_point(alpha=0.4) +
+%     #scale_colour_brewer(palette = "Set1")+
+%   # scale_colour_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("Non-SSM", "SSM"))+
+%   xlab("") +
+%   ylab("NPL(%)")+
+%   scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 1))+
+%   # theme(axis.text.x=element_blank(),axis.ticks.x = element_blank())+
+%   theme(panel.background = element_rect(fill = "lightgray"),plot.title = element_text(hjust = 0.5,size=8))+
+%   #theme(legend.position="right",legend.direction = "vertical",legend.spacing.x = unit(.5, 'cm'))+
+%   theme(legend.position="none",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))
+%   #labs(caption = " ")
+%   #ggtitle("NPL(%)")
+%  
+% @
+
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% % \hspace*{-0.5cm}
+%  %\hspace*{-2cm}
+% \centering
+% %\rule{12.8cm}{7.2cm}
+% %\setlength{\abovecaptionskip}{5pt}
+% \makebox[\textwidth]{\includegraphics[width=0.5\paperwidth]{figure/NplRatios2b-1}}
+% \vspace{-1cm}}
+% \caption{NPL(\%) ratios per country: Financial Corporations}
+% \label{NplRatios2b}
+%  \vspace*{-3mm}
+% \end{figure}
+
+\subsection{Panel Models}
+\input{Tables/Final/Panel/Static_Models_npl_hh_pr}
+\input{Tables/Final/Panel/Static_Models_npl_nfi_pr}
+\input{Tables/Final/Panel/Static_Models_npl_fi_pr}
+
+
+%\input{Tables/Final/Panel/Static_Models_HC_npl_hh.nfi_pr}
+%\input{Tables/Final/Panel/Static_Models_HC_npl_fi_pr}
+
+\input{Tables/Final/Panel/GFLS_ALL_pr}
+
+
+\subsection{quantile Regression Models}
+%\input{Tables/Final/quantile/Quantil_Regression_npl_fi_pr}
+\input{Tables/Final/quantile/Quantil_Regression_npl_hh_pr}
+\input{Tables/Final/quantile/Quantil_Regression_npl_nfi_pr}
+\input{Tables/Final/quantile/Quantil_Regression_npl_fi_pr}
+    
+\input{Tables/Final/quantile/Slope_Test2}
+
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% 
+% qq.graph.hh.nfi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% 
+%    library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QR_npl_hh.nfi.RData', sep = "/"))
+% 
+% 
+% ggplot(QR_npl_hh.nfi, aes(x=type)) +
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ var,scales = "free")+
+%   geom_line(aes(y = coefficients), color = "black",size=.6) +
+%   geom_point(aes(x=type,y = coefficients,color=pval_type),shape=16,size=2)+
+%    scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%   geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%   geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+%   #ggtitle("Standard Quantile Regression: Households")
+% 
+% @
+% 
+% \caption[quantile Regression Graphics: Household \& Non-Financial Corporations]{quantile Regression Graphics: Household \& Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% \label{qq.graph.hh.nfi}
+% \end{figure}
+\subsection{quantile Regression Models}
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+
+
+
+<<qq.graph,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+  
+   library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'QR_npl_hh.nfi.RData', sep = "/"))
+ load(paste(path_data,'QR_npl_hh.RData', sep = "/"))
+   load(paste(path_data,'QR_npl_nfi.RData', sep = "/"))
+    load(paste(path_data,'QR_npl_fi.RData', sep = "/"))
+    
+    
+  QR_npl_hh <- QR_npl_hh %>% mutate(Exposure = "Households")
+QR_npl_nfi <- QR_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QR_npl_fi <- QR_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi,QR_npl_fi))
+#QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi))
+
+ggplot(data=QR_npl,aes(x=type,y = coefficients)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ var,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Standard Quantile Regression")
+
+@
+
+\caption[quantile Regression Graphics ]{quantile Regression Graphics\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{qq.graph}
+\end{figure}
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<qq.graph_bk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+  
+   library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QR_npl_hh.nfi_bk.RData', sep = "/"))
+  load(paste(path_data,'QR_npl_hh_bk.RData', sep = "/"))
+   load(paste(path_data,'QR_npl_nfi_bk.RData', sep = "/"))
+    load(paste(path_data,'QR_npl_fi_bk.RData', sep = "/"))
+    
+    
+  QR_npl_hh <- QR_bk_npl_hh%>% mutate(Exposure = "Households")
+QR_npl_nfi <- QR_bk_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QR_npl_fi <- QR_bk_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi,QR_npl_fi))
+
+
+ggplot(data=QR_npl,aes(x=type,y = coefficients)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ var,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Standard Quantile Regression")
+
+@
+
+\caption[quantile Regression Graphics ]{quantile Regression Graphics\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{qq.graph_bk}
+\end{figure}
+
+
+\begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<qq.graph_mk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+  
+   library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QR_npl_hh.nfi_bk.RData', sep = "/"))
+  load(paste(path_data,'QR_npl_hh_mk.RData', sep = "/"))
+   load(paste(path_data,'QR_npl_nfi_mk.RData', sep = "/"))
+    load(paste(path_data,'QR_npl_fi_mk.RData', sep = "/"))
+    
+    
+  QR_npl_hh <- QR_mk_npl_hh%>% mutate(Exposure = "Households")
+QR_npl_nfi <- QR_mk_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QR_npl_fi <- QR_mk_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi,QR_npl_fi))
+
+
+ggplot(data=QR_npl,aes(x=type,y = coefficients)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ var,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Standard Quantile Regression")
+
+@
+
+\caption[quantile Regression Graphics ]{quantile Regression Graphics\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{qq.graph_mk}
+\end{figure}
+
+\subsubsection{Year-Dummy}
+<<qq.graph_year,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+  
+   library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QR_npl_hh.nfi.RData', sep = "/"))
+ load(paste(path_data,'QR_Y_npl_hh.RData', sep = "/"))
+   load(paste(path_data,'QR_Y_npl_nfi.RData', sep = "/"))
+    load(paste(path_data,'QR_Y_npl_fi.RData', sep = "/"))
+    
+   QR_npl_hh <- QR_Y_npl_hh %>%filter(!grepl('Year', var))%>%  mutate(Exposure = "Households")
+QR_npl_nfi <- QR_Y_npl_nfi %>%filter(!grepl('Year', var))%>% mutate(Exposure = "Non-Financial Corp.")
+QR_npl_fi <- QR_Y_npl_fi %>%filter(!grepl('Year', var))%>% mutate(Exposure = "Financial Corp.")
+
+QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi,QR_npl_fi))
+
+
+ggplot(data=QR_npl,aes(x=type,y = coefficients)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ var,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Standard Quantile Regression")
+
+@
+
+\caption[quantile Regression Graphics ]{quantile Regression Graphics-Year Dummy\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{qq.graph_year}
+\end{figure}
+
+<<qq.graph_year_bk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+  
+   library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QR_npl_hh.nfi.RData', sep = "/"))
+ load(paste(path_data,'QR_Y_bk_npl_hh.RData', sep = "/"))
+   load(paste(path_data,'QR_Y_bk_npl_nfi.RData', sep = "/"))
+    load(paste(path_data,'QR_Y_bk_npl_fi.RData', sep = "/"))
+    
+   QR_npl_hh <- QR_Y_bk_npl_hh %>%filter(!grepl('Year', var))%>%  mutate(Exposure = "Households")
+QR_npl_nfi <-QR_Y_bk_npl_nfi %>%filter(!grepl('Year', var))%>% mutate(Exposure = "Non-Financial Corp.")
+QR_npl_fi <- QR_Y_bk_npl_fi %>%filter(!grepl('Year', var))%>% mutate(Exposure = "Financial Corp.")
+
+QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi,QR_npl_fi))
+
+
+ggplot(data=QR_npl,aes(x=type,y = coefficients)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ var,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Standard Quantile Regression")
+
+@
+
+\caption[quantile Regression Graphics ]{quantile Regression Graphics-Year Dummy(only Bank-specifics)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{qq.graph_year_bk}
+\end{figure}
+
+<<qq.graph_year_mk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+  
+   library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QR_npl_hh.nfi.RData', sep = "/"))
+ load(paste(path_data,'QR_Y_mk_npl_hh.RData', sep = "/"))
+   load(paste(path_data,'QR_Y_mk_npl_nfi.RData', sep = "/"))
+    load(paste(path_data,'QR_Y_mk_npl_fi.RData', sep = "/"))
+    
+   QR_npl_hh <- QR_Y_mk_npl_hh %>%filter(!grepl('Year', var))%>%  mutate(Exposure = "Households")
+QR_npl_nfi <-QR_Y_mk_npl_nfi %>%filter(!grepl('Year', var))%>% mutate(Exposure = "Non-Financial Corp.")
+QR_npl_fi <- QR_Y_mk_npl_fi %>%filter(!grepl('Year', var))%>% mutate(Exposure = "Financial Corp.")
+
+QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi,QR_npl_fi))
+
+
+ggplot(data=QR_npl,aes(x=type,y = coefficients)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ var,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Standard Quantile Regression")
+
+@
+
+\caption[quantile Regression Graphics ]{quantile Regression Graphics-Year Dummy(only Macroeconomic)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{qq.graph_year_mk}
+\end{figure}
+
+
+
+
+
+
+
+% 
+% 
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% 
+% qq.graph.hh,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+%   
+%    library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QR_npl_hh.nfi.RData', sep = "/"))
+%  load(paste(path_data,'QR_npl_hh.RData', sep = "/"))
+%   
+% ggplot(QR_npl_hh, aes(x=type)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ var,scales = "free")+
+%   geom_line(aes(y = coefficients), color = "black",size=.6) + 
+%   geom_point(aes(x=type,y = coefficients,color=pval_type),shape=16,size=2)+
+%    scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%   geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%   geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+%   #ggtitle("Standard Quantile Regression: Households")
+% 
+% @
+% 
+% \caption[quantile Regression Graphics: Households ]{quantile Regression Graphics: Households\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% \label{qq.graph.hh}
+% \end{figure}
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% 
+% qq.graph.nfi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+%   
+%    library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QR_npl_hh.nfi.RData', sep = "/"))
+%  load(paste(path_data,'QR_npl_nfi.RData', sep = "/"))
+%   
+% ggplot(QR_npl_nfi, aes(x=type)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ var,scales = "free")+
+%   geom_line(aes(y = coefficients), color = "black",size=.6) + 
+%   geom_point(aes(x=type,y = coefficients,color=pval_type),shape=16,size=2)+
+%    scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%   geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%   geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+%   #ggtitle("Standard Quantile Regression: Households")
+% 
+% @
+% 
+% \caption[quantile Regression Graphics: Non-Financial Corporations]{quantile Regression Graphics:  Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% \label{qq.graph.nfi}
+% \end{figure}
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% 
+% 
+% qq.graph.fi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% #qq.graph.fi,fig.width=15, fig.height=15, out.width='0.9\\linewidth'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QR_npl_fi.RData', sep = "/"))
+%   
+%   
+% ggplot(QR_npl_fi, aes(x=type)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ var,scales = "free")+
+%   geom_line(aes(y = coefficients), color = "black",size=.6) + 
+%   geom_point(aes(x=type,y = coefficients,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%   geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%   geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+%  # ggtitle("Standard Quantile Regression: Financial Corporations")
+% @
+% 
+% 
+% \caption[quantile Regression Graphics: Financial Corporations]{quantile Regression Graphics: Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% \label{qq.graph.fi}
+% \end{figure}
+
+%%%%%%%%
+
+ 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq1.graph.hh.nfi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+% 
+%   ggplot(QRFE1_npl_hh.nfi, aes(x=pfe.types)) +
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) +
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%  # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 1 ): Households & Non-Financial Corporations")
+% 
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=1$): Households \& Non-Financial Corporations]{Fixed Effects Quantile Regression Graphics ($\lambda=1$): Households \& Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% \label{feqq1.graph.hh.nfi}
+% \end{figure}
+
+
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq2.5.graph.hh.nfi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE2.5_npl_hh.nfi.RData', sep = "/"))
+% 
+%   ggplot(QRFE2.5_npl_hh.nfi, aes(x=pfe.types)) +
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) +
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%  # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 2.5 ): Households & Non-Financial Corporations")
+% 
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=2.5$): Households \& Non-Financial Corporations]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$): Households \& Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% \label{feqq2.5.graph.hh.nfi}
+% \end{figure}
+
+
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq5.graph.hh.nfi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE5_npl_hh.nfi.RData', sep = "/"))
+% 
+%   ggplot(QRFE5_npl_hh.nfi, aes(x=pfe.types)) +
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) +
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%  # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 5 ): Households & Non-Financial Corporations")
+% 
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=5$): Households \& Non-Financial Corporations]{Fixed Effects Quantile Regression Graphics ($\lambda=5$): Households \& Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% \label{feqq5.graph.hh.nfi}
+% \end{figure}
+
+\subsection{FE Quantile Regression}
+ \input{Tables/Final/quantile/QRFE_npl_hh}
+ \input{Tables/Final/quantile/QRFE_npl_nfi}
+ \input{Tables/Final/quantile/QRFE_npl_fi}
+ 
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq1.graph,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_fi.RData', sep = "/"))
+  
+  
+  QRFE1_npl_hh <- QRFE1_npl_hh %>% mutate(Exposure = "Households")
+QRFE1_npl_nfi <- QRFE1_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE1_npl_fi <- QRFE1_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE1_npl <- as.data.frame(bind_rows(QRFE1_npl_hh,QRFE1_npl_nfi,QRFE1_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE1_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 1 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=1$)]{Fixed Effects Quantile Regression Graphics ($\lambda=1$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq1.graph}
+\end{figure}
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq2.5.graph,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'QRFE2.5_npl_hh.nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE2.5_npl_hh.RData', sep = "/"))
+     load(paste(path_data,'QRFE2.5_npl_nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE2.5_npl_fi.RData', sep = "/"))
+   
+    QRFE2.5_npl_hh <- QRFE2.5_npl_hh %>% mutate(Exposure = "Households")
+QRFE2.5_npl_nfi <- QRFE2.5_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE2.5_npl_fi <- QRFE2.5_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE2.5_npl <- as.data.frame(bind_rows(QRFE2.5_npl_hh,QRFE2.5_npl_nfi,QRFE2.5_npl_fi))
+# View(QRFE2.5_npl) 
+
+ 
+ 
+ggplot(data=QRFE2.5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 2.5 )")
+
+ 
+  
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=2.5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$) \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq2.5.graph}
+\end{figure}
+ 
+ 
+ 
+  
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq5.graph,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'QRFE5_npl_hh.nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE5_npl_hh.RData', sep = "/"))
+     load(paste(path_data,'QRFE5_npl_nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE5_npl_fi.RData', sep = "/"))
+   
+    QRFE5_npl_hh <- QRFE5_npl_hh %>% mutate(Exposure = "Households")
+QRFE5_npl_nfi <- QRFE5_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE5_npl_fi <- QRFE5_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE5_npl <- as.data.frame(bind_rows(QRFE5_npl_hh,QRFE5_npl_nfi,QRFE5_npl_fi))
+ #View(QRFE5_npl) 
+
+ 
+ 
+ggplot(data=QRFE5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 5 )")
+
+ 
+  
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=5$) \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq5.graph}
+\end{figure}
+ 
+ 
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq1_bk.graph,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QRFE1_npl_hh.nfi_bk.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_hh_bk.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_nfi_bk.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_fi_bk.RData', sep = "/"))
+  
+  
+  QRFE1_npl_hh <- QRFE1_bk_npl_hh %>% mutate(Exposure = "Households")
+QRFE1_npl_nfi <- QRFE1_bk_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE1_npl_fi <- QRFE1_bk_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE1_npl <- as.data.frame(bind_rows(QRFE1_npl_hh,QRFE1_npl_nfi,QRFE1_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE1_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 1 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=1$)]{Fixed Effects Quantile Regression Graphics ($\lambda=1$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq1.graph_bk}
+\end{figure}
+ 
+
+  \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+ 
+ <<feqq2.5.graph_bk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QRFE2.5_npl_hh.nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE2.5_npl_hh_bk.RData', sep = "/"))
+     load(paste(path_data,'QRFE2.5_npl_nfi_bk.RData', sep = "/"))
+   load(paste(path_data,'QRFE2.5_npl_fi_bk.RData', sep = "/"))
+   
+    QRFE2.5_npl_hh <- QRFE2.5_bk_npl_hh %>% mutate(Exposure = "Households")
+QRFE2.5_npl_nfi <- QRFE2.5_bk_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE2.5_npl_fi <- QRFE2.5_bk_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE2.5_npl <- as.data.frame(bind_rows(QRFE2.5_npl_hh,QRFE2.5_npl_nfi,QRFE2.5_npl_fi))
+# View(QRFE2.5_npl) 
+
+ 
+ 
+ggplot(data=QRFE2.5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 2.5 )")
+
+  
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=2.5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$) \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq2.5.graph_bk}
+\end{figure}
+
+  \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+ <<feqq5.graph_bk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QRFE2.5_npl_hh.nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE5_npl_hh_bk.RData', sep = "/"))
+     load(paste(path_data,'QRFE5_npl_nfi_bk.RData', sep = "/"))
+   load(paste(path_data,'QRFE5_npl_fi_bk.RData', sep = "/"))
+   
+    QRFE5_npl_hh <- QRFE5_bk_npl_hh %>% mutate(Exposure = "Households")
+QRFE5_npl_nfi <- QRFE5_bk_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE5_npl_fi <- QRFE5_bk_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE5_npl <- as.data.frame(bind_rows(QRFE5_npl_hh,QRFE5_npl_nfi,QRFE5_npl_fi))
+# View(QRFE2.5_npl) 
+
+ 
+ 
+ggplot(data=QRFE5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 5 )")
+
+  
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=5$) \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq5.graph_bk}
+\end{figure} 
+ 
+   \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq1_mk.graph,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QRFE1_npl_hh.nfi_bk.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_hh_mk.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_nfi_mk.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_fi_mk.RData', sep = "/"))
+  
+  
+  QRFE1_npl_hh <- QRFE1_mk_npl_hh %>% mutate(Exposure = "Households")
+QRFE1_npl_nfi <- QRFE1_mk_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE1_npl_fi <- QRFE1_mk_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE1_npl <- as.data.frame(bind_rows(QRFE1_npl_hh,QRFE1_npl_nfi,QRFE1_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE1_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 1 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=1$)]{Fixed Effects Quantile Regression Graphics ($\lambda=1$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq1.graph_mk}
+\end{figure}
+ 
+   \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+ 
+ <<feqq2.5.graph_mk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QRFE2.5_npl_hh.nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE2.5_npl_hh_mk.RData', sep = "/"))
+     load(paste(path_data,'QRFE2.5_npl_nfi_mk.RData', sep = "/"))
+   load(paste(path_data,'QRFE2.5_npl_fi_mk.RData', sep = "/"))
+   
+    QRFE2.5_npl_hh <- QRFE2.5_mk_npl_hh %>% mutate(Exposure = "Households")
+QRFE2.5_npl_nfi <- QRFE2.5_mk_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE2.5_npl_fi <- QRFE2.5_mk_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE2.5_npl <- as.data.frame(bind_rows(QRFE2.5_npl_hh,QRFE2.5_npl_nfi,QRFE2.5_npl_fi))
+# View(QRFE2.5_npl) 
+
+ 
+ 
+ggplot(data=QRFE2.5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 2.5 )")
+
+  
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=2.5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$) \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq2.5.graph_mk}
+\end{figure}
+ 
+ 
+  \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+ 
+ 
+  <<feqq5.graph_mk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  #load(paste(path_data,'QRFE2.5_npl_hh.nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE5_npl_hh_mk.RData', sep = "/"))
+     load(paste(path_data,'QRFE5_npl_nfi_mk.RData', sep = "/"))
+   load(paste(path_data,'QRFE5_npl_fi_mk.RData', sep = "/"))
+   
+    QRFE5_npl_hh <- QRFE5_mk_npl_hh %>% mutate(Exposure = "Households")
+QRFE5_npl_nfi <- QRFE5_mk_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE5_npl_fi <- QRFE5_mk_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE5_npl <- as.data.frame(bind_rows(QRFE5_npl_hh,QRFE5_npl_nfi,QRFE5_npl_fi))
+# View(QRFE2.5_npl) 
+
+ 
+ 
+ggplot(data=QRFE5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 5 )")
+
+  
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=5$) \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq5.graph_mk}
+\end{figure} 
+%  
+%  
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq1.graph.hh,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+%   load(paste(path_data,'QRFE1_npl_hh.RData', sep = "/"))
+%   
+%   ggplot(QRFE1_npl_hh, aes(x=pfe.types)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) + 
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%  # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 1 ): Households ")
+%   
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=1$): Households]{Fixed Effects Quantile Regression Graphics ($\lambda=1$): Households\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% \label{feqq1.graph.hh}
+% \end{figure}
+% 
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq2.5.graph.hh,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE2.5_npl_hh.nfi.RData', sep = "/"))
+%    load(paste(path_data,'QRFE2.5_npl_hh.RData', sep = "/"))
+%    
+%   ggplot(QRFE2.5_npl_hh, aes(x=pfe.types)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) + 
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%  # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 2.5 ): Households ")
+%   
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=2.5$): Households]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$): Households \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% \label{feqq2.5.graph.hh}
+% \end{figure}
+
+
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq5.graph.hh,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE5_npl_hh.nfi.RData', sep = "/"))
+%    load(paste(path_data,'QRFE5_npl_hh.RData', sep = "/"))
+%    
+%   ggplot(QRFE5_npl_hh, aes(x=pfe.types)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) + 
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%  # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%  # labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 5 ): Households ")
+%   
+% 
+% @
+% 
+% % \caption[Fixed Effects Quantile Regression Graphics ($\lambda=5$): Households]{Fixed Effects Quantile Regression Graphics ($\lambda=5$): Households\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% \label{feqq5.graph.hh}
+% \end{figure}
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq1.graph.nfi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+%     load(paste(path_data,'QRFE1_npl_nfi.RData', sep = "/"))
+%     
+%   ggplot(QRFE1_npl_nfi, aes(x=pfe.types)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) + 
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%  # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 1 ):  Non-Financial Corporations")
+%   
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=1$): Non-Financial Corporations]{Fixed Effects Quantile Regression Graphics ($\lambda=1$): Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% \label{feqq1.graph.nfi}
+% \end{figure}
+% 
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq2.5.graph.nfi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE2.5_npl_hh.nfi.RData', sep = "/"))
+%   load(paste(path_data,'QRFE2.5_npl_nfi.RData', sep = "/"))
+%   
+%   ggplot(QRFE2.5_npl_nfi, aes(x=pfe.types)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) + 
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%  # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 2.5 ): Non-Financial Corporations")
+%   
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=2.5$): Non-Financial Corporations]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$): Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% \label{feqq2.5.graph.nfi}
+% \end{figure}
+% 
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq5.graph.nfi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE5_npl_hh.nfi.RData', sep = "/"))
+%   load(paste(path_data,'QRFE5_npl_nfi.RData', sep = "/"))
+%   
+%   ggplot(QRFE5_npl_nfi, aes(x=pfe.types)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) + 
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%  # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 5 ): Non-Financial Corporations")
+%   
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=5$): Non-Financial Corporations]{Fixed Effects Quantile Regression Graphics ($\lambda=5$): Non-Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% \label{feqq5.graph.nfi}
+% \end{figure}
+% 
+%  
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq1.graph.fi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE1_npl_fi.RData', sep = "/"))
+%   
+% 
+%   ggplot(QRFE1_npl_fi, aes(x=pfe.types)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) + 
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%   # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%   # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 1 ): Financial Corporations")
+% 
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=1$): Financial Corporations]{Fixed Effects Quantile Regression Graphics ($\lambda=1$): Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% 
+% \label{feqq1.graph.fi}
+% \end{figure}
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq2.5.graph.fi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE2.5_npl_fi.RData', sep = "/"))
+%   
+% 
+%   ggplot(QRFE2.5_npl_fi, aes(x=pfe.types)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) + 
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%   # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%   # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 2.5 ): Financial Corporations")
+% 
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=2.5$): Financial Corporations]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$): Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% 
+% \label{feqq2.5.graph.fi}
+% \end{figure}
+% 
+% \begin{figure}[H] % between [] you put options e.g. ht = here top
+% %\hspace*{-0.5in}
+% \centering
+% feqq5.graph.fi,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+% library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% path_main <-  file.path(getwd(), "Models")
+%   load(paste(path_data,'QRFE5_npl_fi.RData', sep = "/"))
+%   
+% 
+%   ggplot(QRFE5_npl_fi, aes(x=pfe.types)) + 
+%   xlab("Quantile(%)") +
+%   ylab(" ")+
+%   facet_wrap(~ pfe.row.names_mod,scales = "free")+
+%   geom_line(aes(y = Value), color = "black",size=.6) + 
+%   geom_point(aes(x=pfe.types,y = Value,color=pval_type),shape=16,size=2)+
+%   scale_color_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+%   # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+%   # geom_line(aes(y = upper.bd), color="lightblue3") +
+%   geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+%   #geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+%   scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 9))+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%   ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 5 ): Financial Corporations")
+% 
+% 
+% @
+% 
+% \caption[Fixed Effects Quantile Regression Graphics ($\lambda=5$): Financial Corporations]{Fixed Effects Quantile Regression Graphics ($\lambda=5$): Financial Corporations\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+% 
+% 
+% \label{feqq5.graph.fi}
+% \end{figure}
+
+\pagebreak
+
+\subsubsection{Year-Dummy}
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq1.graph_year,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+ # load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_Y_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_Y_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_Y_npl_fi.RData', sep = "/"))
+  
+  QRFE1_npl_hh <- QRFE1_Y_npl_hh %>%filter(!grepl('Year', pfe.row.names_mod))%>%  mutate(Exposure = "Households")
+QRFE1_npl_nfi <- QRFE1_Y_npl_nfi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Non-Financial Corp.")
+QRFE1_npl_fi <- QRFE1_Y_npl_fi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Financial Corp.")
+
+
+QRFE1_npl <- as.data.frame(bind_rows(QRFE1_npl_hh,QRFE1_npl_nfi,QRFE1_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE1_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression-Year Dummy ("~lambda~"= 1 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics-Year Dummy ($\lambda=1$)]{Fixed Effects Quantile Regression Graphics ($\lambda=1$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq1.graph_year}
+\end{figure}
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq2.5.graph_year,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+ # load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE2.5_Y_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE2.5_Y_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE2.5_Y_npl_fi.RData', sep = "/"))
+  
+  QRFE2.5_npl_hh <- QRFE2.5_Y_npl_hh %>%filter(!grepl('Year', pfe.row.names_mod))%>%  mutate(Exposure = "Households")
+QRFE2.5_npl_nfi <- QRFE2.5_Y_npl_nfi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Non-Financial Corp.")
+QRFE2.5_npl_fi <- QRFE2.5_Y_npl_fi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Financial Corp.")
+
+
+QRFE2.5_npl <- as.data.frame(bind_rows(QRFE2.5_npl_hh,QRFE2.5_npl_nfi,QRFE2.5_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE2.5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression-Year Dummy ("~lambda~"= 2.5 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics-Year Dummy ($\lambda=2.5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq2.5.graph_year}
+\end{figure}
+
+
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq5.graph_year,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+ # load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE5_Y_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE5_Y_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE5_Y_npl_fi.RData', sep = "/"))
+  
+  QRFE5_npl_hh <- QRFE5_Y_npl_hh %>%filter(!grepl('Year', pfe.row.names_mod))%>%  mutate(Exposure = "Households")
+QRFE5_npl_nfi <- QRFE5_Y_npl_nfi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Non-Financial Corp.")
+QRFE5_npl_fi <- QRFE5_Y_npl_fi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Financial Corp.")
+
+
+QRFE5_npl <- as.data.frame(bind_rows(QRFE5_npl_hh,QRFE5_npl_nfi,QRFE5_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression-Year Dummy ("~lambda~"= 5 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics-Year Dummy ($\lambda=5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=5$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq5.graph_year}
+\end{figure}
+
+%#####################################################################
+
+
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq1.graph_year_bk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+ # load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_Y_bk_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_Y_bk_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_Y_bk_npl_fi.RData', sep = "/"))
+  
+  QRFE1_npl_hh <- QRFE1_Y_bk_npl_hh %>%filter(!grepl('Year', pfe.row.names_mod))%>%  mutate(Exposure = "Households")
+QRFE1_npl_nfi <- QRFE1_Y_bk_npl_nfi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Non-Financial Corp.")
+QRFE1_npl_fi <- QRFE1_Y_bk_npl_fi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Financial Corp.")
+
+
+QRFE1_npl <- as.data.frame(bind_rows(QRFE1_npl_hh,QRFE1_npl_nfi,QRFE1_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE1_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression-Year Dummy ("~lambda~"= 1 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics-Year Dummy (only bank)  ($\lambda=1$)]{Fixed Effects Quantile Regression Graphics ($\lambda=1$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq1.graph_Year_bk}
+\end{figure}
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq2.5.graph_Year_bk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+ # load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE2.5_Y_bk_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE2.5_Y_bk_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE2.5_Y_bk_npl_fi.RData', sep = "/"))
+  
+  QRFE2.5_npl_hh <- QRFE2.5_Y_bk_npl_hh %>%filter(!grepl('Year', pfe.row.names_mod))%>%  mutate(Exposure = "Households")
+QRFE2.5_npl_nfi <- QRFE2.5_Y_bk_npl_nfi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Non-Financial Corp.")
+QRFE2.5_npl_fi <- QRFE2.5_Y_bk_npl_fi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Financial Corp.")
+
+
+QRFE2.5_npl <- as.data.frame(bind_rows(QRFE2.5_npl_hh,QRFE2.5_npl_nfi,QRFE2.5_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE2.5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression-Year Dummy ("~lambda~"= 2.5 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics-Year Dummy (only bank) ($\lambda=2.5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq2.5.graph_year_bk}
+\end{figure}
+
+
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq5.graph_year_bk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+ # load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE5_Y_bk_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE5_Y_bk_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE5_Y_bk_npl_fi.RData', sep = "/"))
+  
+  QRFE5_npl_hh <- QRFE5_Y_bk_npl_hh %>%filter(!grepl('Year', pfe.row.names_mod))%>%  mutate(Exposure = "Households")
+QRFE5_npl_nfi <- QRFE5_Y_bk_npl_nfi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Non-Financial Corp.")
+QRFE5_npl_fi <- QRFE5_Y_bk_npl_fi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Financial Corp.")
+
+
+QRFE5_npl <- as.data.frame(bind_rows(QRFE5_npl_hh,QRFE5_npl_nfi,QRFE5_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression-Year Dummy ("~lambda~"= 5 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics-Year Dummy (only bank) ($\lambda=5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=5$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq5.graph_year_bk}
+\end{figure}
+
+
+
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq1.graph_year_mk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+ # load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_Y_mk_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_Y_mk_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_Y_mk_npl_fi.RData', sep = "/"))
+  
+  QRFE1_npl_hh <- QRFE1_Y_mk_npl_hh %>%filter(!grepl('Year', pfe.row.names_mod))%>%  mutate(Exposure = "Households")
+QRFE1_npl_nfi <- QRFE1_Y_mk_npl_nfi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Non-Financial Corp.")
+QRFE1_npl_fi <- QRFE1_Y_mk_npl_fi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Financial Corp.")
+
+
+QRFE1_npl <- as.data.frame(bind_rows(QRFE1_npl_hh,QRFE1_npl_nfi,QRFE1_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE1_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression-Year Dummy ("~lambda~"= 1 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics-Year Dummy (only macro) ($\lambda=1$)]{Fixed Effects Quantile Regression Graphics ($\lambda=1$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq1.graph_Year_mk}
+\end{figure}
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq2.5.graph_Year_mk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+ # load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE2.5_Y_mk_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE2.5_Y_mk_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE2.5_Y_mk_npl_fi.RData', sep = "/"))
+  
+  QRFE2.5_npl_hh <- QRFE2.5_Y_mk_npl_hh %>%filter(!grepl('Year', pfe.row.names_mod))%>%  mutate(Exposure = "Households")
+QRFE2.5_npl_nfi <- QRFE2.5_Y_mk_npl_nfi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Non-Financial Corp.")
+QRFE2.5_npl_fi <- QRFE2.5_Y_mk_npl_fi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Financial Corp.")
+
+
+QRFE2.5_npl <- as.data.frame(bind_rows(QRFE2.5_npl_hh,QRFE2.5_npl_nfi,QRFE2.5_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE2.5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression-Year Dummy ("~lambda~"= 2.5 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics-Year Dummy (only macro) ($\lambda=2.5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq2.5.graph_year_mk}
+\end{figure}
+
+
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq5.graph_year_mk,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+ path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+ # load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE5_Y_mk_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE5_Y_mk_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE5_Y_mk_npl_fi.RData', sep = "/"))
+  
+  QRFE5_npl_hh <- QRFE5_Y_mk_npl_hh %>%filter(!grepl('Year', pfe.row.names_mod))%>%  mutate(Exposure = "Households")
+QRFE5_npl_nfi <- QRFE5_Y_mk_npl_nfi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Non-Financial Corp.")
+QRFE5_npl_fi <- QRFE5_Y_mk_npl_fi %>%filter(!grepl('Year', pfe.row.names_mod))%>% mutate(Exposure = "Financial Corp.")
+
+
+QRFE5_npl <- as.data.frame(bind_rows(QRFE5_npl_hh,QRFE5_npl_nfi,QRFE5_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression-Year Dummy ("~lambda~"= 5 )")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics-Year Dummy (only macro) ($\lambda=5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=5$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq5.graph_year_mk}
+\end{figure}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Robustness Checks}
+
+\input{Tables/Final/Panel/Static_Models_SELEC_pr2_75}}
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<qq.graph.75,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+
+load(paste(path_data,'QR_npl_hh.75.RData', sep = "/"))
+load(paste(path_data,'QR_npl_nfi.75.RData', sep = "/"))
+load(paste(path_data,'QR_npl_fi.75.RData', sep = "/"))
+
+
+QR_npl_hh <- QR_npl_hh.75 %>% mutate(Exposure = "Households")
+QR_npl_nfi <- QR_npl_nfi.75 %>% mutate(Exposure = "Non-Financial Corp.")
+QR_npl_fi <- QR_npl_fi.75 %>% mutate(Exposure = "Financial Corp.")
+
+QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi,QR_npl_fi))
+#QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi))
+
+ggplot(data=QR_npl,aes(x=type,y = coefficients)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ var,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+  # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+  # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+  # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+  
+  # scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+  scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Standard Quantile Regression (home exposure >= 75 (%)")
+
+
+@
+\caption[quantile Regression Graphics-Home Exposure $\geq$ 75\% ]{quantile Regression Graphics-Home Exposure $\geq$ 75\%\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{qq.graph.75}
+\end{figure}
+
+ \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq1.graph.75,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+
+library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+
+load(paste(path_data,'QRFE1_npl_hh.75.RData', sep = "/"))
+load(paste(path_data,'QRFE1_npl_nfi.75.RData', sep = "/"))
+load(paste(path_data,'QRFE1_npl_fi.75.RData', sep = "/"))
+
+
+QRFE1_npl_hh <- QRFE1_npl_hh.75 %>% mutate(Exposure = "Households")
+QRFE1_npl_nfi <- QRFE1_npl_nfi.75 %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE1_npl_fi <- QRFE1_npl_fi.75 %>% mutate(Exposure = "Financial Corp.")
+
+QRFE1_npl <- as.data.frame(bind_rows(QRFE1_npl_hh,QRFE1_npl_nfi,QRFE1_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE1_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+  # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+  # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+  # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+  
+  # scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+  scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 1 ) (home exposure >= 75 (%)")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=1$)-Home Exposure $\geq$ 75\%]{Fixed Effects Quantile Regression Graphics ($\lambda=1$)-Home Exposure $\geq$ 75\%\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq1.graph.75}
+\end{figure}
+
+  \begin{figure}[H] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+<<feqq5.graph.75,fig.width=13, fig.height=10, out.width='1.4\\linewidth',out.extra='angle=90'>>=
+
+
+library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <- 'C:/Users/varga/Desktop/Thesis/R_data/'
+
+load(paste(path_data,'QRFE5_npl_hh.75.RData', sep = "/"))
+load(paste(path_data,'QRFE5_npl_nfi.75.RData', sep = "/"))
+load(paste(path_data,'QRFE5_npl_fi.75.RData', sep = "/"))
+
+QRFE5_npl_hh <- QRFE5_npl_hh.75 %>% mutate(Exposure = "Households")
+QRFE5_npl_nfi <- QRFE5_npl_nfi.75 %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE5_npl_fi <- QRFE5_npl_fi.75 %>% mutate(Exposure = "Financial Corp.")
+
+QRFE5_npl <- as.data.frame(bind_rows(QRFE5_npl_hh,QRFE5_npl_nfi,QRFE5_npl_fi))
+#View(QRFE5_npl) 
+
+
+
+ggplot(data=QRFE5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  facet_wrap(~ pfe.row.names_mod,scales = "free")+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+  # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+  # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+  # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+  
+  # scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+  scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 5 ) (home exposure >= 75 (%)")
+
+
+@
+
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=5$)-Home Exposure $\geq$ 75\%]{Fixed Effects Quantile Regression Graphics ($\lambda=5$)-Home Exposure $\geq$ 75\%\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq1.graph.75}
+\end{figure}
+
+
+
+\subsection{List of Banks}
+\input{Tables/bank_names_test3}
+
+\pagebreak
+
+
+
+
+
+
+% 
+% \subsection{Geographic Diversification}
+% \begin{figure}[!htbp] % between [] you put options e.g. ht = here top
+% 
+% \hspace*{-0.5in}
+% \centering
+% <<CBDIndex,fig.width=5, fig.height=6, out.width='.89\\linewidth'>>=
+%      library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+%  
+%   load(paste(path_data,'all.RData', sep = "/"))
+%   
+%   library(plyr)
+%   all1 <- all %>% mutate(Exposure= as.factor(Exposure)) 
+%   all1$Exposure <- revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+%   
+%  a <- all1 %>% ggplot(aes(x=CBDI_index)) + 
+%    geom_density(fill = "cornsilk", colour = "grey60",alpha = .5,size=1)+
+%     xlab(" ") +
+%     ylab("")+
+%    # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+%   # facet_wrap(~ Exposure, nrow = 1)+
+%    #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+%    #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+%    #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+%    #scale_colour_manual(values = c("lightsteelblue2"))+
+%    scale_x_continuous(breaks=seq(0,100,25),limits = c(0, 100))+
+%    scale_y_continuous(labels = scales::percent_format(accuracy = .1,scale = 100))+
+%   # scale_x_continuous(breaks=seq(-50,100,25),limits = c(0, 100))+
+%    #theme_bw()+
+%    theme(plot.title = element_text(hjust = 0.5))+
+%   # theme(strip.background =element_rect(fill="lightblue4"))+
+%   # theme(strip.text = element_text(colour = 'white'))+
+%    theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+%    # theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%    # labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%     ggtitle("CBDI index: Distribution")
+%  
+%  b <- all1 %>% ggplot(aes(sample=CBDI_index ))  + geom_qq(distribution = qnorm) + 
+%   geom_qq_line(line.p = c(0.25, 0.75), col = "blue") +
+%  # geom_abline(intercept = 0, slope = 1) +
+%   xlab("Theoretical Quantiles") +
+%   ylab("CBDI_index")+
+%   #ylim(-4, 4)+
+%   scale_x_continuous(breaks=seq(-4,4,1) )+
+%   #scale_y_continuous(breaks=seq(0,25,100),limits=c(0,100) )+
+%   #stat_qq_line(color="grey",linetype="dashed")+
+%   theme(plot.title = element_text(hjust = 0.5))+
+%   theme(strip.background =element_rect(fill="lightblue4"))+
+%   theme(strip.text = element_text(colour = 'white',size = 7))+
+%   theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%   theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+%   ggtitle("Q-Q Diagram:CBDI Index")
+%  
+%  c <-  all1 %>% ggplot(aes(x=CBDI_index)) +
+%    stat_ecdf(aes(ymin=0,ymax=..y..),geom="ribbon",fill = "cornsilk",alpha = .5)+
+%    stat_ecdf(geom = "line",linetype="solid", color="grey60", size=1)+
+%    # geom_density(,alpha = .5,size=1)+
+%     xlab(" ") +
+%     ylab(" ")+
+%    # scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households"))+
+%    #facet_wrap(~ Exposure, nrow = 1)+
+%    #scale_fill_brewer("",labels = c("Financial Institutions","Non-Financial Institutions","Households"),palette = "RdYlBu") +
+%    #scale_fill_discrete("",labels = c("Financial Institutions","Non-Financial Institutions","Households")) +
+%    #scale_fill_manual("",labels = c("Financial Institutions","Non-Financial Institutions","Households"), values = c("lightyellow", "lightsteelblue2","palegreen"))+
+%    #scale_colour_manual(values = c("lightsteelblue2"))+
+% 
+%    #scale_x_continuous(breaks=seq(-50,100,25),limits = c(-50, 100),labels = scales::percent_format(accuracy = 1,scale = 1))+
+%    scale_x_continuous(breaks=seq(-50,100,25),limits = c(0, 100)  )+
+%    scale_y_continuous(labels = scales::percent_format(accuracy = .1,scale = 100))+
+%    #theme_bw()+
+%    theme(plot.title = element_text(hjust = 0.5))+
+%    theme(strip.background =element_rect(fill="lightblue4"))+
+%    theme(strip.text = element_text(colour = 'white'))+
+%    theme(legend.position="bottom",panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+%    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%    labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%    ggtitle("CBDI index: Empirical Cumulative Density Function")
+%  #   
+%    library(ggpubr)
+%  ggarrange(a, b,c,
+%            labels = c(" ", " "),
+%            nrow = 2,ncol = 2)  
+% @
+% 
+% \caption{Cross-Border Diversification Index: Density}
+% \label{CBDIndex}
+% \end{figure}
+% 
+% \subsection{Single Supervisory Mechanism \& Country of Origin}
+% 
+% \begin{figure}[!htbp] % between [] you put options e.g. ht = here top
+% 
+% \hspace*{-0.5in}
+% \centering
+% 
+% <<SSM,fig.width=8, fig.height=8, out.width='.89\\linewidth'>>=
+%   library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+%  
+%   load(paste(path_data,'all.RData', sep = "/"))
+%   
+%   library(plyr)
+%   all1 <- all %>% mutate(Exposure= as.factor(Exposure)) 
+%   all1$Exposure <- revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+%   
+%  SSM1 <- data.frame(all1 )%>% group_by(Year,SSM)%>% dplyr::count()
+%   SSM2 <- SSM1%>% group_by(Year) %>%  summarise_at(vars(n),list(sum = sum))
+%   SSM3 <-  SSM1 %>% left_join( SSM2, by=c("Year")) %>% mutate( pct2= n/sum)
+%  # View(SSM3)
+%  
+% a <- ggplot(SSM3,
+%         aes(x=Year, y=pct2,fill=SSM)) +
+%    geom_col()+
+%    xlab(" ") +
+%    ylab(" ")+
+%   # scale_fill_grey()+
+%    theme_light()+
+%    geom_text(aes(label = scales::percent(pct2)),
+%              position="stack",vjust=+2.3,col="black",size=3)+
+%    #facet_wrap(~ Exposure, nrow = 3)+
+%   # scale_fill_manual(values = c("lightslategray","lightblue"))+
+%   # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+%    scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("No SSM-Member", "SSM-Member"))+
+%    scale_y_continuous(label = scales::percent)+
+%    theme(plot.title = element_text(hjust = 0.5))+
+%     # theme(strip.background =element_rect(fill="lightblue4"))+
+%     # theme(strip.text = element_text(colour = 'white'))+
+%      theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+%    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%    theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))+
+%    #labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%     ggtitle("SSM Membership in Sample (%)")
+% 
+%  NSA1 <- data.frame(all1 )%>% group_by(nsa_label)%>% dplyr::count()
+%  NSA2 <- data.frame(all1 )%>% dplyr::count() 
+%  NSA3 <-  NSA1  %>% mutate( pct2= n/ NSA2 [1,1])
+%  # View(SSM3)
+% 
+%  b <- ggplot(NSA3,
+%         aes(x=nsa_label, y=pct2)) +
+%    geom_bar(  stat='identity', position = 'stack',fill="lightblue4")+
+%    xlab(" ") +
+%    ylab(" ")+
+%    # scale_fill_grey()+
+%    theme_light()+
+%    geom_text(aes(x=nsa_label, y=pct2,label = scales::percent(pct2,accuracy = .1,scale = 100), group =nsa_label),position=position_dodge(width = 1),vjust = -0.5, size = 2,col="black")+
+%             # position="stack",vjust=+2.3,col="black",size=3)+
+%    #facet_wrap(~ Exposure, nrow = 3)+
+%     #scale_fill_manual(values = c("lightslategray","lightblue"))+
+%    # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+%   # scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("NO", "YES"))+
+%    scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 100),breaks=seq(0,0.2,0.05),limits = c(0, .15)  )+
+%    theme(plot.title = element_text(hjust = 0.5))+
+%     theme(strip.background =element_rect(fill="lightblue4"))+
+%     theme(strip.text = element_text(colour = 'white',size = 10))+
+%    theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+%    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%    labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%    ggtitle("Banks' Country of Origin in Sample (%)")
+% 
+%    library(ggpubr)
+%  ggarrange(a, b,
+%            labels = c(" ", " "),
+%            nrow = 2)  
+%    
+%    
+% @
+% 
+% \caption{ Single Supervisory Mechanism \& Banks' Country of Origin in Sample (\%)}
+% \label{SSM}
+% \end{figure}
+
+
+% 
+% \begin{figure}[!htbp] % between [] you put options e.g. ht = here top
+% 
+% \hspace*{-0.5in}
+% \centering
+% <<Country,fig.width=6, fig.height=6, out.width='.89\\linewidth'>>=
+%  library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+% 
+%   load(paste(path_data,'all.RData', sep = "/"))
+% 
+%   library(plyr)
+%   all1 <- all %>% mutate(Exposure= as.factor(Exposure))
+%   all1$Exposure <- revalue(all1$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+% 
+%  NSA1 <- data.frame(all1 )%>% group_by(Exposure,nsa_label)%>% dplyr::count()
+%  NSA2 <- NSA1%>% group_by(Exposure) %>%  summarise_at(vars(n),list(sum = sum))
+%  NSA3 <-  NSA1 %>% left_join( NSA2, by=c("Exposure")) %>% mutate( pct2= n/sum)
+%  # View(SSM3)
+% 
+%  ggplot(NSA3,
+%         aes(x=nsa_label, y=pct2)) +
+%    geom_bar(  stat='identity', position = 'stack',fill="lightblue4")+
+%    xlab(" ") +
+%    ylab(" ")+
+%    # scale_fill_grey()+
+%    theme_light()+
+%    geom_text(aes(x=nsa_label, y=pct2,label = scales::percent(pct2,accuracy = .1,scale = 100), group =nsa_label),position=position_dodge(width = 1),vjust = -0.5, size = 2,col="black")+
+%             # position="stack",vjust=+2.3,col="black",size=3)+
+%    facet_wrap(~ Exposure, nrow = 3)+
+%     #scale_fill_manual(values = c("lightslategray","lightblue"))+
+%    # scale_fill_manual(values = c("royalblue2","lightgoldenrod1"))+
+%   # scale_fill_manual(values = c("royalblue2","goldenrod1"),name = " ", labels = c("NO", "YES"))+
+%    scale_y_continuous(label =  scales::percent_format(accuracy = .1,scale = 100),breaks=seq(0,0.2,0.05),limits = c(0, .2)  )+
+%    theme(plot.title = element_text(hjust = 0.5))+
+%     theme(strip.background =element_rect(fill="lightblue4"))+
+%     theme(strip.text = element_text(colour = 'white',size = 10))+
+%    theme(panel.background = element_rect(fill = "lightgray"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0))+
+%    theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%    labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+%    ggtitle("Origin Country in Sample (%)")
+% 
+% @
+% 
+% \caption{Origin Country in Sample (\%)}
+% \label{Country}
+% \end{figure}
+
+% \begin{figure}[!htbp] % between [] you put options e.g. ht = here top
+% 
+% \hspace*{-0.5in}
+% \centering
+%  <<VarDistrHH,fig.width=9, fig.height=10, out.width='1.1\\linewidth'>>=
+% #setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+% #getwd()
+% 
+%  options(scipen=999)#prevent scientic notation
+%  library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+%  
+%  load(paste(path_data,'all.RData', sep = "/"))
+% library(plyr)
+%   all%>%filter(Exposure=='401')%>% keep(is.numeric) %>%  gather() %>% 
+%     ggplot(aes(x=value,y=..density..)) +
+%     facet_wrap(~ key, scales = "free") +
+%    geom_histogram(fill = "cornsilk", colour = "grey60")+
+%    geom_density()+
+%    theme_bw()+
+%    theme(plot.title = element_text(hjust = 0.5))+
+%    theme(strip.background =element_rect(fill="lightblue4"))+
+%    theme(strip.text = element_text(colour = 'white',size = 7))+
+%    theme(panel.background = element_rect(fill = "lightgray"))+
+%        theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%    labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+%   # ggtitle("Data Distribution: Households")
+%  @
+%  
+% \caption{Variables Distribution: Households}
+% \label{VarDistrHH}
+% \end{figure}
+% 
+% \begin{figure}[!htbp] % between [] you put options e.g. ht = here top
+% 
+% \hspace*{-0.5in}
+% \centering
+%  <<VarDistrNFI,fig.width=9, fig.height=10, out.width='1.1\\linewidth'>>=
+% #setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+% #getwd()
+% 
+%  options(scipen=999)#prevent scientic notation
+%  library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+%  
+%  load(paste(path_data,'all.RData', sep = "/"))
+% library(plyr)
+%   all%>%filter(Exposure=='301')%>% keep(is.numeric) %>%  gather() %>% 
+%     ggplot(aes(x=value,y=..density..)) +
+%     facet_wrap(~ key, scales = "free") +
+%    geom_histogram(fill = "cornsilk", colour = "grey60")+
+%    geom_density()+
+%    theme_bw()+
+%    theme(plot.title = element_text(hjust = 0.5))+
+%    theme(strip.background =element_rect(fill="lightblue4"))+
+%    theme(strip.text = element_text(colour = 'white',size = 7))+
+%    theme(panel.background = element_rect(fill = "lightgray"))+
+%        theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%    labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+%    #ggtitle("Data Distribution: Non-Financial Corporations")
+%  @
+%  
+% \caption{Variables Distribution: Non-Financial Corporations}
+% \label{VarDistrNFI}
+% \end{figure}
+% 
+% \begin{figure}[!htbp] % between [] you put options e.g. ht = here top
+% 
+% \hspace*{-0.5in}
+% \centering
+%  <<VarDistrFI,fig.width=9, fig.height=10, out.width='1.1\\linewidth'>>=
+% #setwd("C:/Users/varga/Desktop/Thesis/Master_thesis/Output/Chapters/Chapter_2/Figures")
+% #getwd()
+% 
+%  options(scipen=999)#prevent scientic notation
+%  library(tidyverse)
+%  path_data <-  file.path(getwd(), "Data")
+%  
+%  load(paste(path_data,'all.RData', sep = "/"))
+% library(plyr)
+%   all%>%filter(Exposure=='202')%>% keep(is.numeric) %>%  gather() %>% 
+%     ggplot(aes(x=value,y=..density..)) +
+%     facet_wrap(~ key, scales = "free") +
+%    geom_histogram(fill = "cornsilk", colour = "grey60")+
+%    geom_density()+
+%    theme_bw()+
+%    theme(plot.title = element_text(hjust = 0.5))+
+%    theme(strip.background =element_rect(fill="lightblue4"))+
+%    theme(strip.text = element_text(colour = 'white',size = 7))+
+%    theme(panel.background = element_rect(fill = "lightgray"))+
+%        theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+%   labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+%    labs(caption = "Source: EBA Transparency Exercises, authors' calculations")
+%    #ggtitle("Data Distribution: Non-Financial Corporations")
+%  @
+%  
+% \caption{Variables Distribution: Financial Corporations}
+% \label{VarDistrFI}
+% \end{figure}
+
+%plot.caption = element_text(color = "black", face = "italic",hjust = 0.0,size=10)
+
+% The figure \ref{NplRatios} shows the distribution in the sample of NPL ratios for households, financial corporations and non-financial corporations.
+%  
+
+
+
+
+
+
+ \FloatBarrier
+ 
+% https://tex.stackexchange.com/questions/209043/how-to-do-i-change-the-margins-around-a-figure-so-it-takes-up-maximum-space

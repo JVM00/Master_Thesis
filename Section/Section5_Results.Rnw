@@ -1,0 +1,988 @@
+% !Rnw root = Thesis.Rnw
+
+ % \setlength{\abovecaptionskip}{1ex}
+ %  \setlength{\belowcaptionskip}{1ex}
+%  \setlength{\floatsep}{1ex}
+%  \setlength{\textfloatsep}{1ex}
+%  
+\FloatBarrier
+\section{Results and Discussion}
+
+\subsection{Regression Analysis and Test Estimates}
+
+Table \ref{nlp.selc} contains the results of the estimations and Table \ref{BPF} (appendix) provides the results of multiples tests for the  linear panel models. As observed in Table \ref{BPF}, the Hausman test for the  static panel models suggests that a random  effects approach is more appropriate for households and financial corporations [Prob (Hausman Test) $\geq$0.05], whereas a fixed effects  approach seems to fit better for non-financial corporations [Prob (Hausman Test) $<$0.05]. Moreover, the Breusch-Pagan Lagrange Multiplier and the  F tests for individual effects (p-value $\geq$0.05 ) suggest the existence of panel effects for all exposure types, confirming that the use of panel techniques over simple OLS estimation is also appropriate. As observed in the results of the  Wooldridge's tests, which are specific tests for serial correlation and  unobserved individual effects under null hypothesis of no serial correlation and unobserved effects, there is evidence of serial correlation and the present of heteroscedasticity in the errors for all exposure types (p-value $\geq$0.05). The heteroscedasticity in the errors justifies the use of Heteroscedasticity-consistent  (HC) robust standard errors in the static panel models. 
+
+The Sargan tests, which aim at testing the joint validity of the instruments used for the dynamic panel models, indicates that the null hypothesis of instruments validity can not be rejected at a significant level of 0.01\% [Prob (Sargan Test) $\geq$ 0.01] for all exposure types. Moreover, the results of the Arellano-Bond tests for second-order autocorrelation [Prob (AR(2))$\geq$ 0.05] confirm that the assumption of serially uncorrelated errors also holds. Given the results of the Sargan an Arellano-Bond tests, there is evidence that the GMM estimators are also consistent. Tables \ref{nlp.selc_bk}  and \ref{nlp.selc_75} are also provided  with the purpose of providing additional robustness checks  for the main results in "standard" panel methods. Table \ref{nlp.selc_bk} show the results when only including bank-specific variables in the models and Table \ref{nlp.selc_75} show the results of the estimations when only considering in the sample banks  with a domestic exposure greater  or equal to 75\%. 
+
+With regard to the estimations with quantile methods, Figure \ref{qq.graph} show the results of the pooled quantile regression, whereas Figures \ref{feqq1.graph}, \ref{feqq2.5.graph} and \ref{feqq5.graph} show the results of the penalized fixed effects quantile regressions for $\lambda$ equal to 1, 2.5 and 5, respectively.  In the appendix, some tables regarding  the results of the pooled quantile regressions for each exposure type are also available (see \ref{qq.npl_hh},\ref{qq.npl_nfi},\ref{qq.npl_fi}) as well as several  joint tests for slope equality and symmetric quantiles. The results of the  individual slope tests for each variable are also available in Table \ref{slope}. In general, the joint and individual slope equality tests for the equality of slope coefficients also provide evidence that the coefficient values differ across quantiles for most explanatory variables. Similarly, the  joint symmetric quantile tests  show that there is no evidence of symmetries in the coefficient values across quantiles. Tables regarding  the results of the penalized fixed effects quantile regressions for each exposure type are available in \ref{qrfe_npl_hh}, \ref{qrfe_npl_nfi} and \ref{qrfe_npl_fi}. Figures \ref{qq.graph_bk}, \ref{feqq1.graph_bk}, \ref{feqq2.5.graph_bk} and \ref{feqq5.graph_bk} show the results of the pooled quantile and penalized fixed effects quantile regressions for the case of considering  only bank-specific variables as regressors. Similarly, Figures \ref{qq.graph.75}, \ref{feqq1.graph.75}, \ref{feqq2.5.graph.75} and \ref{feqq5.graph.75} show the results of the pooled quantile  and the penalized fixed effects quantile regressions when  only considering in the sample those banks with a domestic exposure greater  or equal to 75\%.
+
+\subsection{Contribution of explanatory variables to NPL}
+
+As observed in the empirical results, the bank-specific and macroeconomic factors considered in this analysis are jointly significant in explaining NPL for all exposures types. These results are also consistent with the case in which only banks with domestic exposures higher or equal to 75\% are taken into consideration. Additionally, the very low p-value of the F-statistics in Tables \ref{nlp.selc},\ref{nlp.selc_bk} and \ref{nlp.selc_75} indicates that the null hypotheses are to be rejected, meaning that  the  joint effects of the explanatory variables on NPL are also  significant. In other words, it can be affirmed that the bank-specific and macroeconomic factors included in the analysis show statistical significance in all models, regression methods and exposure types under consideration,  although the explanatory power largely decreases in models where only bank-specific factors are considered as observed in their adjusted R-squares (Figures \ref{nlp.selc} and \ref{nlp.selc_bk}).
+
+\subsubsection{Macroeconomic indicators}
+
+With respect to business cycle indicators, the unemployment rates and the GDP growth are included in the regressions as explanatory variables. The estimated coefficients for the unemployment rates appear to be very significant and  positively related to NPL for household and non-financial corporations for  all models but insignificant for the case of financial corporations. Moreover, their impact is quite constant for all NPL quantiles as illustrated in the results of the quantile regressions. Regarding the estimated coefficients of GDP growth (GDP\_growth\_perc), these   also seem to be positively related with NPL but with low significance  for all models and exposure types. Thus, it can be concluded that unemployment rates are very relevant determinants of NPL with large and significant coefficients, whereas GDP growth plays a secondary role in these results (Table \ref{nlp.selc} and Figures \ref{qq.graph}, \ref{feqq1.graph}). Moreover, the magnitude of the business cycle indicators  remains quite flat along the distribution of NPL. This characteristic suggests that the impact of macroeconomic indicators on NPL is not affected by the amount of NPL at portfolio level. 
+
+When looking at price levels, the estimated coefficients for the inflation rates are very significant and negatively related with NPL for all models and exposures types, suggesting that the price level is also  very important determinant of NPL and that its impact is marginally increasing along the distribution of NPL in the portfolio (Tables \ref{nlp.selc}, \ref{nlp.selc_75} and  Figures \ref{qq.graph}, \ref{qq.graph.75}). In this sense, these results give empirical support  to the economic argument affirming that higher inflation rates tend to reduce problem loans by cutting down the real value of outstanding loans. 
+
+Similarly, the general government gross debt as a percentage of GDP (Gross\_public\_debt) is also included  in the analysis as an indicator of  the efficiency in the public sector. The estimated coefficients are significant and positively related to NPL, suggesting that the performance of the general government also has a large impact on the development of problem loans at bank level (Tables \ref{nlp.selc}, \ref{nlp.selc_75} and Figures \ref{qq.graph}, \ref{feqq1.graph}, \ref{qq.graph.75}, \ref{feqq1.graph.75}). Interestingly, the estimated coefficients also show a very  significance marginal increase  along the conditional distribution of NPL  as demonstrated in the quantile regressions. This marginal increase indicates that the effect of the public sector on NPL tend to be larger for banks with higher NPL in their portfolios. In this regard, the estimated impact is in line with the theoretical considerations that see a relation between sovereign debt developments and the performance of loan portfolios at bank-level. With respect to indicators regarding Terms of trade,  the estimated coefficients of the  current account balance as percentage of GDP (curr\_acc\_bal)  are significant and positively related to NPL for households and non-financial corporations but not for financial corporations other than credit institutions (Figures \ref{qq.graph}, \ref{feqq1.graph}, \ref{qq.graph.75}, \ref{feqq1.graph.75}). This last result suggests that persistent current account surpluses at national level during the period  2014-2019 may be followed by an increasing amount of problem loans at bank level, whereas the impact along the different NPL quantiles remains quite constant. One possible interpretation is that this relation may be driven by the efforts of many European economies, which excessively accumulated problem loans in their banking sectors, in improving their balance of payments at national level during the last years.
+
+Regarding the characteristics of the legal system, two variables have been included into the models, the strength of legal rights index (Stgth\_legal\_index), which  measures  the strength of collateral and bankruptcy  laws that positively influence the  access to credit (ex-ante), and recovery rates (Reco\_rate\_dol) calculated as recovered cents per dollar in debt. The strength of legal rights index (Stgth\_legal\_index)  shows estimated coefficients  that signal a positive relation  to NPL with low significance. In the quantile regressions, it shows  a close to constant impact along the difference quantiles and statistically significance in the static panel models (Figures \ref{qq.graph}, \ref{feqq1.graph}, \ref{qq.graph.75}, \ref{feqq1.graph.75}). This positive relation holds in all models except for the case of financial corporations other than credit institutions, and it suggests that  the  legal systems of countries with more friendly regulations  for the extension of credit have also been experiencing the larger  accumulation of problem loans during the period 2014-2019. On the other hand, the recovery rates [Reco\_rate] show  a negative and very significant correlation with NPL in all models and exposure types, and with  a similar impact along the conditional distribution of NPL as observed in the quantile regressions (Tables \ref{nlp.selc} and Figures \ref{qq.graph}, \ref{feqq1.graph}). In this sense, the negative relation between recovery rates and NPL also confirms  theoretical considerations arguing that judicial court systems in countries  with more efficient declaratory  procedures in terms of  the final recovered amount are also characterized by a lesser amount of NPL in the portfolios of banks operating in those countries. In general, these results illustrate the importance of the legal aspects with regard to the regulation  of lending activities and NPL resolution to explain the development of NPL at bank-level.
+
+% Stgth\_legal\_index  Strength of legal rights index (0=weak to 12=strong)
+% Reco\_rate\_dol Recovery rate (cents on the dollar)
+% SSM Single Supervisory Mechanism Dummy
+
+\subsubsection{Bank-Specific variables}  
+
+With respect to the variables regarding the profitability at bank-level, Returns on Risk adjusted Capital (RORAC) and Net Interest Margin (NIM\_tr) provide support for the identification of a causal relation between bank-profitability and problem loans. Returns on Risk adjusted Capital is found to be significant and negatively related to NPL in most models in line with the  "management" assumption presented in the literature, by which highly profitable banks have fewer incentives to enter into riskier activities and, therefore,  highly profitable banks tend to show fewer loans classified as non-performing (Tables \ref{nlp.selc} , \ref{nlp.selc_bk}, \ref{nlp.selc_75} and Figures \ref{qq.graph}, \ref{qq.graph_bk}, \ref{qq.graph.75}). In the case of net interest margins, the coefficients are found to be mostly positive but  with lower significance levels. Furthermore, the impact of net interest margins strongly increases along the distribution of NPL. These coefficients may be explained by the effects of lending policies setting very high (net) interest rates that are not necessarily justified by higher costs of funding on NPL (Figures \ref{qq.graph}, \ref{qq.graph_bk}, \ref{qq.graph.75}). In this sense, higher net interest margins in a bank's balance sheet signal  an increase of problem loans in the long run despite any positive effect in the short run. In this context, the causal relation between bank-profitability and problem loans is negative and in line with the "bad management" hypothesis as long as any improvement in the bank's profitability is not exclusively  explained by higher (net) interest rates over the cost of funding. As indicator of a bank's cost-efficiency, the cost to income indicator  (Cost\_to\_Income) is also incorporated in the models. In this case, the estimated coefficients of the cost to income indicator show a negative correlation with NPL and low significance levels for all models and exposure types (Tables \ref{nlp.selc} , \ref{nlp.selc_bk}, \ref{nlp.selc_75} and  Figures \ref{qq.graph}, \ref{qq.graph_bk}, \ref{qq.graph.75}). As observed in these results, it can be concluded that the cost to income indicator is not  a good determinant of NPL despite previous theoretical considerations in this respect.
+
+With regard to the relation between the size of a bank in terms of total assets and the amount of NPL in the portfolio, the estimated coefficients for the logarithm value of Bank Size (BankSize\_tran) are large, negatively related to NPL and statistically very significant for all models and exposures types. Moreover, the negative impact also shows  very large marginal increase along the conditional distribution of NPL, in which the largest impacts are to be found in the highest quantiles as observed in the results of the quantile regressions (Tables \ref{nlp.selc}, \ref{nlp.selc_bk} and Figures \ref{qq.graph}, \ref{feqq1.graph},  \ref{qq.graph_bk}, \ref{feqq1.graph_bk}). Particularly, these results  offer some empirical support for theoretical considerations  arguing that  the potential gains in terms of bank efficiency  and economies of scale for large banks are expected to have a greater impact on NPL than the effects related to the too-big-to-fail problem explained in previous sections. For this reason, larger banks will tend to show lower NPL ratios in their portfolios compared to smaller banks despite any  size-related incentive  to take additional risks.
+
+As indicators related to bank capitalization, the Common Equity Tier 1 Ratio -CET1- (CET1\_ratio\_tr) and the leverage ratio (LEVER\_tr\_ratio) are also incorporated in the models as explanatory variables.  The estimated coefficients of CET1 are  moderately significant and negative for households and non-financial corporations and not significant for financial corporations, whereas the estimated coefficients of the leverage ratio are positive and mostly insignificant for all models and exposure types (Table \ref{nlp.selc_bk} and Figures \ref{qq.graph}, \ref{feqq1.graph}, \ref{qq.graph_bk},  \ref{feqq1.graph_bk}). Interestingly, CET1, which is the main  core indicator of capitalization for supervisory purposes,  is  significant and negatively related to NPL, while leverage ratios, which are  mostly subject to the bank's discretion, seem to play a secondary role in explaining NPL. In this context, it must also be pointed out that the statistical significance and the values of the estimated coefficients for CET1 significantly increase  for the models that do not include macroeconomic variables (Table \ref{nlp.selc_bk} and Figures \ref{qq.graph_bk},  \ref{feqq1.graph_bk}). Furthermore, the estimated coefficients of CET1 and leverage ratios also present quite constant impact and significance along the conditional distribution of NPL for the quantile  regressions with macroeconomic variables. Interestingly, the marginal  impact  tend to increase at the highest NPL quantiles for the quantile  regressions that do not include macroeconomic variables. In general, the results of the estimated relation between CET1 and NPL is in line with the "moral hazard" hypothesis commented in previous sections by which managers in low-capitalized banks have larger incentives to undertake riskier lending activities that lead to higher NPL in their portfolios. However, the results regarding the impact of leverage ratios on NPL may appear to be explained by the reasoning that higher capitalized banks also have the possibility of implementing more flexible lending policies given previous  compliance with the respective supervisory regulation, and, therefore, a positive relation between the level of capitalization and NPL can also be found.
+
+Additionally, the dynamic model for panel data (GMM) also delivers  the estimated coefficients for the lagged values of NPL by one period. As expected, these estimates are positive, large and statistically significant, demonstrating the importance of the relation between past and present NPL ratios. Particularly, this relation represents the presence of a persistent process, which implies that, all else equal, an  increase (decrease) in the NPL ratio  in a bank's portfolio for one period would likely be followed by another increase (decrease) in NPL ratios  for the next period. In this sense,  the dynamic models  identified the presence of a temporal interdependence  of NPL from different periods within a certain lag.
+
+\subsubsection{Supervision under the Single Supervisory Mechanism (SSM)}
+
+As explained in previous sections, the Single Supervisory Mechanism (SSM) represents the system of banking supervision as one of the first pillars of the European banking union. The estimated coefficients for the dummy coefficient of  membership under the SSM (SSMY) are  negatively related to NPL, large and  statistically significant for  non-financial corporations in the case of random and fixed effects models and also for households in the quantile regressions, whereas the estimated coefficients for financial corporations remain insignificant for all models. Furthermore, the value and sign of the estimated coefficients are quite constant for all quantiles along the conditional distribution of NPL, suggesting that the impact of this variable is similar to all banks regardless of the current NPL in their portfolios (Figures \ref{qq.graph}, \ref{feqq1.graph}, \ref{qq.graph.75},  \ref{feqq1.graph.75}). To some extent, these results present empirical evidence in favour of the statement that  banks under supervision in the context of the  Single Supervisory Mechanism (SSM) tend to show lower NPL ratios. Moreover, the results  may also be interpreted as evidence of the effectiveness of the recommendations and guidances published by the ECB banking supervision  on the development and implementation of NPL strategies as well as indicators of the relevance of the ECB for addressing asset quality issues in Europe. However, despite the validity of the estimation in statistical terms, some caution  is needed when interpreting these results because of the asymmetries presented in the sample (80\%-20\% distribution between SSM members and non-SSM).
+
+\subsubsection{Geographic Diversification Index}
+
+When considering the effects of geographic diversification on asset quality, the estimations results vary among the models under consideration. The estimated coefficients of the Cross-Border Diversification Index (CBDI\_index)  show low and positive  values with statistical significance for all exposure types in the random and fixed effects approach for the models including all explanatory variables, whereas the same are statistically insignificant in the dynamic models (GMM). Once the macroeconomic indicators are  no longer considered in the models, the  estimated coefficients of the CBDI index show different direction and magnitude with negative  and lower values for all exposure types (Tables \ref{nlp.selc}, \ref{nlp.selc_bk}, \ref{nlp.selc_75}).
+
+With regard to the results of the quantile regression, the estimated coefficients of the Cross-Border Diversification Index (CBDI\_index) are  positive but mostly low and statistically insignificant for all exposures types and quantiles  in the models with all variables. However, once the macroeconomic variables are no longer considered as explanatory variables in the models, the  results  changed in terms of sign and value of the estimated coefficients. In this last case, the estimated coefficients of the quantile regression show a negative  and statistically significant correlation between  the geographic diversification and NPL for households and non-financial corporations, whereas in the case of financial corporations these values are close to zero and insignificant. Interestingly, the impact remains constant along the conditional distribution of NPL except for the case of non-financial corporations in which the marginal impact largely increases for higher quantiles (Figures \ref{qq.graph}, \ref{feqq1.graph}, \ref{qq.graph_bk}, \ref{feqq1.graph_bk}).
+
+In general, the overall effects of geographic diversification on NPL are therefore not clearly identified given the divergences in the empirical results  obtained for this indicator. In this sense, an analysis of the effects of geographic diversification on asset quality greatly depends on the degree of incorporation of external factors into the models. However, if the models only include bank-specific factors, the positive effects of geographic identification on NPL are evident in the case of exposures of non-financial corporations. To some extent, this ambiguity is also in line with the literature  as the benefits of cross-border portfolio diversification must be compared against the additional costs derived from the learning curve and other agency problems attached to banking activities abroad. 
+
+ 
+% %for households \& non-financial corporations. No impact for financial corporations.
+% %When controlling for  macroeconomic drivers,the effects are slighly positive for households. Strong \% non-financial corporations. 
+
+\subsubsection{Disaggregated loan Aspects: Exposure Types and NPL levels}
+
+As observed in the random/fixed effects  and GMM models for panel data, the estimated coefficients  in households  and non-financial corporations present  in general similarities in direction (+/-)  but differences in magnitude, whereas the estimated coefficients in financial corporations present the greatest divergences in comparative terms with low values and low significance levels. Moreover, there are significant differences in the explanatory power according to the R squared. While non-financial corporations and households are quite good explained by the data  with higher R squared, financial corporations  show lower explanatory power with low R squared. Interestingly,  the largest estimated coefficients in all models are found by non-financial corporations, followed by households and financial corporations, meaning that  the relation between bank-specific/macroeconomic indicators and NPL is more intense for corporates and businesses operating in the non-financial sector (Tables \ref{nlp.selc} , \ref{nlp.selc_bk}, \ref{nlp.selc_75}).
+
+Similarly, the results of the quantile regressions also present significant differences in the estimated coefficients across exposures types. The estimated coefficients in households and non-financial corporations are similar in sign but not in value with non-financial corporations showing the highest impact for almost all explanatory variables. On the other hand, the estimated coefficients in  financial corporations seem to be less reliable, showing very divergent results in terms of direction and values (Figures \ref{qq.graph}, \ref{feqq1.graph}, \ref{qq.graph.75}, \ref{feqq1.graph.75}).
+
+Moreover, the  quantile regressions allow us to assess the effects of the explanatory variables across  our sample of banks with heterogeneous levels of non-performing loans in their portfolios. In this case, the marginal impact of most explanatory variables tend to increase along the conditional distribution of NPL for all portfolio types, showing that the magnitude of the  estimated coefficients is greater  for banks with more non-performing loans  at quantile level in a non-linear fashion (Figures \ref{qq.graph}, \ref{qq.graph_bk}, \ref{qq.graph.75}). In particular, the increase in the marginal impact is quite strong in the case of macroeconomic indicators. In this context,  the magnitude of the estimated coefficients is found to be largest at the upper quantiles. Interestingly, when  only the sample  of banks with domestic exposures greater or equal 75\%  is considered in the estimations, the change of the marginal impact along the conditional distribution of NPL diminishes. This last result explains the somehow flatter curve for the estimated coefficients in comparison to  the estimations that include the full sample. With regard to the levels of significance, the results seem to be the same for each quantile in all models and sample types, where the statistical significance  remains  similar for lower, median and upper quantiles regardless of any divergences in the estimated coefficients.
+
+In general, these results may be explained by the fact that the exposures types considered in this thesis  react  differently to specific sector developments and heterogeneity in credit risks that are also reflected in the NPL.
+Moreover, non-financial corporations and households are better explained  by  the selected bank-specific/macroeconomic factors than financial corporations. Given that the selection of the explanatory variables is based on theoretical considerations and other published empirical research studying the determinants of NPL, it is also possible to conclude that   these studies are adequate for explaining problem loans in the  non-financial sector and households, but not for other type of loans such as loans to financial corporations other than credit institutions. Nevertheless, the previous statement does not affect the overall validity of the results due  to the fact that exposures in the non-financial sector and households  usually make up most loan exposures in a traditional bank's portfolio.
+
+Furthermore, the different results at quantile level point out  the presence of large divergences with respect to the determinants of NPL across a sample of European banks  at portfolio level, also characterizing  the heterogeneity in the European banking sector in terms of risk appetite, management strategies and participated markets.
+% With regard to the positive or negative sign
+% of the estimate coefficients, these also tend to remain constant along the conditional distribution of NPL in most cases. In other 
+% words, a significant change of direction in the estimates at the different quantiles can not clearly be identified given the
+% empirical results.
+
+In summary, the presented divergences in the results among exposure types and  quantiles illustrate the importance of an analysis of the determinants of NPL on a disaggregated loan portfolio at bank level in order to obtain a proper understanding of the drivers and evolution of NPL in the European banking system.
+
+\subsection{Research Hypotheses}
+
+Given the empirical results presented in this thesis, the  research hypotheses formulated in the first section are evaluated as follows:
+
+
+% the following conclusions are presented in the hypothesis questions presented in the first presented in the firwill be considered:
+%,leftmargin=5.5mm,2.5m
+\begin{itemize}[label= $ $,topsep=0pt, partopsep=0pt,itemsep=3.5pt,parsep= 3.5pt,leftmargin=2mm]
+
+    \item \textbf{$H_{1}$:  NPL are  mainly determined by bank-specific and macroeconomic factors}
+    
+  Both bank-specific and macroeconomic factors are jointly significant in explaining NPL for all exposures types as observed in the empirical results and, therefore, the inclusion of this class of data for studying the determinants of NPL is vastly justified in our analysis.
+
+    \item \textbf{$H_{2}$:  Business cycle indicators are significantly related to NPL}
+    
+     Statistical evidence is found in support of the claim that the business cycle also plays an important role in explaining NPL for the non-financial and household sectors but not for financial corporations other than credit institutions. As indicators of the business cycle, two variables are considered in this analysis: GDP growth (annual \%) (GDP\_growth\_perc) and unemployment rates (unempl\_rate\_imf). GDP growth (annual \%) is  only statistical significant for the case of non-financial corporations, in which the estimated coefficients are  positive or negative depending on the  model under consideration. With regard to unemployment rates, a positive correlation with NPL is identified for the non-financial and household sectors, in which the values  are found to be statistically significance.
+
+    \item \textbf{$H_{3}$:  Inflation rates  are significantly related to NPL}
+    
+    Inflation rates are found to be statistically  significant and negatively correlated for all exposure types. The results point out the relevance of taking a closer look into the price level when analyzing NPL in the banking sector. In this case, the empirical evidence suggests that an increase in the price level may contribute to a  reduction of problem loans probably by cutting down the real value of outstanding loans.
+    
+
+    \item \textbf{$H_{4}$:  Public finance indicators are significantly related to NPL}
+    
+    As an indicator of the efficiency in the public sector, an assessment of the effects of Gross Debt as a percentage of GDP (gross\_public\_debt)  on NPL is also included in this analysis. According to the empirical results,
+the estimated coefficients are found to be positively correlated with NPL for all exposure types, and statistically significant for non-financial corporations, households and non-financial corporations other than credit institutions. In other words, it can be affirmed that public finance indicators at country level such as the gross debt as percentage of GDP are significantly and positively related to NPL at bank level given their respective country of origin.
+
+    \item \textbf{$H_{5}$:  Terms of trade indicators are significantly related to NPL}
+    
+With regard to the terms of trade, the current account balance as a percentage of GDP (curr\_acc\_bal) is also included as a regressor in the models. The estimated coefficients of the current account balance as a percentage of GDP are only statistically significant for the case of non-financial corporations and households. Furthermore, the estimated coefficients are positive, suggesting that trade related indicators may also play an important role  as determinants of NPL in the non-financial and household sectors, but a secondary role in the case of financial corporations other than credit institutions. In this sense, trade surpluses at country level are found to be statistically related with larger amounts of NPL in the banking sector.
+ 
+    \item \textbf{$H_{6}$:  The size of a bank is significantly related to NPL}
+    
+As an indicator of the size of a bank, a variable for the total assets  at bank level (BankSize\_tran) is incorporated in the models. The estimated coefficients are in this case negative and statistically significant for all exposure types under consideration. In other words, the  size of a bank in terms of assets is significantly related to NPL at bank level. In summary, banks with a larger amount of assets in their balance sheets tend to show lower NPL in their portfolios.
+
+    \item \textbf{$H_{7}$:  Legal aspects of credit access and  NPL resolution are significantly related to NPL}
+    
+   As indicators of the effects of the legal framework on NPL the following variables were included in our analysis: The Strength of Legal Rights index (Stgth\_legal\_index)  as a measure of the strength of collateral and bankruptcy laws to favour the extension of new credit and Recovery Rate -cents on the dollar-  (Reco\_rate\_dol) as a measure of final recovered amount from NPL after debt restructuring, debt execution (foreclosure) or bankruptcy proceedings. The estimated coefficients of the strength of Legal Rights index (Stgth\_legal\_index)  show a positive  but statistically insignificant correlation with NPL for all exposure types. Therefore, it can be concluded that the strength of the collateral and bankruptcy laws does not seem to play a significant role in explaining the amount of NPL at bank level. All estimated coefficients for the variable Recovery Rate -cents on the dollar-  (Reco\_rate\_dol) show a negative value for all exposure types but only statistical significance  for the case of non-financial corporations and households. For this reason, recovery rates  appear to be an important determinant of NPL in the non-financial and household sectors. In this sense, an increase in the average recovered amount after the conclusion of proceedings in the context of NPL resolution  appears to  be related with a reduction of NPL in the portfolios of banks. In summary, it can be concluded that  certain legal aspects in terms of NPL resolution are significantly related to NPL, while other legal aspects concerning laws favouring  the access to new credit appeared not to be significantly related.
+
+    \item \textbf{$H_{8}$:  Bank profitability and cost efficiency indicators are significantly related to NPL}
+    
+     Returns on Risk adjusted Capital (RORAC) and Net Interest Margin (NIM\_tr) are included in this analysis  as indicators of a bank's profitability, while the cost to income (Cost\_to\_Income)  is used as an indicator of a bank's cost-efficiency. The estimated coefficients of Risk adjusted Capital (RORAC)  are statistically significant and negatively correlated with NPL for all exposure types  and estimation models. The estimated coefficients of Net Interest Margin (NIM\_tr) show a positive correlation with NPL for all exposure types  with statistically significance for non-financial corporations and households in most models. In this sense, a general improvement of a banks' profitability appears to be related to a reduction of NPL at bank-level once the  effects as long as the improvement is not motivated by higher net interest margins. Furthermore, the estimated coefficients of the cost to income (Cost\_to\_Income) are negative and statistically insignificant for all exposure types. In summary, the empirical evidence suggests a significant relationship between banks' profitability indicators and NPL, while with respect to  the indicator of cost-efficiency a significant relationship could not be identified.
+     
+    \item \textbf{$H_{9}$:  Bank capital adequacy ratios are significantly related to NPL}
+    
+  Common Equity Tier1 Ratio-CET1- (CET1\_ratio\_tr) and the leverage ratio (LEVER\_tr\_ratio) are included in this analysis as indicators of a bank's  capital adequacy. The estimated coefficients of CET1 (CET1\_ratio\_tr) are negative and statistically significant for non-financial corporations and households, and insignificance for the case of
+financial corporations other than credit institutions. Specially, the magnitude and significance of the estimates greatly increase in models with only bank-specific variables, where the macroeconomic effects are explicitly excluded from the regressions. Regarding the leverage ratio (LEVER\_tr\_ratio),  the estimated coefficients are positive but mostly insignificant for all exposures types. Given these results, it can be concluded that  bank capital adequacy ratios are significantly related to NPL in as much as  the regulatory capital is concerned. In this sense, an increase in the regulatory capital requirements contributes to a reduction of NPL.
+
+    \item \textbf{$H_{10}$: The level of geographic diversification in portfolio is significantly related to NPL}
+    
+    In order to assess the effects of geographic diversification  on NPL, a Cross-Border Diversification Index (CBDI\_index) is calculated based on the available data on the country of destiny of the exposures at bank level.  The estimated coefficients of the Cross-Border Diversification Index (CBDI\_index)  are either positive or negative depending on the model under consideration. Furthermore, the estimates are statistically significant for non-financial corporations and households but mostly insignificant for financial corporations other than credit institutions. Therefore, although the empirical results suggest that  the level of geographic diversification in a bank's portfolio is a relevant determinant of NPL, there is no  conclusive evidence of whether the final effects on NPL are positive or negative.
+    
+    \item \textbf{$H_{11}$: Supervision under the SSM  has significant effects on NPL}
+    
+     A dummy variable for  membership under the  Single Supervisory Mechanism (SSMY)  was created based on the available information on  the banks' country of origin. The estimated coefficients for the dummy coefficient of  membership under the SSM (SSMY) are  negative  for all exposure types and  statistically significant  for non-financial corporations and households. Therefore, the empirical evidence supports the statement that Supervision under the SSM has significant effects on NPL generated in the non-financial and household sectors. For the contrary, these effects appear to be insignificant for financial corporations other than credit institutions. Despite the fact that some caution is needed when interpreting the empirical results due to the presence of some asymmetries in the sample, it can be affirmed that  regulatory supervision under the Single Supervisory Mechanism (SSMY)  contributes favourably to  a reduction of NPL in the European banking sector.
+
+    \item \textbf{$H_{12}$: Magnitude and direction of the effects on NPL varies across exposure types}
+    
+In this thesis, several models are estimated across three exposure
+types: households, non-financial corporations and financial corporations other than credit institutions. As observed when comparing the empirical results across exposure types, the estimated coefficients for households  and non-financial corporations show similarities in direction in terms of positive or negative sign, but differences in magnitude in terms of high or low values. For the contrary, the estimated coefficients for financial corporations tends to diverge from the rest of exposure types in both magnitude and direction. Furthermore, exposures in the non-financial sector present the largest estimated coefficients in all models followed by households.  In this sense, it can be affirmed that the effects of bank-specific and macroeconomic factors on NPL are greatest for  corporates and businesses operating in the non-financial sector, closely followed by the household sector, while exposures in financial corporations other than credit institutions seem to have the lowest impact.
+
+    \item \textbf{$H_{13}$: The effects on NPL vary conditional on the  initial level of NPL}
+    
+    
+In this thesis, the use of quantile regression methodology allows the assessment of the determinants of NPL across  a sample of banks with heterogeneous levels of non-performing loans in their portfolios. According to the empirical results, the estimated coefficients reach their maximum values at the upper quantiles and the magnitude of their marginal impact tend to increase along the conditional distribution of NPL for all exposure types. Furthermore, the estimated coefficients present  similar levels of significance for lower, median and upper quantiles despite any difference in magnitude at quantile level. Therefore, the empirical evidence suggests that the magnitude of the effects of bank-specific and macroeconomic factors on NPL at bank level will diverge conditional on the initial level of NPL in the portfolio. In this sense, these results characterize the importance of taking into consideration the presence of heterogeneity among European banks when analyzing the determinants of NPL.
+
+ \end{itemize}
+
+
+
+ Table \ref{hipo} summarizes these conclusions. This evidence is based on the sign and the statistical significance of the estimated coefficients obtained in the regression models, with the exceptions of $H_{12}$ and $H_{13}$, whose empirical evidence is based on comparing the estimated coefficients across exposure types and quantiles along the conditional distribution of NPL, respectively.
+%\FloatBarrier
+
+\setlength{\extrarowheight}{1pt}
+
+\renewcommand{\baselinestretch}{1.5} 
+
+
+\begin{table}[!htb]
+	%\caption{Presentation of Bank-Specific Variables and Macroeconomic Indicators} % title name of the table
+%	\centering % centering table
+		\bgroup
+  %\catcode`\_=13%
+  %\def_{\textunderscore}%
+   %\cline{2-10}  
+ 
+  
+\caption{Empirical Evidence for Tested Hypotheses}
+\label{hipo}
+
+   %\footnotesize
+ %\begin{adjustwidth}{-.5in}{-.5in}    
+%\begin{adjustbox}{ width=\columnwidth }    
+	\resizebox{.9\textwidth}{!}{\begin{tabularx}{\textwidth} {l | l | l l l}
+%\hline % inserting double-line
+
+% \hline 
+% \hline 
+% \toprule 
+ \cline{1-5}
+	 \textbf{Hypothesis} &\textbf{Variables}  & \textit{\textbf{Non-Financial}} & \textit{\textbf{Households}} & \textit{\textbf{Financial}}  \\
+	%\hline % inserts single-line
+\cline{1-5}
+\vspace{.3cm} 
+%$H_{1}$        & NPL	& & &  \\
+$H_{1}$: Joint Significance  & ALL & Yes & Yes &  Yes  \vspace{.3cm}\\ 
+
+\multirow{2}{*}{$H_{2}$: Business Cycle} & GDP\_growth\_perc  & Yes (+/-) & No (+)&  No (+)  \\
+                                        & unempl\_rate\_imf   & Yes (+) & Yes (+)&  No (+/-)  \vspace{.3cm} \\ 
+                                     
+$H_{3}$: Inflation Rates                    &infl\_perc  & Yes (-) & Yes (-)&  Yes (-) \vspace{.3cm} \\ 
+
+$H_{4}$: Public Finance                     & gross\_public\_debt  & Yes (+) & Yes (+)&  Yes (+)  \vspace{.3cm} \\ 
+
+$H_{5}$: Terms of Trade                    & curr\_acc\_bal  & Yes (+) & Yes (+)&  No (+)  \vspace{.3cm} \\ 
+
+$H_{6}$: Bank Size                   & BankSize\_tran  & Yes (-) & Yes (-)&  Yes (-)  \vspace{.3cm} \\ 
+
+\multirow{2}{*}{$H_{7}$: Legal Aspects} & Stgth\_legal\_index  & No (+) & No (+)&  No (+/-)  \\ 
+                                        & Reco\_rate\_dol   & Yes (-) & Yes (-)&  No (-)  \vspace{.3cm}\\ 
+                                   
+\multirow{3}{*}{$H_{8}$: Profitability \& Cost} & RORAC  & Yes (-) & Yes (-)&  Yes (-)  \\
+                                        & NIM\_tr   & Yes (+) & Yes (+)&  No (+) \\ 
+                                        &Cost\_to\_Income   & No (-) & No (-)&  No (-) \vspace{.3cm} \\ 
+                                   
+\multirow{2}{*}{$H_{9}$: Capital Adequacy }& CET1\_ratio\_tr  & Yes (-) & Yes (-)&  No (-)  \\
+                                        & LEVER\_tr\_ratio   & No (+) & No (+)&  No (+) \vspace{.3cm} \\ 
+                                    
+$H_{10}$: Geo. Diversification    &  CBDI\_index  & Yes (+/-) & Yes (+/-)&  No (+/-)  \vspace{.3cm} \\ 
+
+ $H_{11}$: SSM                             &  SSMY  & Yes (-) & Yes (-)&  No (-)  \vspace{.3cm} \\   
+
+ \multirow{2}{*}{$H_{12}$: Diff. Exposures}        &     Direction              & No & No & Yes \\  
+                                              &      Magnitude           &  Yes & Yes & Yes   \vspace{.3cm} \\  
+
+  $H_{13}$: Diff. NPL Levels & Quantile (\%) & Yes & Yes & Yes  \vspace{.3cm} \\   
+  
+
+%\\[-1.8ex] 
+%\multicolumn{5}{l}{} \\ 
+% \multicolumn{5}{l} {\textit{Note: The empirical evidence is based on the sign and the statistical significance of the coefficients.}}  \\
+
+\cline{1-5} 
+%\hline \\[-1.8ex] 
+\multicolumn{5}{l} {\textit{Notes: Results are based on signs (+/-) and  stat. significance (Yes/no) of estimated coefficients.}} \\ 
+ \multicolumn{5}{l} {\textit{In $H_{12}$ and $H_{13}$, results are based on comparisons across exposure types and quantiles.}}  \\ 
+\end{tabularx}}
+
+
+% \begin{tablenotes} [flushright]
+%       %\footnotesize
+%       \item \textit{Note: The empirical evidence is based on the sign and the statistical significance of the coefficients. In the case of $H_{12}$ and $H_{13}$ evidence is based on Quantile Regression Graphs and Slope tests }
+%       %\item Note:  Theoretical considerations suggest positive or negative values
+%   \end{tablenotes}
+	
+  %\end{adjustbox}
+  %\end{adjustwidth}
+ %\vspace{1ex}
+
+
+ %    {\raggedright Source: Author's compilation\\Note: Theoretical considerations suggest positive or negative values \par}
+ 
+\end{table}
+
+
+\FloatBarrier
+
+
+
+%Regarding the hypothesis questions presented in the first section
+
+
+
+% \hline 
+% \hline 
+% \toprule
+% 	 \textbf{Hypothesis} &\textbf{Variable}  & \textbf{Non_Financial} & \textbf{Households} & \textbf{Financial}  \\
+% 	%\hline % inserts single-line
+% \midrule
+% %$H_{1}$        & NPL	& & &  \\
+% H{1}: Joint significance                 & ALL Var.& Yes & Yes &  Yes \\ 
+% \vspace{.2cm}
+% \multirow{2}{*}{$H{2}$: Business cycle & GDP\_growth\_perc  & Yes (+/-) & No (+)&  No (+)  \\
+%                                         & unempl\_rate\_imf   & Yes (-) & Yes (-)&  No (-) \\ 
+% \vspace{.2cm}                                       
+% H{3}: Inflation rates                    &infl\_perc  & Yes (-) & Yes (-)&  Yes (-) \\ 
+% \vspace{.2cm}
+% H{4}: Public finance                     & gross\_public\_debt  & Yes (+) & Yes (+)&  No (+)  \\ 
+% \vspace{.2cm}
+% H{5}: Terms of trade                    & curr\_acc\_bal  & Yes (+) & Yes (+)&  No(+)  \\ 
+% \vspace{.2cm}
+% H{6}: Bank size                   & BankSize\_tran  & Yes (-) & Yes (-)&  Yes (-)  \\ 
+% \vspace{.2cm}
+% \multirow{2}{*}{$H{7}$: Legal aspects} & Stgth\_legal\_index  & No (+) & No (+)&  No (+/-)  \\ 
+%                                         & Reco\_rate\_dol   & Yes (-) & Yes (-)&  No (-) \\ 
+%  \vspace{.2cm}                                       
+% \multirow{3}{*}{$H{8}$: Profitability \& Cost } & RORAC  & Yes (-) & Yes (-)&  Yes (-)  \\
+%                                         & NIM\_tr   & Yes (+) & Yes (+)&  No (+) \\ 
+%                                         &Cost\_to\_Income   & No (-) & No (-)&  No (-) \\ 
+%  \vspace{.2cm}                                       
+% \multirow{2}{*}{$H{9}$: Capital adequacy} & CET1\_ratio\_tr  & Yes (-) & Yes (-)&  No (-)  \\
+%                                         & LEVER\_tr\_ratio   & No (+) & No (+)&  No (+) \\ 
+% \vspace{.2cm}                                        
+%  H{10}: Geographic diversification      &  CBDI\_index  & Yes (+/-) & Yes (+/-)&  No (+/-)  \\ 
+%  \vspace{.2cm}
+%  H{11}: SSM                             &  SSMY  & Yes (-) & Yes (-)&  No (-)  \\   
+%  \bottomrule
+
+% NplRatiosb,echo=F,message=F,warning=F>>=
+%   library(tidyverse)
+%    path_data <- 'C:/Users/varga/Desktop/Thesis/R_data/Data/'
+% 
+%  load(paste(path_data,'all.RData', sep = ""))
+% # library(plyr)
+% all <- all %>% mutate(Exposure= as.factor(Exposure))
+%  all$Exposure <- plyr::revalue(all$Exposure,c("202" = "Financial Corporations", "301" = "Non-Financial Corporations","401" = "Households"))
+% # detach(package:plyr)
+% library(dplyr)
+% 
+% sm_all<-  all %>% group_by(Exposure) %>%
+%  summarise(mean = mean(NPL_ratio),median=median(NPL_ratio),Pctl.25=quantile(NPL_ratio, probs = .25),
+%               Pctl.75=quantile(NPL_ratio, probs = .75))
+% 
+%  
+% sm_all <- sm_all [,-1]%>%  t() %>% data.frame()
+% # sm_all<???as.data.frame(sapply(sm_all,as.numeric))
+% # sm_all<???cbind(sm_all[1],sm_all[2],sm_all[3])
+% # as.numeric(sm_all)
+% # sm_all[,1] <- as.numeric(sm_all[,1] )
+% # sm_all[,2] <- as.numeric(sm_all[,2] )
+% # sm_all[,3] <- as.numeric(sm_all[,3] )
+% 
+% 
+%   # View(sm_all)
+% 
+% #https://rcompanion.org/handbook/C_02.html
+%   library(psych)
+% a <- describeBy(all$NPL_ratio,group=all$Exposure)
+% # npl.stat.fi <- data.frame(a[[1]])%>% dplyr::select(sd,skew,kurtosis)
+% # npl.stat.nfi <- data.frame(a[[2]]) %>% dplyr::select(sd,skew,kurtosis)
+% # npl.stat.hh <- data.frame(a[[3]]) %>% dplyr::select(sd,skew,kurtosis)
+% 
+% npl.stat.fi <- a[[1]]%>% dplyr::select(sd,skew,kurtosis) %>% t() 
+% npl.stat.nfi <- a[[2]] %>% dplyr::select(sd,skew,kurtosis)%>% t() 
+% npl.stat.hh <- a[[3]] %>% dplyr::select(sd,skew,kurtosis)%>% t() 
+% e <- data.frame(cbind(npl.stat.fi,npl.stat.nfi,npl.stat.hh))
+% colnames(e) <- c("Financial Corporations","Non-Financial Corporations", "Households")
+% #class(e)
+% class(sm_all)
+% class(e)
+% #sm_all2 <- data.frame(as.numeric(round(sm_all[-1,]))
+% colnames(sm_all) <- c("Financial Corporations","Non-Financial Corporations", "Households")
+% #sm_all1 <- rbind(sm_all,e)
+% sm_all3 <-bind_rows(sm_all,e)
+% 
+% 
+% 
+% 
+% colnames(sm_all3) <- c("Financial Corporations","Non-Financial Corporations", "Households")
+% rownames(sm_all3) <- c("Mean","Median","Pctl(25)","Pctl(75)","Standard Deviation","Skewness","Kurtosis")
+% # sm_all3[,1] <- round(as.numeric(sm_all3[,1]) ,3)
+% #   sm_all3[,2] <- round(as.numeric(sm_all3[,2]) ,3)
+% #   sm_all3[,3] <- round(as.numeric(sm_all3[,3]) ,3)
+%  #View( sm_all2)
+%  #View(sm_all3)
+% # install.packages("kableExtra")
+% library(kableExtra)
+%  round(sm_all3,3) %>%
+%  kbl()%>%
+%  kable_classic_2(full_width = F)
+%  
+% #  library(knitr)
+% # library(rmarkdown)
+% # 
+% # table<-kable(sm_all3, format="markdown")
+% # cat(sm_all3, sep="\n", file="Table.Rmd")
+% # render("sm_all3.Rmd",output_format = "pdf_document")
+% 
+% #  #install.packages("gridExtra")   # Install & load gridExtra
+% # library("gridExtra")
+% #  pdf("npl.summ.pdf")       # Export PDF
+% # grid.table(sm_all2)
+% # dev.off()
+% @
+
+
+% Similar marginal changes for each portfolio type
+% 
+% In general, the marginal impact increases along the conditional NPL-distribution for all portfolio types, showing that the intensity of the impact increases  for banks with higher non-performing ratios 
+
+   % \item Differences in marginal impact  along the conditional  NPL-distribution.
+
+
+% fixing excesive This
+% that an excessive interest margin over the cost of the founding may lend to an increase in NPLs. 
+% 
+% 
+% 
+% found to be negatively related to NPLs in most models
+
+
+
+% \begin{itemize}
+% 
+% 
+% \item  In general, macroeconomic drivers  tend to show slightly more explanatory power than bank-specific variables
+% 
+% \item \textbf{Bank-specific Drivers}
+% 
+%     
+%     \begin{itemize}
+%     
+%     \item Bank profitability $\to$ Returns on Risk adjusted Capital (-), Net Interest Margin (+/?)
+%    % Economics of information \&  risk appetite ->  Bank size (-)
+%      \item Cost efficiency  $\to$  Cost to Income (?)
+%      \item Bank capitalization $\to$ CET1 ratio(-), leverage ratio (+/-)
+%     %\item Lending policy  $\to$  Net Interest Margin (+/?)
+%   
+%     %\item
+%     
+%     \end{itemize} 
+% 
+% 
+% \item \textbf{Macroeconomic drivers}
+% 
+%     \begin{itemize}
+%     
+%      \item Business cycle  $\to$ unemployment rates(+), \& GDP growth (+/-),
+%      \item Terms of trade  $\to$ current account balance (+/?)
+%     \item Sovereign Debt  $\to$ Gross Public debt (+)
+%     \item Rule of law:creditor-protection  $\to$  Recovery rates (-) 
+%     \item Rule of law:creditor \& debtor-protection  $\to$ strength legal system (+/?) 
+%     \item Corporare Governance \& Supervision  $\to$ SSMY(-)
+%     \item Price levels  $\to$ inflaction (+)
+%     
+%     \end{itemize}
+%   
+% 
+%  \end{itemize} 
+% 
+%    
+%    
+% \begin{itemize}
+% \item \textbf{Disaggregated loan aspects}
+%     \begin{itemize}
+%     
+%     \item Exposure types (households \& non-financial corp.) showed similar effects in term of impact direction  (+/-) but differences in intensity and explanatory power, with financial corp. showing the greatest impact direction deviations and the least explanatory power.
+%     \item Greatest impact on non-financial Corporations followed by households \& financial corporations
+%     \item Similar marginal changes for each portfolio type
+%     \item In general, the marginal impact increases along the conditional NPL-distribution for all portfolio types, showing that the intensity of the impact increases  for banks with higher non-performing ratios
+%    % \item Differences in marginal impact  along the conditional  NPL-distribution.
+%     
+%     \end{itemize}
+%     
+% \item Positive impact of lagged NPL ratios
+% 
+% \item The effects of bank-specific and macroeconomic drivers increase \textbf{along the conditional NPL-distribution}, i.e., stronger impacts  as the NPL levels in portfolio increase.
+% \item  The statistical significance of the explanatory variables remains similar along the quantile range of the dependent variable. 
+% \item  \textbf{Regulation and Supervision under the Single Supervisory Mechanism}  is significant and  negatively correlated with NPL with similar effects along the conditional NPL distibution
+% 
+% \item   The effect of \textbf{geographic diversification}  are unclear
+% %for households \& non-financial corporations. No impact for financial corporations.
+% %When controlling for  macroeconomic drivers,the effects are slighly positive for households. Strong \% non-financial corporations. 
+% %otherwise negative. Larger impact for non-financial corporations.
+% 
+% \end{itemize}
+
+
+
+%\begin{enumerate}[label=\roman*]
+
+%\pagebreak 
+%\subsection{Fixed Effects}
+
+ %\input{Tables/Final/Panel/Static_Models_npl_hh.nfi_pr}
+  %\input{Tables/Final/Panel/Static_Models_SELEC_pr2}
+  %\input{Tables/Final/Panel/Static_Models_SELEC_pr2_bk}
+  
+% \input{Tables/Final/Panel/Static_Models_SELEC_pr3}
+%\setlength{\tabcolsep}{6pt}
+\input{Tables/Final/Panel/Static_Models_SELEC_pr4}
+%\input{Tables/Final/Panel/Static_Models_SELEC_pr4_Year}
+%\input{Tables/Final/Panel/Static_Models_SELEC_pr4_75}
+
+\FloatBarrier
+ 
+  %,out.width='1.4\\linewidth',out.extra='angle=90'
+ <<qq.graph,fig.width=10, fig.height=13,fig.show='hide'>>=
+  
+library(tidyverse)
+library(rstudioapi)
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+
+  load(paste(path_data,'QR_npl_hh.nfi.RData', sep = "/"))
+ load(paste(path_data,'QR_npl_hh.RData', sep = "/"))
+   load(paste(path_data,'QR_npl_nfi.RData', sep = "/"))
+    load(paste(path_data,'QR_npl_fi.RData', sep = "/"))
+    
+    
+  QR_npl_hh <- QR_npl_hh %>% mutate(Exposure = "Households")
+QR_npl_nfi <- QR_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QR_npl_fi <- QR_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QR_npl <- as.data.frame(bind_rows(QR_npl_hh,QR_npl_nfi,QR_npl_fi))
+
+
+ggplot(data=QR_npl,aes(x=type,y = coefficients)) + 
+  xlab("quantile(%)") +
+  ylab(" ")+ 
+  #facet_wrap(~ var,scales = "free")+
+   facet_wrap(~ var,scales = "free", ncol = 3)+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+  #ggtitle("Pooled Quantile Regression")
+
+@
+ 
+ \begin{figure}[!htb] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+
+\makebox[\textwidth]{\includegraphics[width=.9\paperwidth]{figure/qq_graph-1}}
+%\includegraphics{figure/qq_graph-1}
+ \caption[Pooled Quantile Regression Graphics]{Pooled Quantile Regression Graphics\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+\label{qq.graph}
+
+
+\end{figure}
+
+<<feqq1.graph,fig.width=10, fig.height=13,fig.show='hide'>>=
+library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'QRFE1_npl_hh.nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_hh.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_nfi.RData', sep = "/"))
+  load(paste(path_data,'QRFE1_npl_fi.RData', sep = "/"))
+  
+  
+  QRFE1_npl_hh <- QRFE1_npl_hh %>% mutate(Exposure = "Households")
+QRFE1_npl_nfi <- QRFE1_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE1_npl_fi <- QRFE1_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE1_npl <- as.data.frame(bind_rows(QRFE1_npl_hh,QRFE1_npl_nfi,QRFE1_npl_fi))
+# View(QRFE1_npl) 
+
+
+ggplot(data=QRFE1_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+   #facet_wrap(~ pfe.row.names_mod,scales = "free")+
+   facet_wrap(~ pfe.row.names_mod,scales = "free", ncol = 3)+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+ # ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 1 )")
+
+
+@
+
+
+\end{figure}
+
+
+ \begin{figure}[!htb] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+
+\makebox[\textwidth]{\includegraphics[width=.9\paperwidth]{figure/feqq1_graph-1}}
+%\includegraphics{figure/qq_graph-1}
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=1$)]{Fixed Effects Quantile Regression Graphics ($\lambda=1$)\\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq1.graph}
+
+\end{figure}
+
+<<feqq2.5.graph,fig.width=10, fig.height=13,fig.show='hide'>>=
+library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'QRFE2.5_npl_hh.nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE2.5_npl_hh.RData', sep = "/"))
+     load(paste(path_data,'QRFE2.5_npl_nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE2.5_npl_fi.RData', sep = "/"))
+   
+    QRFE2.5_npl_hh <- QRFE2.5_npl_hh %>% mutate(Exposure = "Households")
+QRFE2.5_npl_nfi <- QRFE2.5_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE2.5_npl_fi <- QRFE2.5_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE2.5_npl <- as.data.frame(bind_rows(QRFE2.5_npl_hh,QRFE2.5_npl_nfi,QRFE2.5_npl_fi))
+# View(QRFE2.5_npl) 
+
+ 
+ 
+ggplot(data=QRFE2.5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+   #facet_wrap(~ pfe.row.names_mod,scales = "free")+
+   facet_wrap(~ pfe.row.names_mod,scales = "free", ncol = 3)+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+#  ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 2.5 )")
+
+ 
+  
+@
+
+
+\end{figure}
+ 
+ \begin{figure}[!htb] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+
+\makebox[\textwidth]{\includegraphics[width=.9\paperwidth]{figure/feqq2_5_graph-1}}
+%\includegraphics{figure/qq_graph-1}
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=2.5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=2.5$) \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq2.5.graph}
+\end{figure}
+
+
+<<feqq5.graph,fig.width=10, fig.height=13,fig.show='hide'>>=
+library(tidyverse)
+path_data <-  file.path(getwd(), "Data")
+path_main <-  file.path(getwd(), "Models")
+  load(paste(path_data,'QRFE5_npl_hh.nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE5_npl_hh.RData', sep = "/"))
+     load(paste(path_data,'QRFE5_npl_nfi.RData', sep = "/"))
+   load(paste(path_data,'QRFE5_npl_fi.RData', sep = "/"))
+   
+    QRFE5_npl_hh <- QRFE5_npl_hh %>% mutate(Exposure = "Households")
+QRFE5_npl_nfi <- QRFE5_npl_nfi %>% mutate(Exposure = "Non-Financial Corp.")
+QRFE5_npl_fi <- QRFE5_npl_fi %>% mutate(Exposure = "Financial Corp.")
+
+QRFE5_npl <- as.data.frame(bind_rows(QRFE5_npl_hh,QRFE5_npl_nfi,QRFE5_npl_fi))
+ #View(QRFE5_npl) 
+
+ 
+ 
+ggplot(data=QRFE5_npl,aes(x=pfe.types,y =  Value)) + 
+  xlab("Quantile(%)") +
+  ylab(" ")+ 
+  #facet_wrap(~ pfe.row.names_mod,scales = "free")+
+   facet_wrap(~ pfe.row.names_mod,scales = "free", ncol = 3)+
+  geom_line(aes(color=Exposure), size=.8,alpha=.7) +
+ # geom_line(data=QR_npl_nfi,color = "grey",size=.6) + 
+ # geom_line(data=QR_npl_fi, color = "blue",size=.6) + 
+  #guides(color=guide_legend(title="My Legend Title")) 
+  #geom_point(aes(color=pval_type),shape=16,size=1.3)+
+  geom_point(aes(fill=pval_type),shape=21,size=2)+
+  #geom_point(data=QR_npl_nfi,aes(color=pval_type),shape=16,size=1)+
+ # geom_point(data=QR_npl_fi,aes(color=pval_type),shape=16,size=1)+
+  #scale_fill_manual( values=c("blue", "black", "grey"),name = "Exposure")+
+  scale_color_manual( values=c("darkblue", "purple", "orange2"),name = "Exposure")+
+ 
+# scale_color_manual( values=c( "green2","yellow", "red", "black","blue", "black", "grey"),name = "P-values:")+
+   scale_fill_manual( values=c( "green2","yellow", "red", "black"),name = "P-values:")+
+  # geom_line(aes(y = lower.bd), color =  "lightblue3") +
+  # geom_line(aes(y = upper.bd), color="lightblue3") +
+  geom_hline(aes(yintercept= 0),color="grey27",linetype="dotdash",size=.5)+
+  # geom_ribbon(aes(ymin=pmin(lower.bd), ymax=pmin(upper.bd)), fill="lightblue", alpha=0.5)+# Ignore NA values for mean  color="black", linetype="longdasehd", size=1)+
+  scale_x_continuous(breaks = seq(0.1,0.9,0.1),limits = c(0.1, 0.9),labels = scales::percent_format(accuracy = 1,scale = 100))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(strip.background =element_rect(fill="lightblue4"))+
+  theme(strip.text = element_text(colour = 'white',size = 9))+
+  theme(legend.position="bottom",panel.background = element_rect(fill = "grey84"),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1),axis.title.x = element_text(face = "italic"))+
+  theme(plot.caption = element_text(color = "black", face = "italic",hjust = 0.0))+
+  labs(caption = "Source: EBA Transparency Exercises, authors' calculations")+
+  theme(legend.position="bottom",legend.direction = "horizontal",legend.spacing.x = unit(.5, 'cm'))
+  #ggtitle("Fixed Effects Quantile Regression ("~lambda~"= 5 )")
+
+ 
+  
+@
+
+
+\end{figure}
+
+ \begin{figure}[!htb] % between [] you put options e.g. ht = here top
+%\hspace*{-0.5in}
+\centering
+
+\makebox[\textwidth]{\includegraphics[width=.9\paperwidth]{figure/feqq5_graph-1}}
+%\includegraphics{figure/qq_graph-1}
+\caption[Fixed Effects Quantile Regression Graphics ($\lambda=5$)]{Fixed Effects Quantile Regression Graphics ($\lambda=5$) \\ {\footnotesize \textit{Source: EBA Transparency Exercises, Worldbank and IMF data, authors' calculations}}}
+
+\label{feqq5.graph}
+\end{figure}
+
+
+  %\input{Tables/Final/Panel/Static_Models_SELEC_pr3_bk}
+  
+  
+%  % \input{Tables/Final/Panel/Static_Models_SELEC_pr2_mk}
+%  % \input{Tables/Final/Panel/Static_Models_SELEC_pr2_Year}
+% % \ref{panel.hh.nfi}
+% 
+% %\input{Tables/Final/Panel/Static_Models_npl_fi_pr}
+% %\input{Tables/Final/Panel/Static_Models}
+% 
+%  Panel estimation results for linear models and Generalized Method of Moments are presented in \ref{panel.hh},\ref{panel.nfi} and \ref{panel.fi}. The preliminary results  are \textit{(to be further develop in next drafts)}:
+%  \begin{itemize}
+%  
+%  \item Bank-specific Variables:
+%  \begin{itemize}
+%  
+%  \item  The bank size measures by its total assets [log(BankSize\_tran)] shows a negative coefficient and very significant for  most  approaches. It presents evidence that largest banks in terms of assests tend to  have  a better performance in terms of non-perfoming loans. Return on Regulatory (Risk-Adjusted) Capital [RORAC] also is significant and negative.  These results are in line with   other studies in  the empirical literature.
+%  
+%  \item  In this model, CET1 and leverage ratios did not show significance in most models as well as  disparities in the expected sign once macroeconomic variables are included into the model. Once certain macroeconomic indicators are excluded from the regression, these variables recover significance,specially the inclusion of the unemployment rates into the models seems to strongly impact the coefficient for CET1.Once unemployment rares are excluded from the regression, CET1 and leverage ratios show a negative and significant impact on NPL ratios as suggested in other empirical studies.
+%  
+%  \item Net interest margins [NIM\_tr] are strongly positive and significant as expected under (non-dynamic) standard models but once bank individual effects are control for these effects disappeared. Cost to income shows  a negative coefficient with moderate impact and significance  in a fixed effects approach. Cost-to-income is in this context also interesting because part of the collection costs  for non-performing loans may  also be included in the administrative expenses. 
+%  
+%  \item The dummy  regarding membership  in the  Single Supervisory Mechanism [SSM] shows negative and very significant coeffcients for all models considered, suggesting negative impact on non-performing loans of SSM membership. Nevertheless, the results here are to be taken with caution due to the assymetric distribution between SSM members and non-members in the sample.
+%  
+%  \item The Cross-Border Diversification Index [CBDI index] has a positive and statistically significant  coefficient in most panel data approaches, although the total impacts seems to be moderate, suggesting than banks with more geographic diversification in their portfolios tend to show slightly higher NPL ratios at consolidated level. SSM membership also shows a negative correlation with NPLs ratios as well as significance in most approaches.
+%   \end{itemize}
+%   
+% \item Macroeconomic Indicators:
+% 
+% \begin{itemize}
+% 
+% \item Institutional  variables  are the strength of legal rights [Stgth\_legal\_index] and the Recovery rate [Reco\_rate]  at country level. The Recovery rate [Reco\_rate]  at country level show  a negative and very significant correlation with NPL ratios in most approaches, suggesting certain theoretical implications that the effectivity  in the recovery of debt have a positiv impact on reducing NPL ratios. Interestingly, given the data a  positive but low impact  of the strengh of the legal sistem on NPLS is detected, although not significant in a dynamic approach. This may imply that countries providing better laws to protect borrowers and lenders also tend to have showed higher NPLs as well. In general, these effects needs a deeper look.
+% 
+% \item Gross public debt and unemployment rates has a positive an significant impact on NPL ratios as also  concluded in  the empirical literature. Inflation rates are strongly negative and very significant. These results confirms the importance of these standard macroeconomic  indiciators in explaining non-perfoming loans.
+% 
+% \item  The current account balance [curr\_acc\_bal] shows a  slightly positive and statistically significant relationship with NPL ratios in most approaches. In past years, the relationship between external deficits and  non-performing loans has been of special interest in the context of  the consequences of current account imbalances. In this context, the positive correlation obtained in this sample and period is due to the measures taken by countries as Spain, Greece and Cyprus as part of the long-run economic measures to improve the balance of payments, which tradionally also tend to have higher NPLs as the european average. In a dynamic approach, the current account loses significance. In general, a deeper look here  is required.
+% 
+% \item The annual GDP growth as percent of GDP also show  slightly positive coefficients and significance. Although these results here are somehow counterintuitive, there is some similar results also  available in the empirical literature that find a positive relationship. This point also requires further analysis.
+% 
+% 
+%  \end{itemize}
+%  
+%  
+%  \end{itemize}
+%  
+%  
+% \FloatBarrier
+% 
+% 
+% % Panel  estimation results for linear models with heteroskedasticity-consistent (HC) standard errors are presented in tables \ref{panel.hh.nfiHC} and \ref{panel.fiHC}.
+% 
+% Panel  estimation results for  feasible generalized least squares models with random and fixed effects are presented in \ref{FGLS}.
+% 
+% 
+% \textit{[Here more deeper analysis of the results plus several tests for serial correlation, correlated effects among others are to be presented and commented in order to discuss which of the models presented above is more appropiated given the data structure (to be further develop in next drafts)]}
+% \subsubsection{Tests}
+% \input{Tables/Final/Tests/bpfhtwt3}
+%   %\input{Tables/Final/Tests/bpfhtwt2a}
+%   %\ref{BPFa}
+% 
+% 
+% % \begin{itemize}
+% % 
+% % \item Individual Effects:
+% % 
+% % 
+% % \item
+% % 
+% % \end{itemize}
+% 
+% 
+% 
+% \pagebreak 
+% 
+% % \subsection{\textbf{Feasible Generalized Least Squares}}
+% % 
+% % \input{Tables/FGLS_Models}
+%  %\FloatBarrier
+% %\subsection{ \textbf{Dynamic Panel Models (GMM)}}
+% 
+%  % \include{Tables/Static_Models_dyn_npl_hh_rt}
+%  % \include{Tables/Static_Models_dyn_npl_fi_rt}
+%  % \include{Tables/Static_Models_dyn_npl_nfi_rt}
+%  
+% % \input{Tables/Static_Models_dyn_npl_hh_rt}
+% % \input{Tables/Static_Models_dyn_npl_fi_rt}
+% % \input{Tables/Static_Models_dyn_npl_nfi_rt}
+% %  \FloatBarrier
+%  
+%  \subsection{ Quantile regression Models}
+%  
+%   %\input{Tables/Final/quantile/Quantil_Regression_npl_hh.nfi_pr}
+%   %\input{Tables/Final/quantile/Slope_Test_a}
+%   
+%    % \input{Tables/Final/quantile/Quantil_Regression_npl_hh}
+%     %\input{Tables/Final/quantile/Quantil_Regression_npl_nfi}
+%     % \input{Tables/Final/quantile/Quantil_Regression_npl_fi}
+%      
+%    Tables \ref{qq.npl_hh},\ref{qq.npl_nfi} and \ref{qq.npl_fi} show the results for the quantile regressions. Figures \ref{qq.graph.hh},\ref{qq.graph.nfi} and \ref{qq.graph.fi} shows the  results from the quantile regression estimation in a graphical form.
+%   % \ref{qq.npl_hh.nfi}
+%    
+%   As explained previously, the use of quantile regression in this context offers a interesting approach for the following reasons:
+%   \begin{itemize}
+%  \item Additional robustness checks
+%  \item Relaxation of distribution assumptions. NPL ratios show a non-normal distribution with negative skewness(left skewed distribution)
+%  \item Analysis of impact on NPL at different points of its quantile distribution. The sample show high heterogeneity along the NPL quantile distribution.
+%  \end{itemize}
+%  
+% 
+% The preliminary results of the quantile regression estimation regarding households and non-financial corporations are \textit{(to be further develop in next drafts)}:
+%  \begin{itemize}
+%  \item Bank-specific Variables
+%  \begin{itemize}
+%  \item Net interest margins are very significant and positive correlated with increasing effects along the distribution. Return on Regulatiory Capita [RORAC] also show very significant and  large negative coefficients.
+%  
+%  \item Leverate  and capital ratios [LEVER\_tr\_ratio,CET1\_ratio\_tr] show in general not much statistical significance. In the case of leverage ratios, significant increase for the higher quantiles with positive sign whereas CET1 ratios remains with negative coefficient in the lower quantiles tending  to zero along the conditional distribution. Cost to income seems to be widely insignificant and low except for higher quantiles cases where the effects are increasingly negative.
+%  
+%   \item The Cross-Border Diversification Index [CBDI\_index]  shows a positive relation with NPLs, increasing along the distribution with significance at the highest quantiles.  In this approach,the SSM dummy for membership in the Single Supervisory Mechanism  also shows a strong significance and negative correlation, suggesting than SSM membership effets on NPLs increases around the highest quantiles where banks with the highest NPLs accumulate. These results are similar to the ones obtained in the above presented panel models.
+%   
+% 
+%   \end{itemize}
+%  \item Macroeconomic Indicators
+%   \begin{itemize}
+%   
+%   \item Regarding institutional variables, the recovery rates [Reco\_rate\_dol] are negative and significant along the distribution. In regard to  the strength of the legal system [Stgth\_legal\_index], it shows in general statistically no significant coefficients along the conditional distribution with the exception of the highest quantiles where the significance increase with positive coefficients. This last result differ from the result in  the above presented panel models in the sense that the strength of the legal system seems to have an impact on NPLs for banks that present the highest NPLs. One possible explanation may indicate that many european countries, where the NPL  were historically high, ha tended to implement stronger laws regarding debt  in recent years. In general, these effects needs a deeper look.
+%   
+%   \item The current account balance remains significant and positive. Bank sizes shows to have a negative and a very signicant coefficients along the conditional distribution. Similar to public debt
+%   
+%   \item Unemployment remains a positive coefficient but loses significant along in the tails.  The estimates also remain  similar along the conditional distribution. Inflation shows a negative correlation and strong statistical significance which  impact progressively  increases along the conditional distribution.
+%   
+%   \end{itemize}
+%   
+%   \item  The sign of most coefficients as well as its significance are close to those obtained in the panel models presented above and, to some extense, confirming previous results.
+%   
+%   \item In general, both bank-specific variables and macroeconomic indicators with significant  and positive or negative effects seems to increase their intensity  along the quantile distribution. In other words, given the current model, it seems that the effects of macro and bank-specific variables on NPLs are even more intense  aroung the higher quantiles where banks with the highest NPLs are concentrated.
+% 
+%   
+%  \end{itemize}
+% 
+%    
+%    Table \ref{slope} shows the slope test for quantile regressions.
+%    
+% 
+%     
+%   The previous results are contained based on traditional quantile regression methods. quantile Regression methods for panel data with fixed effects is very actual and currently active ground for new research, and therefore,  available panel quantile regression methods are still being constantly  refined and improved. In this paper,the penalized fixed effects quantile Regression method  proposed by Koecker is considered as example of a panel quantile regression with fixed effects as explained in previous sections. This approach is commonly used  in several empirical studies covering quantile regressions in panel data, and therefore, its consideration in this paper may offer  additional robustness checks in the context of fixed effects analyses.
+%   
+%   As explained in previous sections, when $\lambda \to 0$ the model is similar to a (weigthed) dummy-variable quantile regression and when $\lambda \to \infty$ the model is more like a (weigthed) cross-section quantile regression. The penaly allows a "control" over the many fixed effects coefficients by not letting them reach unrealistic large numbers.
+% 
+%  The  calibration parameters used in this paper   for $\lambda$ are 1, 2.5 and 5. The reason for the selection of these values is based on previous empirical studies, which show that from  a $\lambda$ equal to 5, the model already is close to a (weigthed) cross-section quantile regression and with $\lambda$ equal to 1 the model is already  expected to approximate a (weigthed) dummy-variable quantile regression. 
+%   
+%   
+%    %\input{Tables/Final/quantile/QRFE_npl_hh.nfi}
+%   
+%   
+%    
+%    %\ref{qrfe_npl_hh.nfi}
+%    Table \ref{qrfe_npl_hh},\ref{qrfe_npl_nfi} and figures  \ref{feqq1.graph.hh}, \ref{feqq2.5.graph.hh} and
+%    \ref{feqq5.graph.hh} ,\ref{feqq1.graph.nfi}, \ref{feqq2.5.graph.nfi} and
+%    \ref{feqq5.graph.nfi} shows  the results of a fixed effects quantile regression estimation for households  and non-financial corporations with $\lambda=1, 2.5, 5$.
+%    
+%    Table \ref{qrfe_npl_fi} and figures  \ref{feqq1.graph.fi}, \ref{feqq2.5.graph.fi} and
+%    \ref{feqq5.graph.fi} shows  the results of a fixed effects quantile regression estimation for financial corporations  with $\lambda=1, 2.5, 5$.
+%    
+%   The preliminary results of the fixed effects quantile regression estimation for $\lambda= 1, 2.5, 5$ regarding households and non-financial corporations are \textit{(to be further develop in next drafts)}:
+%   
+%   
+% \begin{itemize}
+% \item Bank-specific Variables
+% 
+%   \begin{itemize}
+%   \item  Net Interest Margin [NIM\_tr] is significant and positive along the conditional distribution. Its coefficient is also large and increase progressively for higher  quantiles. This result is in line with  the ones obtained by the previous models. Returns on Regulatory Capital [RORAC] are less significant when higher fixed effects are considered ($\lambda= 1$)  but also with large negative coefficients, which impacts increase along the conditional distribution for all $\lambda$.
+%   
+%   
+%   \item The Cross-Border Diversification Index is relatively large and positive for  all $\lambda$ and very significant for the cases where strong fixed effects are assumed ($\lambda= 1$).
+%   
+%   \item The impact of dummy variable for membership in the Single Supervisory Mechanism(SSM) on NPLs is significant and negative. Once  higher fixed effects are considered this impact remains constant along the conditional distribution of NPLs (a flat curve)
+%  
+%   \item The results for the rest of bank-specific variables are similar to the ones obtained in previous models.
+%   
+%   
+%   \end{itemize}
+%   
+% \item Macroeconomic Indicators
+% 
+%   \begin{itemize}
+%   
+%   \item Unemployment rates [unempl\_rate\_imf] show a large positive and very significant coefficients once higher fixed effects are considered ($\lambda= 1$). Its significant decrease for $\lambda= 1$ and $\lambda= 2$. Interestingly, the estimated impact of the unemployment rates remains constant along the conditional distribution of NPLs (a flat curve).
+%   
+%   \item Recovery rates [Reco\_rate\_dol] are very significant and negative for all $\lambda$ . Its impact along the conditional distribution of NPLs is  slighly increasing for  higher quantiles. The streng of the legal system [Stgth\_legal\_index] is positive but insignificant for all $\lambda$.
+%   
+%   \item Inflation rates [infl\_perc] are negative  with an increasing impact along the conditional distribution of NPLs. Interestingly, its significant considerably decrease for middle and lower quantiles when  higher fixed effects are considered ($\lambda= 1)
+%   
+%   \item The results for the rest of macreconomic indicators are similar to the ones obtained in previous models.
+%   
+%   \end{itemize}
+%   
+% 
+% \end{itemize}
+% 
+% 
+% \textit{In general, a futher analysis of the empirical results,including its intermodel comparison and  relative importance, will be provided once the different tests for model adequacy (heterogeneity, correlated effects, serial correlation ect..) are taken into consideration. Most important determinants should then be identified and filtered out for conclusions.}
+%   
+%\end {enumerate}
+
+ %\subsection{ Analysis}
+ 
+ 
+%  
+%  \documentclass[10pt,letterpaper]{article}
+% \usepackage{graphicx}
+% \begin{document}
+% Build figure in R and display in default size
+% out.width='4in'>>=
+% x=rnorm(50)
+% qqnorm(x)
+% qqline(x)
+% @
+% Now 1/2 size
+% out.width='2in'>>=
+% qqnorm(x)
+% qqline(x)
+% @
+% Now 1/4 size 
+% out.width='1in'>>=
+% qqnorm(x)
+% qqline(x)
+% @
+% Now rotated at 1/2 size 
+% out.width='2in',out.extra='angle=45'>>=
+% qqnorm(x)
+% qqline(x)
+% @
+% Back to the original
+%  out.height = "378"
+% out.width='4in'>>=
+% x=rnorm(50)
+% qqnorm(x)
+% qqline(x)
+% @
+% \end{document}
+ 
+% https://texblog.org/2011/12/01/sweave-subfig-controlling-figure-size-and-placement/
+ %https://yihui.org/knitr/options/
+
+

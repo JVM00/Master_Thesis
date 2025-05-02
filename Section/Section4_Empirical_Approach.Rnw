@@ -1,0 +1,332 @@
+
+% !Rnw root = Thesis.Rnw
+
+ \setlength{\abovedisplayskip}{4pt}
+ \setlength{\belowdisplayskip}{4pt}
+
+\section{Empirical Approach}
+
+%\begin{enumerate}[label=\roman*]
+
+\subsection{ "Standard" Panel Data Methods}
+
+A (balanced) panel data set differs from a regular time-series or cross-section regression in that  multiple observations on each individual  over time are provided in the sample (\cite{Baltagi.2005}), that is: 
+
+\[
+y_{it} = \alpha  + X'_{it}\beta + u_{it} \quad i=1,..., N;\enspace t=1,..., T
+\]
+
+with $i$ denoting  individuals and $t$ denoting time. In our case, $it$ is the observation corresponding to the $i$th bank in year $t$, thus the $i$ subscript represents the cross-section dimension and the $t$ represents the time-series dimension. The dependent variable $y_{it}$ represents the non-performing ratio for bank $i$ in year $t$, \alpha$ is a scalar, $\beta$ is $K \,\times\, 1$ and $X_{it}$ is the \textit{it}th observation on $K$ explanatory variables. The $K$ explanatory variables consist of bank-specific and macroeconomic variables.
+
+The models used in the literature for defining the disturbance term $u_{it}$ are classified as one-way error component model or two-way error component model. In the present case, a one-way error component model for the disturbance term $u_{it}$ will be assumed.
+
+A one-way error component model is defined as:
+
+\[
+u_{it} = \mu_{i} + \upsilon_{it}
+\]
+
+where $\mu_{i}$ denotes the unobservable  individual bank-specific effects and $\upsilon_{it}$ denotes the remainder disturbance (\cite{Baltagi.2005}). This is the case in most panel data applications.
+
+The  use of specific panel models in this paper presents several benefits over  other standard models such as cross-section or time series (\cite{Hsiao.2010}; \cite{Klevmarken.1989}; \cite{Baltagi.2005}):
+
+\begin{enumerate} [topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+
+\item \textit{These models explicitly address unobserved individual heterogeneity across banks and periods and thereby allowing for controls over  unobserved state- and time-invariant variables that possibly lead to biased estimators whereas this is not  the case in time-series or cross-sectional models}
+
+\item \textit{Micro panel data at bank level  may provide more precise measurements than similar variables at the macro level. Potential bias due to aggregation over individual data may decrease or  be fully excluded}
+
+\item \textit{Panel data provided  more information, less collinearity among the variables and more variability, which lead to an improvement of efficiency}
+
+\item \textit{Panel data is more adequate to study the dynamics of adjustment over time than cross-sectional  data because cross-sectional distributions  may hide a multitude of interesting aspects}
+
+\item \textit{Panel data is better to identify and measure  certain effects not detectable
+in mere cross-sectional or time-series analysis}
+
+\item \textit{Panel data models allow the construction and testing of more sophisticated models using microdata with multiple time periods}
+
+\end{enumerate}
+
+The description of the below models corresponds to the standard case where the panel data is assumed to be complete, that is in the case where all individuals are observed over the entire sample period. Nevertheless, incomplete data is also handled  in the present analysis, in so far as the exact same set of banks are not necessarily covered for each time period because the individual requirements and circumstances that a bank has to meet for its participation in the EBA transparency exercise may change from year to year. This typical scenario leads to  an "unbalanced" or "incomplete" panel (\cite{Baltagi.2005}). In general, an unbalanced panel data set is one in which individuals may be observed different numbers of times. This can be notated as  a block of observations $T_{i}$ where the total number of observations are defined as $\sum_{n=1}^N T_{n}$. Although there are certain technical differences that require more tedious matrix algebra, the models described above can also be implemented for the case of unbalanced panel data (\cite{Green.2012}; \cite{Croissant2}). 
+
+
+      	\subsubsection{ Fixed Effects (FE) and Random Effects (RE) Models}
+      	
+      	In this approach the time-invariant individual effects ($\mu_{i}$, $\lambda_{it}$) are explicitly introduced into the econometric specification as fixed parameters. For our analysis it implies that these unobserved effects  corresponding to each individual bank may or may not correlate with the independent variables used for the estimation, leading to  unbiased and inconsistent estimators. The remainder disturbances ($\upsilon_{it}$)  are assumed to be independent and identically distributed IID$(0,\,\sigma_{\upsilon}^2)$. The $X_{it}$ are assumed to be uncorrelated with the stochastic disturbances $\upsilon_{it}$ for all $i$ and $t$ (\cite{Baltagi.2005}). In order to remove these unobserved individual effects across banks, an FE model can be defined  through different techniques (LSDV Methods, First-Differences or FD estimator) (\cite{Croissant2}).
+      	
+      	In the LSDV estimation, the time-invariant individual components ($\mu_{i}$) are explicitly estimated in the model in the form of individual intercepts given the presence of a second dimension (time). In this case, the degrees of freedom will decrease to $NT-N-K$ due to the extra parameters. This method may suffer a large loss of degrees of freedom for cases where $N$ are very large as it is the case in the present analysis. The estimation of $N-1$ extra parameters and several dummies may worse the problem of multicollinearity among the independent variables (\cite{Baltagi.2005}). Another FE method is the so called First-Differences or FD estimator, in which the state-invariant components can be eliminated by first differencing the data, that is  by lagging  and subtracting the variables the intercept and the  individual error components ($\mu_{i}$) are removed.
+      	
+As mentioned previously, the LSDV Method suffers from a potentially large number of estimates in the basic regression. A statistically equivalent and more compact method for obtaining the same estimators is achieved by performing a data transformation, in which the average over time per individual is subtracted to each variable. This represents the so called Within regression, and it has become the standard method to perform  estimations under a fixed effects model with individual effects. This method is the one selected for the Fixed Effects estimations with static panel data. It is defined as:
+% \begin{align*}
+%  &  y_{it}-\bar{y}_{i}= (x_{it}-\bar{x}_{i})\beta + (u_{it}-\bar{u_{i}})  &
+% \end{align*}
+% where $\bar{y}_{i}$ and $\bar{x}_{i}$ are the individuals means of $y$ and $X$. This is equivalent to the regression model
+% \begin{align*}
+% & y_{it} = \beta' x_{it} +  u_{it} &
+% \end{align*}
+
+\[
+ y_{it}-\bar{y}_{i}= (x_{it}-\bar{x}_{i})\beta + (u_{it}-\bar{u_{i}}) 
+\]
+
+where $\bar{y}_{i}$ and $\bar{x}_{i}$ are the individuals means of $y$ and $X$. This is equivalent to the regression model:
+
+\[
+y_{it} = \beta' x_{it} +  u_{it} 
+\]
+  
+where the individual intercepts are free to vary while still being considered  valid parameters for estimation. These are also easily recovered  from the OLS estimation of the within transformation data.
+  
+	
+  \newcommand\iid{i.i.d.}
+\newcommand\pN{\mathcal{N}}
+   	
+      	%	\subsubsection{Random Effects Model}
+      		
+A typical issue in the Fixed Effects models is the danger of a large loss of degrees of freedom due to the incorporation of too many parameters. This issue can be avoided by assuming that the individual effects $\mu_{i}$ are random events. In that case, $\mu_{i}\;\sim$IID$(0,\,\sigma^2_{\mu})$, $\upsilon_{it}\;\sim$IID$(0,\,\sigma^2_{\upsilon})$ and $\mu_{i}$ are independent of $\upsilon_{it}$. Furthermore, $X_{it}$ are independent of  $\mu_{i}$ and $\upsilon_{it}$ for all $i$ and $t$, whereas in the Fixed Effects model the unobserved individual effects ($\mu_{i}$) are allowed to correlate with the included variables ($X_{it}$). The Random Effects model is appropriate for cases where $N$ is large, as in the present analysis, because it greatly reduces the number of parameters to be estimated compared to the other model, which may lead to a large loss of degrees of freedom. In this case, the inference of the individual effects is assumed to be random realizations of a sample taken from a larger population (\cite{Baltagi.2005}). The potential cost for this model would be the possibility of inconsistent estimators in case the assumption of randomness turns out to be inappropriate (\cite{Green.2012}). 
+ 
+Additionally, several tests for individual effects, serial correlation, correlated effects and multicollinearity will also be applied in the empirical analysis.
+
+     	
+      	%\item Tests for Poolability of the Data
+      %\subsubsection{Tests for Individual Effects, Serial Correlation, Correlated Effects and Multicollinearity}
+      	
+      
+      	In order to test whether individual effects are present, the hypothesis test should be constructed in such a way that the null hypothesis represents the assumption that there are not significant individual effects across observations and, therefore, there is no ground  to a preference of panel data techniques over simple Ordinary Least Squares (OLS) estimation.  In this paper, the Breusch-Pagan Lagrange Multiplier Test will be used to test for individual effects.  The  main idea is to start with the OLS regression model and infer whether unobserved time-invariant effects can be detected from the OLS residuals (\cite{Croissant2}). More specifically, the Breusch-Pagan Lagrange Multiplier corresponds to test:
+ \medskip
+          \begin{itemize}[label=$\bullet$,topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+              \item $H_{0}$:$\sigma^2_{\mu} = 0$
+            
+              \item $H_{1}$: $\sigma^2_{\mu} \neq 0$
+              
+           \end{itemize}
+\medskip  
+In this case, the null hypothesis $H_{0}$ means that there is not significant variances across individuals (absence of individual
+effects). Moreover, as the presence of panel effects can not be identified, there are not  justification for the use of panel techniques over OLS in order to control for individual heterogeneity.
+
+
+Additionally, an F test for the presence of individual effects that compares the Ordinary Least-Squares and the Fixed Effects model  is also useful.  Under the null of no individual effects, the statistic is distributed as F with degrees of freedom equal to the number of individual banks minus 1 on the numerator and to the degrees of freedom of the Fixed Effects Model on the denominator.
+
+       Furthermore, the errors in models  with individual effects are always serially correlated due to the presence of time-invariant unobserved effects in the error components that do not decline over time. Additionally, serial correlation that die out over time may also be present in the errors in the sense of an \textbf{AR(1)} process. In order to test for this aspect, Unobserved Effects and Fixed Effects (FE) test will be applied.
+       
+   %     
+   %     the following tests will be performed:
+   %      
+   %      \begin{itemize}[label=$-$,topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+   %      \item Unobserved Effects Test \cite{Wooldridge.2010}: It is a semi-parametric test for testing that $\sigma^2_{\mu} = 0$, that is there is not unobserved effects in the errors. The advantage of this test is that it allows for testing individual effects and serial correlation.
+   %       \item  Breusch-Godfrey and Durbin-Watson Tests (Breusch-Godfrey/ Durbin-Watson/ Wooldridge Tests).
+   %      According to Wooldridge (2010), standard serial correlation test as the Breusch-Godfrey and Durbin-Watson tests may be applied to random effects and OLS.
+   % 
+   % 
+   %      
+   % \item   Wooldridge's Within-based (Test for Fixed Effecs [FE])
+   % For the case of Fixed Effects, a specific test for serial correlation is required because under null of no serial correlation in the errors, it is showed that the residuals in a Fixed Effects models have to be negatively serially correlated $Cor(\hat{\upsilon}_{it},\hat{\upsilon}_{is}}) = -1/(T-1)$ given that the original errors are uncorrelated. In this context, Wooldridge suggested an approach to  test for serial correlation in Fixed Effects that is specially applicable for the present case of "short" panel data where $T<<N$ \cite{Wooldridge.2010}.
+   %            
+   %    
+   %      \end {itemize}
+   % 
+
+      	
+      		In fact, the main argument that determines whether a random or fixed effects model is more appropriate for a specific econometric analysis is the possibility of correlation between the covariates and the individual effects. Maintaining the assumption that the stochastic disturbances $\upsilon$ are uncorrelated with the covariates ($\mathbb{E}[X'\,\upsilon]= 0$), two situations may take place (\cite{Croissant2}):
+\medskip
+              \begin{itemize}[label=$\bullet$,topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+              \item $\mathbb{E}[X'\,\mu]= 0$: the individual effects are uncorrelated and both models are consistent but a Random Effects estimator is more efficient than a Fixed Effects estimator.
+            
+              \item $\mathbb{E}[X'\,\mu]\neq 0$: the individual effects are correlated. This implies that only a Fixed Effects model provides consistent estimates because the within estimation eliminates all unobserved time-invariant effects.
+              \end{itemize}
+\medskip  
+In this paper, the Hausman test approach will be used in order to test for correlated effects. The general principle of the Hausman test in panel models consists in comparing  the  estimates of the Fixed Effects (FE) model and the Random Effects (RE) model by performing the following hypothesis test:
+\medskip
+          \begin{itemize}[label=$\bullet$,topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+              \item Under $H_{0}$: FE and RE are consistent, but RE is more efficient than FE.
+            
+              \item Under $H_{1}$: Only FE is consistent
+              
+           \end{itemize}
+\medskip
+The idea of the test is that if  the null hypothesis $H_{0}$ is true, then the estimated coefficients from FE and RE should not be significantly different, whereas under the alternative hypothesis the estimated coefficients would diverge. Therefore, the test is based on $\hat{\beta}_{FE} - \hat{\beta}_{RE}$ where under $H_{0}$ the variance is $\mathrm{Var}(\hat{\beta}_{FE} - \hat{\beta}_{RE})= \mathrm{Var}(\hat{\beta}_{FE})-\mathrm{Var}(\hat{\beta}_{RE})$ (\cite{Croissant2}). The common hypothesis test  will be  the version where:
+      
+\[
+   \hat{q}=\hat{\beta}_{FE} - \hat{\beta}_{RE}
+\]
+
+with variance:
+
+\[
+   \mathrm{Var}(\hat{q})= \mathrm{Var}(\hat{\beta}_{FE})+ \mathrm{Var}(\hat{\beta}_{RE})-2\mathrm{Cov}(\hat{\beta}_{FE},\hat{\beta}_{RE}) 
+\]
+
+%Under the hypotesis of no correlation between independent variables and the error disturbances.
+The hypothesis test is then formalized as: 
+ \medskip
+             \begin{itemize}[label=$\bullet$,topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+       
+              \item  $H_{0}$: $\hat{q} = 0$
+            
+              \item $H_{1}$: $\hat{q} \neq 0$
+              
+              \end{itemize}
+ \medskip
+ 
+
+
+Moreover, a standard assumption in the estimation is that the explanatory variables are not perfectly correlated with each other. If two independent variables are very highly correlated, then the  variance  of the corresponding coefficient is very high, tending to infinite if the correlation is perfect. This is known as a problem of multicollinearity, in which coefficients may have very high standard errors and low significance even if these are  jointly significant and the $R^2$ of the estimation is very high or some of the coefficients may show implausible or negative values (\cite{Green.2012}).
+
+% \begin{itemize}[label=$-$,topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+% \item Small  variations in the data  produce wide swings in the coefficient estimates.
+% \item Coefficients may have very high standard errors and low significant even if these are  jointly significant and the $R^2$ fo the estimation is very high.
+% \item Some of the coefficient may show implausible or negative values.
+% 
+% \end{itemize}
+
+In this paper, the  Variance Inflation Factor (VIF) will be used  to test for multicollinearity. The Variance Inflation Factor (VIF) is determined by $1/(1-R^2_{k})$ where $R^2_{k}$ is the $R^2$ in the regression of the independent variable $x_{k}$ on all other independent variables included in the model. Thus, the VIF will be determined for each independent variable $x_{k}$ in the main model. The standard benchmark  is  that  VIF values higher than 10 are a signal of  the presence of multicollinearity (\cite{Green.2012}).
+	
+
+ \subsubsection{ Generalized Method of Moments (GMM) Models}
+
+	To understand better the dynamics of non-performing loan ratios, certain dynamic panel models developed in the framework of the Generalized Method of Moments (GMM)  approach will also be used in the econometric analysis (\cite{Baltagi.2005}). These models are dynamic because one of the covariates is the lagged dependent variable, in our case the  lagged values of NPL. The dynamic relationship of NPL ratios over time are estimated for  a large sample of individual banks observed over a small period of years (2014-2019). The dynamic panel models  are very well suited for this kind of microdata where $N >> T$ (\cite{Croissant2}). This model is usually formalized as:
+	
+\[
+y_{it} = \delta y_{i,t-1}  + x'_{it}\beta + u_{it} \quad i=1,..., N;\enspace t=1,..., T
+\]
+
+where $\delta$ is a scalar, $x'_{it}$ is $1 \,\times\, K$ and $\beta$ is $K \,\times\, 1$, and $ u_{it}$ follows a one-way component model:
+
+\[
+u_{it} = \mu_{i} + \upsilon_{it}
+\]
+
+where $\mu_{i}\;\sim$IID$(0,\,\sigma^2_{\mu})$ and $\upsilon_{it}\;\sim$IID$(0,\,\sigma^2_{\upsilon})$, and the error disturbances $\upsilon_{it}$ are assumed to be mutually uncorrelated $\mathbb{E}(\upsilon_{it}\, \upsilon_{is})= 0\,\, \forall s \neq t$ and not correlated with the individual effects $\mathbb{E}(\mu_{i}\, \upsilon_{it})= 0$. In our analysis, these models include time-invariant individual effects represented derived from the heterogeneity among individual banks as well as autocorrelation related to the use of a lagged endogenous variable (NPL ratio) in the regressors (\cite{Baltagi.2005}; \cite{Croissant2}).\\
+
+Given that $y_{it}$ is a function of $\mu_{i}$ it can be derived that $y_{i,t-1}$ is also a function of $\mu_{i}$. The result is a biased and inconsistent OLS estimator. The bias of the OLS is caused by the correlation between the lagged endogenous variables and the disturbances due to the existence of individual effects. In the OLS estimation, the estimator is proved to be positively biased while in the Fixed Effects estimation, the estimator is negatively biased (\cite{Croissant2}). In this situation, a consistent coefficient is expected to be comprised between that of a OLS and a Fixed Effects estimation (\cite{Croissant2}; \cite{Baltagi.2005}). Several consistent estimation methods for dynamic panel models are presented in the literature (\cite{Anderson.Hsiao.1982}; \cite{Ahn.Schmidt.1995}). In this paper, the method proposed by \citet{Arellano.Bond.1991} and eventually its extended versions (\cite{Arellano.Bover.1995}; \cite{Blundell.Bond.1998}) will be considered  due to their larger efficiency in this analysis.
+
+The main method is the so-called Difference GMM Estimator, which was firstly developed by \citet{Arellano.Bond.1991} as the further extension of the instrumental variable (IV) approach developed by Anderson and Hsiao in 1982. \citet{Anderson.Hsiao.1982}  suggested differencing  of both the dependent and independent variables to get rid of $\mu_{i}$ and then instrument the lagged endogenous variables in differences, $\Delta y_{i,t-1} = (y_{i,t-1} - y_{i,t-1})$ with the endogenous variables in levels lagged by two periods $y_{i,t-2}$. These instruments will not be correlated with $\Delta \upsylon_{i,t-1} = (\upsilon_{i,t-1} - \upsilon_{i,t-1})$  as long as the $\upsilon_{it}$  are not serially correlated. Although this method generates consistent estimates, these are not necessarily efficient as observed by \citet{Baltagi.2005} because:
+
+\begin{itemize} [topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+\item It does not make use of all the available moment conditions
+\item It does not account for the correlation introduced into the errors $\upsylon_{it}$ by first-differencing
+\item There are more valid instruments available
+\end {itemize}
+
+In this context, \citet{Arellano.Bond.1991}  suggested a Generalized Method of Moments (GMM) procedure that  is more efficient than the estimator proposed by \citet{Anderson.Hsiao.1982}. This procedure  considers the fact that the number of valid instruments is growing in $t$. Because of the dynamic aspect of the estimation and the use of first-differencing, the first and second observations are not usable. For this reason,  the model can be written as:
+
+\[
+y_{i3} - y_{i2}  = \rho(y_{i2} - y_{i1}) + (\upsilon_{i2} - \upsilon_{i1})
+\]
+
+where $y_{i1}$ is the only valid estimator. For $y_{i4}$ the error is $(\upsilon_{i4} - \upsilon_{i3})$ with  $y_{i2}$ and $y_{i1}$ as valid instruments. In other words, an additional valid instrument is available each time $t$ is increased by 1. The use of additional valid instruments should improve the efficiency of the estimates. In fact, \citet{Arellano.Bond.1991} developed  two versions of the GMM  estimator; the  standard version is called  the one-step version and was designed under the assumptions that the errors are actually heteroscedastic and/or autocorrelated, and an extended version called the two-step version that solves some problems in model consistency that arise when the previous assumptions are violated. The main problem with the Difference GMM estimator is that the lagged first differences are very often weakly correlated with the lagged levels of the dependent variable used as instruments.
+
+An extension of the difference GMM  estimator known as System GMM Estimator will be used in this thesis. The system GMM estimator appeared as a solution to the weakness of the instruments in the difference GMM estimator. In this sense, \citet{Arellano.Bover.1995}  and \citet{Blundell.Bond.1998}  showed that under  a weak hypothesis about the process that generates the data, another moment condition can be added from the  following levels equation:
+
+\[
+y_{it}  = \rho(y_{i,t-1}) + u_{it}
+\]
+
+with
+
+\[
+u_{it}= \mu_{i} + \upsilon_{it}
+\]
+
+where it can be showed that the lagged differences, $\Delta y_{i,t-s}$ with $s= 1 ...t-1$, are valid instruments for $y_{i,t-1}$.
+
+This estimator that adds the previous mentioned valid instruments from the equation in levels into the difference model is called the system GMM estimator. This estimator  uses lagged differences of $y_{i,t-1}$, $\Delta y_{i,t-s}$, as instruments for equations in levels, in addition to lagged levels of $y_{i,t-1}$, $y_{i,t-s}$, as instruments for equations in first differences (\cite{Baltagi.2005}).
+
+The system GMM estimator appeared to provide an improvement in efficiency compared to the difference GMM estimator as $\rho \to 1$ and $\sigma^2_{\mu}/\sigma^2_{u}$ increases and a reduction in the finite sample bias. According to the findings presented by \citet{Blundell.Bond.1998}, these improvements in efficiency and precision in the system GMM estimator are larger in "short" panels, which contain data with small $T$ ($T<<N$) and persistent series  (\cite{Baltagi.2005}).
+
+
+The GMM procedure presents two type of complications to take into account when inferencing:
+\begin{enumerate}  [topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+\item If the estimator is consistent, the variance-covariance matrix of coefficients may not, and therefore, the use of robust covariates matrices would be required.
+\item GMM estimation is only consistent under the assumptions of no error correlation and of moments' validity.
+\end{enumerate}
+
+
+Several tests are used to determine whether the assumptions of no error correlation and of moments' validity are justified in the corresponding  GMM estimation, the following tests must be considered:
+
+\begin{itemize}  [topsep=0pt, partopsep=0pt,itemsep=0.5 pt,parsep= 0.5 pt]
+
+\item Overidentification Test (Sargan-Hansen):\\
+In order to determine whether the assumption of moments' validity really holds, a test for overidentification proposed by Sargan in 1958 and applied to the case of GMM models by Hansen in 1982 will be considered in this paper (\cite{Croissant2}). The null hypothesis in this test is  the validity of the moment conditions.
+
+
+\item Error Serial Correlation Test (Arellano-Bond):\\
+The GMM estimator is also not consistent unless the assumption of serially uncorrelated errors is correct. For this purpose, \citet{Arellano.Bond.1991} proposed a test of error serial correlation   that will also be considered in this paper. In this test the null hypothesis is  that the errors are not serially correlated.
+
+\end{itemize}
+
+Depending on the results delivered by the previously mentioned test, the use of robust covariance estimators may be required in order to perform a valid inference while relaxing the hypothesis of independence and homoscedasticity of the errors. Besides the  general concerns regarding the potential present of heteroscedasticity in the errors, there also are concerns  related to the so-called  "clustering" as individuals and time periods are considered "natural" clusters. These clusters may appear as multiple observations corresponding to the same individual bank or to the same time period tend to share common characteristics that can lead to a violation of the assumption of independent and identically distributed  errors and, therefore, potentially to a biased estimation (\cite{Croissant2}). In the present paper, the model estimations for the standard panel data approach make use of  heteroscedasticity- and clustering-robust  covariance matrices.
+
+%\subsubsection{\textit{Robust Covariance Estimators}}
+
+
+
+
+% 
+% 
+% 	
+%  
+	\subsection{Quantile Regression Methods}
+
+ The application of quantile regression methods in this thesis is reasonable when looking at the distribution of NPL, which is characterized by its skewness and the large amount of outliers. The NPL show a negative skewness(left skewed distribution) and the residuals may be non-normal distributed. In samples with many outliers, quantile regression  also shows more robustness  than OLS, and it is semiparametric as it does not make assumptions about the parametric distribution of the errors. Additionally, it is interesting the use of  quantile regressions for the analysis of the impact of the regressors at different points of the conditional distribution of NPL.
+
+In Ordinary Least Squares, the average effect of a set of explanatory variables on the dependent variable  is summarized by the conditional mean function ($E(y|x)$). Similar to the conditional mean function of a linear regression, the quantile regression considers the relationship between the explanatory variables and the dependent variable is defined by the conditional quantile function $Q_{\tau}(y|x)$. In other words, quantile regression  seeks to apply an estimation of conditional quantile functions in which the quantile of the conditional distribution of the dependent variable is modelled as a function
+of observed covariates x (\cite{Koenker.1978}). In the same manner that the mean is used to minimize a sum of squared residuals in a standard OLS, this  problem is solved  in a quantile regression by minimizing a weighted sum of absolute residuals (\cite{Koenker.2002}; \cite{Koenker.2005}). Quantile regression methods are a supplement to  the conditional mean approach in OLS as these also allow the estimation of a whole family of conditional quantiles. In this sense, these methods provide  more flexibility to analyze the impact of a set of explanatory variables on the entire conditional distribution of the dependent variable (\cite{Koenker.2002}).
+
+
+The optimization problem in the quantile regression is dependent on the specific quantile in evaluation. In this context, negative errors suffer higher penalties for higher quantiles, while positive errors are penalized more for lower quantiles. In other words, $Q_{y} (\tau|\enspace x)$ represents the conditional $\tau$-quantile of $y$ given ($x$). The quantile $\tau \in (0,1)$ determines the point of $y$ in which the data is split into proportions under $\tau$ and above $1-\tau$, that is $F(y_{\tau}=\tau$ and $y_{\tau}=F^{-1}(\tau)$. Quantile regression seeks to minimize  the errors $\epsilon_{i}$  with asymmetric penalties, $(1-\tau)\lvert \epsilon_{i}\rvert$ for overprediction and $\tau\lvert \epsilon_{i}\rvert$  for underprediction. In this sense, the quantile regression estimator in quantile $\tau$ is the one that minimizes the following objective function:
+
+\[
+Q(\beta_{\tau})  \,=\,  \sum_{y_{i} \geq x'_{i}\beta}^n \, \tau \lvert y_{i}-x'_{i}\beta_{\tau}\rvert \, +\,+ \sum_{y_{i} < x'_{i}\beta}^n \, (1-\tau) \lvert y_{i}-x'_{i}\beta_{\tau}\rvert
+\]
+
+The estimator has been shown to be asymptotically normal, and bootstrap standard errors are  often used instead of traditional standard errors.
+
+
+	\subsubsection{Pooled Quantile Regression Methods}
+
+In a panel Quantile regression, there are pairs of dependent  and explanatory variables $(y_{it},x_{it})$ with $i=1,..., N;\enspace t=1,..., T$, where $i$ denotes  the $ith$ individual and $t$ denotes time. Furthermore, there also are  unobservable individual-specific variables $\mu_{i}$ with $i=1,..., N$, representing individual characteristics. In this method, the quantile regression is based on the conditional quantile of $y_{it}$ given  ($y_{it},\mu_{i}$) and seeks to estimate the partial effect of $x_{it}$ on the conditional quantile. Formally, $Q_{y_{it}} (\tau|\enspace x_{it},\mu_{i})}$ denotes the conditional $\tau$-quantile of $y_{it}$ given ($x_{it},\mu_{i}$), where $\tau \in (0,1)$ is a quantile index (\cite{Koenker.2017}). The basic model is then:
+
+\[
+Q_{y_{it}} (\tau|\enspace x_{it},\mu_{i}) \,=\, \alpha_{i} (\tau,\mu_{i}) \,+\, X'_{it}\beta(\tau)
+\]
+
+where $\alpha_{i} (\tau,\mu_{i})$ is some unknown function of $\tau$ and $\mu_{i}$, and $\beta(\tau)$ is a dimensional vector of unknown parameters to be estimated in the model. In a more familiar form, the model can also be written as:
+
+\[
+y_{it} \, =\, \alpha_{i} (\tau,\mu_{i}) \, + \, X'_{it}\beta(\tau) \,+\, u_{it}(\tau)
+\]
+
+where $u_{it}(\tau)$ has a zero conditional $\tau$-quantile given $(x_{it},\mu_{i})$. Under the standard assumption, the conditional quantile restriction is equivalent to:
+
+\[
+P(u_{it}(\tau) \leq 0 |\enspace x_{it},\mu_{i}) \,=\, \tau
+\]
+
+A panel quantile regression model with individual effects is necessarily nonlinear and for this reason individual heterogeneity can not simply be removed by  first-differencing or transforming the data as it is usually the case in other panel regression models (\cite{Koenker.2017}).
+
+
+\subsubsection{Fixed Effects Quantile Regression (Penalized FE Method)}
+
+The penalized least squares interpretation of the classical random effects estimator  was developed  by \citet{Koenker.2004} with an estimation technique that offers the possibility of implementing quantile regression models that account for the existence of individual specific effects. This allows the analysis of panel data under less stringent distributional assumptions. These models are also  fit for "short" panel data, where numerous  cross-sectional individuals are observed over short periods of time ($T<<N$). In general, the research on Quantile Regression methodologies for panel data has been experiencing steady growth during the last years as observed by \citet{Koenker.2017}. Formally, the model is defined  as:
+
+\[
+Q_{y_{it}} (\tau|\enspace x_{it},\alpha_{i}) \,=\, \alpha_{i} \,+\, X'_{it}\beta(\tau) \quad i=1,..., N;\enspace t=1,..., T
+\]
+
+where the individual effect $\alpha_{i}$ does not vary over quantiles (no scalar effect). Furthermore, the following penalized estimator $(\hat{\alpha}(\lambda),\hat{\beta}(\lambda,\tau)$ is considered:
+
+\[
+\min_{(\alpha,\beta)} \enspace \dfrac{1}{nT} \sum_{k=1}^q \sum_{i=1}^n \sum_{t=1}^T \omega_{k} \rho_{\tau}(y_{it}-\alpha_{i}-X'_{it}\beta(\tau_{k}))+ \lambda \sum_{i=1}^n \lvert\alpha_{i}\rvert}
+\]
+
+where $\omega_{1},...,\omega_{q}$ are nonnegative weights and $\lambda \geq 0$ is the penalty level.
+
+The idea in this model is to estimate several $\tau$ simultaneously and restricts the individual effect coefficients  $\alpha_{i}$ to be the same for all quantiles. Moreover, the  estimated  individual effects will shrinks toward zero  as  the penalty level $\lambda$ tends to increase (\cite{Bache.2011}). In this sense, the parameter $\lambda$ allows  a calibration of the importance of accounting for individual effects in the model.
+
+In general, when $\lambda \to 0$ the model is similar to a (weighted) dummy-variable quantile regression and when $\lambda \to \infty$ the model is more like a (weighted) cross-section quantile regression. The penalty allows a "control" over the many fixed effects coefficients by not letting them reach unrealistic large numbers (\cite{Bache.2011}). 
+
+This estimator is expected to deliver results that are between those of a pure dummy-variable  estimator and a pure cross-section estimator. In general, the estimator tends to perform worse in cases where  the fixed effects are assumed to have a scalar effect, that is when the fixed effects show a variation over quantiles (\cite{Bache.2011}).
+
+
+ 

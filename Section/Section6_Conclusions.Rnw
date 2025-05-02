@@ -1,0 +1,205 @@
+% !Rnw root = Thesis.Rnw
+
+\section{Conclusions}
+
+In this thesis, panel data estimation techniques (Random Effects/Fixed Effects/GMM) and quantile regression methods for panel data (Pooled/Penalized Fixed Effects) were applied with the objective of examining the determinants of NPL in the EU-banking sector. For this purpose, the regressions also made use of an extensive, granular dataset on major European banks gathered by the European Banking Authority (EBA) in the context of the EU-wide Transparency Exercise for the period 2014-2019. Particularly, this analysis   takes into consideration disaggregated banks' portfolio characteristics in terms of exposure types (households, non-financial corporations, financial corporations other than credit institutions), geographic composition   of the exposures (country of destiny worldwide), intensity of cross-border diversification and initial levels of NPL. Moreover, the characteristics of the legal system and the regulatory status under the Single Supervisory Mechanism (SSM) are  also analyzed as potential determinants of NPL.
+%macroeconomic/bank-specific
+In general, a significant correlation between the selected determinants and the development of NPL is observed in the empirical results, pointing out the importance of bank-specific and macroeconomic factors as well as the characteristics of the legal system for explaining the development of NPL in Europe. The signs and significance levels  of the estimates for all the considered models and methodologies are also compatible with the various theoretical arguments presented in section 2 following the available  literature in NPL, with the exception of the effects of GDP growth on NPL, which appear to play a secondary role in this analysis. In light of the magnitude  and statistical significance of the estimated coefficients as well as the general importance and  consistency of these estimates across the different models and exposure types, \textbf{the following indicators are found to be the "most" important determinants of NPL:} \textbf{Common Equity Tier1 Ratio-CET1- (CET1\_ratio\_tr) and Returns on Risk adjusted Capital (RORAC) as the main bank-specific indicators, and inflation rates (infl\_perc), General government gross debt as percent of GDP (gross\_public\_debt) and unemployment rates (unempl\_rate\_imf) as the main macroeconomic indicators. With regard to the characteristics of the legal system, recovery rates (Reco\_rate\_dol)  after NPL resolution proceedings are  also found to be an important determinant of NPL}. 
+
+Regarding the main bank-specific indicators, Common Equity Tier1 Ratio-CET1- (CET1\_ratio\_tr) is the main  capital adequacy ratio for regulatory and supervisory purposes in the European Banking sector, and its estimated coefficients are negative and statistically significant, and therefore it can be affirmed that an increase in the regulatory capital requirements contributes to a reduction of NPL, pointing out the importance of regulatory capital requirements for controlling NPL at portfolio level. Specially, the magnitude and significance of the estimates greatly increase in models with only bank-specific variables, where the macroeconomic effects are explicitly excluded from the regressions. Return on Risk adjusted Capital (RORAC)} is the main indicator of  bank profitability, and its estimated coefficients  are found to be statistically significant and negative. In other words, an improvement of a bank's profitability appears to be related with a reduction of NPL at portfolio level.
+
+Regarding the main macroeconomic indicators, inflation rates (infl\_perc)} remain significance in all models, specially in the models applying quantile regression methodology. In this case, the empirical evidence suggests that an increase in the price level  contributes to a  reduction of problem loans probably by cutting down the real value of outstanding loans. General government gross debt as percent of GDP (gross\_public\_debt)  is also found to be very significant and positively related to NPL, suggesting that the performance of the general government also has a large impact on the development of problem loans at bank level. Unemployment rates (unempl\_rate\_imf)} show a positive correlation with NPL in all empirical models, supporting the claim that the business cycle  also plays an important role in explaining NPL. In this sense, an increase in the unemployment rate in the country where the exposures are located is found to be related with higher NPL for those exposures. With regard to the characteristics of the legal system, Recovery Rate -cents on the dollar- (Reco\_rate\_dol)} appears to be a very important determinant of NPL, where an increase in the average recovered amount after the conclusion of proceedings for NPL resolution  positively contributes to a reduction of NPL. In other words, given the empirical evidence presented in this thesis, it can be concluded that efficient declaratory procedures of NPL resolution play an important role in explaining NPL at bank level.
+
+% \vspace{-5mm}
+% \begin{itemize}[label= $*$,topsep=0pt, partopsep=0pt,itemsep=0pt,parsep= 0pt,leftmargin=4mm]
+% \item \textbf{Bank-specific:}
+% 
+%     \begin{itemize}[label= $-$,topsep=0pt, partopsep=0pt,itemsep=0pt,parsep= 0pt,leftmargin=3.5mm]
+%           \item \textbf{Common Equity Tier1 Ratio-CET1- (CET1\_ratio\_tr)}, which is the main  capital adequacy ratio for  regulatory and supervisory purposes in the European Banking sector. The estimated coefficients are negative and statistically significant, and therefore, it can be affirmed that an increase in the regulatory capital requirements contributes to a reduction of NPL. Specially, the magnitude and significance of the estimates greatly increase in models with only Bank Specific Variables, where the macroeconomic effects are explicitly excluded from the regressions. In this sense, the results point out the importance of regulatory capital requirements for explaining  NPL at portfolio level.
+%           \item \textbf{Returns on Risk adjusted Capital (RORAC)}, which is the main indicator of  Bank profitability. The estimated coefficients  are found to be statistically significant and negative. In this respect, an improvement of a banks' profitability appears to be related with a reduction of NPL at bank-level.
+%     \end{itemize}
+%  \item \textbf{Macroeconomic:} 
+%  
+%     \begin{itemize}[label= $-$,topsep=0pt, partopsep=0pt,itemsep=0pt,parsep= 0pt,leftmargin=3.5mm]
+%  
+%           \item \textbf{Inflation rates (infl\_perc)} remain significance in all models, specially in the models applying quantil regression methodology. In this case, the empirical evidence suggests that an increase in the price level may contribute to a  reduction of problem loans by cutting down the real value of outstanding loans.
+%             \item \textbf{Recovery Rate -cents on the dollar- (Reco\_rate\_dol)} appear to be an very important determinant of NPL, where an increase in the average recovered amount after the conclusion of proceedings in the context of NPL resolution  positively contributes to a reduction of NPL. Given the empirical evidence in this thesis, it can be concluded that efficient declaratory procedures of NPL resolution are found to play an very important role in explaining NPL at bank level.
+%             \item \textbf{Unemployment rates (unempl\_rate\_imf)} show a positive correlation with NPL in the empirical models, supporting the claim that the business cycle plays an important role in explaining NPL. In this sense, an increase in the unemployment rates in the country of destiny of the exposures is found to be related with higher levels of NPL from those exposures.
+%       \end{itemize}
+% \end{itemize}
+%to be found in ... (Business Cycle, Inflation Rates, Public Finance, Terms of Trade) and the main bank-specific indicators are.... %(Profitability & Cost, Capital Adequacy,  Bank Size ).
+
+In this context, the inclusion of variables about supervisory and legal aspects allowed the identification of interesting empirical relations, where structural and country-specific factors regarding NPL resolution and access to credit  are important determinants of NPL. Particular attention is given to the regulatory status under the Single Supervisory Mechanism (SSM), which seems to play an important role in  reducing the levels of NPL in Europe. In this sense, \textbf{the new empirical evidence presented in this thesis suggests that supervision under the SSM contributes significantly to a reduction of NPL in the European banking system}. These results support the claim that a further integration of the European financial sector within the established European institutions would have a positive effect on the fight against  the excessive accumulation of problem loans in the EU-banking sector.
+
+Moreover, the introduction of an index that measures  the intensity of cross-border diversification in a bank's portfolio  as an additional explanatory variable has delivered some interesting insights in the relationship between cross-border exposures and the development of NPL in the European banking sector. In this respect, \textbf{new empirical evidence  is found suggesting that  the level of geographic diversification in a bank's portfolio is in fact a relevant determinant of NPL, although} the results tend to differ across regression methods, exposure types and data samples and, therefore, \textbf{there is no  conclusive evidence of whether the final effects on NPL are positive or negative}.
+
+The results presented in this thesis also provide \textbf{some new empirical evidence  that  highlights the disparities in the  quantitative effects of the various determinants of NPL when  performing a disaggregated  analysis on exposure types}. With regard to the different exposure types, it can be affirmed that the effects of bank-specific and macroeconomic factors on NPL are greatest for  corporates and businesses operating in the non-financial sector, closely followed by the household sector, while exposures in financial corporations other than credit institutions present the lowest impact. \textbf{In this sense, exposures in non-financial corporations are the most sensitive to the determinants of NPL, closely followed by households, whereas exposures in financial corporations other than credit institutions are  poorly explained by these factors}.
+
+
+Moreover, the results of the quantile regression models also provided \textbf{new insights into  the determinants of  NPL across banks by disaggregating the analysis into groups of banks with different initial levels of NPL in their portfolios}. Given the results of the quantile regression models, \textbf{it is identified that the marginal and absolute impact of most determinants of NPL differs from bank to bank, depending heavily on the original amount of NPL in a bank's portfolio}. In particular, these new empirical results suggest that the magnitude of the impact tends to increase for banks with higher levels of NPL. 
+
+In summary, although  the empirical results for many  of the determinants of NPL considered in the present analysis are in line  with the  general expectations when compared with other results  and  arguments already available in the academic literature, a  serie of "new" and, in this sense, also "unexpected" findings were possible thanks to the novelty  and richness of the EBA's data, which allowed to put the focus of  this analysis on the disaggregated  aspects of NPL in the context of the  most recent European banking system.
+
+\textbf{The "new" findings show that the relative importance of the determinants of NPL depends greatly on the exposure type under consideration, the original amount of NPL as well as the intensity of cross-border diversification in a bank's portfolio. In this sense, this thesis provides some new empirical evidence that further recognizes the heterogeneity in the European banking sector in terms of risk appetite, management strategies and participated markets as well as the need of considering these aspects at a disaggregated level in future empirical research for a proper understanding of the development of NPL in Europe. With regard to the role of  the supervisory system, "new" findings are also provided in support of a further integration of the European financial sector under the Single Supervisory Mechanism (SSM)}. 
+
+%in order to avoid any banking practice that may represent a potential threat to the overall financial stability
+In this context, an important contribution also concerns the type of data and the empirical methodology applied for the present analysis.  This thesis has benefited from the  availability of  disaggregated supervisory data disclosed by the EBA on major European banks as part of the EU-wide Transparency Exercise. The use of this data represents quite a novelty given that there are  very few published papers applying it  in the academic research on NPL. In similar terms, the recent application of  quantile regression methodology for panel data in the  analysis of NPL also represents quite a novel contribution. In this regard, \textbf{the present analysis provides a new example of the  potential use of the EBA's data and  a new application of the quantile regression methodology for panel data}.
+
+
+Furthermore, the empirical evidence presented in this thesis may also be relevant in terms of regulation and policy. For instance, the empirical findings indicate that regulatory capital and profitability ratios  as defined for  banking supervisory purposes are adequate indicators for explaining and predicting the future development of non-performing loans in a bank's portfolio. However, it is advisable for the supervisory authorities to establish  additional indicators aimed at better monitoring the managerial performance in the European banking sector. For instance, a deeper monitoring of the business decisions and practices of a bank's management would contribute to the earlier identification of banks presenting an excessive increase of problem loans. In terms of European policy, it is also  desirable to foster further integration of the European baking system in the context of the Single Supervisory Mechanism (SSM). \textbf{In other words, the supervisory authorities should further  concentrate efforts on procedures and systems for improving risk management tools at a disaggregated level, thus accounting for the large heterogeneity in the European banking system, while promoting at the same time further integration of the European financial sector within the established European institutions}.
+
+Additionally, \textbf{some empirical results or methods presented in this thesis can also be used for the design and calibration  of forecasting models or for bank-stress testing purposes}. In a  bank stress testing framework, the calibration may be performed to test alternative scenarios with regard to the development of bank-specific/macroeconomic indicators and their effects on European banks at portfolio level, contributing to a better assessment of the appropriateness of loan loss provisions in the EU banking sector. Moreover, other related  performance indicators may also be implemented for microprudencial purposes to evaluate the financial risks linked to individual banks showing performance and efficiency problems. Considering that the present analysis is performed on the basis of a disaggregated loan portfolio, the results can also be implemented for stress testing models  that focus on different exposure types.  Moreover,  \textbf{the presented results are also relevant for the design of recommendations to banks on NPL as published  by the ECB and other national supervisory authorities regarding the development and implementation of adequate NPL strategies and Early Warning Indicators (EWI) in the EU banking system}.
+
+The present analyses may be extended in several forms such as the inclusion of a broader choice of bank-specific or macroeconomic  indicators, the extension of the time period by including most recent available data   or a change in the periodicity of the panel data by using narrower time periods on a quarterly or semesterly basis. Furthermore, given the expected  increase in NPL due to the dramatic economic consequences of the Covid-19 pandemic that started in 2020, this analysis can also be extended by  separately considering  the pre-Covid and post-Covid periods and comparing the results  to assess any change in the quantitative effects of the determinants of NPL as well as the overall impact of this unprecedented economic shock on the  future development of NPL in Europe.  
+
+Finally, given the steady increase  in the quantity and quality of the financial data publicly provided by the European Banking Authority (EBA) and other European/International institutions in the context of a constantly changing  legal and economic environment, the development of new perspectives on the analysis of NPL may direct research towards a deeper study of loan-specific characteristics in a legal and empirical framework.
+
+
+
+
+% have added new concerns on the development of NPL in the European Union, reawakening the interest in this topic.
+% 
+% 
+% can be taken into consideration.
+
+
+
+%the likelihood of an excessive increase in non-performing loans 
+
+
+% Our findings have several implications in terms of regulation
+% and policy. Specifically, there is evidence that performance and
+% inefficiency measures may serve as leading indicators for future
+% problem loans. This suggests that regulatory authorities should
+% focus on managerial performance in order to detect banks with potential
+% NPLs increases.Moreover, regulators should place emphasis
+% on risk management systems and procedures followed by banks in
+% order to avert future financial instability.
+
+% In addition, the aforementioned relations can be used for forecasting
+% and stress testing purposes for both regulators and banks
+% (Melecky and Podpiera, 2010). In a macro-stress testing exercise,
+% alternative scenarios for the evolution of the macro-variables can
+% be used in order to evaluate the adequacy of loan loss provisions
+% in the banking system. 
+
+%On the other hand, similar exercises could
+% be performed on a bank specific level in order to assess future
+% problems that may ensue in particular banks characterized by relatively
+% low indices of performance and efficiency. 
+
+%Given that the
+% analysis has been conducted in a disaggregated basis, stress testing
+% exercises may focus on different types of loan portfolios enhancing
+% the reliability of the results.
+
+% The study can be extended in various ways. In the first place, a
+% ''vintage'' loan analysis may be used to pinpoint any differences in
+% the quality of loans granted during the cycle. Such a type of analysis
+% would be directly linked to the hypothesis of a change in the
+% risk attitude of banks between the phases of the cycle. Moreover,
+% further investigation of the crisis effects would be worthy of study.
+% It may be conjectured that the financial crisis represents a structural
+% break affecting the interrelations between non-performing
+% loans and their determinant factors
+
+% 
+% several Examples  of potential uses of the data and  quantile m
+% 
+% from the EBA transparency exercises in academic research Both the use of EBA data and the 
+% 
+% 
+% 
+% The  availability of  disaggregated supervisory data on major European banks disclosed by the EBA  allows new contributions in the NPL literature, for instance, a detailed analysis of disaggregated NPL-portfolios at the bank-level split by exposure type, geographic allocation of exposures and a bank's supervisory status.
+% 
+% Example of potential uses of the data from the EBA transparency exercises in academic research
+% Very few papers  using quantile regression methodology for panel data in NPL literature
+% Paper also provides interesting insights with potential practical implications for policy making, recommendations on NPL strategies, 
+% the design of Early Warning Indicators (EWI) and bank-stress testing methodology.
+% Paper also provides interesting insights for policy making, the design of Early Warning Indicators (EWI), the preparation of recommendations on NPL strategies and bank-stress testing methodology.
+
+
+% %The greater NPLs are, the greater the impact is.
+% 
+
+
+% Our findings have several implications in terms of regulation
+% and policy. Specifically, there is evidence that performance and
+% inefficiency measures may serve as leading indicators for future
+% problem loans. This suggests that regulatory authorities should
+% focus on managerial performance in order to detect banks with potential
+% NPLs increases. Moreover, regulators should place emphasis
+% on risk management systems and procedures followed by banks in
+% order to avert future financial instability.
+% In addition, the aforementioned relations can be used for forecasting
+% and stress testing purposes for both regulators and banks
+% (Melecky and Podpiera, 2010). In a macro-stress testing exercise,
+% alternative scenarios for the evolution of the macro-variables can
+% be used in order to evaluate the adequacy of loan loss provisions
+% in the banking system. On the other hand, similar exercises could
+% be performed on a bank specific level in order to assess future
+% problems that may ensue in particular banks characterized by relatively
+% low indices of performance and efficiency. Given that the
+% analysis has been conducted in a disaggregated basis, stress testing
+% exercises may focus on different types of loan portfolios enhancing
+% the reliability of the results.
+% The study can be extended in various ways. In the first place, a
+% ''vintage'' loan analysis may be used to pinpoint any differences in
+% the quality of loans granted during the cycle. Such a type of analysis
+% would be directly linked to the hypothesis of a change in the
+% risk attitude of banks between the phases of the cycle. Moreover,
+% further investigation of the crisis effects would be worthy of study.
+% It may be conjectured that the financial crisis represents a structural
+% break affecting the interrelations between non-performing
+% loans and their determinant factors
+
+% The ECB banking supervision  has since then continued to intensify its supervisory  activities  regarding  NPL monitoring. In this context, the ECB also publishes guidances to banks on NPL that provide recommendation ons the development of NPL strategies for all "significant" banks supervised directly under the Single Supervisory Mechanism (SSM).
+
+
+% The impact analysis takes into consideration disaggregated banks' portfolio characteristics in terms of exposure types (households,non-financial corporations, financial corporations other than credit institutions) as well as  the geographic composition   of  these exposures (worldwide-country of destiny) at bank level. Also  the intensity of cross-border diversification and the regulatory status under the Single Supervisory Mechanism (SSM) are  analysed as potential determinants of non-performing loans. Interestingly, the quantile regression approach also allows a disaggregated estimation of the determinants  along the conditional distribution of non-performing loans. The results shows the importance of bank-specific ratios and  the characteristics of the legal system together with macroeconomic indicators on explaining non-performing loans. Regulation and Supervision under the Single Supervisory Mechanism  appears to be significant and  negatively correlated with NPLs with similar effects along the conditional NPL distribution while the effects of geographic diversification are inconclusive. Regarding the disaggregated loan-portfolio, each exposure types showed similar effects of NPL-determinants in terms of the direction of the impact (+/-) but differences in intensity and explanatory power, with the greatest impact being shown by non-financial corporations followed by households and financial corporations. Additionally, the marginal impact of the NPL-determinants tend to increase along the conditional NPL-distribution for all portfolio types in a similar pace, showing that the intensity of the impact increases  for banks with higher non-performing ratios. These results together with the data and methodologies used in this paper provides interesting insights with potential practical implications for EU-policy making, recommendations on NPL strategies, the design of Early Warning Indicators (EWI) and bank-stress testing methodologies.
+
+% therefore, the main purpose of this thesis is to contribute to a further understanding  of the determinants of  NPLs by  analyzing the impact of macroeconomic and bank-specific factors on Non-Performing Loans  in the EU-banking sector using a  granular dataset on major European banks gathered by the European Banking Authority (EBA) in the context of the EU-wide Transparency Exercise for the period 2014-2019. Motivated by the granularity of this dataset,  important aspects of a disaggregated banks' portfolio, such as different exposure types, geographic composition   of  NPL portfolios, intensity of cross-border diversification or the regulatory status under the Single Supervisory Mechanism (SSM)  will also be given special focus. The use of the EBA data in this thesis is even more  relevant as there are rarely any academic paper  in the Non-Performing Loans (NPL) literature that may any use or reference to the EBA transparency exercises Database despite its high quality standards, the novelty of its compilation and its usefulness to handle some of the difficulties presented in the NPL literature. More details about its characteristics, advantages and the institutions behind its compilation  will  also be provided. For the empirical analysis, quantile regression models for panel data  will also be  estimated. These methods provide new insights into  the determinants of  NPLs by  allowing a disaggregated estimation of their  impact at different NPL levels along the conditional distribution of NPLs in the EU banking sector. 
+
+
+%  Contribute with a more disaggregated  analysis of determinants of NPL  based on bank-portfolio composition, using novel supervisory data provided by EBA showing the importance of macroeconomic indicators taking geographic composition in portfolio into consideration. Furthermore, the relevance of regulatory supervision and legal aspects on explaining NPLs has also been highlighted.
+%  
+%  With regard to the empirical results, the presented divergences in the estimated coefficients among exposure types also illustrates the importance of analysing  the impact of internal and external factors on NPL under the point of view of a disaggregated loan portfolio.
+% 
+% and  quantiles along the conditional NPL distribution  illustrates that an analysis of the determinants of NPL on a disaggregated loan portfolio  at bank level to obtain a proper understanding of the determinants and evolution of NPLs in the context of a microprudencial monitoring of the banking system.
+
+
+% The objective of this paper is to analyze  the impact of macroeconomic and bank-specific factors on Non-Performing Loans (NPL) in the EU-banking sector using an extensive, granular dataset on major European banks gathered by the European Banking Authority (EBA) in the context of the EU-wide Transparency Exercise for the period 2014-2019. The impact analysis takes into consideration disaggregated banks' portfolio characteristics in terms of exposure types (households,non-financial corporations, financial corporations other than credit institutions) as well as  the geographic composition   of  these exposures (worldwide-country of destiny) at bank level. Also  the intensity of cross-border diversification and the regulatory status under the Single Supervisory Mechanism (SSM) are  analysed as potential determinants of non-performing loans. For the empirical approach, traditional panel data methodologies (Random Effects/Fixed Effects/GMM) and quantile regression methods for panel data (Pooled/Penalixed Fixed Effects) have been applied. Interestingly, the quantile regression approach also allows a disaggregated estimation of the determinants  along the conditional distribution of non-performing loans. The results shows the importance of bank-specific ratios and  the characteristics of the legal system together with macroeconomic indicators on explaining non-performing loans. Regulation and Supervision under the Single Supervisory Mechanism  appears to be significant and  negatively correlated with NPLs with similar effects along the conditional NPL distribution while the effects of geographic diversification are inconclusive. Regarding the disaggregated loan-portfolio, each exposure types showed similar effects of NPL-determinants in terms of the direction of the impact (+/-) but differences in intensity and explanatory power, with the greatest impact being shown by non-financial corporations followed by households and financial corporations. Additionally, the marginal impact of the NPL-determinants tend to increase along the conditional NPL-distribution for all portfolio types in a similar pace, showing that the intensity of the impact increases  for banks with higher non-performing ratios. These results together with the data and methodologies used in this paper provides interesting insights with potential practical implications for EU-policy making, recommendations on NPL strategies, the design of Early Warning Indicators (EWI) and bank-stress testing methodologies.
+
+% \begin{itemize}
+% 
+% \item
+% 
+% 
+% \begin{itemize}
+% \item	Importance of bank-specific \& regulatory ratios on explaining NPLs in terms of bank-profitability, bank-capitalization, portfolio strategy and risk appetite
+% 
+% \item	
+%  \item A first estimation of the impact of geographic diversification on NPLs
+% \item	 Relevance of regulatory supervision \& legal aspects on explaining NPLs
+% \item	Importance of disaggregated loan-portfolios in NPLs research
+% 
+% %: Divergencies in NPLS determinants
+% 
+%  %Divergencies in NPLS determinants in terms of Impact direction and intensity
+% %split by loan type (financial corp., non-financial corp.,households)
+% \item	Importance of analysing NPL determinants conditional on NPL levels 
+% %The greater NPLs are, the greater the impact is.
+% 
+% \end{itemize}
+% 
+% \item Example of potential uses of the data from the EBA transparency exercises in academic research
+% \item Very few papers  using quantile regression methodology for panel data in NPL literature
+% %\item Provide a first estimation of the impact of geographic diversification on NPLs
+% % \item Paper also provides interesting insights with potential practical implications for policy making, recommendations on NPL strategies, the design of Early Warning Indicators (EWI) and bank-stress testing methodology.
+%  \item Paper also provides interesting insights for policy making, the design of Early Warning Indicators (EWI), the preparation of recommendations on NPL strategies and bank-stress testing methodology.
+% 
+% %in The EU-banking sector.
+% 
+% % Implications for prudent bank stress testing, policy making, recommendations on NPL strategies and design of Early Warning Indicators (EWI),contributing to a more effective microprudential supervision of  banks in Europe.
+% 
+% \end{itemize}

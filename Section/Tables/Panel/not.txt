@@ -1,0 +1,2 @@
+\resizebox{\textwidth}{!}{}
+\sisetup{table-format=-1.2}

@@ -1,0 +1,66 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Mi, Dez 30, 2020 - 13:31:42
+% Requires LaTeX packages: dcolumn 
+\begin{table}[!htbp] \centering 
+  \caption{Panel Data Models and HC-Robust Standard Errors (2014-2019): Households & Non-Financial & Financial Institutions} 
+  \label{} 
+\small 
+\begin{tabular}{@{\extracolsep{10pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{5}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-6} 
+\\[-1.8ex] & \multicolumn{3}{c}{\textit{panel}} & \multicolumn{2}{c}{\textit{panel}} \\ 
+ & \multicolumn{3}{c}{\textit{linear}} & \multicolumn{2}{c}{\textit{GMM}} \\ 
+ & \multicolumn{1}{c}{OLS} & \multicolumn{1}{c}{FE} & \multicolumn{1}{c}{RE} & \multicolumn{1}{c}{DIF} & \multicolumn{1}{c}{SYS} \\ 
+\hline \\[-1.8ex] 
+ lag(NPL\_ratio) &  &  &  & 1.120^{***} & 0.852^{***} \\ 
+  &  &  &  & (0.139) & (0.051) \\ 
+  CET1\_ratio\_tr & 0.007 & -0.050 & -0.079 & 0.140 & 0.020 \\ 
+  & (0.052) & (0.060) & (0.062) & (0.085) & (0.030) \\ 
+  LEVER\_tr\_ratio & 0.277^{*} & -0.237 & 0.177 & 0.203 & 0.028 \\ 
+  & (0.145) & (0.328) & (0.217) & (0.382) & (0.078) \\ 
+  RORAC & -0.166^{***} & -0.033 & -0.046 & -0.007 & -0.029 \\ 
+  & (0.058) & (0.022) & (0.030) & (0.032) & (0.022) \\ 
+  log(BankSize\_tran) & -1.705^{***} & -2.735^{**} & -2.232^{***} & 0.056 & -0.027 \\ 
+  & (0.301) & (1.275) & (0.464) & (1.958) & (0.103) \\ 
+  Cost\_to\_Income & -0.010 & -0.015 & -0.014 & 0.002 & -0.003 \\ 
+  & (0.014) & (0.010) & (0.012) & (0.001) & (0.004) \\ 
+  NIM\_tr & 4.435^{***} & 0.538 & 1.234^{*} & -1.273^{*} & 0.236 \\ 
+  & (0.699) & (0.797) & (0.745) & (0.757) & (0.319) \\ 
+  Stgth\_legal\_index & 1.299^{***} & 0.983^{***} & 0.937^{***} & 0.423 & 0.131 \\ 
+  & (0.292) & (0.274) & (0.330) & (0.259) & (0.103) \\ 
+  Reco\_rate\_dol & -0.115^{***} & -0.108^{**} & -0.133^{***} & 0.044 & -0.018 \\ 
+  & (0.033) & (0.051) & (0.042) & (0.077) & (0.016) \\ 
+  infl\_perc & -3.552^{***} & -0.249 & -0.601^{***} & 0.187 & 0.160 \\ 
+  & (0.581) & (0.183) & (0.230) & (0.201) & (0.238) \\ 
+  curr\_acc\_bal & 0.317^{***} & 0.407^{***} & 0.326^{**} & 0.024 & 0.060 \\ 
+  & (0.121) & (0.135) & (0.131) & (0.065) & (0.043) \\ 
+  GDP\_growth\_perc & 0.636^{***} & 0.116 & 0.240 & -0.232 & 0.024 \\ 
+  & (0.241) & (0.142) & (0.184) & (0.149) & (0.101) \\ 
+  unempl\_rate\_imf & 0.019 & 1.049^{***} & 0.828^{***} & 0.033 & -0.003 \\ 
+  & (0.099) & (0.116) & (0.115) & (0.259) & (0.045) \\ 
+  gross\_public\_debt & 0.235^{***} & 0.120^{***} & 0.190^{***} & -0.006 & 0.011 \\ 
+  & (0.024) & (0.037) & (0.026) & (0.038) & (0.007) \\ 
+  SSMY & -2.542^{***} &  & -3.696^{***} &  &  \\ 
+  & (0.864) &  & (1.324) &  &  \\ 
+  CBDI\_index & 0.014 & 0.053^{**} & 0.049^{**} & 0.047 & -0.001 \\ 
+  & (0.013) & (0.026) & (0.020) & (0.046) & (0.004) \\ 
+  Constant & 8.134^{*} &  & 17.598^{***} &  &  \\ 
+  & (4.322) &  & (6.508) &  &  \\ 
+ \hline \\[-1.8ex] 
+Breusch-Godfrey/Wooldridge & 259.377*** & 118.05*** & 150.266*** &  &  \\ 
+Durbin-Watson & 0.747*** & 1.303*** & 1.074*** &  &  \\ 
+Sargan Test &  &  &  & 22.37*** & 42.216** \\ 
+Arellano-Bond:AR(1) &  &  &  & -2.822*** & -2.286** \\ 
+Arellano-Bond:AR(2) &  &  &  & -3.31*** & -0.653 \\ 
+Observations & \multicolumn{1}{c}{630} & \multicolumn{1}{c}{630} & \multicolumn{1}{c}{630} & \multicolumn{1}{c}{125} & \multicolumn{1}{c}{125} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.645} & \multicolumn{1}{c}{0.482} & \multicolumn{1}{c}{0.500} &  &  \\ 
+Adjusted R$^{2}$ & \multicolumn{1}{c}{0.637} & \multicolumn{1}{c}{0.337} & \multicolumn{1}{c}{0.487} &  &  \\ 
+F Statistic & \multicolumn{1}{c}{74.484$^{***}$ (df = 15; 614)} & \multicolumn{1}{c}{32.653$^{***}$ (df = 14; 491)} & \multicolumn{1}{c}{605.548$^{***}$} &  &  \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{5}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 

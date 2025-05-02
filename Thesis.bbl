@@ -1,0 +1,2452 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nyt/global//global/global}
+  \entry{Ahn.Schmidt.1995}{article}{}
+    \name{author}{2}{}{%
+      {{hash=AS}{%
+         family={Ahn},
+         familyi={A\bibinitperiod},
+         given={S.C.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SP}{%
+         family={Schmidt},
+         familyi={S\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ASSP1}
+    \strng{fullhash}{ASSP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1995}
+    \field{labeldatesource}{}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{number}{68}
+    \field{pages}{5\bibrangedash 27}
+    \field{title}{Efficient estimation of models for dynamic panel data}
+    \verb{file}
+    \verb Ahn_Schmidt_1995:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\P
+    \verb roject_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Ahn_Schmid
+    \verb t_1995.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Econometrics}
+    \field{year}{1995}
+  \endentry
+
+  \entry{Anderson.Hsiao.1982}{article}{}
+    \name{author}{2}{}{%
+      {{hash=AT}{%
+         family={Anderson},
+         familyi={A\bibinitperiod},
+         given={T.W.},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=HC}{%
+         family={Hsiao},
+         familyi={H\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ATHC1}
+    \strng{fullhash}{ATHC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1982}
+    \field{labeldatesource}{}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{number}{18}
+    \field{pages}{47\bibrangedash 82}
+    \field{title}{Formulation and estimation of dynamic models using panel
+  data,}
+    \verb{file}
+    \verb Anderson_Hsiao_1982:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis
+    \verb \\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Anderso
+    \verb n_Hsiao_1982.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Econometrics}
+    \field{year}{1982}
+  \endentry
+
+  \entry{Arellano.Bond.1991}{article}{}
+    \name{author}{2}{}{%
+      {{hash=AM}{%
+         family={Arellano},
+         familyi={A\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BS}{%
+         family={Bond},
+         familyi={B\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AMBS1}
+    \strng{fullhash}{AMBS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1991}
+    \field{labeldatesource}{}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{number}{58}
+    \field{pages}{277\bibrangedash 297}
+    \field{title}{Some tests of specification for panel data: Monte Carlo
+  evidence and an application to employment equations}
+    \verb{file}
+    \verb Arellano_Bond_1991:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\
+    \verb \Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Arellano
+    \verb _Bond_1991.pdf:pdf
+    \endverb
+    \field{journaltitle}{Review of Economic Studies}
+    \field{year}{1991}
+  \endentry
+
+  \entry{Arellano.Bover.1995}{article}{}
+    \name{author}{2}{}{%
+      {{hash=AM}{%
+         family={Arellano},
+         familyi={A\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BO}{%
+         family={Bover},
+         familyi={B\bibinitperiod},
+         given={O.},
+         giveni={O\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AMBO1}
+    \strng{fullhash}{AMBO1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1995}
+    \field{labeldatesource}{}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{number}{68}
+    \field{pages}{29\bibrangedash 51}
+    \field{title}{Another look at the instrumental variables estimation of
+  error component models}
+    \verb{file}
+    \verb Arellano_Bover_1995:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis
+    \verb \\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Arellan
+    \verb o_Bover_1995.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Econometrics}
+    \field{year}{1995}
+  \endentry
+
+  \entry{Avgouleas.2021}{article}{}
+    \name{author}{6}{}{%
+      {{hash=AE}{%
+         family={Avgouleas},
+         familyi={A\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=AR}{%
+         family={Ayadi},
+         familyi={A\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Bodellini},
+         familyi={B\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=CB}{%
+         family={Casu},
+         familyi={C\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=DGW}{%
+         family={De\bibnamedelima Groen},
+         familyi={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+         given={W.P.},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=GF}{%
+         family={Giovanni},
+         familyi={G\bibinitperiod},
+         given={F.},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AE+1}
+    \strng{fullhash}{AEARBMCBDGWGF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{Non-performing loans - new risks and policies? What factors
+  drive the performance of national asset management companies?}
+    \verb{url}
+    \verb https://www.europarl.europa./thinktank/en/document.html?reference=IPO
+    \verb L_STU(2021)651386
+    \endverb
+    \verb{file}
+    \verb IPOL_STU(2021)651386_EN:C\:\\Users\\varga\\Desktop\\Thesis\\R_data\\R
+    \verb esearch_Proposal\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Atta
+    \verb chments\\IPOL_STU(2021)651386_EN.pdf:pdf
+    \endverb
+    \field{journaltitle}{European Parliament: European Parliamentary Research
+  Service (EPRS), European Union}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Bache.2011}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BS}{%
+         family={Bache},
+         familyi={B\bibinitperiod},
+         given={S.H.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=DC}{%
+         family={Dahl},
+         familyi={D\bibinitperiod},
+         given={C.M.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=KJ}{%
+         family={Kristensen},
+         familyi={K\bibinitperiod},
+         given={J.T.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BS+1}
+    \strng{fullhash}{BSDCKJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2013}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{pages}{1593\bibrangedash 1633}
+    \field{title}{Headlights on tobacco road to low birthweight--Evidence from
+  a battery of quantile regression estimators and a heterogeneous panel}
+    \field{volume}{44}
+    \verb{file}
+    \verb Bache2013_Article_HeadlightsOnTobaccoRoadToLowBi:C\:\\Users\\varga\\D
+    \verb esktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1
+    \verb \\Citavi Attachments\\Bache2013_Article_HeadlightsOnTobaccoRoadToLowB
+    \verb i.pdf:pdf
+    \endverb
+    \field{journaltitle}{Empirical Economics}
+    \field{year}{2013}
+  \endentry
+
+  \entry{Baltagi.2005}{book}{}
+    \name{author}{1}{}{%
+      {{hash=BB}{%
+         family={Baltagi},
+         familyi={B\bibinitperiod},
+         given={B.H.},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BB1}
+    \strng{fullhash}{BB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{edition}{Third}
+    \field{title}{Econometric Analysis of Panel Data. 3rd Edition.}
+    \verb{file}
+    \verb [Baltagi] Econometric_Analysis_of_Panel_data:C\:\\Users\\varga\\Deskt
+    \verb op\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Ci
+    \verb tavi Attachments\\[Baltagi] Econometric_Analysis_of_Panel_data.pdf:pd
+    \verb f
+    \endverb
+    \field{year}{2005}
+  \endentry
+
+  \entry{Barth.2004}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BJ}{%
+         family={Barth},
+         familyi={B\bibinitperiod},
+         given={J.R.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CJG}{%
+         family={Caprio\bibnamedelima Jr},
+         familyi={C\bibinitperiod\bibinitdelim J\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=LR}{%
+         family={Levine},
+         familyi={L\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BJ+1}
+    \strng{fullhash}{BJCJGLR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2004}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{number}{13}
+    \field{pages}{205\bibrangedash 248}
+    \field{title}{Bank regulation and supervision: what works best?}
+    \verb{file}
+    \verb Bank regulation and supervision what works best:C\:\\Users\\varga\\De
+    \verb sktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\
+    \verb \Citavi Attachments\\Bank regulation and supervision what works best.
+    \verb pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Financial Intermediation}
+    \field{year}{2004}
+  \endentry
+
+  \entry{BENDING}{article}{}
+    \name{author}{8}{}{%
+      {{hash=BT}{%
+         family={Bending},
+         familyi={B\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Berndt},
+         familyi={B\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BF}{%
+         family={Betz},
+         familyi={B\bibinitperiod},
+         given={F.},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=BP}{%
+         family={Brutscher},
+         familyi={B\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=NO}{%
+         family={Nelvin},
+         familyi={N\bibinitperiod},
+         given={O.},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=RD}{%
+         family={Revoltella},
+         familyi={R\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=ST}{%
+         family={Slacik},
+         familyi={S\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=WM}{%
+         family={Wolski},
+         familyi={W\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BT+1}
+    \strng{fullhash}{BTBMBFBPNORDSTWM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2014}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{title}{Unlocking lending in Europe}
+    \verb{url}
+    \verb https://www.econstor.eu/bitstream/10419/113901/1/80691789X.pdf
+    \endverb
+    \verb{file}
+    \verb Unlocking Lending in Europe:C\:\\Users\\varga\\Desktop\\Thesis\\Maste
+    \verb r_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\
+    \verb \Unlocking Lending in Europe.pdf:pdf
+    \endverb
+    \field{year}{2014}
+  \endentry
+
+  \entry{DeYoung.1997}{article}{}
+    \name{author}{2}{}{%
+      {{hash=BA}{%
+         family={Berger},
+         familyi={B\bibinitperiod},
+         given={A.N.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=DR}{%
+         family={DeYoung},
+         familyi={D\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BADR1}
+    \strng{fullhash}{BADR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1997}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{number}{21}
+    \field{pages}{849\bibrangedash 870}
+    \field{title}{Problem loans and cost efficiency in commercial banks}
+    \verb{url}
+    \verb https://doi.org/10.1016/S0378-4266(97)00003-4
+    \endverb
+    \verb{file}
+    \verb Problem loans and cost efficiency in commercial banks:C\:\\Users\\var
+    \verb ga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Proj
+    \verb ect_1\\Citavi Attachments\\Problem loans and cost efficiency in comme
+    \verb rcial banks.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Banking and Finance}
+    \field{year}{1997}
+  \endentry
+
+  \entry{BergerA.N.&DeYoungR.2001}{article}{}
+    \name{author}{2}{}{%
+      {{hash=BA}{%
+         family={Berger},
+         familyi={B\bibinitperiod},
+         given={A.N.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=DR}{%
+         family={DeYoung},
+         familyi={D\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BADR1}
+    \strng{fullhash}{BADR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2001}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{number}{19 (2-3)}
+    \field{pages}{163\bibrangedash 184}
+    \field{title}{The effects of geographic expansion on bank efficiency}
+    \verb{url}
+    \verb https://doi.org/10.1023/A:1011159405433
+    \endverb
+    \verb{file}
+    \verb Berger-DeYoung2001_Article_TheEffectsOfGeographicExpansio:C\:\\Users\
+    \verb \varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\
+    \verb Project_1\\Citavi Attachments\\Berger-DeYoung2001_Article_TheEffectsO
+    \verb fGeographicExpansio.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Financial Services Research}
+    \field{year}{2001}
+  \endentry
+
+  \entry{Blundell.Bond.1998}{article}{}
+    \name{author}{2}{}{%
+      {{hash=BR}{%
+         family={Blundell},
+         familyi={B\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=BS}{%
+         family={Bond},
+         familyi={B\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BRBS1}
+    \strng{fullhash}{BRBS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1998}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{number}{87}
+    \field{pages}{115\bibrangedash 143}
+    \field{title}{Initial conditions and moment restrictions in dynamic panel
+  data models}
+    \verb{file}
+    \verb Blundell_Bond_1998:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\
+    \verb \Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Blundell
+    \verb _Bond_1998.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Econometrics}
+    \field{year}{1998}
+  \endentry
+
+  \entry{Boudriga}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BA}{%
+         family={Boudriga},
+         familyi={B\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=BN}{%
+         family={Boulila},
+         familyi={B\bibinitperiod},
+         given={N.},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=JS}{%
+         family={Jellouli},
+         familyi={J\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BA+1}
+    \strng{fullhash}{BABNJS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2009}
+    \field{labeldatesource}{}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{title}{Does bank supervision impact nonperforming loans:
+  cross-country determinants using aggregate data?}
+    \verb{url}
+    \verb https://mpra.ub.uni-muenchen.de/18068/1/MPRA_paper_18068.pdf
+    \endverb
+    \verb{file}
+    \verb MPRA_paper_18068:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\P
+    \verb roject_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\MPRA_paper
+    \verb _18068.pdf:pdf
+    \endverb
+    \field{year}{2009}
+  \endentry
+
+  \entry{Cerutti}{article}{}
+    \name{author}{2}{}{%
+      {{hash=CE}{%
+         family={Cerutti},
+         familyi={C\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=SC}{%
+         family={Schmieder},
+         familyi={S\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CESC1}
+    \strng{fullhash}{CESC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2012}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{number}{288}
+    \field{title}{The Need for {\textquotedbl}Un-consolidating{\textquotedbl}
+  Consolidated Banks' Stress Tests}
+    \verb{file}
+    \verb The Need for Un-consolidating Consolidated Banks Stress Tests:C\:\\Us
+    \verb ers\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NP
+    \verb Ls\\Project_1\\Citavi Attachments\\The Need for Un-consolidating Cons
+    \verb olidated Banks Stress Tests.pdf:pdf
+    \endverb
+    \field{journaltitle}{IMF Working Papers 12/288}
+    \field{year}{2012}
+  \endentry
+
+  \entry{Croissant2}{book}{}
+    \name{author}{2}{}{%
+      {{hash=CY}{%
+         family={Croissant},
+         familyi={C\bibinitperiod},
+         given={Y.},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=MG}{%
+         family={Millo},
+         familyi={M\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {{JohnWiley {\&} Sons}}%
+    }
+    \strng{namehash}{CYMG1}
+    \strng{fullhash}{CYMG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{isbn}{9781119504641}
+    \field{title}{Panel Data Econometrics with R}
+    \verb{file}
+    \verb Panel Data Econometrics with R_book- Yves Croissant, Giovanni Millo:C
+    \verb \:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\The
+    \verb sis_NPLs\\Project_1\\Citavi Attachments\\Panel Data Econometrics with
+    \verb  R_book- Yves Croissant, Giovanni Millo.pdf:pdf
+    \endverb
+    \field{year}{2019}
+  \endentry
+
+  \entry{BockR.2012}{article}{}
+    \name{author}{2}{}{%
+      {{hash=DBR}{%
+         family={De\bibnamedelima Bock},
+         familyi={D\bibinitperiod\bibinitdelim B\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=DMA}{%
+         family={Demyanets},
+         familyi={D\bibinitperiod},
+         given={M.\bibnamedelima A.},
+         giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DBRDMA1}
+    \strng{fullhash}{DBRDMA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2012}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{number}{WP/12/71}
+    \field{title}{Bank asset quality in emerging markets: determinants and
+  spillovers}
+    \verb{url}
+    \verb https://www.imf.org/external/pubs/ft/wp/2012/wp1271.pdf
+    \endverb
+    \verb{file}
+    \verb Bank asset quality in emerging markets_determinants and spillovers:C\
+    \verb :\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thes
+    \verb is_NPLs\\Project_1\\Citavi Attachments\\Bank asset quality in emergin
+    \verb g markets_determinants and spillovers.pdf:pdf
+    \endverb
+    \field{journaltitle}{IMF Working Paper}
+    \field{year}{2012}
+  \endentry
+
+  \entry{Dimitrios.2016}{article}{}
+    \name{author}{3}{}{%
+      {{hash=DA}{%
+         family={Dimitrios},
+         familyi={D\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=HL}{%
+         family={Helen},
+         familyi={H\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=MT}{%
+         family={Mike},
+         familyi={M\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DA+1}
+    \strng{fullhash}{DAHLMT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2016}
+    \field{labeldatesource}{}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{number}{18}
+    \field{pages}{116\bibrangedash 119.}
+    \field{title}{Determinants of non-performing loans: Evidence from
+  {E}uro-area countries portfolios}
+    \verb{url}
+    \verb https ://doi.org/10.1016/j.frl.2016.04.008
+    \endverb
+    \verb{file}
+    \verb Determinants of non-performing loans Evidence from Euro-area countrie
+    \verb s:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\
+    \verb Thesis_NPLs\\Project_1\\Citavi Attachments\\Determinants of non-perfo
+    \verb rming loans Evidence from Euro-area countries.pdf:pdf
+    \endverb
+    \field{journaltitle}{Finance Research Letters}
+    \field{year}{2016}
+  \endentry
+
+  \entry{EBA6}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={{European Banking Authority}},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E1}
+    \strng{fullhash}{E1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{title}{The {EBA} Methodological Guide: Risk Indicators and Detailed
+  Risk Analysis Tools V1.1}
+    \verb{url}
+    \verb https://eba.europa.eu/sites/default/documents/files/documents/10180/1
+    \verb 380571/9be17f64-a566-40fc-9b68-afc411e440fe/Revised%20EBA%20Methodolo
+    \verb gical%20Guide%20-%20Risk%20Indicators%20and%20DRAT%20-%20Final.pdf
+    \endverb
+    \verb{file}
+    \verb The_EBA_Methodological_Guide:C\:\\Users\\varga\\Desktop\\Thesis\\Mast
+    \verb er_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments
+    \verb \\The_EBA_Methodological_Guide.pdf:pdf
+    \endverb
+    \field{year}{2019}
+  \endentry
+
+  \entry{EBA}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={{European Banking Authority}},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E1}
+    \strng{fullhash}{E1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2020}
+    \field{extradate}{1}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{title}{{EBA} Report on NPLs: Progress Made and Challenges Ahead}
+    \verb{url}
+    \verb https://eba.europa.eu/risk-analysis-and-data/npls
+    \endverb
+    \verb{file}
+    \verb Final EBA Report on NPLs-for publication_final:C\:\\Users\\varga\\Des
+    \verb ktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\
+    \verb Citavi Attachments\\Final EBA Report on NPLs-for publication_final.pd
+    \verb f:pdf
+    \endverb
+    \field{year}{2020}
+  \endentry
+
+  \entry{EBA2}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={{European Banking Authority}},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E1}
+    \strng{fullhash}{E1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2020}
+    \field{extradate}{2}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{title}{{Risk Dashboard Data} of {Q}4 2019}
+    \verb{url}
+    \verb https://eba.europa.eu/sites/default/documents/files/document_library/
+    \verb Risk%20Analysis%20and%20Data/Risk%20dashboard/Q4%202019/882137/EBA%20
+    \verb Dashboard%20-%20Q4%202019.pdf
+    \endverb
+    \verb{file}
+    \verb EBA Dashboard - Q4 2019:C\:\\Users\\varga\\Desktop\\Thesis\\Master_th
+    \verb esis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\EBA
+    \verb  Dashboard - Q4 2019.pdf:pdf
+    \endverb
+    \field{year}{2020}
+  \endentry
+
+  \entry{EBA3}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={{European Banking Authority}},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E1}
+    \strng{fullhash}{E1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2020}
+    \field{extradate}{3}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{title}{Spring 2020 {EU}-wide Transparency Exercise - Key Statistics}
+    \verb{url}
+    \verb https://eba.europa.eu/sites/default/documents/files/document_library/
+    \verb Risk%20Analysis%20and%20Data/eu%20Wide%20Transparency%20Exercise/2020
+    \verb /Transparency%20exercise%20documents/885224/Spring_2020_eu-wide_Trans
+    \verb parency_Exercise_-_key_statistics.pdf
+    \endverb
+    \verb{file}
+    \verb Spring_2020_eu-wide_Transparency_Exercise_-_key_statistics:C\:\\Users
+    \verb \\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\
+    \verb \Project_1\\Citavi Attachments\\Spring_2020_eu-wide_Transparency_Exer
+    \verb cise_-_key_statistics.pdf:pdf
+    \endverb
+    \field{year}{2020}
+  \endentry
+
+  \entry{NPL2}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={{European Central Banking Supervision}},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E2}
+    \strng{fullhash}{E2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2014}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{title}{{EBA} FINAL draft Implementing Technical Standards:On
+  Supervisory reporting on forbearance and non-performing exposures under
+  article 99(4) of Regulation (eu) No 575/2013}
+    \verb{url}
+    \verb https://eba.europa.eu/sites/default/documents/files/documents/10180/4
+    \verb 49824/a55b9933-be43-4cae-b872-9184c90135b9/EBA-ITS-2013-03%20Final%20
+    \verb draft%20ITS%20on%20Forbearance%20and%20Non-performing%20exposures.pdf
+    \verb ?retry=1
+    \endverb
+    \verb{file}
+    \verb EBA-ITS-2013-03 Final draft ITS on Forbearance and Non-performing exp
+    \verb osures:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Cit
+    \verb avi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\EBA-ITS-2013-03 Fina
+    \verb l draft ITS on Forbearance and Non-performing exposures.pdf:pdf
+    \endverb
+    \field{journaltitle}{European Central Bank Banking supervision}
+    \field{year}{2014}
+  \endentry
+
+  \entry{guideline}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={{European Central Banking Supervision}},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E2}
+    \strng{fullhash}{E2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{title}{Guidance to banks on non-performing loans}
+    \verb{url}
+    \verb https://www.bankingsupervision.europa.eu/ecb/pub/pdf/guidance_on_npl.
+    \verb en.pdf
+    \endverb
+    \verb{file}
+    \verb guidance_on_npl.en:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\
+    \verb \Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\guidance
+    \verb _on_npl.en.pdf:pdf
+    \endverb
+    \field{year}{2017}
+  \endentry
+
+  \entry{SSM.Manual.2018}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={{European Central Banking Supervision}},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E2}
+    \strng{fullhash}{E2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{title}{{SSM} Supervisory Manual: European banking supervision:
+  functioning of the {SSM} and supervisory approach}
+    \verb{url}
+    \verb https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisorym
+    \verb anual201803.en.pdf?42da4200dd38971a82c2d15b9ebc0e65
+    \endverb
+    \verb{file}
+    \verb ssm.supervisorymanual201803.en:C\:\\Users\\varga\\Desktop\\Thesis\\Ma
+    \verb ster_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachmen
+    \verb ts\\ssm.supervisorymanual201803.en.pdf:pdf
+    \endverb
+    \field{year}{2018}
+  \endentry
+
+  \entry{Fell}{article}{}
+    \name{author}{4}{}{%
+      {{hash=FJ}{%
+         family={Fell},
+         familyi={F\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GM}{%
+         family={Grodzicki},
+         familyi={G\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Metzler},
+         familyi={M\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=OE}{%
+         family={O'Brien},
+         familyi={O\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FJ+1}
+    \strng{fullhash}{FJGMMJOE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{abstract}{%
+    Revista de Estabilidad Financiera nº35, noviembre 2018%
+    }
+    \field{pages}{9\bibrangedash 28}
+    \field{title}{Non-performing loans and {e}uro area bank lending behaviour
+  after the crisis}
+    \verb{url}
+    \verb https://ideas.repec.org/a/bde/revist/y2018i11n1.html
+    \endverb
+    \verb{file}
+    \verb Paper_6_Non-performing loans and euro area bank lending behaviour aft
+    \verb er the crisis:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Proj
+    \verb ect_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Paper_6_Non-p
+    \verb erforming loans and euro area bank lending behaviour after the crisis
+    \verb .pdf:pdf
+    \endverb
+    \field{journaltitle}{Revista de Estabilidad Financiera}
+    \field{year}{2018}
+  \endentry
+
+  \entry{Koenker.2002}{book}{}
+    \name{editor}{3}{}{%
+      {{hash=FB}{%
+         family={Fitzenberger},
+         familyi={F\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=KR}{%
+         family={Koenker},
+         familyi={K\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Machado},
+         familyi={M\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {{Physica, Heidelberg}}%
+    }
+    \strng{namehash}{FB+1}
+    \strng{fullhash}{FBKRMJ1}
+    \field{labelnamesource}{editor}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2002}
+    \field{labeldatesource}{}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{series}{Studies in Empirical Economics}
+    \field{title}{Economic Applications of Quantile Regression}
+    \verb{file}
+    \verb Economic Applications:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thes
+    \verb is\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Econo
+    \verb mic Applications.pdf:pdf
+    \endverb
+    \field{year}{2002}
+  \endentry
+
+  \entry{Fuchs}{article}{}
+    \name{author}{1}{}{%
+      {{hash=FF}{%
+         family={Fuchs},
+         familyi={F\bibinitperiod},
+         given={F.},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FF1}
+    \strng{fullhash}{FF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2020}
+    \field{labeldatesource}{}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{number}{42}
+    \field{title}{Macroeconomic determinants of foreign exchange rate exposure}
+    \verb{file}
+    \verb Macroeconomic Determinants of Foreign Exchange Rate Exposure:C\:\\Use
+    \verb rs\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPL
+    \verb s\\Project_1\\Citavi Attachments\\Macroeconomic Determinants of Forei
+    \verb gn Exchange Rate Exposure.pdf:pdf
+    \endverb
+    \field{journaltitle}{Passauer Diskussionspapiere, Betriebswirtschaftliche
+  Reihe B-42-20}
+    \field{year}{2020}
+  \endentry
+
+  \entry{GhoshA.2015}{article}{}
+    \name{author}{1}{}{%
+      {{hash=GA}{%
+         family={Ghosh},
+         familyi={G\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GA1}
+    \strng{fullhash}{GA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2015}
+    \field{labeldatesource}{}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{number}{20}
+    \field{pages}{93\bibrangedash 104}
+    \field{title}{Banking-industry specific and regional economic determinants
+  of non-performing loans: evidence from {US} states}
+    \verb{url}
+    \verb https://doi.org/10.1016/j.jfs.2015.08.004
+    \endverb
+    \verb{file}
+    \verb Banking-industry specific and regional economic determinants of non-p
+    \verb erforming loans:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Pr
+    \verb oject_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Banking-ind
+    \verb ustry specific and regional economic determinants of non-performing l
+    \verb oans.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Financial Stability}
+    \field{year}{2015}
+  \endentry
+
+  \entry{GhoshA.2017}{article}{}
+    \name{author}{1}{}{%
+      {{hash=GA}{%
+         family={Ghosh},
+         familyi={G\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GA1}
+    \strng{fullhash}{GA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{number}{93}
+    \field{pages}{29\bibrangedash 45}
+    \field{title}{Sector-specific analysis of non-performing loans in the {US}
+  banking system and their macroeconomic impact}
+    \verb{url}
+    \verb https://doi.org/10.1016/j.jeconbus.2017.06.002
+    \endverb
+    \verb{file}
+    \verb Sector-specific analysis of non-performing loans in the US banking sy
+    \verb stem and their:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Pro
+    \verb ject_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Sector-speci
+    \verb fic analysis of non-performing loans in the US banking system and the
+    \verb ir.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Economics and Business}
+    \field{year}{2017}
+  \endentry
+
+  \entry{Green.2012}{book}{}
+    \name{author}{1}{}{%
+      {{hash=GW}{%
+         family={Green},
+         familyi={G\bibinitperiod},
+         given={W.H.},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Pearson}%
+    }
+    \strng{namehash}{GW1}
+    \strng{fullhash}{GW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2012}
+    \field{labeldatesource}{}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{edition}{7th}
+    \field{title}{Econometric Analysis, Seventh Edition}
+    \verb{file}
+    \verb [Greene] Econometric_Analysis:C\:\\Users\\varga\\Desktop\\Thesis\\Mas
+    \verb ter_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachment
+    \verb s\\[Greene] Econometric_Analysis.pdf:pdf
+    \endverb
+    \field{year}{2012}
+  \endentry
+
+  \entry{Hayden.2006}{article}{}
+    \name{author}{3}{}{%
+      {{hash=HE}{%
+         family={Hayden},
+         familyi={H\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=PD}{%
+         family={Porath},
+         familyi={P\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=WN}{%
+         family={Westernhagen},
+         familyi={W\bibinitperiod},
+         given={N.},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HE+1}
+    \strng{fullhash}{HEPDWN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2006}
+    \field{labeldatesource}{}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{number}{110}
+    \field{title}{Does Diversification Improve the performance of {German}
+  banks? {Evidence} from Individual Bank Loan Portfolios}
+    \verb{file}
+    \verb 9_oenb_Does Diversification Improve the performance of German banks:C
+    \verb \:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\The
+    \verb sis_NPLs\\Project_1\\Citavi Attachments\\9_oenb_Does Diversification
+    \verb Improve the performance of German banks.pdf:pdf
+    \endverb
+    \field{journaltitle}{Oesterreichische Nationalbank Working Papers}
+    \field{year}{2006}
+  \endentry
+
+  \entry{Hsiao.2010}{book}{}
+    \name{author}{1}{}{%
+      {{hash=HC}{%
+         family={Hsiao},
+         familyi={H\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {{Cambridge University Press}}%
+    }
+    \strng{namehash}{HC1}
+    \strng{fullhash}{HC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2010}
+    \field{labeldatesource}{}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{edition}{Second}
+    \field{isbn}{9780511754203}
+    \field{title}{Analysis of Panel Data}
+    \verb{file}
+    \verb [Hsiao] Analysis of Panel Data (Econometric Society Monographs):C\:\\
+    \verb Users\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_
+    \verb NPLs\\Project_1\\Citavi Attachments\\[Hsiao] Analysis of Panel Data (
+    \verb Econometric Society Monographs).pdf:pdf
+    \endverb
+    \field{year}{2010}
+  \endentry
+
+  \entry{FSI}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=I}{%
+         family={{International Monetary Fund}},
+         familyi={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{I1}
+    \strng{fullhash}{I1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{I}
+    \field{sortinithash}{I}
+    \field{title}{Financial Soundness Indicators. Compilation Guide}
+    \verb{url}
+    \verb https://www.imf.org/external/pubs/ft/fsi/guide/2006/pdf/fsiFT.pdf
+    \endverb
+    \list{institution}{1}{%
+      {{International Monetary Fund}}%
+    }
+    \field{year}{2019}
+  \endentry
+
+  \entry{KaminskyGL.1999}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KGL}{%
+         family={Kaminsky},
+         familyi={K\bibinitperiod},
+         given={G.\bibnamedelima L.},
+         giveni={G\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=RCM}{%
+         family={Reinhart},
+         familyi={R\bibinitperiod},
+         given={C.\bibnamedelima M.},
+         giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KGLRCM1}
+    \strng{fullhash}{KGLRCM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1999}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{number}{3}
+    \field{pages}{473\bibrangedash 500}
+    \field{title}{The twin crises: the causes of banking and
+  balance-of-payments problems}
+    \verb{url}
+    \verb https://www.aeaweb.org/articles?id=10.1257/aer.89.3.473
+    \endverb
+    \field{volume}{89}
+    \verb{file}
+    \verb Kaminsky GL, Reinhart CM (1999) The twin crises_the causes of banking
+    \verb  and balance-of-payments:C\:\\Users\\varga\\Desktop\\Thesis\\R_data\\
+    \verb Research_Proposal\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Att
+    \verb achments\\Kaminsky GL, Reinhart CM (1999) The twin crises_the causes
+    \verb of banking and balance-of-payments.pdf:pdf
+    \endverb
+    \field{journaltitle}{American Economic Review}
+    \field{year}{1999}
+  \endentry
+
+  \entry{Karadima.2020}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KM}{%
+         family={Karadima},
+         familyi={K\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=LH}{%
+         family={Louri},
+         familyi={L\bibinitperiod},
+         given={H.},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KMLH1}
+    \strng{fullhash}{KMLH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2020}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{pages}{101593}
+    \field{title}{Non-performing loans in the {E}uro area: Does bank market
+  power matter?}
+    \verb{url}
+    \verb https://doi.org/10.1016/j.irfa.2020.101593
+    \endverb
+    \field{volume}{72}
+    \verb{file}
+    \verb Non-performing loans in the euro area_Does bank market power matter:C
+    \verb \:\\Users\\varga\\Desktop\\Thesis\\R_data\\Research_Proposal\\Project
+    \verb _Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Non-performing l
+    \verb oans in the euro area_Does bank market power matter.pdf:pdf
+    \endverb
+    \field{journaltitle}{International Review of Financial Analysis}
+    \field{year}{2020}
+  \endentry
+
+  \entry{KeetonWR.1987}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KW}{%
+         family={Keeton},
+         familyi={K\bibinitperiod},
+         given={W.R.},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=MC}{%
+         family={Morris},
+         familyi={M\bibinitperiod},
+         given={C.S.},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KWMC1}
+    \strng{fullhash}{KWMC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1987}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{pages}{3\bibrangedash 21}
+    \field{title}{Why do banks' loan losses differ?}
+    \verb{url}
+    \verb https://www.kansascityfed.org/PUBLICAT/ECONREV/EconRevArchive/1987/2q
+    \verb 87keet.pdf
+    \endverb
+    \field{volume}{72}
+    \verb{file}
+    \verb Keeton WR, Morris CS (1987) Why do banks loan losses differ:C\:\\User
+    \verb s\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs
+    \verb \\Project_1\\Citavi Attachments\\Keeton WR, Morris CS (1987) Why do b
+    \verb anks loan losses differ.pdf:pdf
+    \endverb
+    \field{journaltitle}{Economic Review}
+    \field{year}{1987}
+  \endentry
+
+  \entry{Kerbl}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KS}{%
+         family={Kerbl},
+         familyi={K\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=DS}{%
+         family={D{\"o}me},
+         familyi={D\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KSDS1}
+    \strng{fullhash}{KSDS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{number}{34}
+    \field{pages}{68\bibrangedash 89}
+    \field{title}{Comparability of Basel risk weights in the {EU} banking
+  sector}
+    \verb{file}
+    \verb Comparability_of_Basel_risk_weights_in_the_eu_banking_sector:C\:\\Use
+    \verb rs\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPL
+    \verb s\\Project_1\\Citavi Attachments\\Comparability_of_Basel_risk_weights
+    \verb _in_the_eu_banking_sector.pdf:pdf
+    \endverb
+    \field{journaltitle}{Financial Stability Report- Österreichische
+  NationalBank (OENB)}
+    \field{year}{2017}
+  \endentry
+
+  \entry{KleinN.2013}{article}{}
+    \name{author}{1}{}{%
+      {{hash=KN}{%
+         family={Klein},
+         familyi={K\bibinitperiod},
+         given={N.},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KN1}
+    \strng{fullhash}{KN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2013}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{number}{WP/13/72}
+    \field{title}{Non-performing loans in {CESEE}; Determinants and impact on
+  macroeconomic performance}
+    \verb{url}
+    \verb https://www.imf.org/en/Publications/WP/Issues/2016/12/31/Non-Performi
+    \verb ng-Loans-in-CESEE-Determinants-and-Impact-on-Macroeconomic-Performanc
+    \verb e-40413
+    \endverb
+    \verb{file}
+    \verb Klein N (2013) Non-performing loans in CESEE;:C\:\\Users\\varga\\Desk
+    \verb top\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\C
+    \verb itavi Attachments\\Klein N (2013) Non-performing loans in CESEE;.pdf:
+    \verb pdf
+    \endverb
+    \field{journaltitle}{IMF Working Paper}
+    \field{year}{2013}
+  \endentry
+
+  \entry{Klevmarken.1989}{article}{}
+    \name{author}{1}{}{%
+      {{hash=KN}{%
+         family={Klevmarken},
+         familyi={K\bibinitperiod},
+         given={N.A.},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KN2}
+    \strng{fullhash}{KN2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1989}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{number}{2-3}
+    \field{pages}{523\bibrangedash 529}
+    \field{title}{Panel studies: What can we learn from them? Introduction}
+    \field{volume}{33}
+    \verb{file}
+    \verb Panel_Studies_Klevmarken:C\:\\Users\\varga\\Desktop\\Thesis\\Master_t
+    \verb hesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Pa
+    \verb nel_Studies_Klevmarken.pdf:pdf
+    \endverb
+    \field{journaltitle}{European Economic Review}
+    \field{year}{1989}
+  \endentry
+
+  \entry{Koenker.2004}{article}{}
+    \name{author}{1}{}{%
+      {{hash=KR}{%
+         family={Koenker},
+         familyi={K\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KR1}
+    \strng{fullhash}{KR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2004}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \verb{doi}
+    \verb 10.1016/j.jmva.2004.05.006
+    \endverb
+    \field{number}{0047-259X}
+    \field{pages}{74\bibrangedash 89}
+    \field{title}{Quantile regression for longitudinal data}
+    \verb{url}
+    \verb http://www.sciencedirect.com/science/article/pii/S0047259X04001113
+    \endverb
+    \field{volume}{91}
+    \verb{file}
+    \verb Quantile regression for longitudinal data.Koenker:C\:\\Users\\varga\\
+    \verb Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_
+    \verb 1\\Citavi Attachments\\Quantile regression for longitudinal data.Koen
+    \verb ker.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Multivariate Analysis}
+    \field{year}{2004}
+  \endentry
+
+  \entry{Koenker.2005}{book}{}
+    \name{author}{1}{}{%
+      {{hash=KR}{%
+         family={Koenker},
+         familyi={K\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {{Cambridge University Press}}%
+    }
+    \strng{namehash}{KR1}
+    \strng{fullhash}{KR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2005}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{Quantile Regression}
+    \verb{file}
+    \verb Quantile Regression by Roger Koenker (z-lib.org):C\:\\Users\\varga\\D
+    \verb esktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1
+    \verb \\Citavi Attachments\\Quantile Regression by Roger Koenker (z-lib.org
+    \verb ).pdf:pdf
+    \endverb
+    \field{year}{2005}
+  \endentry
+
+  \entry{Koenker.1978}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KR}{%
+         family={Koenker},
+         familyi={K\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=BG}{%
+         family={Bassett},
+         familyi={B\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KRBG1}
+    \strng{fullhash}{KRBG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1978}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{number}{1}
+    \field{pages}{33\bibrangedash 50}
+    \field{title}{Regression Quantiles}
+    \verb{url}
+    \verb https://www.jstor.org/stable/1913643
+    \endverb
+    \field{volume}{46}
+    \verb{file}
+    \verb Koenker, Roger_Regression quantiles:C\:\\Users\\varga\\Desktop\\Thesi
+    \verb s\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Atta
+    \verb chments\\Koenker, Roger_Regression quantiles.pdf:pdf
+    \endverb
+    \field{journaltitle}{Econometrica}
+    \field{year}{1978}
+  \endentry
+
+  \entry{Koenker.2017}{book}{}
+    \name{editor}{4}{}{%
+      {{hash=KR}{%
+         family={Koenker},
+         familyi={K\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=CV}{%
+         family={Chernozhukov},
+         familyi={C\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=HX}{%
+         family={He},
+         familyi={H\bibinitperiod},
+         given={X.},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=PL}{%
+         family={Peng},
+         familyi={P\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {{Chapman and Hall/CRC Press}}%
+    }
+    \strng{namehash}{KR+1}
+    \strng{fullhash}{KRCVHXPL1}
+    \field{labelnamesource}{editor}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{isbn}{9781498725286}
+    \field{series}{Handbooks of Modern Statistical Methods}
+    \field{title}{Handbook of Quantile Regression}
+    \verb{file}
+    \verb Handbook of Quantile Regression by Roger Koenker, Victor Chernozhukov
+    \verb , Xuming He, Limin Peng (z-lib.org):C\:\\Users\\varga\\Desktop\\Thesi
+    \verb s\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Atta
+    \verb chments\\Handbook of Quantile Regression by Roger Koenker, Victor Che
+    \verb rnozhukov, Xuming He, Limin Peng (z-lib.org).pdf:pdf
+    \endverb
+    \field{year}{2017}
+  \endentry
+
+  \entry{KwanS.1997}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KS}{%
+         family={Kwan},
+         familyi={K\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=ER}{%
+         family={Eisenbeis},
+         familyi={E\bibinitperiod},
+         given={R.A.},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KSER1}
+    \strng{fullhash}{KSER1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1997}
+    \field{labeldatesource}{}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{number}{12}
+    \field{pages}{117\bibrangedash 131}
+    \field{title}{Bank risk, capitalization, and operating efficiency}
+    \verb{url}
+    \verb https://link.springer.com/article/10.1023/A:1007970618648
+    \endverb
+    \verb{file}
+    \verb Kwan-Eisenbeis1997_Article_BankRiskCapitalizationAndOpera:C\:\\Users\
+    \verb \varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\
+    \verb Project_1\\Citavi Attachments\\Kwan-Eisenbeis1997_Article_BankRiskCap
+    \verb italizationAndOpera.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Financial Services Research}
+    \field{year}{1997}
+  \endentry
+
+  \entry{Louzis.2012}{article}{}
+    \name{author}{3}{}{%
+      {{hash=LD}{%
+         family={Louzis},
+         familyi={L\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=VA}{%
+         family={Vouldis},
+         familyi={V\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MV}{%
+         family={Metaxas},
+         familyi={M\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LD+1}
+    \strng{fullhash}{LDVAMV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2012}
+    \field{labeldatesource}{}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{number}{36}
+    \field{pages}{1012\bibrangedash 1027}
+    \field{title}{Macroeconomic and bank-specific determinants of
+  non-performing loans in {Greece}: A comparative study of mortgage, business
+  and consumer loan portfolios.}
+    \verb{url}
+    \verb https ://doi.org/10.1016/j.jbank fin.2011.10.012
+    \endverb
+    \verb{file}
+    \verb Macroeconomic and:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\
+    \verb Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Macroecon
+    \verb omic and.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Banking and Finance}
+    \field{year}{2012}
+  \endentry
+
+  \entry{Makri}{article}{}
+    \name{author}{3}{}{%
+      {{hash=MV}{%
+         family={Makri},
+         familyi={M\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=TA}{%
+         family={Tsagkanos},
+         familyi={T\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Bellas},
+         familyi={B\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MV+1}
+    \strng{fullhash}{MVTABA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2014}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \verb{doi}
+    \verb 10.2298/PAN1402193M
+    \endverb
+    \field{issn}{1452-595X}
+    \field{number}{2}
+    \field{pages}{193\bibrangedash 206}
+    \field{title}{Determinants of non-performing loans: The case of {E}urozone}
+    \field{volume}{61}
+    \verb{file}
+    \verb Paper_5_Determinants of Non-Performing Loans_The Case of Eurozone-201
+    \verb 4:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\
+    \verb Thesis_NPLs\\Project_1\\Citavi Attachments\\Paper_5_Determinants of N
+    \verb on-Performing Loans_The Case of Eurozone-2014.pdf:pdf
+    \endverb
+    \field{journaltitle}{Panoeconomicus}
+    \field{year}{2014}
+  \endentry
+
+  \entry{ManzFlorian}{article}{}
+    \name{author}{1}{}{%
+      {{hash=MF}{%
+         family={Manz},
+         familyi={M\bibinitperiod},
+         given={F.},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MF1}
+    \strng{fullhash}{MF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2019}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{abstract}{%
+    Management Review Quarterly, https://doi.org/10.1007/s11301-019-00156-7%
+    }
+    \verb{doi}
+    \verb 10.1007/s11301-019-00156-7
+    \endverb
+    \field{number}{2198-1620}
+    \field{pages}{351\bibrangedash 389}
+    \field{title}{Determinants of non-performing loans: What do we know? A
+  systematic review and avenues for future research}
+    \field{volume}{69}
+    \verb{file}
+    \verb Manz2019_Article_DeterminantsOfNon-performingLo:C\:\\Users\\varga\\De
+    \verb sktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\
+    \verb \Citavi Attachments\\Manz2019_Article_DeterminantsOfNon-performingLo.
+    \verb pdf:pdf
+    \endverb
+    \field{journaltitle}{Management Review Quarterly Systematic Literature
+  Reviews, Meta-Analyses, and Replication Studies}
+    \field{year}{2019}
+  \endentry
+
+  \entry{Platon}{book}{}
+    \name{editor}{2}{}{%
+      {{hash=MP}{%
+         family={Monokroussos},
+         familyi={M\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=GC}{%
+         family={Gortsos},
+         familyi={G\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MPGC1}
+    \strng{fullhash}{MPGC1}
+    \field{labelnamesource}{editor}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{series}{Palgrave Macmillan Studies in Banking and Financial
+  Institutions}
+    \field{title}{Non-Performing Loans and Resolving Private Sector Insolvency:
+  Experiences from the {EU} Periphery and the Case of {Greece}}
+    \verb{file}
+    \verb Non-Performing Loans and Resolving Private sector insolvency:C\:\\Use
+    \verb rs\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPL
+    \verb s\\Project_1\\Citavi Attachments\\Non-Performing Loans and Resolving
+    \verb Private sector insolvency.pdf:pdf
+    \endverb
+    \field{year}{2017}
+  \endentry
+
+  \entry{MoraSanguinetti.2017}{article}{}
+    \name{author}{3}{}{%
+      {{hash=MSJ}{%
+         family={Mora-Sanguinetti},
+         familyi={M\bibinithyphendelim S\bibinitperiod},
+         given={J.S},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MMM}{%
+         family={Martinez-Matute},
+         familyi={M\bibinithyphendelim M\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=GPM}{%
+         family={Garcia-Posada},
+         familyi={G\bibinithyphendelim P\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MSJ+1}
+    \strng{fullhash}{MSJMMMGPM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{pages}{361\bibrangedash 383}
+    \field{title}{Credit, crisis and contract enforcement: evidence from the
+  {Spanish} loan market}
+    \verb{url}
+    \verb https://link.springer.com/article/10.1007/s10657-017-9557-4
+    \endverb
+    \field{volume}{44}
+    \verb{file}
+    \verb doc_credit-crisis-and-contract-enforcement-banco-de-espana-1:C\:\\Use
+    \verb rs\\varga\\Desktop\\Thesis\\R_data\\Research_Proposal\\Project_Citavi
+    \verb \\Thesis_NPLs\\Project_1\\Citavi Attachments\\doc_credit-crisis-and-c
+    \verb ontract-enforcement-banco-de-espana-1.pdf:pdf
+    \endverb
+    \field{journaltitle}{European Journal of Law and Economics volume}
+    \field{year}{2017}
+  \endentry
+
+  \entry{Morgan.2016}{article}{}
+    \name{author}{2}{}{%
+      {{hash=MD}{%
+         family={Morgan},
+         familyi={M\bibinitperiod},
+         given={D.P.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=SK}{%
+         family={Samolyk},
+         familyi={S\bibinitperiod},
+         given={K.},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MDSK1}
+    \strng{fullhash}{MDSK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2016}
+    \field{labeldatesource}{}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{number}{C}
+    \field{pages}{287\bibrangedash 317}
+    \field{title}{The benefits and costs of geographic diversification in
+  banking}
+    \field{volume}{69}
+    \verb{file}
+    \verb 8_The benefits and costs of geographic diversification in banking:C\:
+    \verb \\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesi
+    \verb s_NPLs\\Project_1\\Citavi Attachments\\8_The benefits and costs of ge
+    \verb ographic diversification in banking.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of International Money and Finance}
+    \field{year}{2016}
+  \endentry
+
+  \entry{NkusuM.2011}{article}{}
+    \name{author}{1}{}{%
+      {{hash=NM}{%
+         family={Nkusu},
+         familyi={N\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{NM1}
+    \strng{fullhash}{NM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2011}
+    \field{labeldatesource}{}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \field{number}{WP/11/161}
+    \field{title}{Nonperforming Loans and Macrofinancial Vulnerabilities in
+  Advanced Economies}
+    \verb{url}
+    \verb https://www.imf.org/external/pubs/ft/wp/2011/wp11161.pdf
+    \endverb
+    \verb{file}
+    \verb Nonperforming loans and macrofinancial vulnerabilities in advanced ec
+    \verb onomies:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Ci
+    \verb tavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Nonperforming loans
+    \verb  and macrofinancial vulnerabilities in advanced economies.pdf:pdf
+    \endverb
+    \field{journaltitle}{IMF Working Paper}
+    \field{year}{2011}
+  \endentry
+
+  \entry{OENB}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=OON}{%
+         family={(OeNB)},
+         familyi={O\bibinitperiod},
+         given={Oesterreichische\bibnamedelima Nationalbank},
+         giveni={O\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{OON1}
+    \strng{fullhash}{OON1}
+    \field{labelnamesource}{author}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \verb{url}
+    \verb https://www.oenb.at/en/Statistics/
+    \endverb
+    \verb{file}
+    \verb https://www.oenb.at/en/Statistics/
+    \endverb
+  \endentry
+
+  \entry{OseiAssibeyE.2015}{article}{}
+    \name{author}{2}{}{%
+      {{hash=OAE}{%
+         family={Osei-Assibey},
+         familyi={O\bibinithyphendelim A\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=AJ}{%
+         family={Asenso},
+         familyi={A\bibinitperiod},
+         given={J.K.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{OAEAJ1}
+    \strng{fullhash}{OAEAJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2015}
+    \field{labeldatesource}{}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \field{number}{7}
+    \field{pages}{401\bibrangedash 420}
+    \field{title}{Regulatory capital and its effect on credit growth,
+  non-performing loans and bank efficiency}
+    \verb{url}
+    \verb https://www.emerald.com/insight/content/doi/10.1108/JFEP-03-2015-0018
+    \verb /full/html
+    \endverb
+    \verb{file}
+    \verb Regulatory capital and its effect on credit growth, non-performing lo
+    \verb ans and bank:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Proje
+    \verb ct_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Regulatory cap
+    \verb ital and its effect on credit growth, non-performing loans and bank.p
+    \verb df:pdf
+    \endverb
+    \field{journaltitle}{Journal of Financial Economic}
+    \field{year}{2015}
+  \endentry
+
+  \entry{Quagliariello}{book}{}
+    \name{editor}{1}{}{%
+      {{hash=QM}{%
+         family={Quagliariello},
+         familyi={Q\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {{Cambridge University Press}}%
+    }
+    \strng{namehash}{QM1}
+    \strng{fullhash}{QM1}
+    \field{labelnamesource}{editor}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2009}
+    \field{labeldatesource}{}
+    \field{sortinit}{Q}
+    \field{sortinithash}{Q}
+    \field{title}{Stress-testing the Banking System: Methodologies and
+  Applications}
+    \verb{file}
+    \verb https://doi.org/10.1017/CBO9780511635618
+    \endverb
+    \field{year}{2009}
+  \endentry
+
+  \entry{ReinhartCM.2011}{article}{}
+    \name{author}{2}{}{%
+      {{hash=RC}{%
+         family={Reinhart},
+         familyi={R\bibinitperiod},
+         given={C.M.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=RK}{%
+         family={Rogoff},
+         familyi={R\bibinitperiod},
+         given={K.S.},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RCRK1}
+    \strng{fullhash}{RCRK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2011}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{number}{5}
+    \field{title}{From financial crash to debt crisis}
+    \verb{url}
+    \verb https://www.aeaweb.org/articles?id=10.1257/aer.101.5.1676
+    \endverb
+    \field{volume}{101}
+    \verb{file}
+    \verb Reinhart CM, Rogoff KS (2011) From financial crash to debt crisis:C\:
+    \verb \\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesi
+    \verb s_NPLs\\Project_1\\Citavi Attachments\\Reinhart CM, Rogoff KS (2011)
+    \verb From financial crash to debt crisis.pdf:pdf
+    \endverb
+    \field{journaltitle}{American Economic Review}
+    \field{year}{2011}
+  \endentry
+
+  \entry{Rodano.2021}{article}{}
+    \name{author}{1}{}{%
+      {{hash=RG}{%
+         family={Rodano},
+         familyi={R\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RG1}
+    \strng{fullhash}{RG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{number}{1322}
+    \field{title}{Judicial efficiency and bank credit to firms}
+    \verb{url}
+    \verb https://EconPapers.repec.org/RePEc:bdi:wptemi:td_1322_21
+    \endverb
+    \verb{file}
+    \verb en_Tema_1322:C\:\\Users\\varga\\Desktop\\Thesis\\R_data\\Research_Pro
+    \verb posal\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\en
+    \verb _Tema_1322.pdf:pdf
+    \endverb
+    \field{journaltitle}{Temi di discussione (Economic working papers), Bank of
+  Italy}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Salas.2002}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SV}{%
+         family={Salas},
+         familyi={S\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Saurina},
+         familyi={S\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SVSJ1}
+    \strng{fullhash}{SVSJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2002}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{22}
+    \field{pages}{203\bibrangedash 224}
+    \field{title}{Credit risk in two institutional regimes: Spanish commercial
+  and savings banks}
+    \verb{url}
+    \verb https://link.springer.com/article/10.1023%2FA%3A1019781109676
+    \endverb
+    \verb{file}
+    \verb Salas-Saurina2002_Article_CreditRiskInTwoInstitutionalRe:C\:\\Users\\
+    \verb varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\P
+    \verb roject_1\\Citavi Attachments\\Salas-Saurina2002_Article_CreditRiskInT
+    \verb woInstitutionalRe.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Financial Services Research}
+    \field{year}{2002}
+  \endentry
+
+  \entry{SanchezSerrano.2021}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SSA}{%
+         family={S{\'a}nchez\bibnamedelima Serrano},
+         familyi={S\bibinitperiod\bibinitdelim S\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SSA1}
+    \strng{fullhash}{SSA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2021}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{pages}{101312}
+    \field{title}{The impact of non-performing loans on bank lending in
+  {Europe}: an empirical analysis}
+    \verb{url}
+    \verb https://doi.org/10.1016/j.najef.2020.101312
+    \endverb
+    \field{volume}{55}
+    \verb{file}
+    \verb The impact of non-performing loans on bank lending in Europe.AntonioS
+    \verb anchez:C\:\\Users\\varga\\Desktop\\Thesis\\R_data\\Research_Proposal\
+    \verb \Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\The impa
+    \verb ct of non-performing loans on bank lending in Europe.AntonioSanchez.p
+    \verb df:pdf
+    \endverb
+    \field{journaltitle}{North American Journal of Economics and Finance}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Schertler.2006}{article}{}
+    \name{author}{3}{}{%
+      {{hash=SA}{%
+         family={Schertler},
+         familyi={S\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=BC}{%
+         family={Buch},
+         familyi={B\bibinitperiod},
+         given={C.M.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=WN}{%
+         family={Westernhagen},
+         familyi={W\bibinitperiod},
+         given={N.},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SA+1}
+    \strng{fullhash}{SABCWN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2006}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{4}
+    \field{pages}{43\bibrangedash 72}
+    \field{title}{Heterogeneity in lending and sectoral growth: Evidence from
+  {German} bank-level data}
+    \verb{url}
+    \verb https://www.bundesbank.de/resource/blob/704208/40ae760dc7ac5d1b9591e1
+    \verb f239a81333/mL/2006-07-24-dkp-04-data.pdf
+    \endverb
+    \verb{file}
+    \verb 5_Heterogeneity in lending and sectoral growth_Evidence from German b
+    \verb ank-level data:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thesis\\Pro
+    \verb ject_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\5_Heterogene
+    \verb ity in lending and sectoral growth_Evidence from German bank-level da
+    \verb ta.pdf:pdf
+    \endverb
+    \field{journaltitle}{Deutsche Bundesbank Discussion Paper Series}
+    \field{year}{2006}
+  \endentry
+
+  \entry{SinkeyJF.1991}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SJ}{%
+         family={Sinkey},
+         familyi={S\bibinitperiod},
+         given={J.F.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GM}{%
+         family={Greenawalt},
+         familyi={G\bibinitperiod},
+         given={M.B.},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SJGM1}
+    \strng{fullhash}{SJGM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{1991}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{5}
+    \field{pages}{43\bibrangedash 59}
+    \field{title}{Loan-loss experience and risk-taking behavior at large
+  commercial banks}
+    \verb{url}
+    \verb https://link.springer.com/article/10.1007%2FBF00127083
+    \endverb
+    \verb{file}
+    \verb Sinkey-Greenawalt1991_Article_Loan-lossExperienceAndRisk-tak:C\:\\Use
+    \verb rs\\varga\\Desktop\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPL
+    \verb s\\Project_1\\Citavi Attachments\\Sinkey-Greenawalt1991_Article_Loan-
+    \verb lossExperienceAndRisk-tak.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Financial Services Research}
+    \field{year}{1991}
+  \endentry
+
+  \entry{Suarez.2018}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SJ}{%
+         family={Suarez},
+         familyi={S\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SA}{%
+         family={{S{\'a}nchez Serrano}},
+         familyi={S\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SJSA1}
+    \strng{fullhash}{SJSA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2018}
+    \field{labeldatesource}{}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{No. 2019/87}
+    \field{title}{Approaching non-performing loans from a macroprudential
+  angle}
+    \verb{url}
+    \verb https://ssrn.com/abstract=3723327
+    \endverb
+    \verb{file}
+    \verb Approaching non-performing loans from a macroprudential angle.Antonio
+    \verb :C\:\\Users\\varga\\Desktop\\Thesis\\R_data\\Research_Proposal\\Proje
+    \verb ct_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Approaching no
+    \verb n-performing loans from a macroprudential angle.Antonio.pdf:pdf
+    \endverb
+    \field{journaltitle}{ESRB: Advisory Scientific Committee Reports}
+    \field{year}{2018}
+  \endentry
+
+  \entry{lex}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=T}{%
+         family={{The Council of the European Union}},
+         familyi={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{T1}
+    \strng{fullhash}{T1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2013}
+    \field{labeldatesource}{}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{{Single Supervisory Mechanism} ({SSM}) {R}egulation: COUNCIL
+  REGULATION (eu) No 1024/2013 of 15 October 2013 conferring specific tasks on
+  the European Central Bank concerning policies relating to the prudential
+  supervision of credit institutions}
+    \verb{url}
+    \verb https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32013R1
+    \verb 024&from=EN
+    \endverb
+    \verb{file}
+    \verb CELEX_32013R1024_EN_TXT:C\:\\Users\\varga\\Desktop\\Thesis\\Master_th
+    \verb esis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\CEL
+    \verb EX_32013R1024_EN_TXT.pdf:pdf
+    \endverb
+    \field{year}{2013}
+  \endentry
+
+  \entry{Turk}{article}{}
+    \name{author}{1}{}{%
+      {{hash=TAR}{%
+         family={Turk-Ariss},
+         familyi={T\bibinithyphendelim A\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TAR1}
+    \strng{fullhash}{TAR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{number}{137}
+    \field{title}{Heterogeneity of Bank Risk Weights in the {EU}: Evidence by
+  Asset Class and Country of Counterparty Exposure}
+    \verb{url}
+    \verb https://www.imf.org/en/Publications/WP/Issues/2017/06/09/Heterogeneit
+    \verb y-of-Bank-Risk-Weights-in-the-eu-Evidence-by-Asset-Class-and-Country-
+    \verb of-44965
+    \endverb
+    \verb{file}
+    \verb Heterogeneity of Bank Risk Weights in the eu:C\:\\Users\\varga\\Deskt
+    \verb op\\Thesis\\Master_thesis\\Project_Citavi\\Thesis_NPLs\\Project_1\\Ci
+    \verb tavi Attachments\\Heterogeneity of Bank Risk Weights in the eu.pdf:pd
+    \verb f
+    \endverb
+    \field{journaltitle}{IMF Working Paper 17/137}
+    \field{year}{2017}
+  \endentry
+
+  \entry{Zhang.2016}{article}{}
+    \name{author}{4}{}{%
+      {{hash=ZD}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={D.Y.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=CJ}{%
+         family={Cai},
+         familyi={C\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=DD}{%
+         family={Dickinson},
+         familyi={D\bibinitperiod},
+         given={D.G.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Kutan},
+         familyi={K\bibinitperiod},
+         given={A.M.},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZD+1}
+    \strng{fullhash}{ZDCJDDKA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2016}
+    \field{labeldatesource}{}
+    \field{sortinit}{Z}
+    \field{sortinithash}{Z}
+    \field{number}{63}
+    \field{pages}{48\bibrangedash 60}
+    \field{title}{Non-performing loans, moral hazard and regulation of the
+  {Chinese} commercial banking system.}
+    \verb{url}
+    \verb https://doi.org/10.1016/j.jbankfin.2015.11.010
+    \endverb
+    \verb{file}
+    \verb Non-performing loans, moral hazard and regulation of the Chineseccomm
+    \verb ercial banking system:C\:\\Users\\varga\\Desktop\\Thesis\\Master_thes
+    \verb is\\Project_Citavi\\Thesis_NPLs\\Project_1\\Citavi Attachments\\Non-p
+    \verb erforming loans, moral hazard and regulation of the Chineseccommercia
+    \verb l banking system.pdf:pdf
+    \endverb
+    \field{journaltitle}{Journal of Banking and Finance}
+    \field{year}{2016}
+  \endentry
+\enddatalist
+\endinput
